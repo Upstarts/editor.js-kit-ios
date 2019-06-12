@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'EditorJSKit_Example' do
+  pod 'EditorJSKit', :path => '../'
+
+  target 'EditorJSKit_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
