@@ -7,13 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0427878F22B149FA00728BFC /* Pods_EditorJSKit_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 152CDB93A32B9E6C103E3AF6 /* Pods_EditorJSKit_Tests.framework */; };
 		04AF4AD222B12FB400BBBD3D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04AF4AD122B12FB400BBBD3D /* LaunchScreen.xib */; };
-		04AF4AD922B1335E00BBBD3D /* BlockType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF4AD822B1335E00BBBD3D /* BlockType.swift */; };
-		04AF4ADD22B1342400BBBD3D /* BlockRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF4ADC22B1342400BBBD3D /* BlockRenderer.swift */; };
-		04AF4ADF22B134BA00BBBD3D /* AbstractBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF4ADE22B134BA00BBBD3D /* AbstractBlock.swift */; };
-		04AF4AE122B137F700BBBD3D /* HeaderBlockContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF4AE022B137F700BBBD3D /* HeaderBlockContent.swift */; };
-		04AF4AE522B139E800BBBD3D /* EditorJSResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF4AE422B139E800BBBD3D /* EditorJSResponse.swift */; };
-		2A6B3FDD1F72C8FF984B1EA3 /* Pods_EditorJSKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3CE106F12E810F78098A50E /* Pods_EditorJSKit_Example.framework */; };
+		04AF4AE822B13B2C00BBBD3D /* EditorJSMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 04AF4AE722B13B2C00BBBD3D /* EditorJSMock.json */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
@@ -33,11 +29,7 @@
 
 /* Begin PBXFileReference section */
 		04AF4AD122B12FB400BBBD3D /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
-		04AF4AD822B1335E00BBBD3D /* BlockType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockType.swift; sourceTree = "<group>"; };
-		04AF4ADC22B1342400BBBD3D /* BlockRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockRenderer.swift; sourceTree = "<group>"; };
-		04AF4ADE22B134BA00BBBD3D /* AbstractBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractBlock.swift; sourceTree = "<group>"; };
-		04AF4AE022B137F700BBBD3D /* HeaderBlockContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderBlockContent.swift; sourceTree = "<group>"; };
-		04AF4AE422B139E800BBBD3D /* EditorJSResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorJSResponse.swift; sourceTree = "<group>"; };
+		04AF4AE722B13B2C00BBBD3D /* EditorJSMock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = EditorJSMock.json; sourceTree = "<group>"; };
 		152CDB93A32B9E6C103E3AF6 /* Pods_EditorJSKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EditorJSKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		59E27E0706C66AFF035D701C /* Pods-EditorJSKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EditorJSKit_Tests.release.xcconfig"; path = "Target Support Files/Pods-EditorJSKit_Tests/Pods-EditorJSKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		607C8C810A10BFC19C665A73 /* Pods-EditorJSKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EditorJSKit_Tests.debug.xcconfig"; path = "Target Support Files/Pods-EditorJSKit_Tests/Pods-EditorJSKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -51,7 +43,7 @@
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		7A093C55F750A3D57B145A5E /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		7B632858BC818B30538C3169 /* Pods-EditorJSKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EditorJSKit_Example.release.xcconfig"; path = "Target Support Files/Pods-EditorJSKit_Example/Pods-EditorJSKit_Example.release.xcconfig"; sourceTree = "<group>"; };
-		88EDD5CEC1759A4704548B82 /* EditorJSKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = EditorJSKit.podspec; path = ../EditorJSKit.podspec; sourceTree = "<group>"; };
+		88EDD5CEC1759A4704548B82 /* EditorJSKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = EditorJSKit.podspec; path = ../EditorJSKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A359055EB3460A42F8A62D90 /* Pods-EditorJSKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EditorJSKit_Example.debug.xcconfig"; path = "Target Support Files/Pods-EditorJSKit_Example/Pods-EditorJSKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		C3CE106F12E810F78098A50E /* Pods_EditorJSKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EditorJSKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE6414889162630A35B368F1 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -62,7 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A6B3FDD1F72C8FF984B1EA3 /* Pods_EditorJSKit_Example.framework in Frameworks */,
+				0427878F22B149FA00728BFC /* Pods_EditorJSKit_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,10 +88,9 @@
 		04AF4AD522B132E100BBBD3D /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				04AF4AD722B1334B00BBBD3D /* Models */,
-				04AF4ADB22B133F000BBBD3D /* Services */,
-				04AF4AD322B132C100BBBD3D /* AppDelegate */,
 				04AF4AD422B132D200BBBD3D /* Controllers */,
+				04AF4AD322B132C100BBBD3D /* AppDelegate */,
+				04AF4AE622B13B0800BBBD3D /* Mocks */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -114,23 +105,12 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		04AF4AD722B1334B00BBBD3D /* Models */ = {
+		04AF4AE622B13B0800BBBD3D /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
-				04AF4AD822B1335E00BBBD3D /* BlockType.swift */,
-				04AF4AE422B139E800BBBD3D /* EditorJSResponse.swift */,
-				04AF4ADE22B134BA00BBBD3D /* AbstractBlock.swift */,
-				04AF4AE022B137F700BBBD3D /* HeaderBlockContent.swift */,
+				04AF4AE722B13B2C00BBBD3D /* EditorJSMock.json */,
 			);
-			name = Models;
-			sourceTree = "<group>";
-		};
-		04AF4ADB22B133F000BBBD3D /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				04AF4ADC22B1342400BBBD3D /* BlockRenderer.swift */,
-			);
-			name = Services;
+			name = Mocks;
 			sourceTree = "<group>";
 		};
 		220B9879AB9E4755089B64F1 /* Pods */ = {
@@ -308,6 +288,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04AF4AE822B13B2C00BBBD3D /* EditorJSMock.json in Resources */,
 				04AF4AD222B12FB400BBBD3D /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
@@ -396,12 +377,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04AF4ADD22B1342400BBBD3D /* BlockRenderer.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
-				04AF4AE522B139E800BBBD3D /* EditorJSResponse.swift in Sources */,
-				04AF4AE122B137F700BBBD3D /* HeaderBlockContent.swift in Sources */,
-				04AF4ADF22B134BA00BBBD3D /* AbstractBlock.swift in Sources */,
-				04AF4AD922B1335E00BBBD3D /* BlockType.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

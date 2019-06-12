@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import EditorJSKit
 
 class ViewController: UIViewController {
     
@@ -17,6 +18,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .red
         setupViews()
+        performNetworkTask()
     }
     
     
@@ -30,6 +32,15 @@ class ViewController: UIViewController {
             collectionView.rightAnchor.constraint(equalTo: view.rightAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
             ])
+    }
+    
+    private func performNetworkTask() {
+        guard let url = Bundle.main.url(forResource: "EditorJSMock", withExtension: "json") else { return }
+        guard let dataD = try? Data(contentsOf: url) else { return }
+        let object = try! JSONSerialization.jsonObject(with: dataD, options: [])
+        let data = try! JSONSerialization.data(withJSONObject: object, options: [])
+        let editorJSResponse = try! JSONDecoder().decode(EditorJSResponse.self, from: data)
+        print("success")
     }
 
 }
