@@ -9,49 +9,66 @@
 import Foundation
 
 ///
-protocol EJAbstractBlockContentItem {}
+public protocol EJAbstractBlockContentItem: Decodable {}
 
 ///
-protocol EJAbstractBlockContent: Decodable {
-    func getItem(atIndex index: Int) -> EJAbstractBlockContentItem?
-}
-
-///
-protocol EJAbstractBlockProtocol: Decodable {
-    associatedtype D where D: EJAbstractBlockType
-    
-    var type: D { get }
-    var content: EJAbstractBlockContent { get }
+public protocol EJAbstractBlockContent: Decodable {
     var numberOfItems: Int { get }
+    func getItem(atIndex index: Int) -> EJAbstractBlockContentItem?
+    static func decode(container: KeyedDecodingContainer<EJAbstractBlock.CodingKeys>) throws -> EJAbstractBlockContent
 }
 
 ///
-open class EJAbstractBlock<T: EJAbstractBlockType>: EJAbstractBlockProtocol {
-    typealias D = T
-    let type: T
-    let content: EJAbstractBlockContent
-    let numberOfItems: Int
+public protocol EJAbstractBlockProtocol: Decodable {
+    var type: EJAbstractBlockType { get }
+    var content: EJAbstractBlockContent { get }
+}
+
+///
+open class EJAbstractBlock: EJAbstractBlockProtocol {
+    public var type: EJAbstractBlockType
+    public var content: EJAbstractBlockContent
     
-    enum CodingKeys: String, CodingKey { case type, content }
+    public enum CodingKeys: String, CodingKey { case type, content }
     
     required public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        type = try container.decode(T.self, forKey: .type)
         
-        switch type.rawValue {
-        case :
-            content = try container.decode(HeaderEJBlockContent.self, forKey: .content)
-        case .
-        default:
-            throw DecodingError.typeMismatch(EJAbstractBlockContent.self,
-                                             DecodingError.Context(
-                                                codingPath: [CodingKeys.type],
-                                                debugDescription: "Didn't match any of type \(String(describing: EJNativeBlockType.self))"))
+        if let type = try? container.decode(EJNativeBlockType.self, forKey: .type) {
+            self.type = type
+            switch type {
+            case .header:
+                self.content = try container.decode(HeaderEJBlockContent.self, forKey: .content)
+                break
+            case .paragraph:
+                throw DecodingError.typeMismatch(
+                    EJAbstractBlockContent.self,
+                    DecodingError.Context(
+                        codingPath: [CodingKeys.content],
+                        debugDescription: "Content parsing of native block type \"\(type.rawValue)\" is not implemented"))
+            }
+            return
         }
-    }
-    
-    convenience init(type: EJAbstractBlockType) {
+            
+        // Loop through custom blocks
+        for customBlock in EJKit.shared.registeredCustomBlocks {
+            guard let type = try? customBlock.type.decode(container: container) else { continue }
+            guard let content = try? customBlock.contentClass.decode(container: container) else {
+                throw DecodingError.typeMismatch(
+                    EJAbstractBlockContent.self,
+                    DecodingError.Context(
+                        codingPath: [CodingKeys.type],
+                        debugDescription: "Block's content type didn't match declared type \(type.rawValue)"))
+            }
+            self.type = type
+            self.content = content
+            break
+        }
         
+        throw DecodingError.dataCorrupted(
+            DecodingError.Context(
+                codingPath: [CodingKeys.type],
+                debugDescription: "Unable to parse block - no native or custom type found"))
     }
     
 }

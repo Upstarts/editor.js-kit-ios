@@ -10,10 +10,26 @@ import Foundation
 
 ///
 struct HeaderEJBlockContent: EJAbstractBlockContent {
+    private var items: [HeaderEJBlockContentItem] = []
+    var numberOfItems: Int
+    
+    public static func decode(container: KeyedDecodingContainer<EJAbstractBlock.CodingKeys>) throws -> EJAbstractBlockContent {
+        let item = try container.decode(HeaderEJBlockContentItem.self, forKey: .content)
+        return HeaderEJBlockContent(items: [item])
+    }
+    
+    private init(items: [HeaderEJBlockContentItem]) {
+        self.items = items
+        self.numberOfItems = items.count
+    }
+    
     func getItem(atIndex index: Int) -> EJAbstractBlockContentItem? {
         return nil
     }
-    
+}
+
+///
+struct HeaderEJBlockContentItem: EJAbstractBlockContentItem {
     let text: String
     let level: Int
 }

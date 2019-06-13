@@ -12,10 +12,15 @@ import Foundation
 public protocol EJAbstractBlockType: Decodable {
     var rawValue: String { get }
     init?(rawValue: String)
+    func decode(container: KeyedDecodingContainer<EJAbstractBlock.CodingKeys>) throws -> EJAbstractBlockType
 }
 
 ///
 public enum EJNativeBlockType: String, EJAbstractBlockType {
     case paragraph
     case header
+    
+    public func decode(container: KeyedDecodingContainer<EJAbstractBlock.CodingKeys>) throws -> EJAbstractBlockType {
+        return try container.decode(EJNativeBlockType.self, forKey: .type)
+    }
 }
