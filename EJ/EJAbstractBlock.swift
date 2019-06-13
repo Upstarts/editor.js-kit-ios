@@ -21,15 +21,15 @@ public protocol EJAbstractBlockContent: Decodable {
 ///
 public protocol EJAbstractBlockProtocol: Decodable {
     var type: EJAbstractBlockType { get }
-    var content: EJAbstractBlockContent { get }
+    var data: EJAbstractBlockContent { get }
 }
 
 ///
 open class EJAbstractBlock: EJAbstractBlockProtocol {
     public var type: EJAbstractBlockType
-    public var content: EJAbstractBlockContent
+    public var data: EJAbstractBlockContent
     
-    public enum CodingKeys: String, CodingKey { case type, content }
+    public enum CodingKeys: String, CodingKey { case type, data }
     
     required public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -38,13 +38,12 @@ open class EJAbstractBlock: EJAbstractBlockProtocol {
             self.type = type
             switch type {
             case .header:
-                self.content = try container.decode(HeaderEJBlockContent.self, forKey: .content)
-                break
+                self.data = try container.decode(HeaderBlockContent.self, forKey: .data)
             case .paragraph:
                 throw DecodingError.typeMismatch(
                     EJAbstractBlockContent.self,
                     DecodingError.Context(
-                        codingPath: [CodingKeys.content],
+                        codingPath: [CodingKeys.data],
                         debugDescription: "Content parsing of native block type \"\(type.rawValue)\" is not implemented"))
             }
             return
@@ -53,7 +52,8 @@ open class EJAbstractBlock: EJAbstractBlockProtocol {
         // Loop through custom blocks
         for customBlock in EJKit.shared.registeredCustomBlocks {
             guard let type = try? customBlock.type.decode(container: container) else { continue }
-            guard let content = try? customBlock.contentClass.decode(container: container) else {
+            guard let data = try? customBlock.contentClass.init(from: decoder) else {
+//            guard let data = try? customBlock.contentClass.decode(container: container) else {
                 throw DecodingError.typeMismatch(
                     EJAbstractBlockContent.self,
                     DecodingError.Context(
@@ -61,7 +61,11 @@ open class EJAbstractBlock: EJAbstractBlockProtocol {
                         debugDescription: "Block's content type didn't match declared type \(type.rawValue)"))
             }
             self.type = type
-            self.content = content
+            self.data = data
+            
+            print(data.numberOfItems)
+            print(self.type.rawValue)
+            
             break
         }
         

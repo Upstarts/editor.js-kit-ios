@@ -2,6 +2,12 @@
     "time": 1560338876987,
     "blocks": [
         {
+            "type": "title",
+            "data": {
+                "text": "Let you go."
+            }
+        },
+        {
             "type": "header",
             "data": {
                 "text": "Editor.js",

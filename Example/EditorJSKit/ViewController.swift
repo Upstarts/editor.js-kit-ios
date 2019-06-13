@@ -18,6 +18,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .red
         setupViews()
+        createCustomBlock()
         performNetworkTask()
     }
     
@@ -42,6 +43,13 @@ class ViewController: UIViewController {
         let editorJSResponse = try! JSONDecoder().decode(EJServerResponse.self, from: data)
         print("success")
     }
+    
+    func createCustomBlock() {
+        let customBlock = EJCustomBlock(type: BlockType.title , contentClass: TitleBlockContent.self)
+        EJKit.shared.register(customBlock: customBlock)
+    }
+    
+    
 
 }
 

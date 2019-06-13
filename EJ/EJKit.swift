@@ -9,20 +9,25 @@ import Foundation
 
 ///
 open class EJKit {
-    static let shared = EJKit()
+    public static let shared = EJKit()
     var style: EJStyle?
     
     var registeredCustomBlocks: [EJCustomBlock] = []
     
-    func register(customBlock: EJCustomBlock) {
+    public func register(customBlock: EJCustomBlock) {
         registeredCustomBlocks.append(customBlock)
     }
 }
 
 ///
-struct EJCustomBlock {
-    var type: EJAbstractBlockType
-    var contentClass: EJAbstractBlockContent.Type
+public struct EJCustomBlock {
+    public var type: EJAbstractBlockType
+    public var contentClass: EJAbstractBlockContent.Type
+    
+    public init(type: EJAbstractBlockType, contentClass: EJAbstractBlockContent.Type) {
+        self.type = type
+        self.contentClass = contentClass
+    }
 }
 
 

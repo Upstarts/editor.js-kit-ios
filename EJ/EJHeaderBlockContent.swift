@@ -9,7 +9,7 @@
 import Foundation
 
 ///
-struct HeaderBlockContent: EJAbstractBlockContent {
+class HeaderBlockContent: EJAbstractBlockContent {
     private var items: [HeaderBlockContentItem] = []
     var numberOfItems: Int
     
@@ -18,7 +18,18 @@ struct HeaderBlockContent: EJAbstractBlockContent {
         return HeaderBlockContent(items: [item])
     }
     
-    private init(items: [HeaderBlockContentItem]) {
+    convenience required public init(from decoder: Decoder) throws {
+        if let container = try? decoder.container(keyedBy: EJAbstractBlock.CodingKeys.self) {
+            let item = try container.decode(HeaderBlockContentItem.self, forKey: .data)
+            self.init(items: [item])
+        }
+        else {
+            let item =  try HeaderBlockContentItem(from: decoder)
+            self.init(items: [item])
+        }
+    }
+    
+    init(items: [HeaderBlockContentItem]) {
         self.items = items
         self.numberOfItems = items.count
     }
@@ -30,6 +41,7 @@ struct HeaderBlockContent: EJAbstractBlockContent {
 
 ///
 class HeaderBlockContentItem: EJAbstractBlockContentItem {
+    enum CodingKeys: String, CodingKey { case text, level }
     let text: String
     let level: Int
     

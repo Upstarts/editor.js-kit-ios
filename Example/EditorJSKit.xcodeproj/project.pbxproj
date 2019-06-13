@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0427878F22B149FA00728BFC /* Pods_EditorJSKit_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 152CDB93A32B9E6C103E3AF6 /* Pods_EditorJSKit_Tests.framework */; };
 		046C3C5522B2645800B194D2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
+		048B720C22B2B2E400075ECA /* TitleBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B720B22B2B2E400075ECA /* TitleBlock.swift */; };
 		04AF4AD222B12FB400BBBD3D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04AF4AD122B12FB400BBBD3D /* LaunchScreen.xib */; };
 		04AF4AE822B13B2C00BBBD3D /* EditorJSMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 04AF4AE722B13B2C00BBBD3D /* EditorJSMock.json */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		041AC08822B24B52004E88D8 /* EditorJSKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EditorJSKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		048B720B22B2B2E400075ECA /* TitleBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleBlock.swift; sourceTree = "<group>"; };
 		049EE15E22B25AF5007752CE /* EditorJSKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EditorJSKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		04AF4AD122B12FB400BBBD3D /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		04AF4AE722B13B2C00BBBD3D /* EditorJSMock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = EditorJSMock.json; sourceTree = "<group>"; };
@@ -71,6 +73,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		048B720A22B2B2C700075ECA /* CustomBlocks */ = {
+			isa = PBXGroup;
+			children = (
+				048B720B22B2B2E400075ECA /* TitleBlock.swift */,
+			);
+			name = CustomBlocks;
+			sourceTree = "<group>";
+		};
 		04AF4AD322B132C100BBBD3D /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +100,7 @@
 		04AF4AD522B132E100BBBD3D /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				048B720A22B2B2C700075ECA /* CustomBlocks */,
 				04AF4AD422B132D200BBBD3D /* Controllers */,
 				04AF4AD322B132C100BBBD3D /* AppDelegate */,
 				04AF4AE622B13B0800BBBD3D /* Mocks */,
@@ -381,6 +392,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				048B720C22B2B2E400075ECA /* TitleBlock.swift in Sources */,
 				046C3C5522B2645800B194D2 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
