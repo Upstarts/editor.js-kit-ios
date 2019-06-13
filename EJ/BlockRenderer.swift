@@ -13,5 +13,5 @@ public protocol EJBlockRendererProtocol {
     
     var collectionView: UICollectionView { get }
     var startSectionIndex: Int { get }
-    func render(block: T)
+    func render<T: EJAbstractBlockType>(block: EJAbstractBlock<T>)
 }

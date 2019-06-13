@@ -25,3 +25,4 @@ struct EJCustomBlock {
     var contentClass: EJAbstractBlockContent.Type
     var contentItemClass: EJAbstractBlockContentItem.Type
 }
+
