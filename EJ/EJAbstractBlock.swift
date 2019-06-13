@@ -32,7 +32,7 @@ open class EJAbstractBlock<T: EJAbstractBlockType>: EJAbstractBlockProtocol {
     let content: EJAbstractBlockContent
     let numberOfItems: Int
     
-    enum CodingKeys: String, CodingKey { case type, data }
+    enum CodingKeys: String, CodingKey { case type, content }
     
     required public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -40,7 +40,7 @@ open class EJAbstractBlock<T: EJAbstractBlockType>: EJAbstractBlockProtocol {
         
         switch type.rawValue {
         case :
-            data = try container.decode(HeaderBlockContent.self, forKey: .data)
+            content = try container.decode(HeaderEJBlockContent.self, forKey: .content)
         case .
         default:
             throw DecodingError.typeMismatch(EJAbstractBlockContent.self,
@@ -50,6 +50,8 @@ open class EJAbstractBlock<T: EJAbstractBlockType>: EJAbstractBlockProtocol {
         }
     }
     
-    convenience init(type: EJAbstractBlockType)
+    convenience init(type: EJAbstractBlockType) {
+        
+    }
     
 }

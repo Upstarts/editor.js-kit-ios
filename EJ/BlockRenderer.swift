@@ -10,7 +10,8 @@ import UIKit
 
 ///
 public protocol EJBlockRendererProtocol {
+    
     var collectionView: UICollectionView { get }
     var startSectionIndex: Int { get }
-    func render(block: EJAbstractBlock)
+    func render(block: T)
 }

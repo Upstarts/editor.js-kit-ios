@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		041AC08422B15968004E88D8 /* EJAbstractBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041E9C8922B143500091EAF2 /* EJAbstractBlock.swift */; };
 		041AC08522B1598B004E88D8 /* EditorJSResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041E9C8822B143500091EAF2 /* EditorJSResponse.swift */; };
-		041AC08622B1598B004E88D8 /* HeaderBlockContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041E9C8A22B143500091EAF2 /* HeaderBlockContent.swift */; };
+		041AC08622B1598B004E88D8 /* HeaderEJBlockContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041E9C8A22B143500091EAF2 /* HeaderEJBlockContent.swift */; };
 		041AC08722B1598E004E88D8 /* BlockRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041E9C8522B143500091EAF2 /* BlockRenderer.swift */; };
 		041E9C8D22B144910091EAF2 /* EJKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041E9C8C22B144910091EAF2 /* EJKit.swift */; };
 		041E9C8F22B145D10091EAF2 /* EJStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041E9C8E22B145D10091EAF2 /* EJStyle.swift */; };
-		041E9C9022B146D30091EAF2 /* EJBlockType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041E9C8722B143500091EAF2 /* EJBlockType.swift */; };
+		041E9C9022B146D30091EAF2 /* EJNativeBlockType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041E9C8722B143500091EAF2 /* EJNativeBlockType.swift */; };
 		2F34566EF477E21B974DCD5BDCC9141F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
 		3A9A48AE5B29AC5667D036512003C310 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
 		68BF1CF6658D4C63BABC97DC40B65339 /* EditorJSKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 612802C492DF00CE2A2461A1E154CC94 /* EditorJSKit-dummy.m */; };
@@ -45,10 +45,10 @@
 
 /* Begin PBXFileReference section */
 		041E9C8522B143500091EAF2 /* BlockRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockRenderer.swift; sourceTree = "<group>"; };
-		041E9C8722B143500091EAF2 /* EJBlockType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EJBlockType.swift; sourceTree = "<group>"; };
+		041E9C8722B143500091EAF2 /* EJNativeBlockType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EJNativeBlockType.swift; sourceTree = "<group>"; };
 		041E9C8822B143500091EAF2 /* EditorJSResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorJSResponse.swift; sourceTree = "<group>"; };
 		041E9C8922B143500091EAF2 /* EJAbstractBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EJAbstractBlock.swift; sourceTree = "<group>"; };
-		041E9C8A22B143500091EAF2 /* HeaderBlockContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderBlockContent.swift; sourceTree = "<group>"; };
+		041E9C8A22B143500091EAF2 /* HeaderEJBlockContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderEJBlockContent.swift; sourceTree = "<group>"; };
 		041E9C8C22B144910091EAF2 /* EJKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EJKit.swift; sourceTree = "<group>"; };
 		041E9C8E22B145D10091EAF2 /* EJStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EJStyle.swift; sourceTree = "<group>"; };
 		09634CC325A4BD66B83370934E17ED0E /* Pods-EditorJSKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-EditorJSKit_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -144,11 +144,11 @@
 			children = (
 				041E9C8C22B144910091EAF2 /* EJKit.swift */,
 				041E9C8E22B145D10091EAF2 /* EJStyle.swift */,
-				041E9C8722B143500091EAF2 /* EJBlockType.swift */,
+				041E9C8722B143500091EAF2 /* EJNativeBlockType.swift */,
 				041E9C8922B143500091EAF2 /* EJAbstractBlock.swift */,
 				041E9C8522B143500091EAF2 /* BlockRenderer.swift */,
 				041E9C8822B143500091EAF2 /* EditorJSResponse.swift */,
-				041E9C8A22B143500091EAF2 /* HeaderBlockContent.swift */,
+				041E9C8A22B143500091EAF2 /* HeaderEJBlockContent.swift */,
 			);
 			path = EJ;
 			sourceTree = "<group>";
@@ -428,9 +428,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				041E9C9022B146D30091EAF2 /* EJBlockType.swift in Sources */,
+				041E9C9022B146D30091EAF2 /* EJNativeBlockType.swift in Sources */,
 				041E9C8F22B145D10091EAF2 /* EJStyle.swift in Sources */,
-				041AC08622B1598B004E88D8 /* HeaderBlockContent.swift in Sources */,
+				041AC08622B1598B004E88D8 /* HeaderEJBlockContent.swift in Sources */,
 				041AC08522B1598B004E88D8 /* EditorJSResponse.swift in Sources */,
 				041AC08722B1598E004E88D8 /* BlockRenderer.swift in Sources */,
 				68BF1CF6658D4C63BABC97DC40B65339 /* EditorJSKit-dummy.m in Sources */,

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		041AC08922B24B52004E88D8 /* EditorJSKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 041AC08822B24B52004E88D8 /* EditorJSKit.framework */; };
 		0427878F22B149FA00728BFC /* Pods_EditorJSKit_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 152CDB93A32B9E6C103E3AF6 /* Pods_EditorJSKit_Tests.framework */; };
 		04AF4AD222B12FB400BBBD3D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04AF4AD122B12FB400BBBD3D /* LaunchScreen.xib */; };
 		04AF4AE822B13B2C00BBBD3D /* EditorJSMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 04AF4AE722B13B2C00BBBD3D /* EditorJSMock.json */; };
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		041AC08822B24B52004E88D8 /* EditorJSKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EditorJSKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		04AF4AD122B12FB400BBBD3D /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		04AF4AE722B13B2C00BBBD3D /* EditorJSMock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = EditorJSMock.json; sourceTree = "<group>"; };
 		152CDB93A32B9E6C103E3AF6 /* Pods_EditorJSKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EditorJSKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				041AC08922B24B52004E88D8 /* EditorJSKit.framework in Frameworks */,
 				0427878F22B149FA00728BFC /* Pods_EditorJSKit_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -127,6 +130,7 @@
 		532BBA479F493727F88D4225 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				041AC08822B24B52004E88D8 /* EditorJSKit.framework */,
 				C3CE106F12E810F78098A50E /* Pods_EditorJSKit_Example.framework */,
 				152CDB93A32B9E6C103E3AF6 /* Pods_EditorJSKit_Tests.framework */,
 			);

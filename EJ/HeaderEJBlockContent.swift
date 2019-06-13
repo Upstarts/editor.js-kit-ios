@@ -9,7 +9,7 @@
 import Foundation
 
 ///
-struct HeaderBlockContent: EJAbstractBlockContent {
+struct HeaderEJBlockContent: EJAbstractBlockContent {
     func getItem(atIndex index: Int) -> EJAbstractBlockContentItem? {
         return nil
     }

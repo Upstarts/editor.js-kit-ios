@@ -1,5 +1,5 @@
 //
-//  EJBlockType.swift
+//  EJNativeBlockType.swift
 //  EditorJSKit_Example
 //
 //  Created by Ivan Glushko on 12/06/2019.
@@ -9,13 +9,13 @@
 import Foundation
 
 ///
-public protocol EJAbstractBlockType {
+public protocol EJAbstractBlockType: Decodable {
     var rawValue: String { get }
     init?(rawValue: String)
 }
 
 ///
-public enum EJNativeBlockType: String , Decodable, EJAbstractBlockType {
+public enum EJNativeBlockType: String, EJAbstractBlockType {
     case paragraph
     case header
 }

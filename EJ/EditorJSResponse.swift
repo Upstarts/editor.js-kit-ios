@@ -12,6 +12,6 @@ import EditorJSKit
 ///
 struct EditorJSResponse: Decodable {
     let time: Int
-    let blocks: [EJAbstractBlock]
+    let blocks: [EJAbstractBlock<EJNativeBlockType>]
     let version: String
 }
