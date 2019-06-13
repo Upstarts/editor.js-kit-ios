@@ -13,7 +13,7 @@ public protocol EJAbstractBlockRenderer {
     associatedtype View: EJBlockStyleApplicable
     var collectionView: UICollectionView { get }
     var startSectionIndex: Int { get }
-    func render<T: EJAbstractBlockType>(block: EJAbstractBlock<T>, itemIndex: Int, style: EJBlockStyle?) throws -> View
+    func render(block: EJAbstractBlock, itemIndex: Int, style: EJBlockStyle?) throws -> View
     func size(forBlock: EJAbstractBlockContent, itemIndex: Int, style: EJBlockStyle?, superviewSize: CGSize) throws -> CGSize
 }
 

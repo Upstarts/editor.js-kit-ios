@@ -11,6 +11,6 @@ import Foundation
 ///
 public struct EJServerResponse: Decodable {
     let time: Int
-    let blocks: [EJAbstractBlock<EJNativeBlockType>]
+    let blocks: [EJAbstractBlock]
     let version: String
 }

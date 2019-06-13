@@ -12,7 +12,7 @@ open class EJKit {
     static let shared = EJKit()
     var style: EJStyle?
     
-    private var registeredCustomBlocks: [EJCustomBlock] = []
+    var registeredCustomBlocks: [EJCustomBlock] = []
     
     func register(customBlock: EJCustomBlock) {
         registeredCustomBlocks.append(customBlock)
@@ -23,6 +23,7 @@ open class EJKit {
 struct EJCustomBlock {
     var type: EJAbstractBlockType
     var contentClass: EJAbstractBlockContent.Type
-    var contentItemClass: EJAbstractBlockContentItem.Type
 }
+
+
 
