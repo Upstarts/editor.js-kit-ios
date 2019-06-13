@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		041AC08422B15968004E88D8 /* EJAbstractBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041E9C8922B143500091EAF2 /* EJAbstractBlock.swift */; };
-		041AC08522B1598B004E88D8 /* EditorJSResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041E9C8822B143500091EAF2 /* EditorJSResponse.swift */; };
-		041AC08622B1598B004E88D8 /* HeaderEJBlockContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041E9C8A22B143500091EAF2 /* HeaderEJBlockContent.swift */; };
-		041AC08722B1598E004E88D8 /* BlockRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041E9C8522B143500091EAF2 /* BlockRenderer.swift */; };
+		041AC08522B1598B004E88D8 /* EJServerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041E9C8822B143500091EAF2 /* EJServerResponse.swift */; };
+		041AC08722B1598E004E88D8 /* EJAbstractBlockRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041E9C8522B143500091EAF2 /* EJAbstractBlockRenderer.swift */; };
 		041E9C8D22B144910091EAF2 /* EJKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041E9C8C22B144910091EAF2 /* EJKit.swift */; };
 		041E9C8F22B145D10091EAF2 /* EJStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041E9C8E22B145D10091EAF2 /* EJStyle.swift */; };
 		041E9C9022B146D30091EAF2 /* EJNativeBlockType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041E9C8722B143500091EAF2 /* EJNativeBlockType.swift */; };
+		046C3C5422B2622500B194D2 /* EJHeaderBlockContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041E9C8A22B143500091EAF2 /* EJHeaderBlockContent.swift */; };
+		046C3C5722B2663300B194D2 /* EJHeaderBlockStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C3C5622B2663300B194D2 /* EJHeaderBlockStyle.swift */; };
 		2F34566EF477E21B974DCD5BDCC9141F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
 		3A9A48AE5B29AC5667D036512003C310 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
 		68BF1CF6658D4C63BABC97DC40B65339 /* EditorJSKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 612802C492DF00CE2A2461A1E154CC94 /* EditorJSKit-dummy.m */; };
@@ -44,13 +45,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		041E9C8522B143500091EAF2 /* BlockRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockRenderer.swift; sourceTree = "<group>"; };
+		041E9C8522B143500091EAF2 /* EJAbstractBlockRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EJAbstractBlockRenderer.swift; sourceTree = "<group>"; };
 		041E9C8722B143500091EAF2 /* EJNativeBlockType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EJNativeBlockType.swift; sourceTree = "<group>"; };
-		041E9C8822B143500091EAF2 /* EditorJSResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorJSResponse.swift; sourceTree = "<group>"; };
+		041E9C8822B143500091EAF2 /* EJServerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EJServerResponse.swift; sourceTree = "<group>"; };
 		041E9C8922B143500091EAF2 /* EJAbstractBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EJAbstractBlock.swift; sourceTree = "<group>"; };
-		041E9C8A22B143500091EAF2 /* HeaderEJBlockContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderEJBlockContent.swift; sourceTree = "<group>"; };
+		041E9C8A22B143500091EAF2 /* EJHeaderBlockContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EJHeaderBlockContent.swift; sourceTree = "<group>"; };
 		041E9C8C22B144910091EAF2 /* EJKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EJKit.swift; sourceTree = "<group>"; };
 		041E9C8E22B145D10091EAF2 /* EJStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EJStyle.swift; sourceTree = "<group>"; };
+		046C3C5622B2663300B194D2 /* EJHeaderBlockStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EJHeaderBlockStyle.swift; sourceTree = "<group>"; };
 		09634CC325A4BD66B83370934E17ED0E /* Pods-EditorJSKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-EditorJSKit_Example.release.xcconfig"; sourceTree = "<group>"; };
 		1E7A29264B0AC12FA2FAC25CB6AA52F6 /* EditorJSKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = EditorJSKit.xcconfig; sourceTree = "<group>"; };
 		1FF6C29A7AB5DB79C0564124CF0C3FE0 /* Pods-EditorJSKit_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-EditorJSKit_Example-frameworks.sh"; sourceTree = "<group>"; };
@@ -123,22 +125,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		041E9C8622B143500091EAF2 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Services;
-			path = Example/EditorJSKit;
-			sourceTree = "<group>";
-		};
-		041E9C8B22B143500091EAF2 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Models;
-			path = Example/EditorJSKit;
-			sourceTree = "<group>";
-		};
 		04DA7E3A22B14B1300054EF6 /* EJ */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,9 +132,10 @@
 				041E9C8E22B145D10091EAF2 /* EJStyle.swift */,
 				041E9C8722B143500091EAF2 /* EJNativeBlockType.swift */,
 				041E9C8922B143500091EAF2 /* EJAbstractBlock.swift */,
-				041E9C8522B143500091EAF2 /* BlockRenderer.swift */,
-				041E9C8822B143500091EAF2 /* EditorJSResponse.swift */,
-				041E9C8A22B143500091EAF2 /* HeaderEJBlockContent.swift */,
+				041E9C8522B143500091EAF2 /* EJAbstractBlockRenderer.swift */,
+				041E9C8822B143500091EAF2 /* EJServerResponse.swift */,
+				041E9C8A22B143500091EAF2 /* EJHeaderBlockContent.swift */,
+				046C3C5622B2663300B194D2 /* EJHeaderBlockStyle.swift */,
 			);
 			path = EJ;
 			sourceTree = "<group>";
@@ -258,8 +245,6 @@
 			isa = PBXGroup;
 			children = (
 				04DA7E3A22B14B1300054EF6 /* EJ */,
-				041E9C8622B143500091EAF2 /* Services */,
-				041E9C8B22B143500091EAF2 /* Models */,
 				929ECE80C96DECE433AE7EA510D208F9 /* ReplaceMe.swift */,
 				1F9F58752CDE2CE8E24372FC14FEF164 /* Pod */,
 				7FB8CCDF879673C3B7A04F146358E7E4 /* Support Files */,
@@ -430,13 +415,14 @@
 			files = (
 				041E9C9022B146D30091EAF2 /* EJNativeBlockType.swift in Sources */,
 				041E9C8F22B145D10091EAF2 /* EJStyle.swift in Sources */,
-				041AC08622B1598B004E88D8 /* HeaderEJBlockContent.swift in Sources */,
-				041AC08522B1598B004E88D8 /* EditorJSResponse.swift in Sources */,
-				041AC08722B1598E004E88D8 /* BlockRenderer.swift in Sources */,
+				041AC08522B1598B004E88D8 /* EJServerResponse.swift in Sources */,
+				041AC08722B1598E004E88D8 /* EJAbstractBlockRenderer.swift in Sources */,
 				68BF1CF6658D4C63BABC97DC40B65339 /* EditorJSKit-dummy.m in Sources */,
 				041E9C8D22B144910091EAF2 /* EJKit.swift in Sources */,
 				041AC08422B15968004E88D8 /* EJAbstractBlock.swift in Sources */,
+				046C3C5422B2622500B194D2 /* EJHeaderBlockContent.swift in Sources */,
 				BFD9B415269BADB3E988556AB992D909 /* ReplaceMe.swift in Sources */,
+				046C3C5722B2663300B194D2 /* EJHeaderBlockStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

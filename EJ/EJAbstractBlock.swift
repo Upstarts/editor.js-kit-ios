@@ -9,49 +9,42 @@
 import Foundation
 
 ///
-protocol EJAbstractBlockContentItem {}
+public protocol EJAbstractBlockContentItem {}
 
 ///
-protocol EJAbstractBlockContent: Decodable {
+public protocol EJAbstractBlockContent: Decodable {
+    var numberOfItems: Int { get }
     func getItem(atIndex index: Int) -> EJAbstractBlockContentItem?
 }
 
 ///
-protocol EJAbstractBlockProtocol: Decodable {
+public protocol EJAbstractBlockProtocol: Decodable {
     associatedtype D where D: EJAbstractBlockType
     
     var type: D { get }
-    var content: EJAbstractBlockContent { get }
-    var numberOfItems: Int { get }
+    var content: EJAbstractBlockContent? { get }
 }
 
 ///
 open class EJAbstractBlock<T: EJAbstractBlockType>: EJAbstractBlockProtocol {
-    typealias D = T
-    let type: T
-    let content: EJAbstractBlockContent
-    let numberOfItems: Int
+    public typealias D = T
+    public let type: T
+    public let content: EJAbstractBlockContent?
     
-    enum CodingKeys: String, CodingKey { case type, content }
+    enum CodingKeys: String, CodingKey { case type, content, numberOfItems }
     
     required public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         type = try container.decode(T.self, forKey: .type)
+        content = nil
         
-        switch type.rawValue {
-        case :
-            content = try container.decode(HeaderEJBlockContent.self, forKey: .content)
-        case .
-        default:
-            throw DecodingError.typeMismatch(EJAbstractBlockContent.self,
-                                             DecodingError.Context(
-                                                codingPath: [CodingKeys.type],
-                                                debugDescription: "Didn't match any of type \(String(describing: EJNativeBlockType.self))"))
-        }
-    }
-    
-    convenience init(type: EJAbstractBlockType) {
-        
+//        switch type.rawValue {
+//        default:
+//            throw DecodingError.typeMismatch(EJAbstractBlockContent.self,
+//                                             DecodingError.Context(
+//                                                codingPath: [CodingKeys.type],
+//                                                debugDescription: "Didn't match any of type \(String(describing: EJNativeBlockType.self))"))
+//        }
     }
     
 }

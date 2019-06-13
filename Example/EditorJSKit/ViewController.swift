@@ -39,7 +39,7 @@ class ViewController: UIViewController {
         guard let dataD = try? Data(contentsOf: url) else { return }
         let object = try! JSONSerialization.jsonObject(with: dataD, options: [])
         let data = try! JSONSerialization.data(withJSONObject: object, options: [])
-        let editorJSResponse = try! JSONDecoder().decode(EditorJSResponse.self, from: data)
+        let editorJSResponse = try! JSONDecoder().decode(EJServerResponse.self, from: data)
         print("success")
     }
 

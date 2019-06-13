@@ -14,18 +14,22 @@ public typealias BlockStyle = (EJAbstractBlockType,EJBlockStyle)
 public protocol EJBlockStyle {}
 
 ///
-public protocol EJStyleProtocol {
+protocol EJStyleProtocol {
     var blockStyles: [BlockStyle] { get }
     func setStyle(style: EJBlockStyle, for blockType: EJNativeBlockType)
+    func style(forBlockType: EJAbstractBlockType) -> EJBlockStyle
 }
 
 ///
-class EJStyle: EJStyleProtocol {
-    var blockStyles: [BlockStyle] = []
+open class EJStyle: EJStyleProtocol {
+    public var blockStyles: [BlockStyle] = []
     
-    func setStyle(style: EJBlockStyle, for blockType: EJNativeBlockType) {
-        print("some")
+    public func setStyle(style: EJBlockStyle, for blockType: EJNativeBlockType) {}
+    
+    public func style(forBlockType: EJAbstractBlockType) -> EJBlockStyle {
+        return "3232"
     }
     
-    
 }
+
+extension String: EJBlockStyle {}
