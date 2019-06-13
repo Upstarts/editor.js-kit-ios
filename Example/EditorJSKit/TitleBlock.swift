@@ -21,34 +21,16 @@ enum BlockType: String, Decodable, EJAbstractBlockType {
 ///
 class TitleBlockContent: EJAbstractBlockContent {
     private var items: [TitleContentItem] = []
-    var numberOfItems: Int
+    var numberOfItems: Int { return items.count }
     
-    public static func decode(container: KeyedDecodingContainer<EJAbstractBlock.CodingKeys>) throws -> EJAbstractBlockContent {
-        let item = try container.decode(TitleContentItem.self, forKey: .data)
-        return TitleBlockContent(items: [item])
-    }
-    
-    convenience required public init(from decoder: Decoder) throws {
-        print("Hello")
-        if let container = try? decoder.container(keyedBy: EJAbstractBlock.CodingKeys.self) {
-            let item = try container.decode(TitleContentItem.self, forKey: .data)
-            self.init(items: [item])
-        }
-        else {
-            let item =  try TitleContentItem(from: decoder)
-            self.init(items: [item])
-        }
-    }
-    
-    init(items: [TitleContentItem]) {
-        self.items = items
-        self.numberOfItems = items.count
+    required public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: EJAbstractBlock.CodingKeys.self)
+        items = [ try container.decode(TitleContentItem.self, forKey: .data) ]
     }
     
     func getItem(atIndex index: Int) -> EJAbstractBlockContentItem? {
         return nil
     }
-    
 }
 
 ///

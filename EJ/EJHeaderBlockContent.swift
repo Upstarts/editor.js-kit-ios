@@ -11,31 +11,15 @@ import Foundation
 ///
 class HeaderBlockContent: EJAbstractBlockContent {
     private var items: [HeaderBlockContentItem] = []
-    var numberOfItems: Int
+    var numberOfItems: Int { return items.count }
     
-    public static func decode(container: KeyedDecodingContainer<EJAbstractBlock.CodingKeys>) throws -> EJAbstractBlockContent {
-        let item = try container.decode(HeaderBlockContentItem.self, forKey: .data)
-        return HeaderBlockContent(items: [item])
-    }
-    
-    convenience required public init(from decoder: Decoder) throws {
-        if let container = try? decoder.container(keyedBy: EJAbstractBlock.CodingKeys.self) {
-            let item = try container.decode(HeaderBlockContentItem.self, forKey: .data)
-            self.init(items: [item])
-        }
-        else {
-            let item =  try HeaderBlockContentItem(from: decoder)
-            self.init(items: [item])
-        }
-    }
-    
-    init(items: [HeaderBlockContentItem]) {
-        self.items = items
-        self.numberOfItems = items.count
+    required public init(from decoder: Decoder) throws {
+        items = [ try HeaderBlockContentItem(from: decoder) ]
     }
     
     func getItem(atIndex index: Int) -> EJAbstractBlockContentItem? {
-        return nil
+        guard index == 0 else { return nil }
+        return items.first
     }
 }
 

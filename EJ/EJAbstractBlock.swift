@@ -15,7 +15,6 @@ public protocol EJAbstractBlockContentItem: Decodable {}
 public protocol EJAbstractBlockContent: Decodable {
     var numberOfItems: Int { get }
     func getItem(atIndex index: Int) -> EJAbstractBlockContentItem?
-    static func decode(container: KeyedDecodingContainer<EJAbstractBlock.CodingKeys>) throws -> EJAbstractBlockContent
 }
 
 ///
@@ -53,7 +52,6 @@ open class EJAbstractBlock: EJAbstractBlockProtocol {
         for customBlock in EJKit.shared.registeredCustomBlocks {
             guard let type = try? customBlock.type.decode(container: container) else { continue }
             guard let data = try? customBlock.contentClass.init(from: decoder) else {
-//            guard let data = try? customBlock.contentClass.decode(container: container) else {
                 throw DecodingError.typeMismatch(
                     EJAbstractBlockContent.self,
                     DecodingError.Context(
@@ -62,11 +60,7 @@ open class EJAbstractBlock: EJAbstractBlockProtocol {
             }
             self.type = type
             self.data = data
-            
-            print(data.numberOfItems)
-            print(self.type.rawValue)
-            
-            break
+            return
         }
         
         throw DecodingError.dataCorrupted(
