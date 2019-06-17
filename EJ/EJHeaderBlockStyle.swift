@@ -14,6 +14,9 @@ public protocol EJHeaderBlockStyle: EJBlockStyle {
 
 ///
 public class HeaderBlockNativeStyle: EJHeaderBlockStyle {
+    
+    public init() {}
+    
     public func font(forHeaderLevel level: Int) -> UIFont {
         switch level {
         case 1: return UIFont.systemFont(ofSize: 22)

@@ -13,6 +13,10 @@ class ViewController: UIViewController {
     
     // MARK: - UI Properties
     private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    private lazy var renderer = EJCollectionRenderer(collectionView: collectionView)
+    
+    //
+    private var blockList: EJBlocksList!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +28,9 @@ class ViewController: UIViewController {
     
     
     private func setupViews() {
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        
         collectionView.backgroundColor = .white
         view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -38,9 +45,9 @@ class ViewController: UIViewController {
     private func performNetworkTask() {
         guard let path = Bundle.main.path(forResource: "EditorJSMock", ofType: "json") else { return }
         guard let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe) else { return }
-        let new = try! JSONDecoder().decode(EJBlocksList.self, from: data)
-        
-        print("success")
+        blockList = try! JSONDecoder().decode(EJBlocksList.self, from: data)
+
+        collectionView.reloadData()
     }
     
     func createCustomBlock() {
@@ -52,3 +59,31 @@ class ViewController: UIViewController {
 
 }
 
+///
+extension ViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return blockList.blocks.count
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        do {
+            return try renderer.render(block: blockList.blocks.first!, itemIndexPath: indexPath)
+        }
+        catch {
+            return UICollectionViewCell()
+        }
+    }
+}
+
+///
+extension ViewController: UICollectionViewDelegate {
+    
+}
+
+///
+extension ViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 200, height: 100)
+    }
+}

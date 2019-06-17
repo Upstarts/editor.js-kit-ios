@@ -10,9 +10,9 @@ import Foundation
 
 ///
 public struct EJBlocksList: Decodable {
-    let time: Int
-    let blocks: [EJAbstractBlock]
-    let version: String
+    public let time: Int
+    public let blocks: [EJAbstractBlock]
+    public let version: String
     
     enum CodingKeys: String, CodingKey {
         case time, blocks, version

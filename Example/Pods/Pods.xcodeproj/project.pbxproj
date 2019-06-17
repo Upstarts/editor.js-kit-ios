@@ -13,8 +13,10 @@
 		041E9C8D22B144910091EAF2 /* EJKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041E9C8C22B144910091EAF2 /* EJKit.swift */; };
 		041E9C8F22B145D10091EAF2 /* EJStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041E9C8E22B145D10091EAF2 /* EJStyle.swift */; };
 		041E9C9022B146D30091EAF2 /* EJNativeBlockType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041E9C8722B143500091EAF2 /* EJNativeBlockType.swift */; };
-		046C3C5422B2622500B194D2 /* EJHeaderBlockContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041E9C8A22B143500091EAF2 /* EJHeaderBlockContent.swift */; };
 		046C3C5722B2663300B194D2 /* EJHeaderBlockStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C3C5622B2663300B194D2 /* EJHeaderBlockStyle.swift */; };
+		04EA855222B79D8C006315D8 /* HeaderBlockContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA855122B79D8B006315D8 /* HeaderBlockContent.swift */; };
+		04EA855422B79E6F006315D8 /* ParagraphBlockContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA855322B79E6F006315D8 /* ParagraphBlockContent.swift */; };
+		04EA855622B7A9E4006315D8 /* HeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA855522B7A9E4006315D8 /* HeaderCollectionViewCell.swift */; };
 		2F34566EF477E21B974DCD5BDCC9141F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
 		3A9A48AE5B29AC5667D036512003C310 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
 		68BF1CF6658D4C63BABC97DC40B65339 /* EditorJSKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 612802C492DF00CE2A2461A1E154CC94 /* EditorJSKit-dummy.m */; };
@@ -49,10 +51,12 @@
 		041E9C8722B143500091EAF2 /* EJNativeBlockType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EJNativeBlockType.swift; sourceTree = "<group>"; };
 		041E9C8822B143500091EAF2 /* EJBlocksList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EJBlocksList.swift; sourceTree = "<group>"; };
 		041E9C8922B143500091EAF2 /* EJAbstractBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EJAbstractBlock.swift; sourceTree = "<group>"; };
-		041E9C8A22B143500091EAF2 /* EJHeaderBlockContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EJHeaderBlockContent.swift; sourceTree = "<group>"; };
 		041E9C8C22B144910091EAF2 /* EJKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EJKit.swift; sourceTree = "<group>"; };
 		041E9C8E22B145D10091EAF2 /* EJStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EJStyle.swift; sourceTree = "<group>"; };
 		046C3C5622B2663300B194D2 /* EJHeaderBlockStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EJHeaderBlockStyle.swift; sourceTree = "<group>"; };
+		04EA855122B79D8B006315D8 /* HeaderBlockContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeaderBlockContent.swift; path = ../../FRAMEWORK/EditorJSKit/EditorJSKit/EJ/HeaderBlockContent.swift; sourceTree = "<group>"; };
+		04EA855322B79E6F006315D8 /* ParagraphBlockContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParagraphBlockContent.swift; path = ../../FRAMEWORK/EditorJSKit/EditorJSKit/EJ/ParagraphBlockContent.swift; sourceTree = "<group>"; };
+		04EA855522B7A9E4006315D8 /* HeaderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionViewCell.swift; sourceTree = "<group>"; };
 		09634CC325A4BD66B83370934E17ED0E /* Pods-EditorJSKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-EditorJSKit_Example.release.xcconfig"; sourceTree = "<group>"; };
 		1E7A29264B0AC12FA2FAC25CB6AA52F6 /* EditorJSKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = EditorJSKit.xcconfig; sourceTree = "<group>"; };
 		1FF6C29A7AB5DB79C0564124CF0C3FE0 /* Pods-EditorJSKit_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-EditorJSKit_Example-frameworks.sh"; sourceTree = "<group>"; };
@@ -133,8 +137,10 @@
 				041E9C8722B143500091EAF2 /* EJNativeBlockType.swift */,
 				041E9C8922B143500091EAF2 /* EJAbstractBlock.swift */,
 				041E9C8522B143500091EAF2 /* EJAbstractBlockRenderer.swift */,
+				04EA855522B7A9E4006315D8 /* HeaderCollectionViewCell.swift */,
 				041E9C8822B143500091EAF2 /* EJBlocksList.swift */,
-				041E9C8A22B143500091EAF2 /* EJHeaderBlockContent.swift */,
+				04EA855122B79D8B006315D8 /* HeaderBlockContent.swift */,
+				04EA855322B79E6F006315D8 /* ParagraphBlockContent.swift */,
 				046C3C5622B2663300B194D2 /* EJHeaderBlockStyle.swift */,
 			);
 			path = EJ;
@@ -413,6 +419,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04EA855422B79E6F006315D8 /* ParagraphBlockContent.swift in Sources */,
+				04EA855222B79D8C006315D8 /* HeaderBlockContent.swift in Sources */,
 				041E9C9022B146D30091EAF2 /* EJNativeBlockType.swift in Sources */,
 				041E9C8F22B145D10091EAF2 /* EJStyle.swift in Sources */,
 				041AC08522B1598B004E88D8 /* EJBlocksList.swift in Sources */,
@@ -420,7 +428,7 @@
 				68BF1CF6658D4C63BABC97DC40B65339 /* EditorJSKit-dummy.m in Sources */,
 				041E9C8D22B144910091EAF2 /* EJKit.swift in Sources */,
 				041AC08422B15968004E88D8 /* EJAbstractBlock.swift in Sources */,
-				046C3C5422B2622500B194D2 /* EJHeaderBlockContent.swift in Sources */,
+				04EA855622B7A9E4006315D8 /* HeaderCollectionViewCell.swift in Sources */,
 				BFD9B415269BADB3E988556AB992D909 /* ReplaceMe.swift in Sources */,
 				046C3C5722B2663300B194D2 /* EJHeaderBlockStyle.swift in Sources */,
 			);
@@ -527,7 +535,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/EditorJSKit/EditorJSKit-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/EditorJSKit/EditorJSKit-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/EditorJSKit/EditorJSKit.modulemap";
 				PRODUCT_MODULE_NAME = EditorJSKit;
@@ -559,7 +567,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/EditorJSKit/EditorJSKit-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/EditorJSKit/EditorJSKit-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/EditorJSKit/EditorJSKit.modulemap";
 				PRODUCT_MODULE_NAME = EditorJSKit;
