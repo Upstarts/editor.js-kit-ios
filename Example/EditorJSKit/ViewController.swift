@@ -36,11 +36,11 @@ class ViewController: UIViewController {
     }
     
     private func performNetworkTask() {
-        guard let url = Bundle.main.url(forResource: "EditorJSMock", withExtension: "json") else { return }
-        guard let dataD = try? Data(contentsOf: url) else { return }
-        let object = try! JSONSerialization.jsonObject(with: dataD, options: [])
-        let data = try! JSONSerialization.data(withJSONObject: object, options: [])
-        let editorJSResponse = try! JSONDecoder().decode(EJBlocksList.self, from: data)
+        guard let path = Bundle.main.path(forResource: "EditorJSMock", ofType: "json") else { return }
+        guard let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe) else { return }
+        let new = try! JSONDecoder().decode(EJBlocksList.self, from: data)
+        
+        print("success")
     }
     
     func createCustomBlock() {

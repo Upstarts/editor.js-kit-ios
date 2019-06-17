@@ -36,14 +36,16 @@ open class EJAbstractBlock: EJAbstractBlockProtocol {
         if let type = try? container.decode(EJNativeBlockType.self, forKey: .type) {
             self.type = type
             switch type {
-            case .header:
-                self.data = try container.decode(HeaderBlockContent.self, forKey: .data)
-            case .paragraph:
+            case .delimeter:
                 throw DecodingError.typeMismatch(
                     EJAbstractBlockContent.self,
                     DecodingError.Context(
                         codingPath: [CodingKeys.data],
                         debugDescription: "Content parsing of native block type \"\(type.rawValue)\" is not implemented"))
+            case .header:
+                self.data = try container.decode(HeaderBlockContent.self, forKey: .data)
+            case .paragraph:
+                self.data = try container.decode(ParagraphBlockContent.self, forKey: .data)
             }
             return
         }
