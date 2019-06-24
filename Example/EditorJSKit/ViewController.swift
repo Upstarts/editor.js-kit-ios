@@ -65,7 +65,7 @@ extension ViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         do {
-            return try renderer.render(block: blockList.blocks[indexPath.section], itemIndexPath: indexPath)
+            return try renderer.render(block: blockList.blocks[indexPath.section], indexPath: indexPath)
         }
         catch {
             return UICollectionViewCell()
