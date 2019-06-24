@@ -57,7 +57,8 @@ class ListItemNativeView: UIView, EJBlockStyleApplicable {
     static func estimatedSize(for item: ListBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
         guard let castedStyle = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.list) as? ListBlockNativeStyle else { return .zero }
         let font = castedStyle.font
-        let textBoundingWidth = boundingWidth - ( castedStyle.leftInset + (-castedStyle.rightInset) )
+        var textBoundingWidth = boundingWidth - (castedStyle.insets.left + castedStyle.insets.right)
+        textBoundingWidth -= (castedStyle.leftInset + castedStyle.rightInset)
         let height = item.text.size(using: font, boundingWidth: textBoundingWidth).height
         return CGSize(width: boundingWidth, height: height)
     }

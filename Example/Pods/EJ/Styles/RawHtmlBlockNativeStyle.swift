@@ -15,6 +15,5 @@ protocol RawHtmlNativeStyle: EJBlockStyle {
 
 ///
 class RawHtmlBlockNativeStyle: RawHtmlNativeStyle {
-    var font: UIFont = .systemFont(ofSize: 14, weight: .thin)
-    var textColor: UIColor = .blue
+    var font: UIFont = .systemFont(ofSize: 14)
 }
