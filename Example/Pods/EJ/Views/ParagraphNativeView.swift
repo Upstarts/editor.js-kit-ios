@@ -56,7 +56,7 @@ class ParagraphNativeView: UIView, EJBlockStyleApplicable, EJConfigurableView  {
     static func estimatedSize(for item: ParagraphBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
         guard let attributed = item.attributedString, let style = style ?? EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.paragraph) else { return .zero }
         let newBoundingWidth = boundingWidth - (style.insets.left + style.insets.right)
-        let height = attributed.height(withConstrainedWidth: newBoundingWidth )
+        let height = attributed.textViewHeight(boundingWidth: newBoundingWidth)
         return CGSize(width: boundingWidth, height: height)
     }
 }
