@@ -1,0 +1,78 @@
+{
+    "time": 1560338876987,
+    "blocks": [
+        {
+            "type": "header",
+            "data": {
+                "text": "Editor.js",
+                "level": 1
+            }
+        },
+        {
+            "type": "image",
+            "data": {
+                "file": {
+                    "url": "https://codex.so/upload/redactor_images/o_e48549d1855c7fc1807308dd14990126.jpg"
+                },
+                "caption": "This is a caption.",
+                "withBorder": true,
+                "stretched": false,
+                "withBackground": true
+            }
+        },
+        {
+            "type" : "list",
+            "data" : {
+                "style" : "unordered",
+                "items" : [
+                    "It is a block-styled editor",
+                    "It returns clean data output in JSON",
+                    "Designed to be extendable and pluggable with a simple API"
+                ]
+            }
+        },
+        {
+            "type" : "linkTool",
+            "data" : {
+                "link" : "https://codex.so",
+                "meta" : {
+                    "title" : "CodeX Team",
+                    "site_name" : "CodeX",
+                    "description" : "Club of web-development, design and marketing. We build team learning how to build full-valued projects on the world market.",
+                    "image" : {
+                        "url" : "https://codex.so/public/app/img/meta_img.png"
+                    }
+                }
+            }
+        },
+        {
+            "type": "delimiter",
+            "data" : {}
+        },
+        {
+            "type" : "paragraph",
+            "data" : {
+                "text" : "Workspace in classic editors is made of a single contenteditable element, used to create different HTML markups. Editor.js <mark class=\"cdx-marker\">workspace consists of separate Blocks: paragraphs, headings, images, lists, quotes, etc</mark>. Each of them is an independent contenteditable element (or more complex structure) provided by Plugin and united by Editor's Core."
+            }
+        },
+        {
+            "type" : "paragraph",
+            "data" : {
+                "text" : "There <b>are</b> dozens of <a href=\"https://github.com/editor-js\">ready-to-use Blocks</a> and the <a href=\"https://editorjs.io/creating-a-block-tool\">simple API</a> for creation any Block you need. For example, you can implement Blocks for Tweets, Instagram posts, surveys and polls, CTA-buttons and even games."
+            }
+        },
+        {
+            "type" : "paragraph",
+            "data" : {
+                "text" : "Given data can be used as you want: render with HTML for <code class=\"inline-code\">Web clients</code>, render natively for <code class=\"inline-code\">mobile apps</code>, create markup for <code class=\"inline-code\">Facebook Instant Articles</code> or <code class=\"inline-code\">Google AMP</code>, generate an <code class=\"inline-code\">audio version</code> and so on."
+            }
+        },
+        {
+            "type" : "raw",
+            "data" : {
+                "html": "<div style=\"background: #000; color: #fff; font-size: 30px; padding: 50px;\">Any HTML code</div>",
+            }
+        }
+    ],
+    "version" : "2.13.2"
+}

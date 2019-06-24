@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0900"
+   LastUpgradeVersion = "1020"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,24 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-               BuildableName = "EditorJSKit_Example.app"
-               BlueprintName = "EditorJSKit_Example"
-               ReferencedContainer = "container:EditorJSKit.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "NO"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "607FACE41AFB9204008FA782"
-               BuildableName = "EditorJSKit_Tests.xctest"
-               BlueprintName = "EditorJSKit_Tests"
-               ReferencedContainer = "container:EditorJSKit.xcodeproj">
+               BlueprintIdentifier = "04CC411C2BE1397344EE58C46DED4CCA"
+               BuildableName = "EditorJSKit.framework"
+               BlueprintName = "EditorJSKit"
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -43,15 +29,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "EditorJSKit_Example.app"
-            BlueprintName = "EditorJSKit_Example"
-            ReferencedContainer = "container:EditorJSKit.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -65,16 +42,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "EditorJSKit_Example.app"
-            BlueprintName = "EditorJSKit_Example"
-            ReferencedContainer = "container:EditorJSKit.xcodeproj">
+            BlueprintIdentifier = "04CC411C2BE1397344EE58C46DED4CCA"
+            BuildableName = "EditorJSKit.framework"
+            BlueprintName = "EditorJSKit"
+            ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -84,16 +60,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "EditorJSKit_Example.app"
-            BlueprintName = "EditorJSKit_Example"
-            ReferencedContainer = "container:EditorJSKit.xcodeproj">
+            BlueprintIdentifier = "04CC411C2BE1397344EE58C46DED4CCA"
+            BuildableName = "EditorJSKit.framework"
+            BlueprintName = "EditorJSKit"
+            ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

@@ -1,0 +1,6 @@
+framework module EditorJSKit {
+  umbrella header "EditorJSKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

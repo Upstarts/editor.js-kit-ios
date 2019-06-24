@@ -1,0 +1,16 @@
+PODS:
+  - EditorJSKit (0.1.0)
+
+DEPENDENCIES:
+  - EditorJSKit (from `../`)
+
+EXTERNAL SOURCES:
+  EditorJSKit:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  EditorJSKit: 30e2186ef234f551f9a3628ea12bbe5f24ce73de
+
+PODFILE CHECKSUM: 1a9b5a03733f2d0fa82fb1d2c76b9dd8ad639829
+
+COCOAPODS: 1.6.1

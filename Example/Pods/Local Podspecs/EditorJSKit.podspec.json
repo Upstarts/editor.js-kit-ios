@@ -1,0 +1,22 @@
+{
+  "name": "EditorJSKit",
+  "version": "0.1.0",
+  "summary": "A short description of EditorJSKit.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/Ivan Glushko/EditorJSKit",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Ivan Glushko": "i.glushko@upstarts.work"
+  },
+  "source": {
+    "git": "https://github.com/Ivan Glushko/EditorJSKit.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "EditorJSKit/Classes/**/*"
+}
