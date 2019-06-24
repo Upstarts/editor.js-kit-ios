@@ -14,7 +14,7 @@ public protocol EJAbstractBlockRenderer {
     var collectionView: UICollectionView { get }
     var startSectionIndex: Int { get }
     func render(block: EJAbstractBlock, itemIndexPath: IndexPath, style: EJBlockStyle?) throws -> View
-    func size(forBlock: EJAbstractBlockContent, itemIndex: Int, style: EJBlockStyle?, superviewSize: CGSize) throws -> CGSize
+    func size(forBlock: EJAbstractBlock, itemIndex: Int, style: EJBlockStyle?, superviewSize: CGSize) throws -> CGSize
 }
 
 ///
@@ -31,13 +31,13 @@ open class EJCollectionRenderer: EJAbstractBlockRenderer {
     
     public init(collectionView: UICollectionView) {
         self.collectionView = collectionView
-        collectionView.register(HeaderCollectionViewCell.self, forCellWithReuseIdentifier: "213")
+        
     }
     
     public func render(block: EJAbstractBlock, itemIndexPath: IndexPath, style: EJBlockStyle? = nil) throws -> UICollectionViewCell & EJBlockStyleApplicable {
-        collectionView.register(HeaderCollectionViewCell.self, forCellWithReuseIdentifier: "213")
+        collectionView.register(HeaderCollectionViewCell.self, forCellWithReuseIdentifier: HeaderCollectionViewCell.description())
         guard let content = block.data as? HeaderBlockContent else { throw EJError.missmatch }
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "213", for: itemIndexPath) as? HeaderCollectionViewCell else { throw EJError.missmatch }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderCollectionViewCell.description(), for: itemIndexPath) as? HeaderCollectionViewCell else { throw EJError.missmatch }
         cell.configure(content: content)
         if let style = style ?? EJKit.shared.style?.style(forBlockType: block.type) {
             cell.apply(style: style)
@@ -47,8 +47,14 @@ open class EJCollectionRenderer: EJAbstractBlockRenderer {
         return cell
     }
     
-    public func size(forBlock: EJAbstractBlockContent, itemIndex: Int, style: EJBlockStyle?, superviewSize: CGSize) throws -> CGSize {
-        return .zero
+    public func size(forBlock: EJAbstractBlock, itemIndex: Int, style: EJBlockStyle?, superviewSize: CGSize) throws -> CGSize {
+        
+        switch forBlock.type {
+        case EJNativeBlockType.header:
+            print( HeaderView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! HeaderBlockContentItem, style: style, boundingWidth: superviewSize.width) )
+            return HeaderView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! HeaderBlockContentItem, style: style, boundingWidth: superviewSize.width)
+        default: return .zero
+        }
     }
 }
 

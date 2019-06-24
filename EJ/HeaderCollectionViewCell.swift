@@ -44,6 +44,15 @@ class HeaderView: UIView, EJBlockStyleApplicable {
         let font = style.font(forHeaderLevel: level)
         label.font = font
     }
+    
+    static func estimatedSize(for item: HeaderBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
+        var style = style
+        if style == nil { style = HeaderBlockNativeStyle() }
+        
+        guard let castedStyle = style as? HeaderBlockNativeStyle else { return .zero }
+        let font = castedStyle.font(forHeaderLevel: item.level)
+        return item.text.size(using: font, boundingWidth: boundingWidth)
+    }
 }
 
 
