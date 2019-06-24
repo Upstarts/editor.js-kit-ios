@@ -47,3 +47,22 @@ extension NSAttributedString {
         return mutableCopy
     }
 }
+
+///
+extension NSAttributedString {
+    func labelHeight(boundingWidth: CGFloat) -> CGFloat {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.attributedText = self
+        let height = label.sizeThatFits(CGSize(width: boundingWidth, height: 0)).height
+        return height
+    }
+    
+    func textViewHeight(boundingWidth: CGFloat) -> CGFloat {
+        let textView = UITextView()
+        textView.textContainerInset = .zero
+        textView.attributedText = self
+        let height = textView.sizeThatFits(CGSize(width: boundingWidth, height: 0)).height
+        return height
+    }
+}

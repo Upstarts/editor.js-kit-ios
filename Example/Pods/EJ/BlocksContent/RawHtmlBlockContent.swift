@@ -33,7 +33,7 @@ public class RawHtmlBlockContentItem: EJAbstractBlockContentItem {
     required public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         html = try container.decode(String.self, forKey: .html)
-        if let style = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.paragraph) as? ParagraphBlockNativeStyle {
+        if let style = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.raw) as? RawHtmlNativeStyle {
             attributedString = html.convertHTML(font: style.font)
         } else {
             attributedString = nil

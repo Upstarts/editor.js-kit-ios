@@ -50,6 +50,18 @@ public class ImageBlockContentItem: EJAbstractBlockContentItem {
 
 ///
 class ImageFile: Decodable {
+    enum CodingKeys: String, CodingKey { case url }
+    
     let url: URL
     var imageData: Data?
+    var callback: (() -> Void)?
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        url = try container.decode(URL.self, forKey: .url)
+        DataDownloaderService.downloadFile(at: url) { data in
+            self.imageData = data
+            self.callback?()
+        }
+    }
 }

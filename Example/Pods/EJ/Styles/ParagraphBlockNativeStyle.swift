@@ -15,5 +15,5 @@ protocol ParagraphNativeStyle: EJBlockStyle {
 
 ///
 class ParagraphBlockNativeStyle: ParagraphNativeStyle {
-    var font: UIFont = .systemFont(ofSize: 18, weight: .thin)
+    var font: UIFont = .systemFont(ofSize: 18)
 }

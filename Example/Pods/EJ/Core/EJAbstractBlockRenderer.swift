@@ -12,14 +12,14 @@ import UIKit
 public protocol EJAbstractBlockRenderer {
     associatedtype View
     
-    func render(block: EJAbstractBlock, itemIndexPath: IndexPath, style: EJBlockStyle?) throws -> View
-    func size(forBlock: EJAbstractBlock, itemIndexPath: IndexPath, style: EJBlockStyle?, superviewSize: CGSize) throws -> CGSize
+    func render(block: EJAbstractBlock, indexPath: IndexPath, style: EJBlockStyle?) throws -> View
+    func size(forBlock: EJAbstractBlock, itemIndex: Int, style: EJBlockStyle?, superviewSize: CGSize) throws -> CGSize
 }
 
 ///
 public protocol EJCollectionRendererAdaptable {
-    func render(collectionView: UICollectionView, block: EJAbstractBlock, itemIndexPath: IndexPath, style: EJBlockStyle?) throws -> UICollectionViewCell & EJBlockStyleApplicable
-    func size(forBlock: EJAbstractBlock, itemIndexPath: IndexPath, style: EJBlockStyle?, superviewSize: CGSize) throws -> CGSize
+    func render(collectionView: UICollectionView, block: EJAbstractBlock, indexPath: IndexPath, style: EJBlockStyle?) throws -> UICollectionViewCell & EJBlockStyleApplicable
+    func size(forBlock: EJAbstractBlock, itemIndex: Int, style: EJBlockStyle?, superviewSize: CGSize) throws -> CGSize
     func insets(forBlock: EJAbstractBlock) -> UIEdgeInsets
     func spacing(forBlock: EJAbstractBlock) -> CGFloat
 }
