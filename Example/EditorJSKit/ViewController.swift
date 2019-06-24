@@ -20,18 +20,17 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
         setupViews()
-        createCustomBlock()
         performNetworkTask()
     }
     
     
     private func setupViews() {
+        view.backgroundColor = .white
         collectionView.dataSource = self
         collectionView.delegate = self
         
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .clear
         view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -49,26 +48,24 @@ class ViewController: UIViewController {
 
         collectionView.reloadData()
     }
-    
-    func createCustomBlock() {
-        let customBlock = EJCustomBlock(type: BlockType.title , contentClass: TitleBlockContent.self)
-        EJKit.shared.register(customBlock: customBlock)
-    }
-    
-    
 
 }
 
 ///
 extension ViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return blockList.blocks.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return blockList.blocks[section].data.numberOfItems
     }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         do {
-            return try renderer.render(block: blockList.blocks.first!, itemIndexPath: indexPath)
+            return try renderer.render(block: blockList.blocks[indexPath.section], itemIndexPath: indexPath)
         }
         catch {
             return UICollectionViewCell()
@@ -77,17 +74,20 @@ extension ViewController: UICollectionViewDataSource {
 }
 
 ///
-extension ViewController: UICollectionViewDelegate {
-    
-}
-
-///
 extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         do {
-            return try renderer.size(forBlock: blockList.blocks.first!, itemIndex: 0, style: nil, superviewSize: collectionView.frame.size)
+            return try renderer.size(forBlock: blockList.blocks[indexPath.section], itemIndexPath: indexPath, style: nil, superviewSize: collectionView.frame.size)
         } catch {
             return CGSize(width: 100, height: 100)
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return renderer.spacing(forBlock: blockList.blocks[section])
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return renderer.insets(forBlock: blockList.blocks[section])
     }
 }

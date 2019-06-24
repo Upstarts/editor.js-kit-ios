@@ -10,7 +10,9 @@ import Foundation
 ///
 open class EJKit {
     public static let shared = EJKit()
-    var style: EJStyle?
+    open var style: EJStyle = NativeStyle()
+    
+    private init() {}
     
     var registeredCustomBlocks: [EJCustomBlock] = []
     

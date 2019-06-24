@@ -9,9 +9,8 @@
 /* Begin PBXBuildFile section */
 		0427878F22B149FA00728BFC /* Pods_EditorJSKit_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 152CDB93A32B9E6C103E3AF6 /* Pods_EditorJSKit_Tests.framework */; };
 		046C3C5522B2645800B194D2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
-		048B720C22B2B2E400075ECA /* TitleBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B720B22B2B2E400075ECA /* TitleBlock.swift */; };
 		04AF4AD222B12FB400BBBD3D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04AF4AD122B12FB400BBBD3D /* LaunchScreen.xib */; };
-		04AF4AE822B13B2C00BBBD3D /* EditorJSMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 04AF4AE722B13B2C00BBBD3D /* EditorJSMock.json */; };
+		04EA657E22C0D0B7003782D3 /* EditorJSMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 04EA657D22C0D0B7003782D3 /* EditorJSMock.json */; };
 		04EA855022B79132006315D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA854F22B79132006315D8 /* AppDelegate.swift */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
@@ -30,10 +29,9 @@
 
 /* Begin PBXFileReference section */
 		041AC08822B24B52004E88D8 /* EditorJSKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EditorJSKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		048B720B22B2B2E400075ECA /* TitleBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleBlock.swift; sourceTree = "<group>"; };
 		049EE15E22B25AF5007752CE /* EditorJSKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EditorJSKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		04AF4AD122B12FB400BBBD3D /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
-		04AF4AE722B13B2C00BBBD3D /* EditorJSMock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = EditorJSMock.json; sourceTree = "<group>"; };
+		04EA657D22C0D0B7003782D3 /* EditorJSMock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = EditorJSMock.json; sourceTree = "<group>"; };
 		04EA854F22B79132006315D8 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		152CDB93A32B9E6C103E3AF6 /* Pods_EditorJSKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EditorJSKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		59E27E0706C66AFF035D701C /* Pods-EditorJSKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EditorJSKit_Tests.release.xcconfig"; path = "Target Support Files/Pods-EditorJSKit_Tests/Pods-EditorJSKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -73,14 +71,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		048B720A22B2B2C700075ECA /* CustomBlocks */ = {
-			isa = PBXGroup;
-			children = (
-				048B720B22B2B2E400075ECA /* TitleBlock.swift */,
-			);
-			name = CustomBlocks;
-			sourceTree = "<group>";
-		};
 		04AF4AD322B132C100BBBD3D /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,10 +90,8 @@
 		04AF4AD522B132E100BBBD3D /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				048B720A22B2B2C700075ECA /* CustomBlocks */,
-				04AF4AD422B132D200BBBD3D /* Controllers */,
 				04AF4AD322B132C100BBBD3D /* AppDelegate */,
-				04AF4AE622B13B0800BBBD3D /* Mocks */,
+				04AF4AD422B132D200BBBD3D /* Controllers */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -111,6 +99,7 @@
 		04AF4AD622B132E800BBBD3D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				04AF4AE622B13B0800BBBD3D /* Mocks */,
 				04AF4AD122B12FB400BBBD3D /* LaunchScreen.xib */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
@@ -121,7 +110,7 @@
 		04AF4AE622B13B0800BBBD3D /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
-				04AF4AE722B13B2C00BBBD3D /* EditorJSMock.json */,
+				04EA657D22C0D0B7003782D3 /* EditorJSMock.json */,
 			);
 			name = Mocks;
 			sourceTree = "<group>";
@@ -303,8 +292,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04AF4AE822B13B2C00BBBD3D /* EditorJSMock.json in Resources */,
 				04AF4AD222B12FB400BBBD3D /* LaunchScreen.xib in Resources */,
+				04EA657E22C0D0B7003782D3 /* EditorJSMock.json in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -393,7 +382,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				04EA855022B79132006315D8 /* AppDelegate.swift in Sources */,
-				048B720C22B2B2E400075ECA /* TitleBlock.swift in Sources */,
 				046C3C5522B2645800B194D2 /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -523,6 +511,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3S4KYJG3GD;
 				INFOPLIST_FILE = EditorJSKit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
@@ -539,6 +528,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3S4KYJG3GD;
 				INFOPLIST_FILE = EditorJSKit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";

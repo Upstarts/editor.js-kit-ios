@@ -5,23 +5,23 @@
 //  Created by Иван Глушко on 13/06/2019.
 //
 
-import Foundation
+import UIKit
 
 ///
 public protocol EJHeaderBlockStyle: EJBlockStyle {
+    var alignment: NSTextAlignment { get }
     func font(forHeaderLevel level: Int) -> UIFont
 }
 
 ///
 public class HeaderBlockNativeStyle: EJHeaderBlockStyle {
-    
-    public init() {}
+    public var alignment: NSTextAlignment = .left
     
     public func font(forHeaderLevel level: Int) -> UIFont {
         switch level {
-        case 1: return UIFont.systemFont(ofSize: 22)
-        case 2: return UIFont.systemFont(ofSize: 18)
-        default: return UIFont.systemFont(ofSize: 16)
+        case 1: return UIFont.systemFont(ofSize: 30, weight: .bold)
+        case 2: return UIFont.systemFont(ofSize: 24, weight: .bold)
+        default: return UIFont.systemFont(ofSize: 18, weight: .bold)
         }
     }
 }

@@ -33,23 +33,6 @@ open class EJAbstractBlock: EJAbstractBlockProtocol {
     required public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        if let type = try? container.decode(EJNativeBlockType.self, forKey: .type) {
-            self.type = type
-            switch type {
-            case .delimeter:
-                throw DecodingError.typeMismatch(
-                    EJAbstractBlockContent.self,
-                    DecodingError.Context(
-                        codingPath: [CodingKeys.data],
-                        debugDescription: "Content parsing of native block type \"\(type.rawValue)\" is not implemented"))
-            case .header:
-                self.data = try container.decode(HeaderBlockContent.self, forKey: .data)
-            case .paragraph:
-                self.data = try container.decode(ParagraphBlockContent.self, forKey: .data)
-            }
-            return
-        }
-            
         // Loop through custom blocks
         for customBlock in EJKit.shared.registeredCustomBlocks {
             guard let type = try? customBlock.type.decode(container: container) else { continue }
@@ -64,6 +47,28 @@ open class EJAbstractBlock: EJAbstractBlockProtocol {
             self.data = data
             return
         }
+        
+        if let type = try? container.decode(EJNativeBlockType.self, forKey: .type) {
+            self.type = type
+            switch type {
+            case .header:
+                self.data = try container.decode(HeaderBlockContent.self, forKey: .data)
+            case .image:
+                self.data = try container.decode(ImageBlockContent.self, forKey: .data)
+            case .list:
+                self.data = try container.decode(ListBlockContent.self, forKey: .data)
+            case .linkTool:
+                self.data = try container.decode(LinkBlockContent.self, forKey: .data)
+            case .delimiter:
+                self.data = try container.decode(DelimiterBlockContent.self, forKey: .data)
+            case .paragraph:
+                self.data = try container.decode(ParagraphBlockContent.self, forKey: .data)
+            case .raw:
+                self.data = try container.decode(RawHtmlBlockContent.self, forKey: .data)
+            }
+            return
+        }
+        
         
         throw DecodingError.dataCorrupted(
             DecodingError.Context(

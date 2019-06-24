@@ -17,9 +17,13 @@ public protocol EJAbstractBlockType: Decodable {
 
 ///
 public enum EJNativeBlockType: String, EJAbstractBlockType {
-    case paragraph
     case header
-    case delimeter
+    case image
+    case list
+    case linkTool
+    case delimiter
+    case paragraph
+    case raw
     
     public func decode(container: KeyedDecodingContainer<EJAbstractBlock.CodingKeys>) throws -> EJAbstractBlockType {
         return try container.decode(EJNativeBlockType.self, forKey: .type)

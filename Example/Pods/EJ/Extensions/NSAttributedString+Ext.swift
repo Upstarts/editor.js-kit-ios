@@ -1,5 +1,5 @@
 //
-//  NSAtribbutedString+Ext.swift
+//  NSAttributedString+Ext.swift
 //  EditorJSKit
 //
 //  Created by Иван Глушко on 17/06/2019.
