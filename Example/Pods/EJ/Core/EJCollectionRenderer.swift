@@ -10,7 +10,7 @@ import UIKit
 
 ///
 open class EJCollectionRenderer: EJCollectionBlockRenderer {
-    public typealias View = UICollectionViewCell & EJBlockStyleApplicable 
+    public typealias View = UICollectionViewCell & EJBlockStyleApplicable
     
     
     public var startSectionIndex: Int = 0
@@ -42,6 +42,10 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
         case EJNativeBlockType.image:
             collectionView.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: ImageCollectionViewCell.description())
             let content = block.data as! ImageBlockContent
+            let item = content.getItem(atIndex: itemIndexPath.item) as! ImageBlockContentItem
+            if item.file.imageData == nil {
+                item.file.callback = { self.collectionView.reloadItems(at: [itemIndexPath]) }
+            }
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.description(), for: itemIndexPath) as! ImageCollectionViewCell
             cell.configure(content: content)
             cell.apply(style: style ?? EJKit.shared.style.getStyle(forBlockType: block.type)!)
@@ -92,42 +96,35 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
         
     }
     
-    public func size(forBlock: EJAbstractBlock, itemIndexPath: IndexPath, style: EJBlockStyle?, superviewSize: CGSize) throws -> CGSize {
+    public func size(forBlock: EJAbstractBlock, itemIndex: Int, style: EJBlockStyle?, superviewSize: CGSize) throws -> CGSize {
         
         for customBlock in EJKit.shared.registeredCustomBlocks {
             guard customBlock.type.rawValue == forBlock.type.rawValue else { continue }
             guard let content = forBlock.data as? EJCollectionRendererAdaptableContent else { continue }
-            return try! content.size(forBlock: forBlock, itemIndexPath: itemIndexPath, style: nil, superviewSize: superviewSize)
+            return try! content.size(forBlock: forBlock, itemIndex: itemIndex, style: nil, superviewSize: superviewSize)
         }
         
         switch forBlock.type {
         case EJNativeBlockType.header:
-            return HeaderNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndexPath.row) as! HeaderBlockContentItem, style: style, boundingWidth: superviewSize.width)
-        case EJNativeBlockType.image:
-            let item = forBlock.data.getItem(atIndex: itemIndexPath.item) as! ImageBlockContentItem
-            if item.file.imageData == nil {
-                DataDownloaderService.downloadFile(at: item.file.url) { [weak self] data in
-                    item.file.imageData = data
-                    self?.collectionView.reloadItems(at: [itemIndexPath])
-                }
-            }
+            return HeaderNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! HeaderBlockContentItem, style: style, boundingWidth: superviewSize.width)
             
-            return ImageNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndexPath.item) as! ImageBlockContentItem, style: nil, boundingWidth: superviewSize.width)
+        case EJNativeBlockType.image:
+            return ImageNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! ImageBlockContentItem, style: nil, boundingWidth: superviewSize.width)
             
         case EJNativeBlockType.list:
-            return ListItemNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndexPath.item) as! ListBlockContentItem, style: nil, boundingWidth: superviewSize.width)
+            return ListItemNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! ListBlockContentItem, style: nil, boundingWidth: superviewSize.width)
             
         case EJNativeBlockType.linkTool:
-            return LinkNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndexPath.item) as! LinkBlockContentItem, style: nil, boundingWidth: superviewSize.width)
+            return LinkNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! LinkBlockContentItem, style: nil, boundingWidth: superviewSize.width)
             
         case EJNativeBlockType.delimiter:
-            return DelimiterNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndexPath.item) as! DelimiterBlockContentItem, style: nil, boundingWidth: superviewSize.width)
+            return DelimiterNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! DelimiterBlockContentItem, style: nil, boundingWidth: superviewSize.width)
             
         case EJNativeBlockType.paragraph:
-            return ParagraphNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndexPath.item) as! ParagraphBlockContentItem, style: nil, boundingWidth: superviewSize.width)
+            return ParagraphNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! ParagraphBlockContentItem, style: nil, boundingWidth: superviewSize.width)
             
         case EJNativeBlockType.raw:
-            return RawHtmlNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndexPath.item) as! RawHtmlBlockContentItem, style: nil, boundingWidth: superviewSize.width)
+            return RawHtmlNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! RawHtmlBlockContentItem, style: nil, boundingWidth: superviewSize.width)
             
         default: return CGSize(width: 200, height: 50)
         }
