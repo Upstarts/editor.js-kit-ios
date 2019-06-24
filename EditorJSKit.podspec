@@ -7,36 +7,18 @@
 #
 
 Pod::Spec.new do |s|
+  
   s.name             = 'EditorJSKit'
-  s.version          = '0.1.0'
-  s.summary          = 'Framework for generated clean data from Editor.js.'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
-
-  s.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       DESC
-
-  s.homepage         = 'https://github.com/Ivan Glushko/EditorJSKit'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.version          = '0.0.1'
+  s.summary          = 'iOS Framework for generated clean data from Editor.js.'
+  
+  s.description      = 'SDK for editor.js. Parse and render natively supported blocks. Put blocks into your UICollectionView or implement your own custom renderer. Design and use custom blocks.'
+  s.homepage         = 'https://github.com/Upstarts/editor.js-kit-ios'
+  s.screenshots      = 'https://raw.githubusercontent.com/Upstarts/editor.js-kit-ios/master/screenshot.jpg'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Upstarts' => 'dev@upstarts.work' }
-  s.source           = { :git => 'https://github.com/Ivan Glushko/EditorJSKit.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
-
-  s.ios.deployment_target = '8.0'
-
-  s.source_files = 'EditorJSKit/Classes/**/*'
+  s.source           = { :git => 'https://github.com/Upstarts/editor.js-kit-ios.git', :tag => s.version.to_s }
+  s.ios.deployment_target = '9.0'
+  s.source_files = 'EditorJSKit/EJ/*'
   
-  # s.resource_bundles = {
-  #   'EditorJSKit' => ['EditorJSKit/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
 end
