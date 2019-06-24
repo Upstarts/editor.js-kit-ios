@@ -82,12 +82,4 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
             return CGSize(width: 100, height: 100)
         }
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return renderer.spacing(forBlock: blockList.blocks[section])
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return renderer.insets(forBlock: blockList.blocks[section])
-    }
 }
