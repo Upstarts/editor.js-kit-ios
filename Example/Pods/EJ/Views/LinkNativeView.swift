@@ -139,11 +139,11 @@ class LinkNativeView: UIView {
     static func estimatedSize(for item: LinkBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
         guard let castedStyle = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.linkTool) as? LinkBlockNativeStyle else { return .zero }
         let initialBoundingWidth = boundingWidth
-        var boundingWidth = boundingWidth - UIConstants.widthInsets
+        var boundingWidth = boundingWidth - (UIConstants.widthInsets + castedStyle.insets.left + castedStyle.insets.right)
         if item.image?.url != nil {
-            boundingWidth -= (castedStyle.imageWidthHeight + (-castedStyle.imageRightInset))
+            boundingWidth -= (castedStyle.imageWidthHeight + castedStyle.imageRightInset)
         }
-
+        
         let titleMutable = NSMutableAttributedString()
         if let titleAtr = item.titleAttributedString {
             titleMutable.append(titleAtr)
@@ -154,19 +154,21 @@ class LinkNativeView: UIView {
             titleMutable.append(siteNameAtr)
         }
         
+        
         var height = titleMutable.height(withConstrainedWidth: boundingWidth)
         
         if let descriptionAtr = item.descriptionAttributedString {
             height += UIConstants.descriptionTopOffset
             height += descriptionAtr.height(withConstrainedWidth: boundingWidth)
         }
-        
+   
+        height += castedStyle.linkFont.lineHeight
         height += UIConstants.heightInsets
-        height = height > castedStyle.imageWidthHeight ? height : castedStyle.imageWidthHeight
+        height = height > castedStyle.imageWidthHeight ? height : castedStyle.imageWidthHeight + UIConstants.heightInsets
         
         return CGSize(width: initialBoundingWidth, height: height )
     }
-
+    
 }
 
 ///
