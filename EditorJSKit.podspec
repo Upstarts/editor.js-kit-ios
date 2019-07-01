@@ -18,7 +18,8 @@ Pod::Spec.new do |s|
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Upstarts' => 'dev@upstarts.work' }
   s.source           = { :git => 'https://github.com/Upstarts/editor.js-kit-ios.git', :tag => s.version.to_s }
+  s.swift_version = '4.2'
   s.ios.deployment_target = '9.0'
-  s.source_files = 'EditorJSKit/EJ/*'
+  s.source_files = 'EditorJSKit/Classes/**/*'
   
 end
