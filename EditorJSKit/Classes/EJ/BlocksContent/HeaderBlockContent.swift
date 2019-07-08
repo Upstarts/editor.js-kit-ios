@@ -9,28 +9,28 @@
 import Foundation
 
 ///
-class HeaderBlockContent: EJAbstractBlockContent {
-    private var items: [HeaderBlockContentItem] = []
-    var numberOfItems: Int { return items.count }
+public class HeaderBlockContent: EJAbstractBlockContent {
+    public var items: [HeaderBlockContentItem] = []
+    public var numberOfItems: Int { return items.count }
     
     required public init(from decoder: Decoder) throws {
         items = [try HeaderBlockContentItem(from: decoder) ]
     }
     
-    func getItem(atIndex index: Int) -> EJAbstractBlockContentItem? {
+    public func getItem(atIndex index: Int) -> EJAbstractBlockContentItem? {
         guard index == 0 else { return nil }
         return items.first
     }
 }
 
 ///
-open class HeaderBlockContentItem: EJAbstractBlockContentItem {
+public class HeaderBlockContentItem: EJAbstractBlockContentItem {
     enum CodingKeys: String, CodingKey { case text, level }
-    let text: String
-    let level: Int
+    public let text: String
+    public let level: Int
     public var attributedString: NSAttributedString?
     
-    init(text: String, level: Int) {
+    public init(text: String, level: Int) {
         self.text = text
         self.level = level
     }

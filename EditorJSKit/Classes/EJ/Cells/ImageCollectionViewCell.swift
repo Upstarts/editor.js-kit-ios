@@ -8,9 +8,9 @@
 
 import UIKit
 
-class ImageCollectionViewCell: UICollectionViewCell, EJBlockStyleApplicable {
-    let baseView = UIView()
-    let imageView = ImageNativeView()
+public class ImageCollectionViewCell: UICollectionViewCell, EJBlockStyleApplicable {
+    public let baseView = UIView()
+    public let imageView = ImageNativeView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -21,11 +21,11 @@ class ImageCollectionViewCell: UICollectionViewCell, EJBlockStyleApplicable {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(content: ImageBlockContent) {
-        imageView.configure(content: content)
+    public func configureCell(item: ImageBlockContentItem) {
+        imageView.configure(item: item)
     }
     
-    func apply(style: EJBlockStyle) {
+    public func apply(style: EJBlockStyle) {
         imageView.apply(style: style)
     }
     

@@ -9,9 +9,9 @@
 import UIKit
 
 ///
-class LinkCollectionViewCell: UICollectionViewCell, EJBlockStyleApplicable {
-    let baseView = UIView()
-    let linkView = LinkNativeView()
+public class LinkCollectionViewCell: UICollectionViewCell, EJBlockStyleApplicable {
+    private let baseView = UIView()
+    private let linkView = LinkNativeView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,12 +22,11 @@ class LinkCollectionViewCell: UICollectionViewCell, EJBlockStyleApplicable {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(content: LinkBlockContent) {
-        guard let item = content.getItem(atIndex: 0) as? LinkBlockContentItem else { return }
-        linkView.configure(item: item, formattedLink: content.formattedLink)
+    public func configureCell(item: LinkBlockContentItem) {
+        linkView.configure(item: item)
     }
     
-    func apply(style: EJBlockStyle) {
+    public func apply(style: EJBlockStyle) {
         linkView.apply(style: style)
     }
     

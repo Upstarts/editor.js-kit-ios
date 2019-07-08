@@ -34,8 +34,9 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
         case EJNativeBlockType.header:
             collectionView.register(HeaderCollectionViewCell.self, forCellWithReuseIdentifier: HeaderCollectionViewCell.description())
             let content = block.data as! HeaderBlockContent
+            let item = content.getItem(atIndex: 0) as! HeaderBlockContentItem
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderCollectionViewCell.description(), for: indexPath) as! HeaderCollectionViewCell
-            cell.configure(content: content)
+            cell.configureCell(item: item)
             cell.apply(style: style ?? EJKit.shared.style.getStyle(forBlockType: block.type)!)
             return cell
             
@@ -47,47 +48,52 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
                 item.file.callback = { self.collectionView.reloadItems(at: [indexPath]) }
             }
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.description(), for: indexPath) as! ImageCollectionViewCell
-            cell.configure(content: content)
+            cell.configureCell(item: item)
             cell.apply(style: style ?? EJKit.shared.style.getStyle(forBlockType: block.type)!)
             return cell
             
         case EJNativeBlockType.list:
             collectionView.register(ListItemCollectionViewCell.self, forCellWithReuseIdentifier: ListItemCollectionViewCell.description())
             let content = block.data as! ListBlockContent
+            let item = content.getItem(atIndex: indexPath.item) as! ListBlockContentItem
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ListItemCollectionViewCell.description(), for: indexPath) as! ListItemCollectionViewCell
-            cell.configure(itemContent: content.getItem(atIndex: indexPath.item) as! ListBlockContentItem, style: content.style)
+            cell.configureCell(item: item, style: content.style)
             cell.apply(style: style ?? EJKit.shared.style.getStyle(forBlockType: block.type)!)
             return cell
             
         case EJNativeBlockType.linkTool:
             collectionView.register(LinkCollectionViewCell.self, forCellWithReuseIdentifier: LinkCollectionViewCell.description())
             let content = block.data as! LinkBlockContent
+            let item = content.getItem(atIndex: 0) as! LinkBlockContentItem
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LinkCollectionViewCell.description(), for: indexPath) as! LinkCollectionViewCell
-            cell.configure(content: content)
+            cell.configureCell(item: item)
             cell.apply(style: style ?? EJKit.shared.style.getStyle(forBlockType: block.type)!)
             return cell
             
         case EJNativeBlockType.delimiter:
             collectionView.register(DelimiterCollectionViewCell.self, forCellWithReuseIdentifier: DelimiterCollectionViewCell.description())
             let content = block.data as! DelimiterBlockContent
+            let item = content.getItem(atIndex: 0) as! DelimiterBlockContentItem
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DelimiterCollectionViewCell.description(), for: indexPath) as! DelimiterCollectionViewCell
-            cell.configure(content: content)
+            cell.configureCell(item: item)
             cell.apply(style: style ?? EJKit.shared.style.getStyle(forBlockType: block.type)!)
             return cell
             
         case EJNativeBlockType.paragraph:
             collectionView.register(ParagraphCollectionViewCell.self, forCellWithReuseIdentifier: ParagraphCollectionViewCell.description())
             let content = block.data as! ParagraphBlockContent
+            let item = content.getItem(atIndex: 0) as! ParagraphBlockContentItem
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ParagraphCollectionViewCell.description(), for: indexPath) as! ParagraphCollectionViewCell
-            cell.configure(content: content)
+            cell.configureCell(item: item)
             cell.apply(style: style ?? EJKit.shared.style.getStyle(forBlockType: block.type)!)
             return cell
             
         case EJNativeBlockType.raw:
             collectionView.register(RawHtmlCollectionViewCell.self, forCellWithReuseIdentifier: RawHtmlCollectionViewCell.description())
             let content = block.data as! RawHtmlBlockContent
+            let item = content.getItem(atIndex: 0) as! RawHtmlBlockContentItem
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RawHtmlCollectionViewCell.description(), for: indexPath) as! RawHtmlCollectionViewCell
-            cell.configure(content: content)
+            cell.configureCell(item: item)
             cell.apply(style: style ?? EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.raw)!)
             return cell
             

@@ -9,7 +9,7 @@ import UIKit
 
 ///
 public protocol EJConfigurableView {
-    associatedtype Model: EJAbstractBlockContentItem
+    associatedtype Item: EJAbstractBlockContentItem
     
-    func configure(withModel model: Model)
+    func configure(item: Item)
 }

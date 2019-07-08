@@ -9,7 +9,7 @@
 import UIKit
 
 ///
-class DelimiterCollectionViewCell: UICollectionViewCell, EJBlockStyleApplicable {
+public class DelimiterCollectionViewCell: UICollectionViewCell, EJBlockStyleApplicable {
     
     private let baseView = UIView()
     private let delimiterView = DelimiterNativeView()
@@ -46,12 +46,11 @@ class DelimiterCollectionViewCell: UICollectionViewCell, EJBlockStyleApplicable 
         
     }
     
-    public func configure(content: DelimiterBlockContent) {
-        guard let item = content.getItem(atIndex: 0) as? DelimiterBlockContentItem else { return }
+    public func configureCell(item: DelimiterBlockContentItem) {
         delimiterView.configure(item: item)
     }
     
-    func apply(style: EJBlockStyle) {
+    public func apply(style: EJBlockStyle) {
         delimiterView.apply(style: style)
     }
     

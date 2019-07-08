@@ -9,11 +9,11 @@
 import UIKit
 
 ///
-class ImageNativeView: UIView, EJBlockStyleApplicable {
+public class ImageNativeView: UIView, EJBlockStyleApplicable {
     
     // MARK: - UI Properties
-    private let imageView = UIImageView()
-    private let label = UILabel()
+    public let imageView = UIImageView()
+    public let label = UILabel()
     
     //
     private var withBackground: Bool = false
@@ -52,7 +52,7 @@ class ImageNativeView: UIView, EJBlockStyleApplicable {
         
     }
     
-    func apply(style: EJBlockStyle) {
+    public func apply(style: EJBlockStyle) {
         guard let style = style as? ImageBlockNativeStyle else { return }
         label.textColor = style.captionColor
         label.textAlignment = style.textAlignment
@@ -63,8 +63,8 @@ class ImageNativeView: UIView, EJBlockStyleApplicable {
         layer.cornerRadius = style.cornerRadius
     }
     
-    func configure(content: ImageBlockContent) {
-        if let item = content.getItem(atIndex: 0) as? ImageBlockContentItem, let data = item.file.imageData {
+    public func configure(item: ImageBlockContentItem) {
+        if let data = item.file.imageData {
             setImage(from: data, item: item)
             label.attributedText = item.attributedString
             withBackground = item.withBackground
@@ -79,7 +79,7 @@ class ImageNativeView: UIView, EJBlockStyleApplicable {
         }
     }
     
-    static func estimatedSize(for item: ImageBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
+    public static func estimatedSize(for item: ImageBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
         var size: CGSize?
         
         if let data = item.file.imageData, let image = UIImage(data: data), let attributed = item.attributedString {
@@ -88,6 +88,6 @@ class ImageNativeView: UIView, EJBlockStyleApplicable {
             size = CGSize(width: boundingWidth, height: height)
         }
         
-        return size ?? CGSize(width: boundingWidth, height: 100)
+        return size ?? CGSize(width: boundingWidth, height: .zero)
     }
 }

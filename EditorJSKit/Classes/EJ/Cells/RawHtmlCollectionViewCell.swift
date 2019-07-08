@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RawHtmlCollectionViewCell: UICollectionViewCell, EJBlockStyleApplicable {
+public class RawHtmlCollectionViewCell: UICollectionViewCell, EJBlockStyleApplicable {
     
     private let baseView = UIView()
     private let rawHtmlView = RawHtmlNativeView()
@@ -45,13 +45,12 @@ class RawHtmlCollectionViewCell: UICollectionViewCell, EJBlockStyleApplicable {
         
     }
     
-    func configure(content: RawHtmlBlockContent) {
-        guard let item = content.getItem(atIndex: 0) as? RawHtmlBlockContentItem else { return }
-        rawHtmlView.configure(withModel: item)
+    public func configureCell(item: RawHtmlBlockContentItem) {
+        rawHtmlView.configure(item: item)
     }
     
     
-    func apply(style: EJBlockStyle) {
+    public func apply(style: EJBlockStyle) {
         rawHtmlView.apply(style: style)
     }
     

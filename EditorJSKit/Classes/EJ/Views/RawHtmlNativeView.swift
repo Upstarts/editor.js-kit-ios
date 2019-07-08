@@ -9,17 +9,15 @@
 import UIKit
 
 ///
-class RawHtmlNativeView: UIView, EJBlockStyleApplicable, EJConfigurableView  {
-    typealias Model = RawHtmlBlockContentItem
-    
-    private let textView = UITextView()
+open class RawHtmlNativeView: UIView, EJBlockStyleApplicable, EJConfigurableView  {
+    public let textView = UITextView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -41,12 +39,12 @@ class RawHtmlNativeView: UIView, EJBlockStyleApplicable, EJConfigurableView  {
     }
     
     
-    func configure(withModel model: Model) {
-        textView.attributedText = model.attributedString
+    public func configure(item: RawHtmlBlockContentItem) {
+        textView.attributedText = item.attributedString
     }
     
     
-    func apply(style: EJBlockStyle) {
+    public func apply(style: EJBlockStyle) {
         guard let style = style as? RawHtmlNativeStyle else { return }
         //
         backgroundColor = style.backgroundColor
@@ -54,7 +52,7 @@ class RawHtmlNativeView: UIView, EJBlockStyleApplicable, EJConfigurableView  {
     }
     
     
-    static func estimatedSize(for item: RawHtmlBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
+    public static func estimatedSize(for item: RawHtmlBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
         guard let attributed = item.attributedString, let style = style ?? EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.raw) else { return .zero }
         let newBoundingWidth = boundingWidth - (style.insets.left + style.insets.right)
         let height = attributed.height(withConstrainedWidth: newBoundingWidth )

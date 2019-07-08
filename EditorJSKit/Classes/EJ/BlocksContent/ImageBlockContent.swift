@@ -9,15 +9,15 @@
 import Foundation
 
 ///
-class ImageBlockContent: EJAbstractBlockContent {
-    var items: [ImageBlockContentItem]
-    var numberOfItems: Int { return items.count }
+open class ImageBlockContent: EJAbstractBlockContent {
+    open var items: [ImageBlockContentItem]
+    open var numberOfItems: Int { return items.count }
     
     required public init(from decoder: Decoder) throws {
         items = [ try ImageBlockContentItem(from: decoder)]
     }
     
-    func getItem(atIndex index: Int) -> EJAbstractBlockContentItem? {
+    open func getItem(atIndex index: Int) -> EJAbstractBlockContentItem? {
         guard index == 0 else { return nil }
         return items.first
     }
@@ -27,11 +27,11 @@ class ImageBlockContent: EJAbstractBlockContent {
 ///
 public class ImageBlockContentItem: EJAbstractBlockContentItem {
     enum CodingKeys: String, CodingKey { case file, caption, withBorder,stretched, withBackground }
-    let file: ImageFile
-    let caption: String
-    let withBorder: Bool
-    let stretched: Bool
-    let withBackground: Bool
+    public let file: ImageFile
+    public let caption: String
+    public let withBorder: Bool
+    public let stretched: Bool
+    public let withBackground: Bool
     public var attributedString: NSAttributedString?
     
     public required init(from decoder: Decoder) throws {
@@ -49,14 +49,14 @@ public class ImageBlockContentItem: EJAbstractBlockContentItem {
 }
 
 ///
-class ImageFile: Decodable {
+public class ImageFile: Decodable {
     enum CodingKeys: String, CodingKey { case url }
     
-    let url: URL
-    var imageData: Data?
-    var callback: (() -> Void)?
+    public let url: URL
+    public var imageData: Data?
+    public var callback: (() -> Void)?
     
-    required init(from decoder: Decoder) throws {
+    public required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         url = try container.decode(URL.self, forKey: .url)
         DataDownloaderService.downloadFile(at: url) { data in

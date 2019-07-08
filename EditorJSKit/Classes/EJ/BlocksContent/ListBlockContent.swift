@@ -9,18 +9,18 @@
 import Foundation
 
 ///
-enum ListBlockStyle: String, Decodable {
+public enum ListBlockStyle: String, Decodable {
     case unordered
     case ordered
 }
 
 ///
-class ListBlockContent: EJAbstractBlockContent {
+public class ListBlockContent: EJAbstractBlockContent {
     public var style: ListBlockStyle
-    private var items: [ListBlockContentItem]
-    var numberOfItems: Int { return items.count }
+    public var items: [ListBlockContentItem]
+    public var numberOfItems: Int { return items.count }
     
-    func getItem(atIndex index: Int) -> EJAbstractBlockContentItem? {
+    public func getItem(atIndex index: Int) -> EJAbstractBlockContentItem? {
         guard items.indices.contains(index) else { return nil }
         return items[index]
     }
@@ -42,10 +42,10 @@ class ListBlockContent: EJAbstractBlockContent {
 }
 
 ///
-class ListBlockContentItem: EJAbstractBlockContentItem {
+public class ListBlockContentItem: EJAbstractBlockContentItem {
     enum CodingKeys: String, CodingKey {  case text }
-    let text: String
-    let index: Int
+    public let text: String
+    public let index: Int
     
     public let attributedString: NSAttributedString?
     
@@ -59,7 +59,7 @@ class ListBlockContentItem: EJAbstractBlockContentItem {
         }
     }
     
-    required init(from decoder: Decoder) throws {
+    public required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         text = try container.decode(String.self, forKey: .text)
         index = 0

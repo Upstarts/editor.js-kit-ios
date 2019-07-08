@@ -9,13 +9,12 @@
 import Foundation
 
 ///
-class LinkBlockContent: EJAbstractBlockContent {
+public class LinkBlockContent: EJAbstractBlockContent {
     public let link: URL
-    public let formattedLink: String
-    private var items: [LinkBlockContentItem]
-    var numberOfItems: Int { return items.count }
+    public var items: [LinkBlockContentItem]
+    public var numberOfItems: Int { return items.count }
     
-    func getItem(atIndex index: Int) -> EJAbstractBlockContentItem? {
+    public func getItem(atIndex index: Int) -> EJAbstractBlockContentItem? {
         guard index == 0 else { return nil }
         return items.first
     }
@@ -26,18 +25,19 @@ class LinkBlockContent: EJAbstractBlockContent {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         link = try container.decode(URL.self, forKey: .link)
         items = [ try container.decode(LinkBlockContentItem.self, forKey: .meta) ]
-        formattedLink = LinkFormatterService.format(link: link)
+        items.forEach { $0.formattedLink = LinkFormatterService.format(link: link)}
     }
     
 }
 
 ///
-class LinkBlockContentItem: EJAbstractBlockContentItem {
-    let title: String
-    let siteName: String?
-    let description: String?
-    let image: ImageFile?
+public class LinkBlockContentItem: EJAbstractBlockContentItem {
+    private let title: String
+    private let siteName: String?
+    private let description: String?
     
+    public let image: ImageFile?
+    public var formattedLink: String?
     public var titleAttributedString: NSAttributedString?
     public var siteNameAttributedString: NSAttributedString?
     public var descriptionAttributedString: NSAttributedString?
@@ -46,7 +46,7 @@ class LinkBlockContentItem: EJAbstractBlockContentItem {
         case title, site_name, description, image
     }
     
-    required init(from decoder: Decoder) throws {
+    public required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         title = try container.decode(String.self, forKey: .title)
         siteName = try container.decodeIfPresent(String.self, forKey: .site_name)

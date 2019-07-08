@@ -9,7 +9,7 @@
 import UIKit
 
 ///
-class ListItemCollectionViewCell: UICollectionViewCell, EJBlockStyleApplicable {
+public class ListItemCollectionViewCell: UICollectionViewCell, EJBlockStyleApplicable {
     let baseView = UIView()
     let listItemView = ListItemNativeView()
     
@@ -22,11 +22,11 @@ class ListItemCollectionViewCell: UICollectionViewCell, EJBlockStyleApplicable {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(itemContent: ListBlockContentItem, style: ListBlockStyle) {
-        listItemView.configure(itemContent: itemContent, style: style)
+    public func configureCell(item: ListBlockContentItem, style: ListBlockStyle) {
+        listItemView.configure(item: item, style: style)
     }
     
-    func apply(style: EJBlockStyle) {
+    public func apply(style: EJBlockStyle) {
         listItemView.apply(style: style)
     }
     

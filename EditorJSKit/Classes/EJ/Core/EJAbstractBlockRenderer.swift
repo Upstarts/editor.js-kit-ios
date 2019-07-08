@@ -31,7 +31,7 @@ extension EJCollectionRendererAdaptable {
 }
 
 ///
-protocol EJCollectionRendererAdaptableContent: EJCollectionRendererAdaptable {
+public protocol EJCollectionRendererAdaptableContent: EJCollectionRendererAdaptable {
     // When conform make sure to use explicit type
     // cellClass: AnyClass = MyCollectionViewCell.self
     var cellClass: AnyClass { get set }
@@ -54,7 +54,7 @@ public protocol EJBlockStyleApplicable {
 
 
 ///
-enum EJError: String, Error {
+public enum EJError: String, Error {
     case missmatch
     case errorInDownloadTask
     case noCollectionView

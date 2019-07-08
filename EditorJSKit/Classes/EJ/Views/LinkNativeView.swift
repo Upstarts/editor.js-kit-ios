@@ -8,15 +8,15 @@
 
 import UIKit
 
-class LinkNativeView: UIView {
+open class LinkNativeView: UIView {
     // MARK: - UI Properties
-    private let titleLabel = UILabel()
-    private let linkLabel = UILabel()
-    private let descriptionLabel = UILabel()
-    private let imageView = UIImageView()
+    public let titleLabel = UILabel()
+    public let linkLabel = UILabel()
+    public let descriptionLabel = UILabel()
+    public let imageView = UIImageView()
     
-    private var hasURL = false
-    private var hasDescription = false
+    public var hasURL = false
+    public var hasDescription = false
     
     // Constraints
     private lazy var imageRightConstraint = imageView.rightAnchor.constraint(equalTo: rightAnchor, constant: .zero)
@@ -31,11 +31,11 @@ class LinkNativeView: UIView {
         setupViews()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews() {
+    override open func layoutSubviews() {
         super.layoutSubviews()
         if hasURL { layoutForImageView() }
         if hasDescription { descriptionTopConstraint.constant = UIConstants.descriptionTopOffset }
@@ -96,7 +96,7 @@ class LinkNativeView: UIView {
         
     }
     
-    public func configure(item: LinkBlockContentItem, formattedLink: String) {
+    public func configure(item: LinkBlockContentItem) {
         let titleMutable = NSMutableAttributedString()
         if let titleAtr = item.titleAttributedString {
             titleMutable.append(titleAtr)
@@ -111,7 +111,7 @@ class LinkNativeView: UIView {
             descriptionLabel.attributedText = descriptionAtr
         }
         titleLabel.attributedText = titleMutable
-        linkLabel.text = formattedLink
+        linkLabel.text = item.formattedLink
         
         if let url = item.image?.url {
             hasURL = true
@@ -136,7 +136,7 @@ class LinkNativeView: UIView {
         layer.cornerRadius = style.cornerRadius
     }
     
-    static func estimatedSize(for item: LinkBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
+    public static func estimatedSize(for item: LinkBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
         guard let castedStyle = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.linkTool) as? LinkBlockNativeStyle else { return .zero }
         let initialBoundingWidth = boundingWidth
         var boundingWidth = boundingWidth - (UIConstants.widthInsets + castedStyle.insets.left + castedStyle.insets.right)
@@ -161,8 +161,11 @@ class LinkNativeView: UIView {
             height += UIConstants.descriptionTopOffset
             height += descriptionAtr.height(withConstrainedWidth: boundingWidth)
         }
-   
-        height += castedStyle.linkFont.lineHeight
+        
+        if let formatttedLink = item.formattedLink {
+            height += formatttedLink.height(using: castedStyle.linkFont)
+        }
+        
         height += UIConstants.heightInsets
         height = height > castedStyle.imageWidthHeight ? height : castedStyle.imageWidthHeight + UIConstants.heightInsets
         

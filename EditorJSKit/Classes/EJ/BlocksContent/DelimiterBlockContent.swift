@@ -9,11 +9,11 @@
 import Foundation
 
 ///
-class DelimiterBlockContent: EJAbstractBlockContent {
-    private var items = [DelimiterBlockContentItem()]
-    var numberOfItems: Int { return items.count }
+public class DelimiterBlockContent: EJAbstractBlockContent {
+    public var items = [DelimiterBlockContentItem()]
+    public var numberOfItems: Int { return items.count }
     
-    func getItem(atIndex index: Int) -> EJAbstractBlockContentItem? {
+    public func getItem(atIndex index: Int) -> EJAbstractBlockContentItem? {
         guard index == 0 else { return nil }
         return items.first
     }
@@ -22,6 +22,6 @@ class DelimiterBlockContent: EJAbstractBlockContent {
 }
 
 ///
-class DelimiterBlockContentItem: EJAbstractBlockContentItem {
-    let text = "* * *"
+public class DelimiterBlockContentItem: EJAbstractBlockContentItem {
+    let text = "\u{FF0A} \u{FF0A} \u{FF0A}"
 }

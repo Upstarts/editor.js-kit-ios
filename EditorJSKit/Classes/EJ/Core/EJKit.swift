@@ -14,7 +14,7 @@ open class EJKit {
     
     private init() {}
     
-    var registeredCustomBlocks: [EJCustomBlock] = []
+    open var registeredCustomBlocks: [EJCustomBlock] = []
     
     public func register(customBlock: EJCustomBlock) {
         registeredCustomBlocks.append(customBlock)

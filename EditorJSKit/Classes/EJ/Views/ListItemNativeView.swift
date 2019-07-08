@@ -8,15 +8,15 @@
 
 import UIKit
 
-class ListItemNativeView: UIView, EJBlockStyleApplicable {
-    let label = UILabel()
+open class ListItemNativeView: UIView, EJBlockStyleApplicable {
+    public let label = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -33,15 +33,15 @@ class ListItemNativeView: UIView, EJBlockStyleApplicable {
             ])
     }
     
-    public func configure(itemContent: ListBlockContentItem, style: ListBlockStyle) {
+    public func configure(item: ListBlockContentItem, style: ListBlockStyle) {
         switch style {
         case .unordered:
             let string = NSMutableAttributedString(string: Constants.bulletSign)
-            string.append(itemContent.attributedString!)
+            string.append(item.attributedString!)
             label.attributedText = string
         case .ordered:
-            let string = NSMutableAttributedString(string: "\(itemContent.index). " )
-            string.append(itemContent.attributedString!)
+            let string = NSMutableAttributedString(string: "\(item.index). " )
+            string.append(item.attributedString!)
             label.attributedText = string
         }
         
@@ -54,7 +54,7 @@ class ListItemNativeView: UIView, EJBlockStyleApplicable {
         layer.cornerRadius = style.cornerRadius
     }
     
-    static func estimatedSize(for item: ListBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
+    public static func estimatedSize(for item: ListBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
         guard let castedStyle = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.list) as? ListBlockNativeStyle else { return .zero }
         let font = castedStyle.font
         var textBoundingWidth = boundingWidth - (castedStyle.insets.left + castedStyle.insets.right)

@@ -18,7 +18,7 @@ protocol DelimiterNativeStyle: EJBlockStyle {
 
 ///
 class DelimiterBlockNativeStyle: DelimiterNativeStyle {
-    var font: UIFont = .systemFont(ofSize: 25, weight: .regular)
+    var font: UIFont = .systemFont(ofSize: 15, weight: .regular)
     var textAlignment: NSTextAlignment = .center
     var color: UIColor = .black
     var labelInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)

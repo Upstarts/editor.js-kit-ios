@@ -45,10 +45,8 @@ public class HeaderCollectionViewCell: UICollectionViewCell, EJBlockStyleApplica
             ])
     }
     
-    internal func configure(content: HeaderBlockContent) {
-        if let item = content.getItem(atIndex: 0) as? HeaderBlockContentItem {
-            headerView.configure(item: item)
-        }
+    public func configureCell(item: HeaderBlockContentItem) {
+        headerView.configure(item: item)
     }
     
     public func apply(style: EJBlockStyle) {

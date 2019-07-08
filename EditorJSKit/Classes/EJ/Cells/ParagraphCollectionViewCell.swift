@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ParagraphCollectionViewCell: UICollectionViewCell, EJBlockStyleApplicable {
+open class ParagraphCollectionViewCell: UICollectionViewCell, EJBlockStyleApplicable {
     
     private let baseView = UIView()
     private let paragraphView = ParagraphNativeView()
@@ -18,7 +18,7 @@ class ParagraphCollectionViewCell: UICollectionViewCell, EJBlockStyleApplicable 
         setupViews()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -45,13 +45,12 @@ class ParagraphCollectionViewCell: UICollectionViewCell, EJBlockStyleApplicable 
         
     }
     
-    func configure(content: ParagraphBlockContent) {
-        guard let item = content.getItem(atIndex: 0) as? ParagraphBlockContentItem else { return }
-        paragraphView.configure(withModel: item)
+    public func configureCell(item: ParagraphBlockContentItem) {
+        paragraphView.configure(item: item)
     }
     
     
-    func apply(style: EJBlockStyle) {
+    public func apply(style: EJBlockStyle) {
         paragraphView.apply(style: style)
     }
     

@@ -9,15 +9,15 @@
 import Foundation
 
 ///
-class RawHtmlBlockContent: EJAbstractBlockContent {
-    private var items: [RawHtmlBlockContentItem] = []
-    var numberOfItems: Int { return items.count }
+public class RawHtmlBlockContent: EJAbstractBlockContent {
+    public var items: [RawHtmlBlockContentItem] = []
+    public var numberOfItems: Int { return items.count }
     
-    required public init(from decoder: Decoder) throws {
+    public required init(from decoder: Decoder) throws {
         items = [try RawHtmlBlockContentItem(from: decoder)]
     }
     
-    func getItem(atIndex index: Int) -> EJAbstractBlockContentItem? {
+    public func getItem(atIndex index: Int) -> EJAbstractBlockContentItem? {
         guard index == 0 else { return nil }
         return items.first
     }
@@ -30,7 +30,7 @@ public class RawHtmlBlockContentItem: EJAbstractBlockContentItem {
     
     enum CodingKeys: String, CodingKey { case html }
     
-    required public init(from decoder: Decoder) throws {
+    public required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         html = try container.decode(String.self, forKey: .html)
         if let style = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.raw) as? RawHtmlNativeStyle {

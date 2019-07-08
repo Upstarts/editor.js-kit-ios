@@ -9,9 +9,9 @@
 import UIKit
 
 ///
-class HeaderNativeView: UIView, EJBlockStyleApplicable {
+public class HeaderNativeView: UIView, EJBlockStyleApplicable {
     
-    let label = UILabel()
+    public let label = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -46,7 +46,7 @@ class HeaderNativeView: UIView, EJBlockStyleApplicable {
         layer.cornerRadius = style.cornerRadius
     }
     
-    static func estimatedSize(for item: HeaderBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
+    public static func estimatedSize(for item: HeaderBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
         guard let attributed = item.attributedString, let style = style ?? EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.header)  else { return .zero }
         let newBoundingWidth = boundingWidth - (style.insets.left + style.insets.right)
         let height = attributed.height(withConstrainedWidth: newBoundingWidth)

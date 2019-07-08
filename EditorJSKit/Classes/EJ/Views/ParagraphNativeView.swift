@@ -9,17 +9,15 @@
 import UIKit
 
 ///
-class ParagraphNativeView: UIView, EJBlockStyleApplicable, EJConfigurableView  {
-    typealias Model = ParagraphBlockContentItem
-    
-    private let textView = UITextView()
+open class ParagraphNativeView: UIView, EJBlockStyleApplicable, EJConfigurableView  {
+    public let textView = UITextView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -41,11 +39,11 @@ class ParagraphNativeView: UIView, EJBlockStyleApplicable, EJConfigurableView  {
     }
     
     
-    func configure(withModel model: Model) {
-        textView.attributedText = model.attributedString
+    public func configure(item: ParagraphBlockContentItem) {
+        textView.attributedText = item.attributedString
     }
     
-    func apply(style: EJBlockStyle) {
+    public func apply(style: EJBlockStyle) {
         guard let style = style as? ParagraphNativeStyle else { return }
         //
         backgroundColor = style.backgroundColor
@@ -53,7 +51,7 @@ class ParagraphNativeView: UIView, EJBlockStyleApplicable, EJConfigurableView  {
     }
     
     
-    static func estimatedSize(for item: ParagraphBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
+    public static func estimatedSize(for item: ParagraphBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
         guard let attributed = item.attributedString, let style = style ?? EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.paragraph) else { return .zero }
         let newBoundingWidth = boundingWidth - (style.insets.left + style.insets.right)
         let height = attributed.textViewHeight(boundingWidth: newBoundingWidth)

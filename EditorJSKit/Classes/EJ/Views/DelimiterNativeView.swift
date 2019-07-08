@@ -9,16 +9,16 @@
 import UIKit
 
 ///
-class DelimiterNativeView: UIView, EJBlockStyleApplicable {
+open class DelimiterNativeView: UIView, EJBlockStyleApplicable {
     // MARK: - UI Properties
-    private let label = UILabel()
+    public let label = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -43,7 +43,7 @@ class DelimiterNativeView: UIView, EJBlockStyleApplicable {
         label.text = item.text
     }
     
-    func apply(style: EJBlockStyle) {
+    public func apply(style: EJBlockStyle) {
         guard let style = style as? DelimiterBlockNativeStyle else { return }
         label.textColor = style.color
         label.font = style.font
@@ -54,10 +54,12 @@ class DelimiterNativeView: UIView, EJBlockStyleApplicable {
     }
     
     
-    static func estimatedSize(for item: DelimiterBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
+    public static func estimatedSize(for item: DelimiterBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
         guard let castedStyle = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.delimiter) as? DelimiterBlockNativeStyle else { return .zero }
-        let newBoundingWidth = boundingWidth - (castedStyle.insets.left + castedStyle.insets.right)
-        let height = item.text.size(using: castedStyle.font, boundingWidth: newBoundingWidth).height
+        var newBoundingWidth = boundingWidth - (castedStyle.insets.left + castedStyle.insets.right)
+        newBoundingWidth -= castedStyle.labelInsets.left + castedStyle.labelInsets.right
+        var height = item.text.size(using: castedStyle.font, boundingWidth: newBoundingWidth).height
+        height += castedStyle.labelInsets.bottom + castedStyle.labelInsets.top
         return CGSize(width: boundingWidth, height: height)
     }
     
