@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   
   s.name             = 'EditorJSKit'
-  s.version          = '0.0.1'
+  s.version          = '0.0.2'
   s.summary          = 'iOS Framework for generated clean data from Editor.js.'
   
   s.description      = 'SDK for editor.js. Parse and render natively supported blocks. Put blocks into your UICollectionView or implement your own custom renderer. Design and use custom blocks.'
@@ -18,7 +18,8 @@ Pod::Spec.new do |s|
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Upstarts' => 'dev@upstarts.work' }
   s.source           = { :git => 'https://github.com/Upstarts/editor.js-kit-ios.git', :tag => s.version.to_s }
+  s.swift_version = '4.2'
   s.ios.deployment_target = '9.0'
-  s.source_files = 'EditorJSKit/EJ/*'
+  s.source_files = 'EditorJSKit/Classes/**/*'
   
 end
