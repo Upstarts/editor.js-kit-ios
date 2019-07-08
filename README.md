@@ -1,24 +1,28 @@
 
-# EditorJSKit
-[![CI Status](https://img.shields.io/travis/Ivan Glushko/EditorJSKit.svg?style=flat)](https://travis-ci.org/Ivan Glushko/EditorJSKit)
+<p align="center">
+  <img src="logo.png" width=400 />
+</p>
+
 [![Version](https://img.shields.io/cocoapods/v/EditorJSKit.svg?style=flat)](https://cocoapods.org/pods/EditorJSKit)
 [![License](https://img.shields.io/cocoapods/l/EditorJSKit.svg?style=flat)](https://cocoapods.org/pods/EditorJSKit)
 [![Platform](https://img.shields.io/cocoapods/p/EditorJSKit.svg?style=flat)](https://cocoapods.org/pods/EditorJSKit)
-
-![screenshot](screenshot.jpg)
 
 ## About
 
 Is an iOS Framework for [Editor.js](https://editorjs.io) generated clean data. It's purpose to make easy use of rendering and parsing of blocks.
 
+<p align="left">
+  <img src="screenshot.jpg" width=200 />
+</p>
+
 #### Supported blocks
-* Header
-* Raw HTML
-* Image
-* Delimiter
-* Paragraph
-* Link
-* List
+* 🎩 Header
+* 🥑 Raw HTML
+* 📷 Image
+* 🖌 Delimiter
+* 💌 Paragraph
+* 🕸 Link
+* 🌿 List
 
 
 ## Usage
@@ -92,5 +96,6 @@ pod 'EditorJSKit'
 
 ## Author
 
-[Upstarts](https://upstarts.work) , dev@upstarts.work
+[Upstarts](https://upstarts.work)
+[Ivan Glushko](https://github.com/ivanglushko)
 
