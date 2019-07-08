@@ -96,6 +96,6 @@ pod 'EditorJSKit'
 
 ## Author
 
-[Upstarts](https://upstarts.work)
+[Upstarts](https://upstarts.work)                 
 [Ivan Glushko](https://github.com/ivanglushko)
 
