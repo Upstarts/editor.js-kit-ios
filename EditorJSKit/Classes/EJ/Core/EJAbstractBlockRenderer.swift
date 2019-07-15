@@ -27,7 +27,7 @@ public protocol EJCollectionRendererAdaptable {
 ///
 extension EJCollectionRendererAdaptable {
     func insets(forBlock: EJAbstractBlock) -> UIEdgeInsets { return .zero }
-    func spacing(forBlock: EJAbstractBlock) -> CGFloat { return .zero }
+    func spacing(forBlock: EJAbstractBlock) -> CGFloat { return 0 }
 }
 
 ///
