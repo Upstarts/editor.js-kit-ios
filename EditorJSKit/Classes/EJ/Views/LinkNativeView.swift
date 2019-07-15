@@ -19,7 +19,7 @@ open class LinkNativeView: UIView {
     public var hasDescription = false
     
     // Constraints
-    private lazy var imageRightConstraint = imageView.rightAnchor.constraint(equalTo: rightAnchor, constant: .zero)
+    private lazy var imageRightConstraint = imageView.rightAnchor.constraint(equalTo: rightAnchor, constant: 0)
     private lazy var imageHeightConstraint = imageView.heightAnchor.constraint(equalToConstant: 0)
     private lazy var imageWidthConstraint = imageView.widthAnchor.constraint(equalToConstant: 0)
     private lazy var descriptionTopConstraint = descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor)

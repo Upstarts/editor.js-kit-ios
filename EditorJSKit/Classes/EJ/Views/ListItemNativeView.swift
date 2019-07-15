@@ -27,8 +27,8 @@ open class ListItemNativeView: UIView, EJBlockStyleApplicable {
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            label.leftAnchor.constraint(equalTo: leftAnchor, constant: style?.leftInset ?? .zero),
-            label.rightAnchor.constraint(equalTo: rightAnchor, constant: -(style?.rightInset ?? .zero)),
+            label.leftAnchor.constraint(equalTo: leftAnchor, constant: style?.leftInset ?? 0),
+            label.rightAnchor.constraint(equalTo: rightAnchor, constant: -(style?.rightInset ?? 0)),
             label.topAnchor.constraint(equalTo: topAnchor)
             ])
     }
