@@ -46,8 +46,8 @@ public class ImageNativeView: UIView, EJBlockStyleApplicable {
         NSLayoutConstraint.activate([
             label.topAnchor.constraint(equalTo: imageView.bottomAnchor),
             label.bottomAnchor.constraint(equalTo: bottomAnchor),
-            label.leftAnchor.constraint(equalTo: leftAnchor, constant: style?.captionLeftInset ?? .zero),
-            label.rightAnchor.constraint(equalTo: rightAnchor, constant: -(style?.captionRightInset ?? .zero))
+            label.leftAnchor.constraint(equalTo: leftAnchor, constant: style?.captionLeftInset ?? 0),
+            label.rightAnchor.constraint(equalTo: rightAnchor, constant: -(style?.captionRightInset ?? 0))
             ])
         
     }
@@ -88,6 +88,6 @@ public class ImageNativeView: UIView, EJBlockStyleApplicable {
             size = CGSize(width: boundingWidth, height: height)
         }
         
-        return size ?? CGSize(width: boundingWidth, height: .zero)
+        return size ?? CGSize(width: boundingWidth, height: 0)
     }
 }
