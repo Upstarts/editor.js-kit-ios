@@ -14,7 +14,7 @@ A non-official iOS Framework for [Editor.js](https://editorjs.io) - block styled
 Converts clean json blocks data like [this](Example/EditorJSKit/EditorJSMock.json) into native views like that 👇
 
 <p align="center">
-  <img src="screenshot.png" width=500 />
+  <img src="screenshot.png" width=420 />
 </p>
 
 #### Supported blocks
