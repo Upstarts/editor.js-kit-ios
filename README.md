@@ -37,21 +37,21 @@ Essentially the Kit is built on multiple levels of abstractions. It is pretty ha
 
 Note that the framework has a built-in protocol-oriented tools to implement your own renderers and custom blocks. These features are not documented yet, we're working on it. 
 
-For now we only support blocks rendering within a `UICollectionView` out of the box. That's how you gonna do it:
+For now we only support blocks rendering within a `UICollectionView` out of the box. We called it `EJCollectionRenderer`. That's how you gonna use it:
 
-1. Inside of your ViewController create a `collectionView`:
+1. Decode your data (array of json blocks) with `EJBLockList` type (which is `Codable`). 
+
+2. Store decoded list somewhere in blockList variable `var blockList: EJBlockList`
+
+3. Inside of your ViewController create a `collectionView`:
 ``` swift
 lazy var collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UICollectionViewFlowLayout())
 ```
 
-2. Create a renderer:
+4. Create a renderer:
 ``` swift
 let renderer = EJCollectionRenderer(collectionView: collectionView)
 ```
-
-3. Decode your data (array of json blocks) with `EJBLockList` type (which is `Codable`). 
-
-4. Store decoded list somewhere in blockList variable `var blockList: EJBlockList`
 
 5. Implement and assign data source and delegate methods.
 ``` swift
@@ -72,6 +72,7 @@ extension ViewController: UICollectionViewDataSource {
             return try renderer.render(block: blockList.blocks[indexPath.section], itemIndexPath: indexPath)
         }
         catch {
+        	// Ensure you won't ever get here
             return UICollectionViewCell()
         }
     }
