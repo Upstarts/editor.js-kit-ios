@@ -11,8 +11,7 @@
 
 A non-official iOS Framework for [Editor.js](https://editorjs.io) - block styled editor. It's purpose to make easy use of rendering and parsing of blocks.
 
-Converts clean json blocks data like [this](Example/EditorJSKit/EditorJSMock.json) 👈
-Into native views like that 👇
+Converts clean json blocks data like [this](Example/EditorJSKit/EditorJSMock.json) into native views like that 👇
 
 <p align="center">
   <img src="screenshot.png" width=500 />
