@@ -27,6 +27,7 @@ Converts clean json blocks data like [this](Example/EditorJSKit/EditorJSMock.jso
 * 🌿 List
 
 #### TODO's
+* 📋 Table block support
 * `UITableView` rendering
 * Documentation on how to create custom blocks
 * Documentation on how to create custom renderers
