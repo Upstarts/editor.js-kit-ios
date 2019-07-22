@@ -9,7 +9,7 @@
 
 ## About
 
-Is an iOS Framework for [Editor.js](https://editorjs.io) generated clean data. It's purpose to make easy use of rendering and parsing of blocks.
+A non-official iOS Framework for [Editor.js](https://editorjs.io) - block styled editor. It's purpose to make easy use of rendering and parsing of blocks.
 
 <p align="left">
   <img src="screenshot.jpg" width=200 />
@@ -24,25 +24,34 @@ Is an iOS Framework for [Editor.js](https://editorjs.io) generated clean data. I
 * 🕸 Link
 * 🌿 List
 
+#### TODO's
+* `UITableView` rendering
+* Documentation on how to create custom blocks
+* Documentation on how to create custom renderers
+
 
 ## Usage
-1. Create a collectionView:
+Essentially the Kit is built on multiple levels of abstractions. It is pretty handy since it provides an ability to customize the behavior of rendering clean json data and adding custom blocks.
+
+Note that the framework has a built-in protocol-oriented tools to implement your own renderers and custom blocks. These features are not documented yet, we're working on it. 
+
+For now we only support blocks rendering within a `UICollectionView` out of the box. That's how you gonna do it:
+
+1. Inside of your ViewController create a `collectionView`:
 ``` swift
-let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+lazy var collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UICollectionViewFlowLayout())
 ```
 
-2. Set `collectionView.delegate` and `collectionView.dataSource` to `self`
-
-3. Create a renderer:
+2. Create a renderer:
 ``` swift
 let renderer = EJCollectionRenderer(collectionView: collectionView)
 ```
 
-4. Decode your data with `EJBLockList` type. 
+3. Decode your data (array of json blocks) with `EJBLockList` type (which is `Codable`). 
 
-5. Store decoded list in blockList variable `var blockList: EJBlockList!`
+4. Store decoded list somewhere in blockList variable `var blockList: EJBlockList`
 
-6. Implement data source and delegate methods .
+5. Implement and assign data source and delegate methods.
 ``` swift
 ///
 extension ViewController: UICollectionViewDataSource {
@@ -72,7 +81,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
         do {
             return try renderer.size(forBlock: blockList.blocks[indexPath.section], itemIndexPath: indexPath, style: nil, superviewSize: collectionView.frame.size)
         } catch {
-            return CGSize(width: 100, height: 100)
+            return .zero
         }
     }
 }
@@ -96,6 +105,9 @@ pod 'EditorJSKit'
 
 ## Author
 
-[Upstarts](https://upstarts.work)                 
-[Ivan Glushko](https://github.com/ivanglushko)
+[Upstarts team](https://upstarts.work)
+
+[Vadim Popov](https://t.me/popovvadim) - Architecture, code review
+
+[Ivan Glushko](https://github.com/ivanglushko) - Implementation
 
