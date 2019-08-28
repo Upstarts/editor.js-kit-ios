@@ -9,7 +9,7 @@
 import Foundation
 
 ///
-protocol DataDownloaderServiceProtocol {
+public protocol DataDownloaderServiceProtocol {
     static func downloadFile(at url: URL, completion: @escaping (Data) -> Void)
 }
 

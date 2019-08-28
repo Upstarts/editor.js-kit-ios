@@ -9,7 +9,7 @@
 import UIKit
 
 ///
-protocol RawHtmlNativeStyle: EJBlockStyle {
+public protocol RawHtmlNativeStyle: EJBlockStyle {
     var font: UIFont { get }
 }
 

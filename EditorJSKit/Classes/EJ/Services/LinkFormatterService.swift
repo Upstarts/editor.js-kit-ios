@@ -9,7 +9,7 @@
 import Foundation
 
 ///
-protocol LinkFormatterServiceProtocol {
+public protocol LinkFormatterServiceProtocol {
     static func format(link: URL) -> String
 }
 

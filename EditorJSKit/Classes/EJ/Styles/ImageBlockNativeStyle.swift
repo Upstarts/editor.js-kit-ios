@@ -9,7 +9,7 @@
 import UIKit
 
 ///
-protocol ImageNativeStyle: EJBlockStyle {
+public protocol ImageNativeStyle: EJBlockStyle {
     var backgroundColor: UIColor { get }
     var font: UIFont { get }
     var captionColor: UIColor { get }

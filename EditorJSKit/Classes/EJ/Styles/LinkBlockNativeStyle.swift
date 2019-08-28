@@ -9,7 +9,7 @@
 import UIKit
 
 ///
-protocol LinkNativeStyle: EJBlockStyle {
+public protocol LinkNativeStyle: EJBlockStyle {
     var cornerRadius: CGFloat { get }
     var titleFont: UIFont { get }
     var titleColor: UIColor { get }

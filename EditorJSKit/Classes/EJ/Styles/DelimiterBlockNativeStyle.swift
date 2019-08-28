@@ -9,7 +9,7 @@
 import UIKit
 
 ///
-protocol DelimiterNativeStyle: EJBlockStyle {
+public protocol DelimiterNativeStyle: EJBlockStyle {
     var font: UIFont { get }
     var textAlignment: NSTextAlignment { get }
     var color: UIColor { get }
