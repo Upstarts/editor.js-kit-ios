@@ -9,7 +9,7 @@
 import UIKit
 
 ///
-protocol ParagraphNativeStyle: EJBlockStyle {
+public protocol ParagraphNativeStyle: EJBlockStyle {
     var font: UIFont { get }
 }
 
