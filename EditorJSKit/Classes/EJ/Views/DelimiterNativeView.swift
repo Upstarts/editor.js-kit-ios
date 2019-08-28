@@ -44,7 +44,7 @@ open class DelimiterNativeView: UIView, EJBlockStyleApplicable {
     }
     
     public func apply(style: EJBlockStyle) {
-        guard let style = style as? DelimiterBlockNativeStyle else { return }
+        guard let style = style as? DelimiterNativeStyle else { return }
         label.textColor = style.color
         label.font = style.font
         label.textAlignment = style.textAlignment
@@ -55,7 +55,7 @@ open class DelimiterNativeView: UIView, EJBlockStyleApplicable {
     
     
     public static func estimatedSize(for item: DelimiterBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
-        guard let castedStyle = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.delimiter) as? DelimiterBlockNativeStyle else { return .zero }
+        guard let castedStyle = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.delimiter) as? DelimiterNativeStyle else { return .zero }
         var newBoundingWidth = boundingWidth - (castedStyle.insets.left + castedStyle.insets.right)
         newBoundingWidth -= castedStyle.labelInsets.left + castedStyle.labelInsets.right
         var height = item.text.size(using: castedStyle.font, boundingWidth: newBoundingWidth).height
