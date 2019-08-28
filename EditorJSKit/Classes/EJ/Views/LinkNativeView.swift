@@ -124,7 +124,7 @@ open class LinkNativeView: UIView {
     }
     
     public func apply(style: EJBlockStyle) {
-        guard let style = style as? LinkBlockNativeStyle else { return }
+        guard let style = style as? LinkNativeStyle else { return }
         titleLabel.textColor = style.titleColor
         titleLabel.textAlignment = style.titleTextAlignment
         linkLabel.font = style.linkFont
@@ -137,7 +137,7 @@ open class LinkNativeView: UIView {
     }
     
     public static func estimatedSize(for item: LinkBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
-        guard let castedStyle = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.linkTool) as? LinkBlockNativeStyle else { return .zero }
+        guard let castedStyle = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.linkTool) as? LinkNativeStyle else { return .zero }
         let initialBoundingWidth = boundingWidth
         var boundingWidth = boundingWidth - (UIConstants.widthInsets + castedStyle.insets.left + castedStyle.insets.right)
         if item.image?.url != nil {

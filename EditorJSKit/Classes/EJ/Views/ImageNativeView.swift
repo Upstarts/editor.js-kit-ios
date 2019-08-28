@@ -53,7 +53,7 @@ public class ImageNativeView: UIView, EJBlockStyleApplicable {
     }
     
     public func apply(style: EJBlockStyle) {
-        guard let style = style as? ImageBlockNativeStyle else { return }
+        guard let style = style as? ImageNativeStyle else { return }
         label.textColor = style.captionColor
         label.textAlignment = style.textAlignment
         imageView.layer.cornerRadius = style.imageViewCornerRadius

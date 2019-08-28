@@ -27,6 +27,7 @@ open class ParagraphNativeView: UIView, EJBlockStyleApplicable, EJConfigurableVi
         
         addSubview(textView)
         
+        textView.backgroundColor = .clear
         textView.isEditable = false
         textView.textContainerInset = .zero
         textView.translatesAutoresizingMaskIntoConstraints = false
