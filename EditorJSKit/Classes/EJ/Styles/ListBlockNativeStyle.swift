@@ -9,7 +9,7 @@
 import UIKit
 
 ///
-protocol ListNativeStyle: EJBlockStyle {
+public protocol ListNativeStyle: EJBlockStyle {
     var font: UIFont { get }
     var color: UIColor { get }
     var leftInset: CGFloat { get }
