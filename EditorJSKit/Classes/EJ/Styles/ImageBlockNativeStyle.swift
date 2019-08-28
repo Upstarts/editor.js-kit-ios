@@ -17,6 +17,8 @@ public protocol ImageNativeStyle: EJBlockStyle {
     var cornerRadius: CGFloat { get }
     var captionLeftInset: CGFloat { get }
     var captionRightInset: CGFloat { get }
+    var imageViewCornerRadius: CGFloat { get }
+    var imageViewBackgroundColor: UIColor { get }
 }
 
 ///
