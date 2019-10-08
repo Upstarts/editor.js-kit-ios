@@ -9,7 +9,7 @@
 import UIKit
 
 ///
-public protocol DelimiterNativeStyle: EJBlockStyle {
+public protocol EJDelimiterBlockStyle: EJBlockStyle {
     var font: UIFont { get }
     var textAlignment: NSTextAlignment { get }
     var color: UIColor { get }
@@ -17,11 +17,11 @@ public protocol DelimiterNativeStyle: EJBlockStyle {
 }
 
 ///
-class DelimiterBlockNativeStyle: DelimiterNativeStyle {
+class DelimiterBlockNativeStyle: EJDelimiterBlockStyle {
     var font: UIFont = .systemFont(ofSize: 15, weight: .regular)
     var textAlignment: NSTextAlignment = .center
     var color: UIColor = .black
-    var labelInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    var labelInsets = UIEdgeInsets.zero
+    
+    var insets: UIEdgeInsets = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
 }
-
-

@@ -107,7 +107,7 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
         for customBlock in EJKit.shared.registeredCustomBlocks {
             guard customBlock.type.rawValue == forBlock.type.rawValue else { continue }
             guard let content = forBlock.data as? EJCollectionRendererAdaptableContent else { continue }
-            return try! content.size(forBlock: forBlock, itemIndex: itemIndex, style: nil, superviewSize: superviewSize)
+            return try content.size(forBlock: forBlock, itemIndex: itemIndex, style: nil, superviewSize: superviewSize)
         }
         
         switch forBlock.type {
@@ -115,51 +115,64 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
             return HeaderNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! HeaderBlockContentItem, style: style, boundingWidth: superviewSize.width)
             
         case EJNativeBlockType.image:
-            return ImageNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! ImageBlockContentItem, style: nil, boundingWidth: superviewSize.width)
+            return ImageNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! ImageBlockContentItem, style: style, boundingWidth: superviewSize.width)
             
         case EJNativeBlockType.list:
-            return ListItemNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! ListBlockContentItem, style: nil, boundingWidth: superviewSize.width)
+            guard let data = forBlock.data as? ListBlockContent else {
+                throw EJError.missmatch
+            }
+            return ListItemNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! ListBlockContentItem, itemsStyle: data.style, style: style, boundingWidth: superviewSize.width)
             
         case EJNativeBlockType.linkTool:
-            return LinkNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! LinkBlockContentItem, style: nil, boundingWidth: superviewSize.width)
+            return LinkNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! LinkBlockContentItem, style: style, boundingWidth: superviewSize.width)
             
         case EJNativeBlockType.delimiter:
-            return DelimiterNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! DelimiterBlockContentItem, style: nil, boundingWidth: superviewSize.width)
+            return DelimiterNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! DelimiterBlockContentItem, style: style, boundingWidth: superviewSize.width)
             
         case EJNativeBlockType.paragraph:
-            return ParagraphNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! ParagraphBlockContentItem, style: nil, boundingWidth: superviewSize.width)
+            return ParagraphNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! ParagraphBlockContentItem, style: style, boundingWidth: superviewSize.width)
             
         case EJNativeBlockType.raw:
-            return RawHtmlNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! RawHtmlBlockContentItem, style: nil, boundingWidth: superviewSize.width)
+            return RawHtmlNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! RawHtmlBlockContentItem, style: style, boundingWidth: superviewSize.width)
             
-        default: return CGSize(width: 200, height: 50)
+        default: return EJKit.shared.style.defaultItemSize
         }
     }
     
-    public func insets(forBlock: EJAbstractBlock) -> UIEdgeInsets {
+    public func insets(forBlock block: EJAbstractBlock) -> UIEdgeInsets {
         for customBlock in EJKit.shared.registeredCustomBlocks {
-            guard customBlock.type.rawValue == forBlock.type.rawValue else { continue }
-            guard let content = forBlock.data as? EJCollectionRendererAdaptableContent else { continue }
-            return content.insets(forBlock: forBlock)
+            guard customBlock.type.rawValue == block.type.rawValue else { continue }
+            guard let content = block.data as? EJCollectionRendererAdaptableContent else { continue }
+            return content.insets(forBlock: block)
         }
         
-        switch forBlock.type {
-        case EJNativeBlockType.header: return UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
-        case EJNativeBlockType.delimiter: return UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
-        default: return UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
+        var insets = EJKit.shared.style.defaultSectionInsets
+        switch block.type {
+        case EJNativeBlockType.header:
+            guard
+                let headerItem = (block.data as? HeaderBlockContent)?.getItem(atIndex: 0) as? HeaderBlockContentItem,
+                let headerStyle = EJKit.shared.style.getStyle(forBlockType: block.type) as? EJHeaderBlockStyle
+            else { return insets }
+            insets.top += headerStyle.topInset(forHeaderLevel: headerItem.level)
+            insets.bottom += headerStyle.bottomInset(forHeaderLevel: headerItem.level)
+            return insets
+        default:
+            break
         }
+        return insets
     }
     
-    public func spacing(forBlock: EJAbstractBlock) -> CGFloat {
+    public func spacing(forBlock block: EJAbstractBlock) -> CGFloat {
         for customBlock in EJKit.shared.registeredCustomBlocks {
-            guard customBlock.type.rawValue == forBlock.type.rawValue else { continue }
-            guard let content = forBlock.data as? EJCollectionRendererAdaptableContent else { continue }
-            return content.spacing(forBlock: forBlock)
+            guard customBlock.type.rawValue == block.type.rawValue else { continue }
+            guard let content = block.data as? EJCollectionRendererAdaptableContent else { continue }
+            return content.spacing(forBlock: block)
         }
         
-        switch forBlock.type {
-        default: return 4
+        if let style = EJKit.shared.style.getStyle(forBlockType: block.type) {
+            return style.lineSpacing
         }
+        return EJKit.shared.style.defaultItemsLineSpacing
     }
     
 }

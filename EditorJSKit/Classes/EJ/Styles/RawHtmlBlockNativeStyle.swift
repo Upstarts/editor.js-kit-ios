@@ -9,11 +9,11 @@
 import UIKit
 
 ///
-public protocol RawHtmlNativeStyle: EJBlockStyle {
+public protocol EJRawHtmlBlockStyle: EJBlockStyle {
     var font: UIFont { get }
 }
 
 ///
-class RawHtmlBlockNativeStyle: RawHtmlNativeStyle {
+class RawHtmlBlockNativeStyle: EJRawHtmlBlockStyle {
     var font: UIFont = .systemFont(ofSize: 14)
 }
