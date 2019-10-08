@@ -11,9 +11,11 @@ import UIKit
 ///
 public protocol EJParagraphBlockStyle: EJBlockStyle {
     var font: UIFont { get }
+    var linkTextAttributes: [NSAttributedString.Key: Any] { get }
 }
 
 ///
 class ParagraphBlockNativeStyle: EJParagraphBlockStyle {
     var font: UIFont = .systemFont(ofSize: 18)
+    var linkTextAttributes: [NSAttributedString.Key: Any] = [:]
 }
