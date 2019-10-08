@@ -52,7 +52,7 @@ public class ListBlockContentItem: EJAbstractBlockContentItem {
     init(text: String, index: Int) {
         self.text = text
         self.index = index
-        if let style = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.list) as? ListNativeStyle {
+        if let style = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.list) as? EJListBlockStyle {
             attributedString = text.convertHTML(font: style.font)
         } else {
             attributedString = nil
@@ -63,7 +63,7 @@ public class ListBlockContentItem: EJAbstractBlockContentItem {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         text = try container.decode(String.self, forKey: .text)
         index = 0
-        if let style = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.list) as? ListNativeStyle {
+        if let style = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.list) as? EJListBlockStyle {
             attributedString = text.convertHTML(font: style.font)
         } else {
             attributedString = nil

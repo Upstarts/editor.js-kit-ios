@@ -21,7 +21,7 @@ open class ListItemNativeView: UIView, EJBlockStyleApplicable {
     }
     
     private func setupViews() {
-        let style = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.list) as? ListNativeStyle
+        let style = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.list) as? EJListBlockStyle
         
         addSubview(label)
         label.numberOfLines = 0
@@ -47,19 +47,30 @@ open class ListItemNativeView: UIView, EJBlockStyleApplicable {
         
     }
     public func apply(style: EJBlockStyle) {
-        guard let style = style as? ListNativeStyle else { return }
+        guard let style = style as? EJListBlockStyle else { return }
         label.textColor = style.color
         //
         backgroundColor = style.backgroundColor
         layer.cornerRadius = style.cornerRadius
     }
     
-    public static func estimatedSize(for item: ListBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
-        guard let castedStyle = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.list) as? ListNativeStyle else { return .zero }
-        let font = castedStyle.font
+    public static func estimatedSize(for item: ListBlockContentItem, itemsStyle: ListBlockStyle, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
+        guard let castedStyle = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.list) as? EJListBlockStyle else { return .zero }
+        
         var textBoundingWidth = boundingWidth - (castedStyle.insets.left + castedStyle.insets.right)
         textBoundingWidth -= (castedStyle.leftInset + castedStyle.rightInset)
-        let height = item.text.size(using: font, boundingWidth: textBoundingWidth).height
+        
+        var string: NSMutableAttributedString!
+        switch itemsStyle {
+        case .unordered:
+            string = NSMutableAttributedString(string: Constants.bulletSign)
+            string.append(item.attributedString!)
+        case .ordered:
+            string = NSMutableAttributedString(string: "\(item.index). " )
+            string.append(item.attributedString!)
+        }
+        
+        let height = string.labelHeight(boundingWidth: textBoundingWidth)
         return CGSize(width: boundingWidth, height: height)
     }
 

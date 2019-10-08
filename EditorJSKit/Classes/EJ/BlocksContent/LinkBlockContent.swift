@@ -52,7 +52,7 @@ public class LinkBlockContentItem: EJAbstractBlockContentItem {
         siteName = try container.decodeIfPresent(String.self, forKey: .site_name)
         description = try container.decodeIfPresent(String.self, forKey: .description)
         image = try container.decodeIfPresent(ImageFile.self, forKey: .image)
-        if let style = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.linkTool) as? LinkNativeStyle {
+        if let style = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.linkTool) as? EJLinkBlockStyle {
             titleAttributedString = title.convertHTML(font: style.titleFont)
             siteNameAttributedString = siteName?.convertHTML(font: style.titleFont)
             descriptionAttributedString = description?.convertHTML(font: style.descriptionFont)

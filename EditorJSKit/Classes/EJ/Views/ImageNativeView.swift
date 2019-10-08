@@ -28,15 +28,17 @@ public class ImageNativeView: UIView, EJBlockStyleApplicable {
     }
     
     private func setupViews() {
-        let style = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.image) as? ImageNativeStyle
+        let style = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.image) as? EJImageBlockStyle
         addSubview(imageView)
         addSubview(label)
         
+        imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: topAnchor),
-            imageView.bottomAnchor.constraint(equalTo: label.topAnchor),
+            imageView.bottomAnchor.constraint(equalTo: label.topAnchor,
+                                              constant: -(style?.captionInsets.top ?? 0)),
             imageView.leftAnchor.constraint(equalTo: leftAnchor),
             imageView.rightAnchor.constraint(equalTo: rightAnchor)
             ])
@@ -44,26 +46,36 @@ public class ImageNativeView: UIView, EJBlockStyleApplicable {
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: imageView.bottomAnchor),
-            label.bottomAnchor.constraint(equalTo: bottomAnchor),
-            label.leftAnchor.constraint(equalTo: leftAnchor, constant: style?.captionLeftInset ?? 0),
-            label.rightAnchor.constraint(equalTo: rightAnchor, constant: -(style?.captionRightInset ?? 0))
+            label.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -(style?.captionInsets.bottom ?? 0)),
+            label.leftAnchor.constraint(equalTo: leftAnchor, constant: style?.captionInsets.left ?? 0),
+            label.rightAnchor.constraint(equalTo: rightAnchor, constant: -(style?.captionInsets.right ?? 0))
             ])
         
     }
     
     public func apply(style: EJBlockStyle) {
-        guard let style = style as? ImageNativeStyle else { return }
+        guard let style = style as? EJImageBlockStyle else { return }
         label.textColor = style.captionColor
         label.textAlignment = style.textAlignment
         imageView.layer.cornerRadius = style.imageViewCornerRadius
-        if withBackground { imageView.backgroundColor = style.imageViewBackgroundColor }
-        //
-        backgroundColor = style.backgroundColor
+        if withBackground {
+            imageView.backgroundColor = style.imageViewBackgroundColor
+            backgroundColor = style.backgroundColor
+        }
+        else {
+            imageView.backgroundColor = .clear
+            backgroundColor = .clear
+        }
         layer.cornerRadius = style.cornerRadius
     }
     
     public func configure(item: ImageBlockContentItem) {
+        if item.stretched {
+            imageView.contentMode = .scaleAspectFill
+        }
+        else {
+            imageView.contentMode = .scaleAspectFit
+        }
         if let data = item.file.imageData {
             setImage(from: data, item: item)
             label.attributedText = item.attributedString
@@ -81,13 +93,16 @@ public class ImageNativeView: UIView, EJBlockStyleApplicable {
     
     public static func estimatedSize(for item: ImageBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
         var size: CGSize?
-        
+        let style = style ?? EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.image)
         if let data = item.file.imageData, let image = UIImage(data: data), let attributed = item.attributedString {
             var height = image.size.height / UIScreen.main.scale
             height += attributed.height(withConstrainedWidth: boundingWidth)
+            if let style = style as? EJImageBlockStyle {
+                height += style.captionInsets.top + style.captionInsets.bottom
+            }
             size = CGSize(width: boundingWidth, height: height)
         }
         
-        return size ?? CGSize(width: boundingWidth, height: 0)
+        return size ?? CGSize(width: boundingWidth, height: 10)
     }
 }

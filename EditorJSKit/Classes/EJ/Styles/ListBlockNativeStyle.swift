@@ -9,7 +9,7 @@
 import UIKit
 
 ///
-public protocol ListNativeStyle: EJBlockStyle {
+public protocol EJListBlockStyle: EJBlockStyle {
     var font: UIFont { get }
     var color: UIColor { get }
     var leftInset: CGFloat { get }
@@ -17,9 +17,10 @@ public protocol ListNativeStyle: EJBlockStyle {
 }
 
 ///
-class ListBlockNativeStyle: ListNativeStyle {
-    var font = UIFont.systemFont(ofSize: 18)
-    var color = UIColor.black
-    var leftInset: CGFloat = 0
-    var rightInset: CGFloat = 0
+class ListBlockNativeStyle: EJListBlockStyle {
+    let font = UIFont.systemFont(ofSize: 18)
+    let color = UIColor.black
+    let leftInset: CGFloat = 0
+    let rightInset: CGFloat = 0
+    let lineSpacing: CGFloat = 4
 }
