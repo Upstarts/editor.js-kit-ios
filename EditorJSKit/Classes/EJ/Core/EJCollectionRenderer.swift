@@ -118,10 +118,7 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
             return ImageNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! ImageBlockContentItem, style: style, boundingWidth: superviewSize.width)
             
         case EJNativeBlockType.list:
-            guard let data = forBlock.data as? ListBlockContent else {
-                throw EJError.missmatch
-            }
-            return ListItemNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! ListBlockContentItem, itemsStyle: data.style, style: style, boundingWidth: superviewSize.width)
+            return ListItemNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! ListBlockContentItem, style: style, boundingWidth: superviewSize.width)
             
         case EJNativeBlockType.linkTool:
             return LinkNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! LinkBlockContentItem, style: style, boundingWidth: superviewSize.width)

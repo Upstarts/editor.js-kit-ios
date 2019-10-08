@@ -80,6 +80,12 @@ public class ImageNativeView: UIView, EJBlockStyleApplicable {
             setImage(from: data, item: item)
             label.attributedText = item.attributedString
             withBackground = item.withBackground
+            label.isHidden = false
+            imageView.isHidden = false
+        }
+        else {
+            label.isHidden = true
+            imageView.isHidden = true
         }
     }
     
@@ -87,6 +93,8 @@ public class ImageNativeView: UIView, EJBlockStyleApplicable {
         if let image = UIImage(data: data) {
             DispatchQueue.main.async {
                 self.imageView.image = image
+                self.label.isHidden = false
+                self.imageView.isHidden = false
             }
         }
     }

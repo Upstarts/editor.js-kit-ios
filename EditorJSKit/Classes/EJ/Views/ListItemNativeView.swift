@@ -36,11 +36,11 @@ open class ListItemNativeView: UIView, EJBlockStyleApplicable {
     public func configure(item: ListBlockContentItem, style: ListBlockStyle) {
         switch style {
         case .unordered:
-            let string = NSMutableAttributedString(string: Constants.bulletSign)
+            let string = NSMutableAttributedString(string: "\(Constants.bulletSign)\t")
             string.append(item.attributedString!)
             label.attributedText = string
         case .ordered:
-            let string = NSMutableAttributedString(string: "\(item.index). " )
+            let string = NSMutableAttributedString(string: "\(item.index).\t" )
             string.append(item.attributedString!)
             label.attributedText = string
         }
@@ -54,19 +54,19 @@ open class ListItemNativeView: UIView, EJBlockStyleApplicable {
         layer.cornerRadius = style.cornerRadius
     }
     
-    public static func estimatedSize(for item: ListBlockContentItem, itemsStyle: ListBlockStyle, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
+    public static func estimatedSize(for item: ListBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
         guard let castedStyle = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.list) as? EJListBlockStyle else { return .zero }
         
         var textBoundingWidth = boundingWidth - (castedStyle.insets.left + castedStyle.insets.right)
         textBoundingWidth -= (castedStyle.leftInset + castedStyle.rightInset)
         
         var string: NSMutableAttributedString!
-        switch itemsStyle {
+        switch item.style {
         case .unordered:
-            string = NSMutableAttributedString(string: Constants.bulletSign)
+            string = NSMutableAttributedString(string: "\(Constants.bulletSign)\t")
             string.append(item.attributedString!)
         case .ordered:
-            string = NSMutableAttributedString(string: "\(item.index). " )
+            string = NSMutableAttributedString(string: "\(item.index).\t")
             string.append(item.attributedString!)
         }
         

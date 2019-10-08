@@ -12,7 +12,7 @@
             "type": "image",
             "data": {
                 "file": {
-                    "url": "https://github.com/Upstarts/editor.js-kit-ios/blob/master/logo.png"
+                    "url": "https://github.com/Upstarts/editor.js-kit-ios/blob/master/logo.png?raw=true"
                 },
                 "caption": "This is a caption.",
                 "withBorder": true,
@@ -23,7 +23,7 @@
         {
             "type" : "list",
             "data" : {
-                "style" : "unordered",
+                "style" : "ordered",
                 "items" : [
                     "It is a block-styled editor",
                     "It returns clean data output in JSON",

@@ -29,9 +29,10 @@ public class ListBlockContent: EJAbstractBlockContent {
     
     required public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        style = try container.decode(ListBlockStyle.self, forKey: .style)
+        let style = try container.decode(ListBlockStyle.self, forKey: .style)
+        self.style = style
         if let items = try? container.decode([String].self, forKey: .items) {
-            self.items = items.enumerated().map { return ListBlockContentItem(text: $1, index: $0 + 1) }
+            self.items = items.enumerated().map { return ListBlockContentItem(text: $1, index: $0 + 1, style: style) }
         } else {
             throw DecodingError.typeMismatch([ListBlockContentItem].self,
                                              DecodingError.Context(codingPath: [CodingKeys.items],
@@ -44,14 +45,16 @@ public class ListBlockContent: EJAbstractBlockContent {
 ///
 public class ListBlockContentItem: EJAbstractBlockContentItem {
     enum CodingKeys: String, CodingKey {  case text }
+    public let style: ListBlockStyle
     public let text: String
     public let index: Int
     
     public let attributedString: NSAttributedString?
     
-    init(text: String, index: Int) {
+    init(text: String, index: Int, style: ListBlockStyle) {
         self.text = text
         self.index = index
+        self.style = style
         if let style = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.list) as? EJListBlockStyle {
             attributedString = text.convertHTML(font: style.font)
         } else {
@@ -68,5 +71,6 @@ public class ListBlockContentItem: EJAbstractBlockContentItem {
         } else {
             attributedString = nil
         }
+        style = .unordered
     }
 }
