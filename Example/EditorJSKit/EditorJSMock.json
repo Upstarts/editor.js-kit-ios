@@ -12,12 +12,12 @@
             "type": "image",
             "data": {
                 "file": {
-                    "url": "https://codex.so/upload/redactor_images/o_e48549d1855c7fc1807308dd14990126.jpg"
+                    "url": "https://github.com/Upstarts/editor.js-kit-ios/blob/master/logo.png"
                 },
                 "caption": "This is a caption.",
                 "withBorder": true,
                 "stretched": false,
-                "withBackground": true
+                "withBackground": false
             }
         },
         {

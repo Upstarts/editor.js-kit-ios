@@ -45,7 +45,7 @@ open class RawHtmlNativeView: UIView, EJBlockStyleApplicable, EJConfigurableView
     
     
     public func apply(style: EJBlockStyle) {
-        guard let style = style as? RawHtmlNativeStyle else { return }
+        guard let style = style as? EJRawHtmlBlockStyle else { return }
         //
         backgroundColor = style.backgroundColor
         layer.cornerRadius = style.cornerRadius

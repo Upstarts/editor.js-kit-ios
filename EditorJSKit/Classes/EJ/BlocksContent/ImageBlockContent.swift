@@ -42,7 +42,7 @@ public class ImageBlockContentItem: EJAbstractBlockContentItem {
         stretched = try container.decode(Bool.self, forKey: .stretched)
         withBackground = try container.decode(Bool.self, forKey: .withBackground)
         
-        if let style = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.image) as? ImageNativeStyle {
+        if let style = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.image) as? EJImageBlockStyle {
             attributedString = caption.convertHTML(font: style.font)
         }
     }
