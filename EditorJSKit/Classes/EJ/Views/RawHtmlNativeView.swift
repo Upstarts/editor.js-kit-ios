@@ -46,7 +46,7 @@ open class RawHtmlNativeView: UIView, EJBlockStyleApplicable, EJConfigurableView
     
     public func apply(style: EJBlockStyle) {
         guard let style = style as? EJRawHtmlBlockStyle else { return }
-        //
+        textView.linkTextAttributes = style.linkTextAttributes
         backgroundColor = style.backgroundColor
         layer.cornerRadius = style.cornerRadius
     }

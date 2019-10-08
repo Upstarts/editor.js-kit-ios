@@ -11,9 +11,11 @@ import UIKit
 ///
 public protocol EJRawHtmlBlockStyle: EJBlockStyle {
     var font: UIFont { get }
+    var linkTextAttributes: [NSAttributedString.Key: Any] { get }
 }
 
 ///
 class RawHtmlBlockNativeStyle: EJRawHtmlBlockStyle {
     var font: UIFont = .systemFont(ofSize: 14)
+    var linkTextAttributes: [NSAttributedString.Key: Any] = [:]
 }
