@@ -29,6 +29,8 @@ open class ParagraphNativeView: UIView, EJBlockStyleApplicable, EJConfigurableVi
         
         textView.backgroundColor = .clear
         textView.isEditable = false
+        textView.alwaysBounceVertical = false
+        textView.isScrollEnabled = false
         textView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             textView.leftAnchor.constraint(equalTo: leftAnchor),

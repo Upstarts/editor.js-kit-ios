@@ -70,12 +70,6 @@ public class ImageNativeView: UIView, EJBlockStyleApplicable {
     }
     
     public func configure(item: ImageBlockContentItem) {
-        if item.stretched {
-            imageView.contentMode = .scaleAspectFill
-        }
-        else {
-            imageView.contentMode = .scaleAspectFit
-        }
         if let data = item.file.imageData {
             setImage(from: data, item: item)
             label.attributedText = item.attributedString
@@ -100,17 +94,28 @@ public class ImageNativeView: UIView, EJBlockStyleApplicable {
     }
     
     public static func estimatedSize(for item: ImageBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
-        var size: CGSize?
         let style = style ?? EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.image)
-        if let data = item.file.imageData, let image = UIImage(data: data), let attributed = item.attributedString {
-            var height = image.size.height / UIScreen.main.scale
+        var height: CGFloat = 0
+        if let data = item.file.imageData, let image = UIImage(data: data) {
+            let imageRatio = image.size.width / image.size.height
+            if imageRatio >= 1 {
+                // album or square
+                height += boundingWidth / imageRatio
+            }
+            else {
+                // portrait
+                var imageWidth = image.size.width / UIScreen.main.scale
+                imageWidth = min(imageWidth, boundingWidth)
+                height += imageWidth / imageRatio
+            }
+        }
+        if let attributed = item.attributedString {
             height += attributed.height(withConstrainedWidth: boundingWidth)
             if let style = style as? EJImageBlockStyle {
                 height += style.captionInsets.top + style.captionInsets.bottom
             }
-            size = CGSize(width: boundingWidth, height: height)
         }
         
-        return size ?? CGSize(width: boundingWidth, height: 10)
+        return CGSize(width: boundingWidth, height: height)
     }
 }
