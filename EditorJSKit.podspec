@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   
   s.name             = 'EditorJSKit'
-  s.version          = '0.1.1'
+  s.version          = '0.1.2'
   s.summary          = 'iOS Framework for generated clean data from Editor.js.'
   
   s.description      = 'SDK for editor.js. Parse and render natively supported blocks. Put blocks into your UICollectionView or implement your own custom renderer. Design and use custom blocks.'
