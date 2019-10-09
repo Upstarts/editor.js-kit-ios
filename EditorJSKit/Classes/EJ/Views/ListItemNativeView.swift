@@ -25,6 +25,8 @@ open class ListItemNativeView: UIView, EJBlockStyleApplicable {
         
         textView.backgroundColor = .clear
         textView.isEditable = false
+        textView.alwaysBounceVertical = false
+        textView.isScrollEnabled = false
         addSubview(textView)
         textView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
