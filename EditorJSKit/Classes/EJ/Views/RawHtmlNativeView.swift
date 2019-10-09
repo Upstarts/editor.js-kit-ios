@@ -10,7 +10,7 @@ import UIKit
 
 ///
 open class RawHtmlNativeView: UIView, EJBlockStyleApplicable, EJConfigurableView  {
-    public let textView = UITextView()
+    public let textView = UITextViewFixed()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

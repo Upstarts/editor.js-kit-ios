@@ -9,7 +9,7 @@
 import UIKit
 
 open class ListItemNativeView: UIView, EJBlockStyleApplicable {
-    public let label = UILabel()
+    public let textView = UITextViewFixed()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -23,32 +23,26 @@ open class ListItemNativeView: UIView, EJBlockStyleApplicable {
     private func setupViews() {
         let style = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.list) as? EJListBlockStyle
         
-        addSubview(label)
-        label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
+        textView.backgroundColor = .clear
+        textView.isEditable = false
+        addSubview(textView)
+        textView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            label.leftAnchor.constraint(equalTo: leftAnchor, constant: style?.leftInset ?? 0),
-            label.rightAnchor.constraint(equalTo: rightAnchor, constant: -(style?.rightInset ?? 0)),
-            label.topAnchor.constraint(equalTo: topAnchor)
+            textView.leftAnchor.constraint(equalTo: leftAnchor, constant: style?.leftInset ?? 0),
+            textView.rightAnchor.constraint(equalTo: rightAnchor, constant: -(style?.rightInset ?? 0)),
+            textView.topAnchor.constraint(equalTo: topAnchor),
+            textView.bottomAnchor.constraint(equalTo: bottomAnchor)
             ])
     }
     
     public func configure(item: ListBlockContentItem, style: ListBlockStyle) {
-        switch style {
-        case .unordered:
-            let string = NSMutableAttributedString(string: "\(Constants.bulletSign)\t")
-            string.append(item.attributedString!)
-            label.attributedText = string
-        case .ordered:
-            let string = NSMutableAttributedString(string: "\(item.index).\t" )
-            string.append(item.attributedString!)
-            label.attributedText = string
-        }
+        let attributedString = ListItemNativeView.makeAttributedString(item: item, style: style)
+        textView.attributedText = attributedString
         
     }
     public func apply(style: EJBlockStyle) {
         guard let style = style as? EJListBlockStyle else { return }
-        label.textColor = style.color
+        textView.textColor = style.color
         //
         backgroundColor = style.backgroundColor
         layer.cornerRadius = style.cornerRadius
@@ -60,25 +54,35 @@ open class ListItemNativeView: UIView, EJBlockStyleApplicable {
         var textBoundingWidth = boundingWidth - (castedStyle.insets.left + castedStyle.insets.right)
         textBoundingWidth -= (castedStyle.leftInset + castedStyle.rightInset)
         
-        var string: NSMutableAttributedString!
-        switch item.style {
-        case .unordered:
-            string = NSMutableAttributedString(string: "\(Constants.bulletSign)\t")
-            string.append(item.attributedString!)
-        case .ordered:
-            string = NSMutableAttributedString(string: "\(item.index).\t")
-            string.append(item.attributedString!)
-        }
-        
-        let height = string.labelHeight(boundingWidth: textBoundingWidth)
+        let string = makeAttributedString(item: item, style: item.style)        
+        let height = string.textViewHeight(boundingWidth: textBoundingWidth)
         return CGSize(width: boundingWidth, height: height)
     }
 
+    private static func makeAttributedString(item: ListBlockContentItem, style: ListBlockStyle) -> NSAttributedString {
+        let prefix = style == .unordered ? "\(Constants.bulletSign)\t" : "\(item.index).\t"
+        let attributedString = NSMutableAttributedString(string: prefix)
+        
+        let blockStyle = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.list) as? EJListBlockStyle
+        if let font = blockStyle?.font {
+            attributedString.addAttributes([.font: font], range: NSRange(location: 0, length: prefix.count))
+        }
+        attributedString.append(item.attributedString!)
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        let tabSpace = blockStyle?.tabulationSpace ?? Constants.defaultTabSpace
+        let tabStop = NSTextTab(textAlignment: .left, location: tabSpace, options: [:])
+        paragraphStyle.defaultTabInterval = tabSpace
+        paragraphStyle.tabStops = [tabStop]
+        attributedString.addAttributes([.paragraphStyle: paragraphStyle], range: NSRange(location: 0, length: attributedString.string.count))
+        return attributedString
+    }
 }
 
 ///
 extension ListItemNativeView {
     struct Constants {
-        static let bulletSign = "\u{2022} "
+        static let bulletSign = "\u{2022}"
+        static let defaultTabSpace: CGFloat = 10
     }
 }

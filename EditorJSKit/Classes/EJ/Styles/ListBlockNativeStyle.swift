@@ -14,6 +14,7 @@ public protocol EJListBlockStyle: EJBlockStyle {
     var color: UIColor { get }
     var leftInset: CGFloat { get }
     var rightInset: CGFloat { get }
+    var tabulationSpace: CGFloat { get }
 }
 
 ///
@@ -23,4 +24,5 @@ class ListBlockNativeStyle: EJListBlockStyle {
     let leftInset: CGFloat = 0
     let rightInset: CGFloat = 0
     let lineSpacing: CGFloat = 4
+    let tabulationSpace: CGFloat = 10
 }

@@ -34,14 +34,14 @@ public class DelimiterCollectionViewCell: UICollectionViewCell, EJBlockStyleAppl
             baseView.topAnchor.constraint(equalTo: topAnchor),
             baseView.bottomAnchor.constraint(equalTo: bottomAnchor)
             ])
-        
+
         baseView.addSubview(delimiterView)
         delimiterView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             delimiterView.leftAnchor.constraint(equalTo: baseView.leftAnchor, constant: insets.left),
             delimiterView.rightAnchor.constraint(equalTo: baseView.rightAnchor, constant: -insets.right),
-            delimiterView.topAnchor.constraint(equalTo: baseView.topAnchor, constant: insets.top),
-            delimiterView.bottomAnchor.constraint(equalTo: baseView.bottomAnchor, constant: -insets.bottom)
+            delimiterView.topAnchor.constraint(equalTo: baseView.topAnchor),
+            delimiterView.bottomAnchor.constraint(equalTo: baseView.bottomAnchor)
             ])
         
     }

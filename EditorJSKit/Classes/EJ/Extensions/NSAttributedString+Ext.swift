@@ -59,10 +59,10 @@ extension NSAttributedString {
     }
     
     func textViewHeight(boundingWidth: CGFloat) -> CGFloat {
-        let textView = UITextView()
-        textView.textContainerInset = .zero
+        let textView = UITextViewFixed(frame: CGRect(origin: .zero, size: CGSize(width: boundingWidth, height: 0)))
         textView.attributedText = self
-        let height = textView.sizeThatFits(CGSize(width: boundingWidth, height: 0)).height
-        return height
+        textView.setup()
+        let size = textView.sizeThatFits(CGSize(width: boundingWidth, height: 0))
+        return size.height
     }
 }

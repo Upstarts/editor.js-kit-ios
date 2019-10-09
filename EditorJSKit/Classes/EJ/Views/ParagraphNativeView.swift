@@ -10,7 +10,7 @@ import UIKit
 
 ///
 open class ParagraphNativeView: UIView, EJBlockStyleApplicable, EJConfigurableView  {
-    public let textView = UITextView()
+    public let textView = UITextViewFixed()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,7 +29,6 @@ open class ParagraphNativeView: UIView, EJBlockStyleApplicable, EJConfigurableVi
         
         textView.backgroundColor = .clear
         textView.isEditable = false
-        textView.textContainerInset = .zero
         textView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             textView.leftAnchor.constraint(equalTo: leftAnchor),
