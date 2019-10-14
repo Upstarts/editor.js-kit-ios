@@ -15,6 +15,9 @@ public class ImageNativeView: UIView, EJBlockStyleApplicable {
     public let imageView = UIImageView()
     public let label = UILabel()
     
+    private var imageWidth: NSLayoutConstraint?
+    private var imageHeight: NSLayoutConstraint?
+    
     //
     private var withBackground: Bool = false
     
@@ -35,12 +38,13 @@ public class ImageNativeView: UIView, EJBlockStyleApplicable {
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageWidth = imageView.widthAnchor.constraint(equalToConstant: 0)
+        imageHeight = imageView.heightAnchor.constraint(equalToConstant: 0)
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: topAnchor),
-            imageView.bottomAnchor.constraint(equalTo: label.topAnchor,
-                                              constant: -(style?.captionInsets.top ?? 0)),
-            imageView.leftAnchor.constraint(equalTo: leftAnchor),
-            imageView.rightAnchor.constraint(equalTo: rightAnchor)
+            imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            imageWidth!,
+            imageHeight!
             ])
         
         label.numberOfLines = 0
@@ -89,33 +93,49 @@ public class ImageNativeView: UIView, EJBlockStyleApplicable {
                 self.imageView.image = image
                 self.label.isHidden = false
                 self.imageView.isHidden = false
+                if let imageSize = ImageNativeView.imageSize(for: item, containerMaxWidth: self.bounds.width) {
+                    self.imageWidth?.constant = imageSize.width
+                    self.imageHeight?.constant = imageSize.height
+                    self.layoutIfNeeded()
+                }
             }
         }
     }
     
     public static func estimatedSize(for item: ImageBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
         let style = style ?? EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.image)
+        let containerMaxWidth: CGFloat = boundingWidth - (style?.insets.left ?? 0) - (style?.insets.right ?? 0)
         var height: CGFloat = 0
-        if let data = item.file.imageData, let image = UIImage(data: data) {
-            let imageRatio = image.size.width / image.size.height
-            if imageRatio >= 1 {
-                // album or square
-                height += boundingWidth / imageRatio
-            }
-            else {
-                // portrait
-                var imageWidth = image.size.width / UIScreen.main.scale
-                imageWidth = min(imageWidth, boundingWidth)
-                height += imageWidth / imageRatio
-            }
+        if let imageSize = self.imageSize(for: item, containerMaxWidth: containerMaxWidth) {
+            height += imageSize.height
         }
         if let attributed = item.attributedString {
-            height += attributed.height(withConstrainedWidth: boundingWidth)
+            height += attributed.height(withConstrainedWidth: containerMaxWidth)
             if let style = style as? EJImageBlockStyle {
                 height += style.captionInsets.top + style.captionInsets.bottom
             }
         }
         
         return CGSize(width: boundingWidth, height: height)
+    }
+    
+    private static func imageSize(for item: ImageBlockContentItem, containerMaxWidth: CGFloat) -> CGSize? {
+        if let data = item.file.imageData, let image = UIImage(data: data) {
+            let imageRatio = image.size.width / image.size.height
+            if imageRatio >= 1 {
+                // album or square
+                let imageHeight: CGFloat = image.size.height / UIScreen.main.scale
+                let height: CGFloat = min(imageHeight, containerMaxWidth / imageRatio)
+                return CGSize(width: height * imageRatio, height: height)
+            }
+            else {
+                // portrait
+                var imageWidth = image.size.width / UIScreen.main.scale
+                imageWidth = min(imageWidth, containerMaxWidth)
+                let height = imageWidth / imageRatio
+                return CGSize(width: height * imageRatio, height: height)
+            }
+        }
+        return nil
     }
 }
