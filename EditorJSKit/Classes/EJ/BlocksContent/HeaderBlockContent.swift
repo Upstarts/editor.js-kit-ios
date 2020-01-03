@@ -41,7 +41,10 @@ public class HeaderBlockContentItem: EJAbstractBlockContentItem {
         level = try container.decode(Int.self, forKey: .level)
         if let style = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.header) as? EJHeaderBlockStyle {
             let newText = "<b>\(text)</b>"
-            attributedString = newText.convertHTML(font: style.font(forHeaderLevel: level))
+            let convertedAttributedString = newText.convertHTML(font: style.font(forHeaderLevel: level)) ?? NSAttributedString()
+            let mutableString = NSMutableAttributedString(attributedString: convertedAttributedString)
+            mutableString.addAttribute(.foregroundColor, value: style.textColor, range: NSRange(location: 0, length: mutableString.length))
+            attributedString = mutableString
         } else {
             attributedString = nil
         }

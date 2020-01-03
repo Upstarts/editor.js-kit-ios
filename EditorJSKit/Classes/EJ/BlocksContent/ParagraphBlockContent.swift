@@ -33,7 +33,9 @@ public class ParagraphBlockContentItem: EJAbstractBlockContentItem {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         text = try container.decode(String.self, forKey: .text)
         if let style = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.paragraph) as? EJParagraphBlockStyle {
-            attributedString = text.convertHTML(font: style.font)
+            let mutableString = NSMutableAttributedString(attributedString: text.convertHTML(font: style.font) ?? NSAttributedString())
+            mutableString.addAttribute(.foregroundColor, value: style.textColor, range: NSRange(location: 0, length: mutableString.length))
+            attributedString = mutableString
         } else {
             attributedString = nil
         }
