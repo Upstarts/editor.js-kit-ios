@@ -10,6 +10,7 @@ import UIKit
 ///
 public protocol EJHeaderBlockStyle: EJBlockStyle {
     var alignment: NSTextAlignment { get }
+    var textColor: UIColor { get }
     func font(forHeaderLevel level: Int) -> UIFont
     func topInset(forHeaderLevel level: Int) -> CGFloat
     func bottomInset(forHeaderLevel level: Int) -> CGFloat
@@ -18,6 +19,7 @@ public protocol EJHeaderBlockStyle: EJBlockStyle {
 ///
 class HeaderBlockNativeStyle: EJHeaderBlockStyle {
     var alignment: NSTextAlignment = .left
+    var textColor: UIColor = .black
     
     func font(forHeaderLevel level: Int) -> UIFont {
         switch level {
