@@ -41,20 +41,17 @@ extension String {
 
 ///
 extension String {
-    private static let pattern = "<html><head><style type='text/css'>body {font-family: \"%@\";font-size: %dpx;}b {font-family: \"%@\";font-size: %dpx;}</style></head><body>%@</body></html>"
     
     /**
      */
-    func convertHTML(font: UIFont) -> NSAttributedString? {
-        let formattedHTMLText = String(format: .pattern, font.familyName, Int(font.pointSize), font.familyName, Int(font.pointSize), self)
-        let options: [NSAttributedString.DocumentReadingOptionKey : Any] = [NSAttributedString.DocumentReadingOptionKey.documentType : NSAttributedString.DocumentType.html, NSAttributedString.DocumentReadingOptionKey.characterEncoding: String.Encoding.utf8.rawValue]
-        
-        let attributedString = try? NSAttributedString(
-            data: formattedHTMLText.data(using: String.Encoding(rawValue: String.Encoding.unicode.rawValue), allowLossyConversion: true)!,
-            options: options,
-            documentAttributes: nil)
-        
-        
-        return attributedString
+    func convertHTML(font: UIFont, forceFontFace: Bool = false) -> NSAttributedString? {
+        do {
+            let string = try NSAttributedString(htmlString: self, font: font, forceFontFace: forceFontFace)
+            return string
+        }
+        catch {
+            print(error)
+            return nil
+        }
     }
 }

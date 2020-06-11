@@ -1,22 +1,16 @@
 //
-//  EJHeaderBlockStyle.swift
-//  EditorJSKit
+//  HeaderStyle.swift
+//  EditorJSKit_Example
 //
-//  Created by Иван Глушко on 13/06/2019.
+//  Created by Vadim Popov on 11.06.2020.
+//  Copyright © 2020 CocoaPods. All rights reserved.
 //
 
-import UIKit
+import EditorJSKit
 
 ///
-public protocol EJHeaderBlockStyle: EJBlockStyle {
-    var alignment: NSTextAlignment { get }
-    func font(forHeaderLevel level: Int) -> UIFont
-    func topInset(forHeaderLevel level: Int) -> CGFloat
-    func bottomInset(forHeaderLevel level: Int) -> CGFloat
-}
-
-///
-class HeaderBlockNativeStyle: EJHeaderBlockStyle {
+struct HeaderStyle: EJHeaderBlockStyle {
+    
     let alignment: NSTextAlignment = .left
     
     func font(forHeaderLevel level: Int) -> UIFont {
@@ -34,4 +28,5 @@ class HeaderBlockNativeStyle: EJHeaderBlockStyle {
     func bottomInset(forHeaderLevel level: Int) -> CGFloat {
         return 0
     }
+
 }

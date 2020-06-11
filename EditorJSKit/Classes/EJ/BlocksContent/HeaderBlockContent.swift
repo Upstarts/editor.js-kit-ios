@@ -40,8 +40,7 @@ public class HeaderBlockContentItem: EJAbstractBlockContentItem {
         text = try container.decode(String.self, forKey: .text)
         level = try container.decode(Int.self, forKey: .level)
         if let style = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.header) as? EJHeaderBlockStyle {
-            let newText = "<b>\(text)</b>"
-            attributedString = newText.convertHTML(font: style.font(forHeaderLevel: level))
+            attributedString = text.convertHTML(font: style.font(forHeaderLevel: level), forceFontFace: true)
         } else {
             attributedString = nil
         }
