@@ -14,8 +14,9 @@
 		15C35B47762FD68287053FDC /* Pods_EditorJSKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3CE106F12E810F78098A50E /* Pods_EditorJSKit_Example.framework */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		941C74AB24923062004FC8A0 /* HeaderStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941C74AA24923062004FC8A0 /* HeaderStyle.swift */; };
 		A1AAAF35C898DF82F3488ADC /* Pods_EditorJSKit_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A78DB84A780C399AB031D141 /* Pods_EditorJSKit_Tests.framework */; };
-		AFAA9AAEEE25B57B96623EE6 /* Pods_EditorJSKit_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 152CDB93A32B9E6C103E3AF6 /* Pods_EditorJSKit_Tests.framework */; };
+		AFAA9AAEEE25B57B96623EE6 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		7A093C55F750A3D57B145A5E /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		7B632858BC818B30538C3169 /* Pods-EditorJSKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EditorJSKit_Example.release.xcconfig"; path = "Target Support Files/Pods-EditorJSKit_Example/Pods-EditorJSKit_Example.release.xcconfig"; sourceTree = "<group>"; };
 		88EDD5CEC1759A4704548B82 /* EditorJSKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = EditorJSKit.podspec; path = ../EditorJSKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		941C74AA24923062004FC8A0 /* HeaderStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderStyle.swift; sourceTree = "<group>"; };
 		A359055EB3460A42F8A62D90 /* Pods-EditorJSKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EditorJSKit_Example.debug.xcconfig"; path = "Target Support Files/Pods-EditorJSKit_Example/Pods-EditorJSKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		A78DB84A780C399AB031D141 /* Pods_EditorJSKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EditorJSKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3CE106F12E810F78098A50E /* Pods_EditorJSKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EditorJSKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,7 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AFAA9AAEEE25B57B96623EE6 /* Pods_EditorJSKit_Tests.framework in Frameworks */,
+				AFAA9AAEEE25B57B96623EE6 /* (null) in Frameworks */,
 				A1AAAF35C898DF82F3488ADC /* Pods_EditorJSKit_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -92,6 +94,7 @@
 		04AF4AD522B132E100BBBD3D /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				941C74A924923054004FC8A0 /* Styles */,
 				04AF4AD322B132C100BBBD3D /* AppDelegate */,
 				04AF4AD422B132D200BBBD3D /* Controllers */,
 			);
@@ -203,6 +206,14 @@
 				7A093C55F750A3D57B145A5E /* LICENSE */,
 			);
 			name = "Podspec Metadata";
+			sourceTree = "<group>";
+		};
+		941C74A924923054004FC8A0 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				941C74AA24923062004FC8A0 /* HeaderStyle.swift */,
+			);
+			name = Styles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -381,6 +392,7 @@
 			files = (
 				04EA855022B79132006315D8 /* AppDelegate.swift in Sources */,
 				046C3C5522B2645800B194D2 /* ViewController.swift in Sources */,
+				941C74AB24923062004FC8A0 /* HeaderStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
