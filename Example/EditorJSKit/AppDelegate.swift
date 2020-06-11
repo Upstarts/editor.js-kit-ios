@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import EditorJSKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,10 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        setupEJStyles()
+        
         window?.makeKeyAndVisible()
         window?.rootViewController = ViewController()
         return true
     }
     
+    func setupEJStyles() {
+        EJKit.shared.style.setStyle(style: HeaderStyle(), for: EJNativeBlockType.header)
+    }
 }
-
