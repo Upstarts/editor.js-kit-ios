@@ -51,7 +51,7 @@ public class ListBlockContentItem: EJAbstractBlockContentItem {
     
     public let attributedString: NSAttributedString?
     
-    init(text: String, index: Int, style: ListBlockStyle) {
+    public init(text: String, index: Int, style: ListBlockStyle) {
         self.text = text
         self.index = index
         self.style = style
