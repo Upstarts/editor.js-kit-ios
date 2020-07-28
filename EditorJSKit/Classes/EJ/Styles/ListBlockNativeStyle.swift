@@ -15,6 +15,9 @@ public protocol EJListBlockStyle: EJBlockStyle {
     var leftInset: CGFloat { get }
     var rightInset: CGFloat { get }
     var tabulationSpace: CGFloat { get }
+    var insetBetweenImageAndText: CGFloat { get }
+    var imageForUnorderedList: UIImage? { get }
+    var sizeForUnorderedImage: CGSize { get }
 }
 
 ///
@@ -25,4 +28,7 @@ class ListBlockNativeStyle: EJListBlockStyle {
     let rightInset: CGFloat = 0
     let lineSpacing: CGFloat = 4
     let tabulationSpace: CGFloat = 10
+    let imageForUnorderedList = UIImage(named: "dot")
+    let sizeForUnorderedImage = CGSize(width: 24, height: 24)
+    let insetBetweenImageAndText: CGFloat = 0
 }
