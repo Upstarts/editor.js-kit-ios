@@ -30,11 +30,16 @@
 		746F9F7141DD960CAAB728579A30E53B /* ParagraphNativeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF01FC950158AAB4E825AB08FF810C9 /* ParagraphNativeView.swift */; };
 		7B597EB556588CBA1C737B4326DC612A /* Pods-EditorJSKit_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7067BC923453D0F47CA9200DE8251081 /* Pods-EditorJSKit_Tests-dummy.m */; };
 		8065268C89708D70BEDD0EE1EBE5BDE8 /* DelimiterBlockNativeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182C7A9EB06C6F32559F98E9ACEEF96D /* DelimiterBlockNativeStyle.swift */; };
-		81F295C7E828D2FDAA4188E12180EB5B /* DelimiterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3B1B70112D9E7B8A26F8FCE810818 /* DelimiterCollectionViewCell.swift */; };
+		81F295C7E828D2FDAA4188E12180EB5B /* DelimiterBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3B1B70112D9E7B8A26F8FCE810818 /* DelimiterBlockView.swift */; };
 		8F12269FC4B33B7CFB514DD6DF3032D8 /* ImageBlockNativeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B2DD4C5A918BB0F327717EF10782AB /* ImageBlockNativeStyle.swift */; };
 		90D57CE14E4CBD679802B0597B7AF6B1 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3468B64236F5AE70F77BC2CF9FE6898 /* ImageCollectionViewCell.swift */; };
 		925E66BFD655BA54CBB3DDCF90FDB617 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		9333BE493F07CCF3849C588F876B9293 /* Pods-EditorJSKit_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C0C2BE1FD5E250B89C8D34D8E555F8DC /* Pods-EditorJSKit_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		94A74FCA2840B519008B26B9 /* BaseBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A74FC92840B519008B26B9 /* BaseBlockView.swift */; };
+		94A74FCC2840B62F008B26B9 /* ConfigurableBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A74FCB2840B62F008B26B9 /* ConfigurableBlockView.swift */; };
+		94A74FCF2840BC13008B26B9 /* ReusableBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A74FCE2840BC13008B26B9 /* ReusableBlockView.swift */; };
+		94A74FD32840BD13008B26B9 /* CollectionViewBlockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A74FD22840BD13008B26B9 /* CollectionViewBlockCell.swift */; };
+		94A74FD52840BE66008B26B9 /* EJBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A74FD42840BE66008B26B9 /* EJBlockView.swift */; };
 		94B12175234DFBC400163577 /* UITextView+Fixed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B12174234DFBC400163577 /* UITextView+Fixed.swift */; };
 		A49BEE96A6C64F17473BC1104068378E /* LinkBlockContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140024D450908E0F5BB7438FFB40B105 /* LinkBlockContent.swift */; };
 		A4DA4C6A974818525E7C9A094E89F1EC /* LinkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B6612DDC15997A19BAE5A61400DAA1 /* LinkCollectionViewCell.swift */; };
@@ -49,7 +54,7 @@
 		C90A6E78AB74ADDCAED9ED2072B9C9B9 /* DataDownloaderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2AF12D709280E9456E5395D71F16B9 /* DataDownloaderService.swift */; };
 		D1FF981EEC99642E0A0599AAF7E10A34 /* EJBlocksList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACA9C84E880FFB76FC121D8B223ACFE /* EJBlocksList.swift */; };
 		D3BE0F7AF52F8D7E804C7CD0D6192DFB /* ListItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF70C176AA65D2809C1A2131868BC40 /* ListItemCollectionViewCell.swift */; };
-		D8F74B6E7C6739FB55F8CB1A63136536 /* DelimiterNativeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14072AEA4C6904BBB92407CC6FC7BFB /* DelimiterNativeView.swift */; };
+		D8F74B6E7C6739FB55F8CB1A63136536 /* DelimiterNativeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14072AEA4C6904BBB92407CC6FC7BFB /* DelimiterNativeContentView.swift */; };
 		DB33FA81F7217F9E8D38A368825AB0C9 /* EJStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4D63E9ED194B83A8FF0A989EA71B5D /* EJStyle.swift */; };
 		DE082EF1679F6C821B4DBE738457A14A /* ListBlockContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0D0085386B818F4D6089B27FBDA661 /* ListBlockContent.swift */; };
 		DF4CBF55F63D7B7096127D5D4F2DBFEC /* HeaderNativeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E814E062D9533C27CE5E96D139918066 /* HeaderNativeView.swift */; };
@@ -116,6 +121,11 @@
 		8A86D9804BD14503DC9FAB234A1C16D4 /* RawHtmlBlockContent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RawHtmlBlockContent.swift; sourceTree = "<group>"; };
 		90B170A317B8DB5025838F1460C7CB0A /* Pods-EditorJSKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-EditorJSKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		94A38F7FC0E4EB26F37A6D6C28B9BC95 /* Pods-EditorJSKit_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-EditorJSKit_Example-frameworks.sh"; sourceTree = "<group>"; };
+		94A74FC92840B519008B26B9 /* BaseBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseBlockView.swift; sourceTree = "<group>"; };
+		94A74FCB2840B62F008B26B9 /* ConfigurableBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableBlockView.swift; sourceTree = "<group>"; };
+		94A74FCE2840BC13008B26B9 /* ReusableBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableBlockView.swift; sourceTree = "<group>"; };
+		94A74FD22840BD13008B26B9 /* CollectionViewBlockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewBlockCell.swift; sourceTree = "<group>"; };
+		94A74FD42840BE66008B26B9 /* EJBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EJBlockView.swift; sourceTree = "<group>"; };
 		94B12174234DFBC400163577 /* UITextView+Fixed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Fixed.swift"; sourceTree = "<group>"; };
 		96B2DD4C5A918BB0F327717EF10782AB /* ImageBlockNativeStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ImageBlockNativeStyle.swift; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -130,13 +140,13 @@
 		BACA9C84E880FFB76FC121D8B223ACFE /* EJBlocksList.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EJBlocksList.swift; sourceTree = "<group>"; };
 		BFA5569880FAFC8B73A21EDBA2FF9248 /* LinkBlockNativeStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LinkBlockNativeStyle.swift; sourceTree = "<group>"; };
 		C0C2BE1FD5E250B89C8D34D8E555F8DC /* Pods-EditorJSKit_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-EditorJSKit_Example-umbrella.h"; sourceTree = "<group>"; };
-		C14072AEA4C6904BBB92407CC6FC7BFB /* DelimiterNativeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DelimiterNativeView.swift; sourceTree = "<group>"; };
+		C14072AEA4C6904BBB92407CC6FC7BFB /* DelimiterNativeContentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DelimiterNativeContentView.swift; sourceTree = "<group>"; };
 		CAFB0DDE87C81432C95F0D98E944FF28 /* HeaderBlockNativeStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HeaderBlockNativeStyle.swift; sourceTree = "<group>"; };
 		CC247AA0BEAEC517A64427D89E7F9C49 /* EJConfigurableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EJConfigurableView.swift; sourceTree = "<group>"; };
 		CC48AED8359C2151DD00C6E1881C2F69 /* EditorJSKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = EditorJSKit.xcconfig; sourceTree = "<group>"; };
 		CDCA27FEB37629FD29AE0F83954EA199 /* NSAttributedString+Ext.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Ext.swift"; sourceTree = "<group>"; };
 		CDF70C176AA65D2809C1A2131868BC40 /* ListItemCollectionViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ListItemCollectionViewCell.swift; sourceTree = "<group>"; };
-		CFD3B1B70112D9E7B8A26F8FCE810818 /* DelimiterCollectionViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DelimiterCollectionViewCell.swift; sourceTree = "<group>"; };
+		CFD3B1B70112D9E7B8A26F8FCE810818 /* DelimiterBlockView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DelimiterBlockView.swift; sourceTree = "<group>"; };
 		D12E22E28A83D1DD7EAD3A8C95F32D44 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		D2FA938E3D8BE92212F57506D75F78B5 /* EditorJSKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "EditorJSKit-Info.plist"; sourceTree = "<group>"; };
 		D5B6612DDC15997A19BAE5A61400DAA1 /* LinkCollectionViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LinkCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -254,7 +264,8 @@
 		68C2BCA8ECCDEDA05B66269638C6E760 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				CFD3B1B70112D9E7B8A26F8FCE810818 /* DelimiterCollectionViewCell.swift */,
+				94A74FC82840B4F6008B26B9 /* Base */,
+				94A74FCD2840B80B008B26B9 /* Delimiter */,
 				B46427DE060DA5C2B4C457260967C09C /* HeaderCollectionViewCell.swift */,
 				A3468B64236F5AE70F77BC2CF9FE6898 /* ImageCollectionViewCell.swift */,
 				D5B6612DDC15997A19BAE5A61400DAA1 /* LinkCollectionViewCell.swift */,
@@ -321,6 +332,7 @@
 		9023AC9F3EC3508E26EBF707C47213C7 /* EditorJSKit */ = {
 			isa = PBXGroup;
 			children = (
+				94A74FD02840BCFC008B26B9 /* Adapters */,
 				89A581C014048A4BD8FEBA4EB218567A /* BlocksContent */,
 				68C2BCA8ECCDEDA05B66269638C6E760 /* Components */,
 				5F775B5AD31FF815E44E653AAADAE887 /* Core */,
@@ -333,6 +345,42 @@
 			);
 			name = EditorJSKit;
 			path = ../..;
+			sourceTree = "<group>";
+		};
+		94A74FC82840B4F6008B26B9 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				94A74FCB2840B62F008B26B9 /* ConfigurableBlockView.swift */,
+				94A74FCE2840BC13008B26B9 /* ReusableBlockView.swift */,
+				94A74FC92840B519008B26B9 /* BaseBlockView.swift */,
+				94A74FD42840BE66008B26B9 /* EJBlockView.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		94A74FCD2840B80B008B26B9 /* Delimiter */ = {
+			isa = PBXGroup;
+			children = (
+				CFD3B1B70112D9E7B8A26F8FCE810818 /* DelimiterBlockView.swift */,
+				C14072AEA4C6904BBB92407CC6FC7BFB /* DelimiterNativeContentView.swift */,
+			);
+			path = Delimiter;
+			sourceTree = "<group>";
+		};
+		94A74FD02840BCFC008B26B9 /* Adapters */ = {
+			isa = PBXGroup;
+			children = (
+				94A74FD12840BD03008B26B9 /* CollectionView */,
+			);
+			path = Adapters;
+			sourceTree = "<group>";
+		};
+		94A74FD12840BD03008B26B9 /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				94A74FD22840BD13008B26B9 /* CollectionViewBlockCell.swift */,
+			);
+			path = CollectionView;
 			sourceTree = "<group>";
 		};
 		BC9251EC587F7A15A764992457C444C1 /* Support Files */ = {
@@ -352,7 +400,6 @@
 		BEA1D97F011337ACED5AC609559EBBDE /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C14072AEA4C6904BBB92407CC6FC7BFB /* DelimiterNativeView.swift */,
 				E814E062D9533C27CE5E96D139918066 /* HeaderNativeView.swift */,
 				38DF1B65F42C7EE6202006B0F84FF8D6 /* ImageNativeView.swift */,
 				61364C7893E95F5F9C0FCAFE3EC4B9FC /* LinkNativeView.swift */,
@@ -558,13 +605,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94A74FD32840BD13008B26B9 /* CollectionViewBlockCell.swift in Sources */,
 				C90A6E78AB74ADDCAED9ED2072B9C9B9 /* DataDownloaderService.swift in Sources */,
 				5330E72007CC736DEA2E4EF1302374C4 /* DelimiterBlockContent.swift in Sources */,
 				8065268C89708D70BEDD0EE1EBE5BDE8 /* DelimiterBlockNativeStyle.swift in Sources */,
-				81F295C7E828D2FDAA4188E12180EB5B /* DelimiterCollectionViewCell.swift in Sources */,
-				D8F74B6E7C6739FB55F8CB1A63136536 /* DelimiterNativeView.swift in Sources */,
+				81F295C7E828D2FDAA4188E12180EB5B /* DelimiterBlockView.swift in Sources */,
+				D8F74B6E7C6739FB55F8CB1A63136536 /* DelimiterNativeContentView.swift in Sources */,
 				B3ADFED4792861F05D512433102DC96B /* EditorJSKit-dummy.m in Sources */,
 				733E1C4BEF3E0D76CC6034F9D2589FD1 /* EJAbstractBlock.swift in Sources */,
+				94A74FCF2840BC13008B26B9 /* ReusableBlockView.swift in Sources */,
 				56AD2C95681F7FC71089CE29FE30F444 /* EJAbstractBlockRenderer.swift in Sources */,
 				D1FF981EEC99642E0A0599AAF7E10A34 /* EJBlocksList.swift in Sources */,
 				F22AA2FF934638E09CA3A8C6DCD2FC89 /* EJCollectionRenderer.swift in Sources */,
@@ -573,6 +622,7 @@
 				B620C0B984FD09701FDF4BA29732D872 /* EJNativeBlockType.swift in Sources */,
 				DB33FA81F7217F9E8D38A368825AB0C9 /* EJStyle.swift in Sources */,
 				94B12175234DFBC400163577 /* UITextView+Fixed.swift in Sources */,
+				94A74FCA2840B519008B26B9 /* BaseBlockView.swift in Sources */,
 				6DA0A592E49632B0F3E6E02423B4A147 /* HeaderBlockContent.swift in Sources */,
 				BFE7C3EC0B0CC294042FACEEAFBA934D /* HeaderBlockNativeStyle.swift in Sources */,
 				2F95EAA836CE3127D860E3FC5C7127F9 /* HeaderCollectionViewCell.swift in Sources */,
@@ -588,6 +638,7 @@
 				091090C1A22809B7A009E8F3CF963189 /* LinkNativeView.swift in Sources */,
 				DE082EF1679F6C821B4DBE738457A14A /* ListBlockContent.swift in Sources */,
 				58A242765C50D582051834045E65CFF5 /* ListBlockNativeStyle.swift in Sources */,
+				94A74FD52840BE66008B26B9 /* EJBlockView.swift in Sources */,
 				D3BE0F7AF52F8D7E804C7CD0D6192DFB /* ListItemCollectionViewCell.swift in Sources */,
 				EB90484F262D4AE4C5D2D40CC8C23B75 /* ListItemNativeView.swift in Sources */,
 				33E876F5FA4CDDD8333737C579C8FE24 /* NativeStyle.swift in Sources */,
@@ -598,6 +649,7 @@
 				746F9F7141DD960CAAB728579A30E53B /* ParagraphNativeView.swift in Sources */,
 				C15E33A1EC27B971A0A1BD71F7B1EE43 /* RawHtmlBlockContent.swift in Sources */,
 				56BA7423B06FB5DF9FFE5056F488687D /* RawHtmlBlockNativeStyle.swift in Sources */,
+				94A74FCC2840B62F008B26B9 /* ConfigurableBlockView.swift in Sources */,
 				063A31B6C7718057CD5F898FCF6F04DC /* RawHtmlCollectionViewCell.swift in Sources */,
 				AE7A86AEF85C8B1FAA0190D7BCC0E0AC /* RawHtmlNativeView.swift in Sources */,
 				30DD78667B75CEA0497D433A1BB40DCB /* String+Ext.swift in Sources */,

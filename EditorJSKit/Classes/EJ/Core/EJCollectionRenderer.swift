@@ -12,7 +12,6 @@ import UIKit
 open class EJCollectionRenderer: EJCollectionBlockRenderer {
     public typealias View = UICollectionViewCell & EJBlockStyleApplicable
     
-    
     public var startSectionIndex: Int = 0
     
     unowned public var collectionView: UICollectionView
@@ -71,11 +70,12 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
             return cell
             
         case EJNativeBlockType.delimiter:
-            collectionView.register(DelimiterCollectionViewCell.self, forCellWithReuseIdentifier: DelimiterCollectionViewCell.description())
+            let reuseId = DelimiterBlockView.reuseId
+            collectionView.register(CollectionViewBlockCell<DelimiterBlockView>.self, forCellWithReuseIdentifier: reuseId)
             let content = block.data as! DelimiterBlockContent
-            let item = content.getItem(atIndex: 0) as! DelimiterBlockContentItem
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DelimiterCollectionViewCell.description(), for: indexPath) as! DelimiterCollectionViewCell
-            cell.configureCell(item: item)
+            let item = content.getItem(atIndex: .zero) as! DelimiterBlockContentItem
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as! CollectionViewBlockCell<DelimiterBlockView>
+            cell.configure(withItem: item)
             cell.apply(style: style ?? EJKit.shared.style.getStyle(forBlockType: block.type)!)
             return cell
             
@@ -124,7 +124,7 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
             return LinkNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! LinkBlockContentItem, style: style, boundingWidth: superviewSize.width)
             
         case EJNativeBlockType.delimiter:
-            return DelimiterNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! DelimiterBlockContentItem, style: style, boundingWidth: superviewSize.width)
+            return DelimiterNativeContentView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! DelimiterBlockContentItem, style: style, boundingWidth: superviewSize.width)
             
         case EJNativeBlockType.paragraph:
             return ParagraphNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! ParagraphBlockContentItem, style: style, boundingWidth: superviewSize.width)
