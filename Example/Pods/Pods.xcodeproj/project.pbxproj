@@ -251,7 +251,7 @@
 			name = Pod;
 			sourceTree = "<group>";
 		};
-		68C2BCA8ECCDEDA05B66269638C6E760 /* Cells */ = {
+		68C2BCA8ECCDEDA05B66269638C6E760 /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				CFD3B1B70112D9E7B8A26F8FCE810818 /* DelimiterCollectionViewCell.swift */,
@@ -262,8 +262,8 @@
 				0D147DD8B6957BC3139F446798684167 /* ParagraphCollectionViewCell.swift */,
 				27072265CBFED06F75A40FDF6EFC5B25 /* RawHtmlCollectionViewCell.swift */,
 			);
-			name = Cells;
-			path = EditorJSKit/Classes/EJ/Cells;
+			name = Components;
+			path = EditorJSKit/Classes/EJ/Components;
 			sourceTree = "<group>";
 		};
 		7D1D95572548B061E0794A3DA2B1F174 /* Services */ = {
@@ -322,7 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				89A581C014048A4BD8FEBA4EB218567A /* BlocksContent */,
-				68C2BCA8ECCDEDA05B66269638C6E760 /* Cells */,
+				68C2BCA8ECCDEDA05B66269638C6E760 /* Components */,
 				5F775B5AD31FF815E44E653AAADAE887 /* Core */,
 				83F712D45C571F1EE4DEA0779A830EC4 /* Extensions */,
 				683C0C2B70F2798923E68E6C01371FE8 /* Pod */,
