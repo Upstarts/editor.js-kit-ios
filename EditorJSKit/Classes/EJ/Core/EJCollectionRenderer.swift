@@ -31,11 +31,12 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
         switch block.type {
             
         case EJNativeBlockType.header:
-            collectionView.register(HeaderCollectionViewCell.self, forCellWithReuseIdentifier: HeaderCollectionViewCell.description())
+            let reuseId = HeaderBlockView.reuseId
+            collectionView.register(CollectionViewBlockCell<HeaderBlockView>.self, forCellWithReuseIdentifier: reuseId)
             let content = block.data as! HeaderBlockContent
-            let item = content.getItem(atIndex: 0) as! HeaderBlockContentItem
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderCollectionViewCell.description(), for: indexPath) as! HeaderCollectionViewCell
-            cell.configureCell(item: item)
+            let item = content.getItem(atIndex: .zero) as! HeaderBlockContentItem
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as! CollectionViewBlockCell<HeaderBlockView>
+            cell.configure(withItem: item)
             cell.apply(style: style ?? EJKit.shared.style.getStyle(forBlockType: block.type)!)
             return cell
             
@@ -102,35 +103,35 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
         
     }
     
-    public func size(forBlock: EJAbstractBlock, itemIndex: Int, style: EJBlockStyle?, superviewSize: CGSize) throws -> CGSize {
+    public func size(forBlock block: EJAbstractBlock, itemIndex: Int, style: EJBlockStyle?, superviewSize: CGSize) throws -> CGSize {
         
         for customBlock in EJKit.shared.registeredCustomBlocks {
-            guard customBlock.type.rawValue == forBlock.type.rawValue else { continue }
-            guard let content = forBlock.data as? EJCollectionRendererAdaptableContent else { continue }
-            return try content.size(forBlock: forBlock, itemIndex: itemIndex, style: nil, superviewSize: superviewSize)
+            guard customBlock.type.rawValue == block.type.rawValue else { continue }
+            guard let content = block.data as? EJCollectionRendererAdaptableContent else { continue }
+            return try content.size(forBlock: block, itemIndex: itemIndex, style: nil, superviewSize: superviewSize)
         }
         
-        switch forBlock.type {
+        switch block.type {
         case EJNativeBlockType.header:
-            return HeaderNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! HeaderBlockContentItem, style: style, boundingWidth: superviewSize.width)
+            return HeaderNativeContentView.estimatedSize(for: block.data.getItem(atIndex: itemIndex) as! HeaderBlockContentItem, style: style, boundingWidth: superviewSize.width)
             
         case EJNativeBlockType.image:
-            return ImageNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! ImageBlockContentItem, style: style, boundingWidth: superviewSize.width)
+            return ImageNativeView.estimatedSize(for: block.data.getItem(atIndex: itemIndex) as! ImageBlockContentItem, style: style, boundingWidth: superviewSize.width)
             
         case EJNativeBlockType.list:
-            return ListItemNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! ListBlockContentItem, style: style, boundingWidth: superviewSize.width)
+            return ListItemNativeView.estimatedSize(for: block.data.getItem(atIndex: itemIndex) as! ListBlockContentItem, style: style, boundingWidth: superviewSize.width)
             
         case EJNativeBlockType.linkTool:
-            return LinkNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! LinkBlockContentItem, style: style, boundingWidth: superviewSize.width)
+            return LinkNativeView.estimatedSize(for: block.data.getItem(atIndex: itemIndex) as! LinkBlockContentItem, style: style, boundingWidth: superviewSize.width)
             
         case EJNativeBlockType.delimiter:
-            return DelimiterNativeContentView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! DelimiterBlockContentItem, style: style, boundingWidth: superviewSize.width)
+            return DelimiterNativeContentView.estimatedSize(for: block.data.getItem(atIndex: itemIndex) as! DelimiterBlockContentItem, style: style, boundingWidth: superviewSize.width)
             
         case EJNativeBlockType.paragraph:
-            return ParagraphNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! ParagraphBlockContentItem, style: style, boundingWidth: superviewSize.width)
+            return ParagraphNativeView.estimatedSize(for: block.data.getItem(atIndex: itemIndex) as! ParagraphBlockContentItem, style: style, boundingWidth: superviewSize.width)
             
         case EJNativeBlockType.raw:
-            return RawHtmlNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! RawHtmlBlockContentItem, style: style, boundingWidth: superviewSize.width)
+            return RawHtmlNativeView.estimatedSize(for: block.data.getItem(atIndex: itemIndex) as! RawHtmlBlockContentItem, style: style, boundingWidth: superviewSize.width)
             
         default: return EJKit.shared.style.defaultItemSize
         }

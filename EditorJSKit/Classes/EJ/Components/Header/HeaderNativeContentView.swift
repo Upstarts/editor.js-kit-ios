@@ -9,7 +9,7 @@
 import UIKit
 
 ///
-public class HeaderNativeView: UIView, EJBlockStyleApplicable {
+public class HeaderNativeContentView: UIView, EJBlockStyleApplicable, ConfigurableBlockView {
     
     public let label = UILabel()
     
@@ -34,16 +34,10 @@ public class HeaderNativeView: UIView, EJBlockStyleApplicable {
             ])
     }
     
-    public func configure(item: HeaderBlockContentItem) {
-        label.attributedText = item.attributedString
-    }
+    // MARK: - ConfigurableBlockView conformance
     
-    public func apply(style: EJBlockStyle) {
-        guard let style = style as? EJHeaderBlockStyle else { return }
-        label.textAlignment = style.alignment
-        //
-        backgroundColor = style.backgroundColor
-        layer.cornerRadius = style.cornerRadius
+    public func configure(withItem item: HeaderBlockContentItem) {
+        label.attributedText = item.attributedString
     }
     
     public static func estimatedSize(for item: HeaderBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
@@ -51,6 +45,16 @@ public class HeaderNativeView: UIView, EJBlockStyleApplicable {
         let newBoundingWidth = boundingWidth - (style.insets.left + style.insets.right)
         let height = attributed.height(withConstrainedWidth: newBoundingWidth)
         return CGSize(width: boundingWidth, height: height)
+    }
+    
+    // MARK: - EJBlockStyleApplicable conformance
+    
+    public func apply(style: EJBlockStyle) {
+        backgroundColor = style.backgroundColor
+        layer.cornerRadius = style.cornerRadius
+        
+        guard let style = style as? EJHeaderBlockStyle else { return }
+        label.textAlignment = style.alignment
     }
 }
 
