@@ -25,6 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func setupEJStyles() {
-        EJKit.shared.style.setStyle(style: HeaderStyle(), for: EJNativeBlockType.header)
+        let ejKit = EJKit.shared
+        ejKit.style.setStyle(style: HeaderStyle(), for: EJNativeBlockType.header)
+        ejKit.style.setStyle(style: ImageBlockStyle(), for: EJNativeBlockType.image)
+        ejKit.style.setStyle(style: LinkBlockStyle(), for: EJNativeBlockType.linkTool)
     }
 }

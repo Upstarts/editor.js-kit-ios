@@ -65,7 +65,7 @@ public class ListBlockContentItem: EJAbstractBlockContentItem {
     public required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         text = try container.decode(String.self, forKey: .text)
-        index = 0
+        index = .zero
         if let style = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.list) as? EJListBlockStyle {
             attributedString = text.convertHTML(font: style.font)
         } else {

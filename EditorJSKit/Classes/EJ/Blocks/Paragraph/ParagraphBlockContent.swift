@@ -33,7 +33,8 @@ public class ParagraphBlockContentItem: EJAbstractBlockContentItem {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         text = try container.decode(String.self, forKey: .text)
         if let style = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.paragraph) as? EJParagraphBlockStyle {
-            attributedString = text.convertHTML(font: style.font)
+            let htmlText = text.replacingOccurrences(of: "\n", with: "<br>")
+            attributedString = htmlText.convertHTML(font: style.font)
         } else {
             attributedString = nil
         }

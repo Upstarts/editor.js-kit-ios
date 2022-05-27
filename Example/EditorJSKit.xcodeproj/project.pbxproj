@@ -15,6 +15,8 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		941C74AB24923062004FC8A0 /* HeaderStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941C74AA24923062004FC8A0 /* HeaderStyle.swift */; };
+		946D89052840FD3F0034063D /* ImageStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946D89042840FD3F0034063D /* ImageStyle.swift */; };
+		946D8907284102CB0034063D /* LinkStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946D8906284102CB0034063D /* LinkStyle.swift */; };
 		A1AAAF35C898DF82F3488ADC /* Pods_EditorJSKit_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A78DB84A780C399AB031D141 /* Pods_EditorJSKit_Tests.framework */; };
 		AFAA9AAEEE25B57B96623EE6 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 /* End PBXBuildFile section */
@@ -48,6 +50,8 @@
 		7B632858BC818B30538C3169 /* Pods-EditorJSKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EditorJSKit_Example.release.xcconfig"; path = "Target Support Files/Pods-EditorJSKit_Example/Pods-EditorJSKit_Example.release.xcconfig"; sourceTree = "<group>"; };
 		88EDD5CEC1759A4704548B82 /* EditorJSKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = EditorJSKit.podspec; path = ../EditorJSKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		941C74AA24923062004FC8A0 /* HeaderStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderStyle.swift; sourceTree = "<group>"; };
+		946D89042840FD3F0034063D /* ImageStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStyle.swift; sourceTree = "<group>"; };
+		946D8906284102CB0034063D /* LinkStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkStyle.swift; sourceTree = "<group>"; };
 		A359055EB3460A42F8A62D90 /* Pods-EditorJSKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EditorJSKit_Example.debug.xcconfig"; path = "Target Support Files/Pods-EditorJSKit_Example/Pods-EditorJSKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		A78DB84A780C399AB031D141 /* Pods_EditorJSKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EditorJSKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3CE106F12E810F78098A50E /* Pods_EditorJSKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EditorJSKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -212,6 +216,8 @@
 			isa = PBXGroup;
 			children = (
 				941C74AA24923062004FC8A0 /* HeaderStyle.swift */,
+				946D89042840FD3F0034063D /* ImageStyle.swift */,
+				946D8906284102CB0034063D /* LinkStyle.swift */,
 			);
 			name = Styles;
 			sourceTree = "<group>";
@@ -393,6 +399,8 @@
 				04EA855022B79132006315D8 /* AppDelegate.swift in Sources */,
 				046C3C5522B2645800B194D2 /* ViewController.swift in Sources */,
 				941C74AB24923062004FC8A0 /* HeaderStyle.swift in Sources */,
+				946D8907284102CB0034063D /* LinkStyle.swift in Sources */,
+				946D89052840FD3F0034063D /* ImageStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,7 +468,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -506,7 +514,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -521,7 +529,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3S4KYJG3GD;
 				INFOPLIST_FILE = EditorJSKit/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
@@ -538,7 +546,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3S4KYJG3GD;
 				INFOPLIST_FILE = EditorJSKit/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";

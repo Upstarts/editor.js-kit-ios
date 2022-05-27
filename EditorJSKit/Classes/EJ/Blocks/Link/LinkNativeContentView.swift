@@ -1,5 +1,5 @@
 //
-//  LinkNativeView.swift
+//  LinkNativeContentView.swift
 //  EditorJSKit
 //
 //  Created by Иван Глушко on 18/06/2019.
@@ -8,8 +8,12 @@
 
 import UIKit
 
-open class LinkNativeView: UIView {
+open class LinkNativeContentView: UIView, EJBlockStyleApplicable, ConfigurableBlockView {
+    
+    private weak var item: LinkBlockContentItem?
+    
     // MARK: - UI Properties
+    
     public let titleLabel = UILabel()
     public let linkLabel = UILabel()
     public let descriptionLabel = UILabel()
@@ -18,7 +22,10 @@ open class LinkNativeView: UIView {
     public var hasURL = false
     public var hasDescription = false
     
-    // Constraints
+    private lazy var tapGR = UITapGestureRecognizer(target: self, action: #selector(tapAction))
+    
+    // MARK: Constraints
+    
     private lazy var imageRightConstraint = imageView.rightAnchor.constraint(equalTo: rightAnchor, constant: 0)
     private lazy var imageHeightConstraint = imageView.heightAnchor.constraint(equalToConstant: 0)
     private lazy var imageWidthConstraint = imageView.widthAnchor.constraint(equalToConstant: 0)
@@ -53,13 +60,12 @@ open class LinkNativeView: UIView {
     }
     
     private func setupViews() {
-        
         addSubview(titleLabel)
         addSubview(descriptionLabel)
         addSubview(linkLabel)
         addSubview(imageView)
         
-        titleLabel.numberOfLines = 0
+        titleLabel.numberOfLines = .zero
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             titleLabel.leftAnchor.constraint(equalTo: leftAnchor,constant: UIConstants.leftInset),
@@ -67,7 +73,7 @@ open class LinkNativeView: UIView {
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: UIConstants.titleTopOffset),
             ])
         
-        descriptionLabel.numberOfLines = 0
+        descriptionLabel.numberOfLines = .zero
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             descriptionTopConstraint,
@@ -75,7 +81,7 @@ open class LinkNativeView: UIView {
             descriptionLabel.rightAnchor.constraint(equalTo: titleLabel.rightAnchor)
             ])
         
-        linkLabel.numberOfLines = 0
+        linkLabel.numberOfLines = .zero
         linkLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             linkLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: UIConstants.leftInset),
@@ -93,10 +99,19 @@ open class LinkNativeView: UIView {
             imageHeightConstraint
             ])
         
-        
+        addGestureRecognizer(tapGR)
     }
     
-    public func configure(item: LinkBlockContentItem) {
+    @objc private func tapAction(_ sender: UITapGestureRecognizer) {
+        guard let url = item?.link else { return }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
+    
+    // MARK: - ConfigurableBlockView conformance
+    
+    public func configure(withItem item: LinkBlockContentItem) {
+        self.item = item
+        
         let titleMutable = NSMutableAttributedString()
         if let titleAtr = item.titleAttributedString {
             titleMutable.append(titleAtr)
@@ -115,25 +130,13 @@ open class LinkNativeView: UIView {
         
         if let url = item.image?.url {
             hasURL = true
-            DataDownloaderService.downloadFile(at: url) { (data) in
+            DataDownloaderService.downloadFile(at: url) { [weak self] (data) in
                 guard let image = UIImage(data: data) else { return }
-                self.imageView.image = image
+                self?.imageView.image = image
             }
+        } else {
+            imageView.image = nil
         }
-        
-    }
-    
-    public func apply(style: EJBlockStyle) {
-        guard let style = style as? EJLinkBlockStyle else { return }
-        titleLabel.textColor = style.titleColor
-        titleLabel.textAlignment = style.titleTextAlignment
-        linkLabel.font = style.linkFont
-        linkLabel.textColor = style.linkColor
-        linkLabel.textAlignment = style.linkTextAlignment
-        imageView.layer.cornerRadius = style.imageCornerRadius
-        //
-        backgroundColor = style.backgroundColor
-        layer.cornerRadius = style.cornerRadius
     }
     
     public static func estimatedSize(for item: LinkBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
@@ -172,10 +175,27 @@ open class LinkNativeView: UIView {
         return CGSize(width: initialBoundingWidth, height: height )
     }
     
+    // MARK: - EJBlockStyleApplicable conformance
+    
+    public func apply(style: EJBlockStyle) {
+        backgroundColor = style.backgroundColor
+        layer.cornerRadius = style.cornerRadius
+        
+        guard let style = style as? EJLinkBlockStyle else { return }
+        titleLabel.font = style.titleFont
+        titleLabel.textColor = style.titleColor
+        titleLabel.textAlignment = style.titleTextAlignment
+
+        linkLabel.font = style.linkFont
+        linkLabel.textColor = style.linkColor
+        linkLabel.textAlignment = style.linkTextAlignment
+
+        imageView.layer.cornerRadius = style.imageCornerRadius
+    }
 }
 
 ///
-extension LinkNativeView {
+extension LinkNativeContentView {
     struct UIConstants {
         static let titleTopOffset: CGFloat = 9
         static let leftInset: CGFloat = 16

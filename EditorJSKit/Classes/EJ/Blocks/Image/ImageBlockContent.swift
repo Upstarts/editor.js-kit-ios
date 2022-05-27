@@ -62,9 +62,9 @@ public class ImageFile: Decodable {
     public required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         url = try container.decode(URL.self, forKey: .url)
-        DataDownloaderService.downloadFile(at: url) { data in
-            self.imageData = data
-            self.callback?()
+        DataDownloaderService.downloadFile(at: url) { [weak self] data in
+            self?.imageData = data
+            self?.callback?()
         }
     }
 }
