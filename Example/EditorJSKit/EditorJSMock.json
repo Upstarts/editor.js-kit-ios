@@ -4,17 +4,23 @@
         {
             "type": "header",
             "data": {
-                "text": "Editor.js",
+                "text": "Editor.js Kit iOS",
                 "level": 1
+            }
+        },
+        {
+            "type" : "paragraph",
+            "data" : {
+                "text" : "Render native UI with formatted JSON data. This screen is rendered with Editor.JS Kit framework."
             }
         },
         {
             "type": "image",
             "data": {
                 "file": {
-                    "url": "https://github.com/Upstarts/editor.js-kit-ios/blob/master/logo.png?raw=true"
+                    "url": "https://static.upstarts.work/img/logo-framed.png"
                 },
-                "caption": "This is a caption.",
+                "caption": "Upstarts team develops mobile apps",
                 "withBorder": true,
                 "stretched": false,
                 "withBackground": false
@@ -25,22 +31,22 @@
             "data" : {
                 "style" : "ordered",
                 "items" : [
-                    "It is a block-styled editor",
-                    "It returns clean data output in JSON",
-                    "Designed to be extendable and pluggable with a simple API"
+                    "Editor.JS is a block-styled editor",
+                    "The Kit renders clean JSON data natively",
+                    "Designed to be extendable and pluggable"
                 ]
             }
         },
         {
             "type" : "linkTool",
             "data" : {
-                "link" : "https://codex.so",
+                "link" : "https://upstarts.work",
                 "meta" : {
-                    "title" : "CodeX Team",
-                    "site_name" : "CodeX",
-                    "description" : "Club of web-development, design and marketing. We build team learning how to build full-valued projects on the world market.",
+                    "title" : "Upstarts Team",
+                    "site_name" : "Upstarts",
+                    "description" : "Mobile development team. We develop mobile apps for iOS and Android. We research, prototype, sketch, and code apps & backend business logic.",
                     "image" : {
-                        "url" : "https://codex.so/public/app/img/meta_img.png"
+                        "url" : "https://static.upstarts.work/img/logo-blue-300px.png"
                     }
                 }
             }
@@ -70,7 +76,7 @@
         {
             "type" : "raw",
             "data" : {
-                "html": "<div style=\"background: #000; color: #fff; font-size: 30px; padding: 50px;\">Any HTML code</div>",
+                "html": "<div style=\"background: #000; color: #fff; font-size: 30px; padding: 50px;\">Any raw HTML code</div>",
             }
         }
     ],

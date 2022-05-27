@@ -61,7 +61,7 @@ open class LinkNativeContentView: UIView, EJBlockStyleApplicable, ConfigurableBl
         addSubview(linkLabel)
         addSubview(imageView)
         
-        titleLabel.numberOfLines = 0
+        titleLabel.numberOfLines = .zero
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             titleLabel.leftAnchor.constraint(equalTo: leftAnchor,constant: UIConstants.leftInset),
@@ -69,7 +69,7 @@ open class LinkNativeContentView: UIView, EJBlockStyleApplicable, ConfigurableBl
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: UIConstants.titleTopOffset),
             ])
         
-        descriptionLabel.numberOfLines = 0
+        descriptionLabel.numberOfLines = .zero
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             descriptionTopConstraint,
@@ -77,7 +77,7 @@ open class LinkNativeContentView: UIView, EJBlockStyleApplicable, ConfigurableBl
             descriptionLabel.rightAnchor.constraint(equalTo: titleLabel.rightAnchor)
             ])
         
-        linkLabel.numberOfLines = 0
+        linkLabel.numberOfLines = .zero
         linkLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             linkLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: UIConstants.leftInset),
@@ -117,10 +117,12 @@ open class LinkNativeContentView: UIView, EJBlockStyleApplicable, ConfigurableBl
         
         if let url = item.image?.url {
             hasURL = true
-            DataDownloaderService.downloadFile(at: url) { (data) in
+            DataDownloaderService.downloadFile(at: url) { [weak self] (data) in
                 guard let image = UIImage(data: data) else { return }
-                self.imageView.image = image
+                self?.imageView.image = image
             }
+        } else {
+            imageView.image = nil
         }
     }
     
@@ -163,16 +165,19 @@ open class LinkNativeContentView: UIView, EJBlockStyleApplicable, ConfigurableBl
     // MARK: - EJBlockStyleApplicable conformance
     
     public func apply(style: EJBlockStyle) {
+        backgroundColor = style.backgroundColor
+        layer.cornerRadius = style.cornerRadius
+        
         guard let style = style as? EJLinkBlockStyle else { return }
+        titleLabel.font = style.titleFont
         titleLabel.textColor = style.titleColor
         titleLabel.textAlignment = style.titleTextAlignment
+
         linkLabel.font = style.linkFont
         linkLabel.textColor = style.linkColor
         linkLabel.textAlignment = style.linkTextAlignment
+
         imageView.layer.cornerRadius = style.imageCornerRadius
-        //
-        backgroundColor = style.backgroundColor
-        layer.cornerRadius = style.cornerRadius
     }
 }
 

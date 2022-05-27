@@ -12,7 +12,7 @@ open class EJKit {
     public static let shared = EJKit()
     open var style: EJStyle = NativeStyle()
     
-    private init() {}
+    init() {}
     
     open var registeredCustomBlocks: [EJCustomBlock] = []
     

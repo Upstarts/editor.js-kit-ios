@@ -102,11 +102,13 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
             return cell
             
         case EJNativeBlockType.raw:
-            collectionView.register(RawHtmlCollectionViewCell.self, forCellWithReuseIdentifier: RawHtmlCollectionViewCell.description())
+            typealias Cell = CollectionViewBlockCell<RawHtmlBlockView>
+            let reuseId = RawHtmlBlockView.reuseId
+            collectionView.register(Cell.self, forCellWithReuseIdentifier: reuseId)
             let content = block.data as! RawHtmlBlockContent
             let item = content.getItem(atIndex: .zero) as! RawHtmlBlockContentItem
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RawHtmlCollectionViewCell.description(), for: indexPath) as! RawHtmlCollectionViewCell
-            cell.configureCell(item: item)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as! Cell
+            cell.configure(withItem: item)
             cell.apply(style: style ?? EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.raw)!)
             return cell
             
@@ -143,7 +145,7 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
             return ParagraphNativeContentView.estimatedSize(for: block.data.getItem(atIndex: itemIndex) as! ParagraphBlockContentItem, style: style, boundingWidth: superviewSize.width)
             
         case EJNativeBlockType.raw:
-            return RawHtmlNativeView.estimatedSize(for: block.data.getItem(atIndex: itemIndex) as! RawHtmlBlockContentItem, style: style, boundingWidth: superviewSize.width)
+            return RawHtmlNativeContentView.estimatedSize(for: block.data.getItem(atIndex: itemIndex) as! RawHtmlBlockContentItem, style: style, boundingWidth: superviewSize.width)
             
         default: return EJKit.shared.style.defaultItemSize
         }
@@ -184,5 +186,4 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
         }
         return EJKit.shared.style.defaultItemsLineSpacing
     }
-    
 }

@@ -111,7 +111,7 @@ public class ImageNativeContentView: UIView, EJBlockStyleApplicable, Configurabl
     public static func estimatedSize(for item: ImageBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
         let style = style ?? EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.image)
         let containerMaxWidth: CGFloat = boundingWidth - (style?.insets.left ?? 0) - (style?.insets.right ?? 0)
-        var height: CGFloat = 0
+        var height: CGFloat = .zero
         if let imageSize = self.imageSize(for: item, containerMaxWidth: containerMaxWidth) {
             height += imageSize.height
         }
