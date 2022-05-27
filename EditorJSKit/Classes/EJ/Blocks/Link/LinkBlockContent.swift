@@ -63,5 +63,3 @@ public class LinkBlockContentItem: EJAbstractBlockContentItem {
         }
     }
 }
-
-

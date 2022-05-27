@@ -8,8 +8,10 @@
 
 import UIKit
 
-open class LinkNativeView: UIView {
+open class LinkNativeContentView: UIView, EJBlockStyleApplicable, ConfigurableBlockView {
+    
     // MARK: - UI Properties
+    
     public let titleLabel = UILabel()
     public let linkLabel = UILabel()
     public let descriptionLabel = UILabel()
@@ -18,7 +20,8 @@ open class LinkNativeView: UIView {
     public var hasURL = false
     public var hasDescription = false
     
-    // Constraints
+    // MARK: Constraints
+    
     private lazy var imageRightConstraint = imageView.rightAnchor.constraint(equalTo: rightAnchor, constant: 0)
     private lazy var imageHeightConstraint = imageView.heightAnchor.constraint(equalToConstant: 0)
     private lazy var imageWidthConstraint = imageView.widthAnchor.constraint(equalToConstant: 0)
@@ -53,7 +56,6 @@ open class LinkNativeView: UIView {
     }
     
     private func setupViews() {
-        
         addSubview(titleLabel)
         addSubview(descriptionLabel)
         addSubview(linkLabel)
@@ -92,11 +94,11 @@ open class LinkNativeView: UIView {
             imageWidthConstraint,
             imageHeightConstraint
             ])
-        
-        
     }
     
-    public func configure(item: LinkBlockContentItem) {
+    // MARK: - ConfigurableBlockView conformance
+    
+    public func configure(withItem item: LinkBlockContentItem) {
         let titleMutable = NSMutableAttributedString()
         if let titleAtr = item.titleAttributedString {
             titleMutable.append(titleAtr)
@@ -120,20 +122,6 @@ open class LinkNativeView: UIView {
                 self.imageView.image = image
             }
         }
-        
-    }
-    
-    public func apply(style: EJBlockStyle) {
-        guard let style = style as? EJLinkBlockStyle else { return }
-        titleLabel.textColor = style.titleColor
-        titleLabel.textAlignment = style.titleTextAlignment
-        linkLabel.font = style.linkFont
-        linkLabel.textColor = style.linkColor
-        linkLabel.textAlignment = style.linkTextAlignment
-        imageView.layer.cornerRadius = style.imageCornerRadius
-        //
-        backgroundColor = style.backgroundColor
-        layer.cornerRadius = style.cornerRadius
     }
     
     public static func estimatedSize(for item: LinkBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
@@ -172,10 +160,24 @@ open class LinkNativeView: UIView {
         return CGSize(width: initialBoundingWidth, height: height )
     }
     
+    // MARK: - EJBlockStyleApplicable conformance
+    
+    public func apply(style: EJBlockStyle) {
+        guard let style = style as? EJLinkBlockStyle else { return }
+        titleLabel.textColor = style.titleColor
+        titleLabel.textAlignment = style.titleTextAlignment
+        linkLabel.font = style.linkFont
+        linkLabel.textColor = style.linkColor
+        linkLabel.textAlignment = style.linkTextAlignment
+        imageView.layer.cornerRadius = style.imageCornerRadius
+        //
+        backgroundColor = style.backgroundColor
+        layer.cornerRadius = style.cornerRadius
+    }
 }
 
 ///
-extension LinkNativeView {
+extension LinkNativeContentView {
     struct UIConstants {
         static let titleTopOffset: CGFloat = 9
         static let leftInset: CGFloat = 16

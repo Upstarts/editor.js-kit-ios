@@ -31,11 +31,12 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
         switch block.type {
             
         case EJNativeBlockType.header:
+            typealias Cell = CollectionViewBlockCell<HeaderBlockView>
             let reuseId = HeaderBlockView.reuseId
-            collectionView.register(CollectionViewBlockCell<HeaderBlockView>.self, forCellWithReuseIdentifier: reuseId)
+            collectionView.register(Cell.self, forCellWithReuseIdentifier: reuseId)
             let content = block.data as! HeaderBlockContent
             let item = content.getItem(atIndex: .zero) as! HeaderBlockContentItem
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as! CollectionViewBlockCell<HeaderBlockView>
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as! Cell
             cell.configure(withItem: item)
             cell.apply(style: style ?? EJKit.shared.style.getStyle(forBlockType: block.type)!)
             return cell
@@ -66,11 +67,13 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
             return cell
             
         case EJNativeBlockType.linkTool:
-            collectionView.register(LinkCollectionViewCell.self, forCellWithReuseIdentifier: LinkCollectionViewCell.description())
+            typealias Cell = CollectionViewBlockCell<LinkBlockView>
+            let reuseId = LinkBlockView.reuseId
+            collectionView.register(Cell.self, forCellWithReuseIdentifier: reuseId)
             let content = block.data as! LinkBlockContent
-            let item = content.getItem(atIndex: 0) as! LinkBlockContentItem
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LinkCollectionViewCell.description(), for: indexPath) as! LinkCollectionViewCell
-            cell.configureCell(item: item)
+            let item = content.getItem(atIndex: .zero) as! LinkBlockContentItem
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as! Cell
+            cell.configure(withItem: item)
             cell.apply(style: style ?? EJKit.shared.style.getStyle(forBlockType: block.type)!)
             return cell
             
@@ -126,7 +129,7 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
             return ListItemNativeView.estimatedSize(for: block.data.getItem(atIndex: itemIndex) as! ListBlockContentItem, style: style, boundingWidth: superviewSize.width)
             
         case EJNativeBlockType.linkTool:
-            return LinkNativeView.estimatedSize(for: block.data.getItem(atIndex: itemIndex) as! LinkBlockContentItem, style: style, boundingWidth: superviewSize.width)
+            return LinkNativeContentView.estimatedSize(for: block.data.getItem(atIndex: itemIndex) as! LinkBlockContentItem, style: style, boundingWidth: superviewSize.width)
             
         case EJNativeBlockType.delimiter:
             return DelimiterNativeContentView.estimatedSize(for: block.data.getItem(atIndex: itemIndex) as! DelimiterBlockContentItem, style: style, boundingWidth: superviewSize.width)

@@ -1,14 +1,15 @@
 //
-//  ImageCollectionViewCell.swift
+//  LinkBlockView.swift
 //  EditorJSKit
 //
-//  Created by Иван Глушко on 17/06/2019.
+//  Created by Иван Глушко on 18/06/2019.
 //  Copyright © 2019 Иван Глушко. All rights reserved.
 //
 
 import UIKit
 
-public class ImageBlockView: BaseBlockView<ImageNativeContentView> {
+///
+public class LinkBlockView: BaseBlockView<LinkNativeContentView> {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,7 +23,7 @@ public class ImageBlockView: BaseBlockView<ImageNativeContentView> {
     override func setupViews() {
         super.setupViews()
         
-        let insets = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.image)?.insets ?? .zero
+        let insets = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.linkTool)?.insets ?? .zero
         
         baseView.addSubview(blockView)
         blockView.translatesAutoresizingMaskIntoConstraints = false
@@ -31,6 +32,6 @@ public class ImageBlockView: BaseBlockView<ImageNativeContentView> {
             blockView.rightAnchor.constraint(equalTo: baseView.rightAnchor, constant: -insets.right),
             blockView.topAnchor.constraint(equalTo: baseView.topAnchor, constant: insets.top),
             blockView.bottomAnchor.constraint(equalTo: baseView.bottomAnchor, constant: -insets.bottom)
-            ])
+        ])
     }
 }
