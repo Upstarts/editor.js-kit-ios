@@ -1,5 +1,5 @@
 //
-//  ListItemView.swift
+//  ListItemNativeContentView.swift
 //  EditorJSKit
 //
 //  Created by Иван Глушко on 18/06/2019.
@@ -9,7 +9,7 @@
 import UIKit
 
 ///
-open class ListItemNativeView: UIView, EJBlockStyleApplicable {
+open class ListItemNativeContentView: UIView, EJBlockStyleApplicable, ConfigurableBlockView {
     public let textView = UITextViewFixed()
     private let imageView = UIImageView()
     
@@ -37,7 +37,7 @@ open class ListItemNativeView: UIView, EJBlockStyleApplicable {
         widthConstraint = imageView.widthAnchor.constraint(equalToConstant: imageSize.width)
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: topAnchor),
-            imageView.leftAnchor.constraint(equalTo: leftAnchor, constant: style?.leftInset ?? 0),
+            imageView.leftAnchor.constraint(equalTo: leftAnchor, constant: style?.leftInset ?? .zero),
             heightConstraint!,
             widthConstraint!
         ])
@@ -52,53 +52,14 @@ open class ListItemNativeView: UIView, EJBlockStyleApplicable {
                                                                 constant: style?.insetBetweenImageAndText ?? .zero)
         NSLayoutConstraint.activate([
             leftTextViewConstraint!,
-            textView.rightAnchor.constraint(equalTo: rightAnchor, constant: -(style?.rightInset ?? 0)),
+            textView.rightAnchor.constraint(equalTo: rightAnchor, constant: -(style?.rightInset ?? .zero)),
             textView.topAnchor.constraint(equalTo: topAnchor),
             textView.bottomAnchor.constraint(equalTo: bottomAnchor)
             ])
     }
     
-    public func configure(item: ListBlockContentItem, style: ListBlockStyle) {
-        guard let castedStyle = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.list) as? EJListBlockStyle else { return }
-        let attributedString = Self.makeAttributedString(item: item, style: style)
-        textView.attributedText = attributedString
-
-        imageSize = style == .unordered ? castedStyle.sizeForUnorderedImage : .zero
-        widthConstraint?.constant = imageSize.width
-        heightConstraint?.constant = imageSize.height
-        leftTextViewConstraint?.constant = style == .unordered ? castedStyle.insetBetweenImageAndText : .zero
-    }
-    
-    public func apply(style: EJBlockStyle) {
-        guard let style = style as? EJListBlockStyle else { return }
-        textView.textColor = style.color
-        imageView.image = style.imageForUnorderedList
-        //
-        backgroundColor = style.backgroundColor
-        layer.cornerRadius = style.cornerRadius
-    }
-    
-    public static func estimatedSize(for item: ListBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
-        guard let castedStyle = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.list) as? EJListBlockStyle else { return .zero }
-        var textBoundingWidth = boundingWidth - (castedStyle.insets.left + castedStyle.insets.right)
-        textBoundingWidth -= (castedStyle.leftInset + castedStyle.rightInset)
-        
-        if item.style == .unordered {
-            let imageWidth = castedStyle.sizeForUnorderedImage.width
-            textBoundingWidth -= (imageWidth + castedStyle.insetBetweenImageAndText)
-        }
-        
-        let string = makeAttributedString(item: item, style: item.style)
-        var height = string.textViewHeight(boundingWidth: textBoundingWidth)
-        
-        if item.style == .unordered && height < castedStyle.sizeForUnorderedImage.height {
-            height = castedStyle.sizeForUnorderedImage.height
-        }
-        
-        return CGSize(width: boundingWidth, height: height)
-    }
-
-    private static func makeAttributedString(item: ListBlockContentItem, style: ListBlockStyle) -> NSAttributedString {
+    private static func makeAttributedString(item: ListBlockContentItem) -> NSAttributedString {
+        let style = item.style
         let prefix = style == .unordered ? "" : "\(item.index).\t"
         let attributedString = NSMutableAttributedString(string: prefix)
         
@@ -116,10 +77,54 @@ open class ListItemNativeView: UIView, EJBlockStyleApplicable {
         attributedString.addAttributes([.paragraphStyle: paragraphStyle], range: NSRange(location: 0, length: attributedString.string.count))
         return attributedString
     }
+    
+    // MARK: - ConfigurableBlockView conformance
+    
+    public func configure(withItem item: ListBlockContentItem) {
+        guard let castedStyle = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.list) as? EJListBlockStyle else { return }
+        let attributedString = Self.makeAttributedString(item: item)
+        textView.attributedText = attributedString
+
+        imageSize = item.style == .unordered ? castedStyle.sizeForUnorderedImage : .zero
+        widthConstraint?.constant = imageSize.width
+        heightConstraint?.constant = imageSize.height
+        leftTextViewConstraint?.constant = item.style == .unordered ? castedStyle.insetBetweenImageAndText : .zero
+    }
+    
+    public static func estimatedSize(for item: ListBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
+        guard let castedStyle = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.list) as? EJListBlockStyle else { return .zero }
+        var textBoundingWidth = boundingWidth - (castedStyle.insets.left + castedStyle.insets.right)
+        textBoundingWidth -= (castedStyle.leftInset + castedStyle.rightInset)
+        
+        if item.style == .unordered {
+            let imageWidth = castedStyle.sizeForUnorderedImage.width
+            textBoundingWidth -= (imageWidth + castedStyle.insetBetweenImageAndText)
+        }
+        
+        let string = makeAttributedString(item: item)
+        var height = string.textViewHeight(boundingWidth: textBoundingWidth)
+        
+        if item.style == .unordered && height < castedStyle.sizeForUnorderedImage.height {
+            height = castedStyle.sizeForUnorderedImage.height
+        }
+        
+        return CGSize(width: boundingWidth, height: height)
+    }
+
+    // MARK: - EJBlockStyleApplicable conformance
+    
+    public func apply(style: EJBlockStyle) {
+        backgroundColor = style.backgroundColor
+        layer.cornerRadius = style.cornerRadius
+        
+        guard let style = style as? EJListBlockStyle else { return }
+        textView.textColor = style.color
+        imageView.image = style.imageForUnorderedList
+    }
 }
 
 ///
-extension ListItemNativeView {
+extension ListItemNativeContentView {
     struct Constants {
         static let defaultTabSpace: CGFloat = 10
     }

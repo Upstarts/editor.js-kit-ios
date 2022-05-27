@@ -1,5 +1,5 @@
 //
-//  DelimiterNativeView.swift
+//  DelimiterNativeContentView.swift
 //  EditorJSKit
 //
 //  Created by Иван Глушко on 20/06/2019.
@@ -9,8 +9,10 @@
 import UIKit
 
 ///
-open class DelimiterNativeView: UIView, EJBlockStyleApplicable {
+open class DelimiterNativeContentView: UIView, EJBlockStyleApplicable, ConfigurableBlockView {
+    
     // MARK: - UI Properties
+    
     public let label = UILabel()
     
     override init(frame: CGRect) {
@@ -29,7 +31,7 @@ open class DelimiterNativeView: UIView, EJBlockStyleApplicable {
         
         addSubview(label)
         
-        label.numberOfLines = 0
+        label.numberOfLines = .zero
         label.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             label.leftAnchor.constraint(equalTo: leftAnchor,constant: insets.left),
@@ -39,21 +41,13 @@ open class DelimiterNativeView: UIView, EJBlockStyleApplicable {
             ])
     }
     
-    public func configure(item: DelimiterBlockContentItem) {
+    // MARK: - ConfigurableBlockView conformance
+    
+    public func configure(withItem item: DelimiterBlockContentItem) {
         label.text = item.text
     }
     
-    public func apply(style: EJBlockStyle) {
-        guard let style = style as? EJDelimiterBlockStyle else { return }
-        label.textColor = style.color
-        label.font = style.font
-        label.textAlignment = style.textAlignment
-        //
-        backgroundColor = style.backgroundColor
-        layer.cornerRadius = style.cornerRadius
-    }
-    
-    
+    // TODO: Why need `style` argument? It's not used at all
     public static func estimatedSize(for item: DelimiterBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
         guard let castedStyle = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.delimiter) as? EJDelimiterBlockStyle else { return .zero }
         var newBoundingWidth = boundingWidth - (castedStyle.insets.left + castedStyle.insets.right)
@@ -63,4 +57,15 @@ open class DelimiterNativeView: UIView, EJBlockStyleApplicable {
         return CGSize(width: boundingWidth, height: height)
     }
     
+    // MARK: - EJBlockStyleApplicable conformance
+    
+    public func apply(style: EJBlockStyle) {
+        backgroundColor = style.backgroundColor
+        layer.cornerRadius = style.cornerRadius
+        
+        guard let style = style as? EJDelimiterBlockStyle else { return }
+        label.textColor = style.color
+        label.font = style.font
+        label.textAlignment = style.textAlignment
+    }
 }

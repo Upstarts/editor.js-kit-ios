@@ -1,15 +1,15 @@
 //
-//  ParagraphNativeView.swift
+//  RawHtmlNativeContentView.swift
 //  EditorJSKit
 //
-//  Created by Иван Глушко on 20/06/2019.
+//  Created by Иван Глушко on 21/06/2019.
 //  Copyright © 2019 Иван Глушко. All rights reserved.
 //
 
 import UIKit
 
 ///
-open class ParagraphNativeView: UIView, EJBlockStyleApplicable, EJConfigurableView  {
+open class RawHtmlNativeContentView: UIView, EJBlockStyleApplicable, ConfigurableBlockView {
     public let textView = UITextViewFixed()
     
     override init(frame: CGRect) {
@@ -24,13 +24,10 @@ open class ParagraphNativeView: UIView, EJBlockStyleApplicable, EJConfigurableVi
     
     
     private func setupViews() {
-        
         addSubview(textView)
         
-        textView.backgroundColor = .clear
         textView.isEditable = false
-        textView.alwaysBounceVertical = false
-        textView.isScrollEnabled = false
+        textView.textContainerInset = .zero
         textView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             textView.leftAnchor.constraint(equalTo: leftAnchor),
@@ -40,23 +37,25 @@ open class ParagraphNativeView: UIView, EJBlockStyleApplicable, EJConfigurableVi
             ])
     }
     
+    // MARK: - ConfigurableBlockView conformance
     
-    public func configure(item: ParagraphBlockContentItem) {
+    public func configure(withItem item: RawHtmlBlockContentItem) {
         textView.attributedText = item.attributedString
     }
     
+    public static func estimatedSize(for item: RawHtmlBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
+        guard let attributed = item.attributedString, let style = style ?? EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.raw) else { return .zero }
+        let newBoundingWidth = boundingWidth - (style.insets.left + style.insets.right)
+        let height = attributed.height(withConstrainedWidth: newBoundingWidth )
+        return CGSize(width: boundingWidth, height: height)
+    }
+    
+    // MARK: - EJBlockStyleApplicable conformance
+    
     public func apply(style: EJBlockStyle) {
-        guard let style = style as? EJParagraphBlockStyle else { return }
+        guard let style = style as? EJRawHtmlBlockStyle else { return }
         textView.linkTextAttributes = style.linkTextAttributes
         backgroundColor = style.backgroundColor
         layer.cornerRadius = style.cornerRadius
-    }
-    
-    
-    public static func estimatedSize(for item: ParagraphBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
-        guard let attributed = item.attributedString, let style = style ?? EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.paragraph) else { return .zero }
-        let newBoundingWidth = boundingWidth - (style.insets.left + style.insets.right)
-        let height = attributed.textViewHeight(boundingWidth: newBoundingWidth)
-        return CGSize(width: boundingWidth, height: height)
     }
 }

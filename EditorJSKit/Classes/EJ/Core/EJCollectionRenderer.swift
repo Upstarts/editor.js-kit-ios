@@ -12,8 +12,7 @@ import UIKit
 open class EJCollectionRenderer: EJCollectionBlockRenderer {
     public typealias View = UICollectionViewCell & EJBlockStyleApplicable
     
-    
-    public var startSectionIndex: Int = 0
+    public var startSectionIndex: Int = .zero
     
     unowned public var collectionView: UICollectionView
     
@@ -32,68 +31,84 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
         switch block.type {
             
         case EJNativeBlockType.header:
-            collectionView.register(HeaderCollectionViewCell.self, forCellWithReuseIdentifier: HeaderCollectionViewCell.description())
+            typealias Cell = CollectionViewBlockCell<HeaderBlockView>
+            let reuseId = HeaderBlockView.reuseId
+            collectionView.register(Cell.self, forCellWithReuseIdentifier: reuseId)
             let content = block.data as! HeaderBlockContent
-            let item = content.getItem(atIndex: 0) as! HeaderBlockContentItem
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderCollectionViewCell.description(), for: indexPath) as! HeaderCollectionViewCell
-            cell.configureCell(item: item)
+            let item = content.getItem(atIndex: .zero) as! HeaderBlockContentItem
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as! Cell
+            cell.configure(withItem: item)
             cell.apply(style: style ?? EJKit.shared.style.getStyle(forBlockType: block.type)!)
             return cell
             
         case EJNativeBlockType.image:
-            collectionView.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: ImageCollectionViewCell.description())
+            typealias Cell = CollectionViewBlockCell<ImageBlockView>
+            let reuseId = ImageBlockView.reuseId
+            collectionView.register(Cell.self, forCellWithReuseIdentifier: reuseId)
             let content = block.data as! ImageBlockContent
             let item = content.getItem(atIndex: indexPath.item) as! ImageBlockContentItem
             if item.file.imageData == nil {
-                item.file.callback = { self.collectionView.reloadItems(at: [indexPath]) }
+                item.file.callback = { [weak self] in
+                    self?.collectionView.reloadItems(at: [indexPath])
+                }
             }
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.description(), for: indexPath) as! ImageCollectionViewCell
-            cell.configureCell(item: item)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as! Cell
+            cell.configure(withItem: item)
             cell.apply(style: style ?? EJKit.shared.style.getStyle(forBlockType: block.type)!)
             return cell
             
         case EJNativeBlockType.list:
-            collectionView.register(ListItemCollectionViewCell.self, forCellWithReuseIdentifier: ListItemCollectionViewCell.description())
+            typealias Cell = CollectionViewBlockCell<ListItemBlockView>
+            let reuseId = ListItemBlockView.reuseId
+            collectionView.register(Cell.self, forCellWithReuseIdentifier: reuseId)
             let content = block.data as! ListBlockContent
             let item = content.getItem(atIndex: indexPath.item) as! ListBlockContentItem
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ListItemCollectionViewCell.description(), for: indexPath) as! ListItemCollectionViewCell
-            cell.configureCell(item: item, style: content.style)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as! Cell
+            cell.configure(withItem: item)
             cell.apply(style: style ?? EJKit.shared.style.getStyle(forBlockType: block.type)!)
             return cell
             
         case EJNativeBlockType.linkTool:
-            collectionView.register(LinkCollectionViewCell.self, forCellWithReuseIdentifier: LinkCollectionViewCell.description())
+            typealias Cell = CollectionViewBlockCell<LinkBlockView>
+            let reuseId = LinkBlockView.reuseId
+            collectionView.register(Cell.self, forCellWithReuseIdentifier: reuseId)
             let content = block.data as! LinkBlockContent
-            let item = content.getItem(atIndex: 0) as! LinkBlockContentItem
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LinkCollectionViewCell.description(), for: indexPath) as! LinkCollectionViewCell
-            cell.configureCell(item: item)
+            let item = content.getItem(atIndex: .zero) as! LinkBlockContentItem
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as! Cell
+            cell.configure(withItem: item)
             cell.apply(style: style ?? EJKit.shared.style.getStyle(forBlockType: block.type)!)
             return cell
             
         case EJNativeBlockType.delimiter:
-            collectionView.register(DelimiterCollectionViewCell.self, forCellWithReuseIdentifier: DelimiterCollectionViewCell.description())
+            typealias Cell = CollectionViewBlockCell<DelimiterBlockView>
+            let reuseId = DelimiterBlockView.reuseId
+            collectionView.register(Cell.self, forCellWithReuseIdentifier: reuseId)
             let content = block.data as! DelimiterBlockContent
-            let item = content.getItem(atIndex: 0) as! DelimiterBlockContentItem
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DelimiterCollectionViewCell.description(), for: indexPath) as! DelimiterCollectionViewCell
-            cell.configureCell(item: item)
+            let item = content.getItem(atIndex: .zero) as! DelimiterBlockContentItem
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as! Cell
+            cell.configure(withItem: item)
             cell.apply(style: style ?? EJKit.shared.style.getStyle(forBlockType: block.type)!)
             return cell
             
         case EJNativeBlockType.paragraph:
-            collectionView.register(ParagraphCollectionViewCell.self, forCellWithReuseIdentifier: ParagraphCollectionViewCell.description())
+            typealias Cell = CollectionViewBlockCell<ParagraphBlockView>
+            let reuseId = ParagraphBlockView.reuseId
+            collectionView.register(Cell.self, forCellWithReuseIdentifier: reuseId)
             let content = block.data as! ParagraphBlockContent
-            let item = content.getItem(atIndex: 0) as! ParagraphBlockContentItem
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ParagraphCollectionViewCell.description(), for: indexPath) as! ParagraphCollectionViewCell
-            cell.configureCell(item: item)
+            let item = content.getItem(atIndex: .zero) as! ParagraphBlockContentItem
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as! Cell
+            cell.configure(withItem: item)
             cell.apply(style: style ?? EJKit.shared.style.getStyle(forBlockType: block.type)!)
             return cell
             
         case EJNativeBlockType.raw:
-            collectionView.register(RawHtmlCollectionViewCell.self, forCellWithReuseIdentifier: RawHtmlCollectionViewCell.description())
+            typealias Cell = CollectionViewBlockCell<RawHtmlBlockView>
+            let reuseId = RawHtmlBlockView.reuseId
+            collectionView.register(Cell.self, forCellWithReuseIdentifier: reuseId)
             let content = block.data as! RawHtmlBlockContent
-            let item = content.getItem(atIndex: 0) as! RawHtmlBlockContentItem
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RawHtmlCollectionViewCell.description(), for: indexPath) as! RawHtmlCollectionViewCell
-            cell.configureCell(item: item)
+            let item = content.getItem(atIndex: .zero) as! RawHtmlBlockContentItem
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as! Cell
+            cell.configure(withItem: item)
             cell.apply(style: style ?? EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.raw)!)
             return cell
             
@@ -102,35 +117,35 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
         
     }
     
-    public func size(forBlock: EJAbstractBlock, itemIndex: Int, style: EJBlockStyle?, superviewSize: CGSize) throws -> CGSize {
+    public func size(forBlock block: EJAbstractBlock, itemIndex: Int, style: EJBlockStyle?, superviewSize: CGSize) throws -> CGSize {
         
         for customBlock in EJKit.shared.registeredCustomBlocks {
-            guard customBlock.type.rawValue == forBlock.type.rawValue else { continue }
-            guard let content = forBlock.data as? EJCollectionRendererAdaptableContent else { continue }
-            return try content.size(forBlock: forBlock, itemIndex: itemIndex, style: nil, superviewSize: superviewSize)
+            guard customBlock.type.rawValue == block.type.rawValue else { continue }
+            guard let content = block.data as? EJCollectionRendererAdaptableContent else { continue }
+            return try content.size(forBlock: block, itemIndex: itemIndex, style: nil, superviewSize: superviewSize)
         }
         
-        switch forBlock.type {
+        switch block.type {
         case EJNativeBlockType.header:
-            return HeaderNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! HeaderBlockContentItem, style: style, boundingWidth: superviewSize.width)
+            return HeaderNativeContentView.estimatedSize(for: block.data.getItem(atIndex: itemIndex) as! HeaderBlockContentItem, style: style, boundingWidth: superviewSize.width)
             
         case EJNativeBlockType.image:
-            return ImageNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! ImageBlockContentItem, style: style, boundingWidth: superviewSize.width)
+            return ImageNativeContentView.estimatedSize(for: block.data.getItem(atIndex: itemIndex) as! ImageBlockContentItem, style: style, boundingWidth: superviewSize.width)
             
         case EJNativeBlockType.list:
-            return ListItemNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! ListBlockContentItem, style: style, boundingWidth: superviewSize.width)
+            return ListItemNativeContentView.estimatedSize(for: block.data.getItem(atIndex: itemIndex) as! ListBlockContentItem, style: style, boundingWidth: superviewSize.width)
             
         case EJNativeBlockType.linkTool:
-            return LinkNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! LinkBlockContentItem, style: style, boundingWidth: superviewSize.width)
+            return LinkNativeContentView.estimatedSize(for: block.data.getItem(atIndex: itemIndex) as! LinkBlockContentItem, style: style, boundingWidth: superviewSize.width)
             
         case EJNativeBlockType.delimiter:
-            return DelimiterNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! DelimiterBlockContentItem, style: style, boundingWidth: superviewSize.width)
+            return DelimiterNativeContentView.estimatedSize(for: block.data.getItem(atIndex: itemIndex) as! DelimiterBlockContentItem, style: style, boundingWidth: superviewSize.width)
             
         case EJNativeBlockType.paragraph:
-            return ParagraphNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! ParagraphBlockContentItem, style: style, boundingWidth: superviewSize.width)
+            return ParagraphNativeContentView.estimatedSize(for: block.data.getItem(atIndex: itemIndex) as! ParagraphBlockContentItem, style: style, boundingWidth: superviewSize.width)
             
         case EJNativeBlockType.raw:
-            return RawHtmlNativeView.estimatedSize(for: forBlock.data.getItem(atIndex: itemIndex) as! RawHtmlBlockContentItem, style: style, boundingWidth: superviewSize.width)
+            return RawHtmlNativeContentView.estimatedSize(for: block.data.getItem(atIndex: itemIndex) as! RawHtmlBlockContentItem, style: style, boundingWidth: superviewSize.width)
             
         default: return EJKit.shared.style.defaultItemSize
         }
@@ -171,5 +186,4 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
         }
         return EJKit.shared.style.defaultItemsLineSpacing
     }
-    
 }
