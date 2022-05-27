@@ -25,13 +25,18 @@ public class LinkBlockContent: EJAbstractBlockContent {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         link = try container.decode(URL.self, forKey: .link)
         items = [ try container.decode(LinkBlockContentItem.self, forKey: .meta) ]
-        items.forEach { $0.formattedLink = LinkFormatterService.format(link: link)}
+        items.forEach {
+            $0.link = link
+            $0.formattedLink = LinkFormatterService.format(link: link)
+        }
     }
     
 }
 
 ///
 public class LinkBlockContentItem: EJAbstractBlockContentItem {
+    public var link: URL?
+    
     private let title: String
     private let siteName: String?
     private let description: String?

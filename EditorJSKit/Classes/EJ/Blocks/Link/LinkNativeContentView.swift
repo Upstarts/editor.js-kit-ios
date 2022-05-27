@@ -10,6 +10,8 @@ import UIKit
 
 open class LinkNativeContentView: UIView, EJBlockStyleApplicable, ConfigurableBlockView {
     
+    private weak var item: LinkBlockContentItem?
+    
     // MARK: - UI Properties
     
     public let titleLabel = UILabel()
@@ -19,6 +21,8 @@ open class LinkNativeContentView: UIView, EJBlockStyleApplicable, ConfigurableBl
     
     public var hasURL = false
     public var hasDescription = false
+    
+    private lazy var tapGR = UITapGestureRecognizer(target: self, action: #selector(tapAction))
     
     // MARK: Constraints
     
@@ -94,11 +98,20 @@ open class LinkNativeContentView: UIView, EJBlockStyleApplicable, ConfigurableBl
             imageWidthConstraint,
             imageHeightConstraint
             ])
+        
+        addGestureRecognizer(tapGR)
+    }
+    
+    @objc private func tapAction(_ sender: UITapGestureRecognizer) {
+        guard let url = item?.link else { return }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     // MARK: - ConfigurableBlockView conformance
     
     public func configure(withItem item: LinkBlockContentItem) {
+        self.item = item
+        
         let titleMutable = NSMutableAttributedString()
         if let titleAtr = item.titleAttributedString {
             titleMutable.append(titleAtr)
