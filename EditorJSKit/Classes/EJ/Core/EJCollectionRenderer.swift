@@ -80,21 +80,24 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
             return cell
             
         case EJNativeBlockType.delimiter:
+            typealias Cell = CollectionViewBlockCell<DelimiterBlockView>
             let reuseId = DelimiterBlockView.reuseId
-            collectionView.register(CollectionViewBlockCell<DelimiterBlockView>.self, forCellWithReuseIdentifier: reuseId)
+            collectionView.register(Cell.self, forCellWithReuseIdentifier: reuseId)
             let content = block.data as! DelimiterBlockContent
             let item = content.getItem(atIndex: .zero) as! DelimiterBlockContentItem
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as! CollectionViewBlockCell<DelimiterBlockView>
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as! Cell
             cell.configure(withItem: item)
             cell.apply(style: style ?? EJKit.shared.style.getStyle(forBlockType: block.type)!)
             return cell
             
         case EJNativeBlockType.paragraph:
-            collectionView.register(ParagraphCollectionViewCell.self, forCellWithReuseIdentifier: ParagraphCollectionViewCell.description())
+            typealias Cell = CollectionViewBlockCell<ParagraphBlockView>
+            let reuseId = ParagraphBlockView.reuseId
+            collectionView.register(Cell.self, forCellWithReuseIdentifier: reuseId)
             let content = block.data as! ParagraphBlockContent
             let item = content.getItem(atIndex: .zero) as! ParagraphBlockContentItem
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ParagraphCollectionViewCell.description(), for: indexPath) as! ParagraphCollectionViewCell
-            cell.configureCell(item: item)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as! Cell
+            cell.configure(withItem: item)
             cell.apply(style: style ?? EJKit.shared.style.getStyle(forBlockType: block.type)!)
             return cell
             
@@ -137,7 +140,7 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
             return DelimiterNativeContentView.estimatedSize(for: block.data.getItem(atIndex: itemIndex) as! DelimiterBlockContentItem, style: style, boundingWidth: superviewSize.width)
             
         case EJNativeBlockType.paragraph:
-            return ParagraphNativeView.estimatedSize(for: block.data.getItem(atIndex: itemIndex) as! ParagraphBlockContentItem, style: style, boundingWidth: superviewSize.width)
+            return ParagraphNativeContentView.estimatedSize(for: block.data.getItem(atIndex: itemIndex) as! ParagraphBlockContentItem, style: style, boundingWidth: superviewSize.width)
             
         case EJNativeBlockType.raw:
             return RawHtmlNativeView.estimatedSize(for: block.data.getItem(atIndex: itemIndex) as! RawHtmlBlockContentItem, style: style, boundingWidth: superviewSize.width)

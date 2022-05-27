@@ -1,5 +1,5 @@
 //
-//  ParagraphNativeView.swift
+//  ParagraphNativeContentView.swift
 //  EditorJSKit
 //
 //  Created by Иван Глушко on 20/06/2019.
@@ -9,7 +9,7 @@
 import UIKit
 
 ///
-open class ParagraphNativeView: UIView, EJBlockStyleApplicable, EJConfigurableView  {
+open class ParagraphNativeContentView: UIView, EJBlockStyleApplicable, ConfigurableBlockView {
     public let textView = UITextViewFixed()
     
     override init(frame: CGRect) {
@@ -24,7 +24,6 @@ open class ParagraphNativeView: UIView, EJBlockStyleApplicable, EJConfigurableVi
     
     
     private func setupViews() {
-        
         addSubview(textView)
         
         textView.backgroundColor = .clear
@@ -40,23 +39,25 @@ open class ParagraphNativeView: UIView, EJBlockStyleApplicable, EJConfigurableVi
             ])
     }
     
+    // MARK: - ConfigurableBlockView conformance
     
-    public func configure(item: ParagraphBlockContentItem) {
+    public func configure(withItem item: ParagraphBlockContentItem) {
         textView.attributedText = item.attributedString
     }
-    
-    public func apply(style: EJBlockStyle) {
-        guard let style = style as? EJParagraphBlockStyle else { return }
-        textView.linkTextAttributes = style.linkTextAttributes
-        backgroundColor = style.backgroundColor
-        layer.cornerRadius = style.cornerRadius
-    }
-    
     
     public static func estimatedSize(for item: ParagraphBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
         guard let attributed = item.attributedString, let style = style ?? EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.paragraph) else { return .zero }
         let newBoundingWidth = boundingWidth - (style.insets.left + style.insets.right)
         let height = attributed.textViewHeight(boundingWidth: newBoundingWidth)
         return CGSize(width: boundingWidth, height: height)
+    }
+    
+    // MARK: - EJBlockStyleApplicable conformance
+    
+    public func apply(style: EJBlockStyle) {
+        guard let style = style as? EJParagraphBlockStyle else { return }
+        textView.linkTextAttributes = style.linkTextAttributes
+        backgroundColor = style.backgroundColor
+        layer.cornerRadius = style.cornerRadius
     }
 }

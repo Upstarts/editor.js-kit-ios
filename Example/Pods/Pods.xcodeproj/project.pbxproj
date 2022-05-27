@@ -25,9 +25,9 @@
 		58A242765C50D582051834045E65CFF5 /* ListBlockNativeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB62F45FE65EB9F8A514C4E156C09709 /* ListBlockNativeStyle.swift */; };
 		65F026CC147B6EA5878E19D8CA50DAFC /* ParagraphBlockContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137DFAD1611DBCA2D2D135B7DDF5EA70 /* ParagraphBlockContent.swift */; };
 		6DA0A592E49632B0F3E6E02423B4A147 /* HeaderBlockContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB129205FFD56C4512DECE5BBE3DBF44 /* HeaderBlockContent.swift */; };
-		7151C8044BED7E963C0ADB5AC0A14510 /* ParagraphCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D147DD8B6957BC3139F446798684167 /* ParagraphCollectionViewCell.swift */; };
+		7151C8044BED7E963C0ADB5AC0A14510 /* ParagraphBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D147DD8B6957BC3139F446798684167 /* ParagraphBlockView.swift */; };
 		733E1C4BEF3E0D76CC6034F9D2589FD1 /* EJAbstractBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815CF608EA870B252A7F79F28F477005 /* EJAbstractBlock.swift */; };
-		746F9F7141DD960CAAB728579A30E53B /* ParagraphNativeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF01FC950158AAB4E825AB08FF810C9 /* ParagraphNativeView.swift */; };
+		746F9F7141DD960CAAB728579A30E53B /* ParagraphNativeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF01FC950158AAB4E825AB08FF810C9 /* ParagraphNativeContentView.swift */; };
 		7B597EB556588CBA1C737B4326DC612A /* Pods-EditorJSKit_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7067BC923453D0F47CA9200DE8251081 /* Pods-EditorJSKit_Tests-dummy.m */; };
 		8065268C89708D70BEDD0EE1EBE5BDE8 /* DelimiterBlockNativeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182C7A9EB06C6F32559F98E9ACEEF96D /* DelimiterBlockNativeStyle.swift */; };
 		81F295C7E828D2FDAA4188E12180EB5B /* DelimiterBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3B1B70112D9E7B8A26F8FCE810818 /* DelimiterBlockView.swift */; };
@@ -88,8 +88,8 @@
 		08284C2E02A254CF977E5F2F178CAF34 /* EJNativeBlockType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EJNativeBlockType.swift; sourceTree = "<group>"; };
 		09D546255DFB6049E8CEC5596A7A12B1 /* EJKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EJKit.swift; sourceTree = "<group>"; };
 		0A0D0085386B818F4D6089B27FBDA661 /* ListBlockContent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ListBlockContent.swift; sourceTree = "<group>"; };
-		0CF01FC950158AAB4E825AB08FF810C9 /* ParagraphNativeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ParagraphNativeView.swift; sourceTree = "<group>"; };
-		0D147DD8B6957BC3139F446798684167 /* ParagraphCollectionViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ParagraphCollectionViewCell.swift; sourceTree = "<group>"; };
+		0CF01FC950158AAB4E825AB08FF810C9 /* ParagraphNativeContentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ParagraphNativeContentView.swift; sourceTree = "<group>"; };
+		0D147DD8B6957BC3139F446798684167 /* ParagraphBlockView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ParagraphBlockView.swift; sourceTree = "<group>"; };
 		0D1B3897D60D7E24179D4AF53E123E83 /* ListItemNativeContentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ListItemNativeContentView.swift; sourceTree = "<group>"; };
 		137DFAD1611DBCA2D2D135B7DDF5EA70 /* ParagraphBlockContent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ParagraphBlockContent.swift; sourceTree = "<group>"; };
 		140024D450908E0F5BB7438FFB40B105 /* LinkBlockContent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LinkBlockContent.swift; sourceTree = "<group>"; };
@@ -270,7 +270,7 @@
 				94A74FD72840E8C9008B26B9 /* Image */,
 				94A74FD82840EB85008B26B9 /* Link */,
 				94A74FD92840EEB0008B26B9 /* ListItem */,
-				0D147DD8B6957BC3139F446798684167 /* ParagraphCollectionViewCell.swift */,
+				94A74FDA2840F4A6008B26B9 /* Paragraph */,
 				27072265CBFED06F75A40FDF6EFC5B25 /* RawHtmlCollectionViewCell.swift */,
 			);
 			name = Blocks;
@@ -317,7 +317,6 @@
 		89A581C014048A4BD8FEBA4EB218567A /* BlocksContent */ = {
 			isa = PBXGroup;
 			children = (
-				137DFAD1611DBCA2D2D135B7DDF5EA70 /* ParagraphBlockContent.swift */,
 				8A86D9804BD14503DC9FAB234A1C16D4 /* RawHtmlBlockContent.swift */,
 			);
 			name = BlocksContent;
@@ -419,6 +418,16 @@
 			path = ListItem;
 			sourceTree = "<group>";
 		};
+		94A74FDA2840F4A6008B26B9 /* Paragraph */ = {
+			isa = PBXGroup;
+			children = (
+				137DFAD1611DBCA2D2D135B7DDF5EA70 /* ParagraphBlockContent.swift */,
+				0D147DD8B6957BC3139F446798684167 /* ParagraphBlockView.swift */,
+				0CF01FC950158AAB4E825AB08FF810C9 /* ParagraphNativeContentView.swift */,
+			);
+			path = Paragraph;
+			sourceTree = "<group>";
+		};
 		BC9251EC587F7A15A764992457C444C1 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -436,7 +445,6 @@
 		BEA1D97F011337ACED5AC609559EBBDE /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0CF01FC950158AAB4E825AB08FF810C9 /* ParagraphNativeView.swift */,
 				635DA7FDB1A06BF1B9AC93B70A6DFBDF /* RawHtmlNativeView.swift */,
 			);
 			name = Views;
@@ -677,8 +685,8 @@
 				E25A3DD6FBD71876F3D5D1321D336936 /* NSAttributedString+Ext.swift in Sources */,
 				65F026CC147B6EA5878E19D8CA50DAFC /* ParagraphBlockContent.swift in Sources */,
 				FE8BC11B90563E05E7A95204483FFE9A /* ParagraphBlockNativeStyle.swift in Sources */,
-				7151C8044BED7E963C0ADB5AC0A14510 /* ParagraphCollectionViewCell.swift in Sources */,
-				746F9F7141DD960CAAB728579A30E53B /* ParagraphNativeView.swift in Sources */,
+				7151C8044BED7E963C0ADB5AC0A14510 /* ParagraphBlockView.swift in Sources */,
+				746F9F7141DD960CAAB728579A30E53B /* ParagraphNativeContentView.swift in Sources */,
 				C15E33A1EC27B971A0A1BD71F7B1EE43 /* RawHtmlBlockContent.swift in Sources */,
 				56BA7423B06FB5DF9FFE5056F488687D /* RawHtmlBlockNativeStyle.swift in Sources */,
 				94A74FCC2840B62F008B26B9 /* ConfigurableBlockView.swift in Sources */,
