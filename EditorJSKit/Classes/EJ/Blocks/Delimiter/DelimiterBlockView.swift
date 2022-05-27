@@ -11,19 +11,10 @@ import UIKit
 ///
 public class DelimiterBlockView: BaseBlockView<DelimiterNativeContentView> {
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupViews()
-    }
+    override var blockType: EJAbstractBlockType { EJNativeBlockType.delimiter }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func setupViews() {
-        super.setupViews()
-        
-        let insets = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.delimiter)?.insets ?? .zero
+    override func setupBlockView() {
+        let insets = EJKit.shared.style.getStyle(forBlockType: blockType)?.insets ?? .zero
 
         baseView.addSubview(blockView)
         blockView.translatesAutoresizingMaskIntoConstraints = false

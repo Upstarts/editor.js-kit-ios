@@ -12,7 +12,7 @@ import UIKit
 open class EJCollectionRenderer: EJCollectionBlockRenderer {
     public typealias View = UICollectionViewCell & EJBlockStyleApplicable
     
-    public var startSectionIndex: Int = 0
+    public var startSectionIndex: Int = .zero
     
     unowned public var collectionView: UICollectionView
     
@@ -58,11 +58,13 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
             return cell
             
         case EJNativeBlockType.list:
-            collectionView.register(ListItemCollectionViewCell.self, forCellWithReuseIdentifier: ListItemCollectionViewCell.description())
+            typealias Cell = CollectionViewBlockCell<ListItemBlockView>
+            let reuseId = ListItemBlockView.reuseId
+            collectionView.register(Cell.self, forCellWithReuseIdentifier: reuseId)
             let content = block.data as! ListBlockContent
             let item = content.getItem(atIndex: indexPath.item) as! ListBlockContentItem
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ListItemCollectionViewCell.description(), for: indexPath) as! ListItemCollectionViewCell
-            cell.configureCell(item: item, style: content.style)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as! Cell
+            cell.configure(withItem: item)
             cell.apply(style: style ?? EJKit.shared.style.getStyle(forBlockType: block.type)!)
             return cell
             
@@ -90,7 +92,7 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
         case EJNativeBlockType.paragraph:
             collectionView.register(ParagraphCollectionViewCell.self, forCellWithReuseIdentifier: ParagraphCollectionViewCell.description())
             let content = block.data as! ParagraphBlockContent
-            let item = content.getItem(atIndex: 0) as! ParagraphBlockContentItem
+            let item = content.getItem(atIndex: .zero) as! ParagraphBlockContentItem
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ParagraphCollectionViewCell.description(), for: indexPath) as! ParagraphCollectionViewCell
             cell.configureCell(item: item)
             cell.apply(style: style ?? EJKit.shared.style.getStyle(forBlockType: block.type)!)
@@ -99,7 +101,7 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
         case EJNativeBlockType.raw:
             collectionView.register(RawHtmlCollectionViewCell.self, forCellWithReuseIdentifier: RawHtmlCollectionViewCell.description())
             let content = block.data as! RawHtmlBlockContent
-            let item = content.getItem(atIndex: 0) as! RawHtmlBlockContentItem
+            let item = content.getItem(atIndex: .zero) as! RawHtmlBlockContentItem
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RawHtmlCollectionViewCell.description(), for: indexPath) as! RawHtmlCollectionViewCell
             cell.configureCell(item: item)
             cell.apply(style: style ?? EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.raw)!)
@@ -126,7 +128,7 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
             return ImageNativeContentView.estimatedSize(for: block.data.getItem(atIndex: itemIndex) as! ImageBlockContentItem, style: style, boundingWidth: superviewSize.width)
             
         case EJNativeBlockType.list:
-            return ListItemNativeView.estimatedSize(for: block.data.getItem(atIndex: itemIndex) as! ListBlockContentItem, style: style, boundingWidth: superviewSize.width)
+            return ListItemNativeContentView.estimatedSize(for: block.data.getItem(atIndex: itemIndex) as! ListBlockContentItem, style: style, boundingWidth: superviewSize.width)
             
         case EJNativeBlockType.linkTool:
             return LinkNativeContentView.estimatedSize(for: block.data.getItem(atIndex: itemIndex) as! LinkBlockContentItem, style: style, boundingWidth: superviewSize.width)

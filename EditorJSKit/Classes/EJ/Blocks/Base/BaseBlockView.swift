@@ -12,6 +12,7 @@ public class BaseBlockView<BlockView: UIView>: UIView, EJBlockView where BlockVi
     
     let baseView = UIView()
     let blockView = BlockView()
+    var blockType: EJAbstractBlockType { EJNativeBlockType.raw }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -35,6 +36,25 @@ public class BaseBlockView<BlockView: UIView>: UIView, EJBlockView where BlockVi
             baseView.topAnchor.constraint(equalTo: topAnchor),
             baseView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
+        
+        setupBlockView()
+    }
+    
+    /**
+     This is default impleentation. If you wish to apply any custom setup (e.g. insets), override this functions.
+     If overriding constraints, do not call super.
+     */
+    func setupBlockView() {
+        let insets = EJKit.shared.style.getStyle(forBlockType: blockType)?.insets ?? .zero
+        
+        baseView.addSubview(blockView)
+        blockView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            blockView.leftAnchor.constraint(equalTo: baseView.leftAnchor, constant: insets.left),
+            blockView.rightAnchor.constraint(equalTo: baseView.rightAnchor, constant: -insets.right),
+            blockView.topAnchor.constraint(equalTo: baseView.topAnchor, constant: insets.top),
+            blockView.bottomAnchor.constraint(equalTo: baseView.bottomAnchor, constant: -insets.bottom)
+            ])
     }
     
     // MARK: - ReusableBlockView conformance

@@ -1,5 +1,5 @@
 //
-//  LinkNativeView.swift
+//  LinkNativeContentView.swift
 //  EditorJSKit
 //
 //  Created by Иван Глушко on 18/06/2019.
