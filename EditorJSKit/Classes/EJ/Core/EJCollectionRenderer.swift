@@ -41,14 +41,18 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
             return cell
             
         case EJNativeBlockType.image:
-            collectionView.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: ImageCollectionViewCell.description())
+            typealias Cell = CollectionViewBlockCell<ImageBlockView>
+            let reuseId = ImageBlockView.reuseId
+            collectionView.register(Cell.self, forCellWithReuseIdentifier: reuseId)
             let content = block.data as! ImageBlockContent
             let item = content.getItem(atIndex: indexPath.item) as! ImageBlockContentItem
             if item.file.imageData == nil {
-                item.file.callback = { self.collectionView.reloadItems(at: [indexPath]) }
+                item.file.callback = { [weak self] in
+                    self?.collectionView.reloadItems(at: [indexPath])
+                }
             }
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.description(), for: indexPath) as! ImageCollectionViewCell
-            cell.configureCell(item: item)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as! Cell
+            cell.configure(withItem: item)
             cell.apply(style: style ?? EJKit.shared.style.getStyle(forBlockType: block.type)!)
             return cell
             
@@ -116,7 +120,7 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
             return HeaderNativeContentView.estimatedSize(for: block.data.getItem(atIndex: itemIndex) as! HeaderBlockContentItem, style: style, boundingWidth: superviewSize.width)
             
         case EJNativeBlockType.image:
-            return ImageNativeView.estimatedSize(for: block.data.getItem(atIndex: itemIndex) as! ImageBlockContentItem, style: style, boundingWidth: superviewSize.width)
+            return ImageNativeContentView.estimatedSize(for: block.data.getItem(atIndex: itemIndex) as! ImageBlockContentItem, style: style, boundingWidth: superviewSize.width)
             
         case EJNativeBlockType.list:
             return ListItemNativeView.estimatedSize(for: block.data.getItem(atIndex: itemIndex) as! ListBlockContentItem, style: style, boundingWidth: superviewSize.width)

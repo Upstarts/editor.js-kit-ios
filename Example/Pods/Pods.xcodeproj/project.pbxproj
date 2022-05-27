@@ -10,7 +10,7 @@
 		063A31B6C7718057CD5F898FCF6F04DC /* RawHtmlCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27072265CBFED06F75A40FDF6EFC5B25 /* RawHtmlCollectionViewCell.swift */; };
 		07F709B17C4C444DA01C51EBAC2BADDD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		091090C1A22809B7A009E8F3CF963189 /* LinkNativeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61364C7893E95F5F9C0FCAFE3EC4B9FC /* LinkNativeView.swift */; };
-		2E8FF825F210EDD3CFF2B932F3B5006D /* ImageNativeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DF1B65F42C7EE6202006B0F84FF8D6 /* ImageNativeView.swift */; };
+		2E8FF825F210EDD3CFF2B932F3B5006D /* ImageNativeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DF1B65F42C7EE6202006B0F84FF8D6 /* ImageNativeContentView.swift */; };
 		2F95EAA836CE3127D860E3FC5C7127F9 /* HeaderBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46427DE060DA5C2B4C457260967C09C /* HeaderBlockView.swift */; };
 		30DD78667B75CEA0497D433A1BB40DCB /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA8DA4B5BD41583B9C084ED2192A85 /* String+Ext.swift */; };
 		33E876F5FA4CDDD8333737C579C8FE24 /* NativeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30138C2CAB67401F2A4C3CC731414C4 /* NativeStyle.swift */; };
@@ -32,7 +32,7 @@
 		8065268C89708D70BEDD0EE1EBE5BDE8 /* DelimiterBlockNativeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182C7A9EB06C6F32559F98E9ACEEF96D /* DelimiterBlockNativeStyle.swift */; };
 		81F295C7E828D2FDAA4188E12180EB5B /* DelimiterBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3B1B70112D9E7B8A26F8FCE810818 /* DelimiterBlockView.swift */; };
 		8F12269FC4B33B7CFB514DD6DF3032D8 /* ImageBlockNativeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B2DD4C5A918BB0F327717EF10782AB /* ImageBlockNativeStyle.swift */; };
-		90D57CE14E4CBD679802B0597B7AF6B1 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3468B64236F5AE70F77BC2CF9FE6898 /* ImageCollectionViewCell.swift */; };
+		90D57CE14E4CBD679802B0597B7AF6B1 /* ImageBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3468B64236F5AE70F77BC2CF9FE6898 /* ImageBlockView.swift */; };
 		925E66BFD655BA54CBB3DDCF90FDB617 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		9333BE493F07CCF3849C588F876B9293 /* Pods-EditorJSKit_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C0C2BE1FD5E250B89C8D34D8E555F8DC /* Pods-EditorJSKit_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		94A74FCA2840B519008B26B9 /* BaseBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A74FC92840B519008B26B9 /* BaseBlockView.swift */; };
@@ -98,7 +98,7 @@
 		27072265CBFED06F75A40FDF6EFC5B25 /* RawHtmlCollectionViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RawHtmlCollectionViewCell.swift; sourceTree = "<group>"; };
 		2DBA8DA4B5BD41583B9C084ED2192A85 /* String+Ext.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		38DF1B65F42C7EE6202006B0F84FF8D6 /* ImageNativeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ImageNativeView.swift; sourceTree = "<group>"; };
+		38DF1B65F42C7EE6202006B0F84FF8D6 /* ImageNativeContentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ImageNativeContentView.swift; sourceTree = "<group>"; };
 		3DF43D8327EF72D6B5EC3B5F78B1F80A /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4053283F444BE9AE6017007FE408304B /* EJAbstractBlockRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EJAbstractBlockRenderer.swift; sourceTree = "<group>"; };
 		4399ECDCF27E85BCE80103F19D36CB3D /* ImageBlockContent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ImageBlockContent.swift; sourceTree = "<group>"; };
@@ -131,7 +131,7 @@
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9E008ACE5B849F4323696EFAEB6E2B8B /* EJCollectionRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EJCollectionRenderer.swift; sourceTree = "<group>"; };
 		9FFC6223C3EE95AEA7A985C6C37538E0 /* Pods-EditorJSKit_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EditorJSKit_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		A3468B64236F5AE70F77BC2CF9FE6898 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		A3468B64236F5AE70F77BC2CF9FE6898 /* ImageBlockView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ImageBlockView.swift; sourceTree = "<group>"; };
 		AB129205FFD56C4512DECE5BBE3DBF44 /* HeaderBlockContent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HeaderBlockContent.swift; sourceTree = "<group>"; };
 		AC7C2D1D7CB61463C77BEA0404F4D481 /* Pods-EditorJSKit_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-EditorJSKit_Example-dummy.m"; sourceTree = "<group>"; };
 		B4293ED091FC85B3045E1CA3C3138479 /* DelimiterBlockContent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DelimiterBlockContent.swift; sourceTree = "<group>"; };
@@ -267,7 +267,7 @@
 				94A74FC82840B4F6008B26B9 /* Base */,
 				94A74FCD2840B80B008B26B9 /* Delimiter */,
 				94A74FD62840E66B008B26B9 /* Header */,
-				A3468B64236F5AE70F77BC2CF9FE6898 /* ImageCollectionViewCell.swift */,
+				94A74FD72840E8C9008B26B9 /* Image */,
 				D5B6612DDC15997A19BAE5A61400DAA1 /* LinkCollectionViewCell.swift */,
 				CDF70C176AA65D2809C1A2131868BC40 /* ListItemCollectionViewCell.swift */,
 				0D147DD8B6957BC3139F446798684167 /* ParagraphCollectionViewCell.swift */,
@@ -392,6 +392,15 @@
 			path = Header;
 			sourceTree = "<group>";
 		};
+		94A74FD72840E8C9008B26B9 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				A3468B64236F5AE70F77BC2CF9FE6898 /* ImageBlockView.swift */,
+				38DF1B65F42C7EE6202006B0F84FF8D6 /* ImageNativeContentView.swift */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
 		BC9251EC587F7A15A764992457C444C1 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -409,7 +418,6 @@
 		BEA1D97F011337ACED5AC609559EBBDE /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				38DF1B65F42C7EE6202006B0F84FF8D6 /* ImageNativeView.swift */,
 				61364C7893E95F5F9C0FCAFE3EC4B9FC /* LinkNativeView.swift */,
 				0D1B3897D60D7E24179D4AF53E123E83 /* ListItemNativeView.swift */,
 				0CF01FC950158AAB4E825AB08FF810C9 /* ParagraphNativeView.swift */,
@@ -637,8 +645,8 @@
 				DF4CBF55F63D7B7096127D5D4F2DBFEC /* HeaderNativeContentView.swift in Sources */,
 				530BB4B0F51714B63C5DCAF3D5DF9824 /* ImageBlockContent.swift in Sources */,
 				8F12269FC4B33B7CFB514DD6DF3032D8 /* ImageBlockNativeStyle.swift in Sources */,
-				90D57CE14E4CBD679802B0597B7AF6B1 /* ImageCollectionViewCell.swift in Sources */,
-				2E8FF825F210EDD3CFF2B932F3B5006D /* ImageNativeView.swift in Sources */,
+				90D57CE14E4CBD679802B0597B7AF6B1 /* ImageBlockView.swift in Sources */,
+				2E8FF825F210EDD3CFF2B932F3B5006D /* ImageNativeContentView.swift in Sources */,
 				A49BEE96A6C64F17473BC1104068378E /* LinkBlockContent.swift in Sources */,
 				FA936015FF3F4831260BFAB1C6388A43 /* LinkBlockNativeStyle.swift in Sources */,
 				A4DA4C6A974818525E7C9A094E89F1EC /* LinkCollectionViewCell.swift in Sources */,

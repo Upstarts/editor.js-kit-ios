@@ -1,5 +1,5 @@
 //
-//  HeaderNativeView.swift
+//  HeaderNativeContentView.swift
 //  EditorJSKit
 //
 //  Created by Иван Глушко on 17/06/2019.

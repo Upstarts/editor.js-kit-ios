@@ -1,5 +1,5 @@
 //
-//  ImageNativeView.swift
+//  ImageNativeContentView.swift
 //  EditorJSKit
 //
 //  Created by Иван Глушко on 17/06/2019.
@@ -9,7 +9,7 @@
 import UIKit
 
 ///
-public class ImageNativeView: UIView, EJBlockStyleApplicable {
+public class ImageNativeContentView: UIView, EJBlockStyleApplicable, ConfigurableBlockView {
     
     // MARK: - UI Properties
     public let imageView = UIImageView()
@@ -57,66 +57,19 @@ public class ImageNativeView: UIView, EJBlockStyleApplicable {
         
     }
     
-    public func apply(style: EJBlockStyle) {
-        guard let style = style as? EJImageBlockStyle else { return }
-        label.textColor = style.captionColor
-        label.textAlignment = style.textAlignment
-        imageView.layer.cornerRadius = style.imageViewCornerRadius
-        if withBackground {
-            imageView.backgroundColor = style.imageViewBackgroundColor
-            backgroundColor = style.backgroundColor
-        }
-        else {
-            imageView.backgroundColor = .clear
-            backgroundColor = .clear
-        }
-        layer.cornerRadius = style.cornerRadius
-    }
-    
-    public func configure(item: ImageBlockContentItem) {
-        if let data = item.file.imageData {
-            setImage(from: data, item: item)
-            label.attributedText = item.attributedString
-            withBackground = item.withBackground
-            label.isHidden = false
-            imageView.isHidden = false
-        }
-        else {
-            label.isHidden = true
-            imageView.isHidden = true
-        }
-    }
-    
     private func setImage(from data: Data, item: ImageBlockContentItem) {
         if let image = UIImage(data: data) {
             DispatchQueue.main.async {
                 self.imageView.image = image
                 self.label.isHidden = false
                 self.imageView.isHidden = false
-                if let imageSize = ImageNativeView.imageSize(for: item, containerMaxWidth: self.bounds.width) {
+                if let imageSize = ImageNativeContentView.imageSize(for: item, containerMaxWidth: self.bounds.width) {
                     self.imageWidth?.constant = imageSize.width
                     self.imageHeight?.constant = imageSize.height
                     self.layoutIfNeeded()
                 }
             }
         }
-    }
-    
-    public static func estimatedSize(for item: ImageBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
-        let style = style ?? EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.image)
-        let containerMaxWidth: CGFloat = boundingWidth - (style?.insets.left ?? 0) - (style?.insets.right ?? 0)
-        var height: CGFloat = 0
-        if let imageSize = self.imageSize(for: item, containerMaxWidth: containerMaxWidth) {
-            height += imageSize.height
-        }
-        if let attributed = item.attributedString {
-            height += attributed.height(withConstrainedWidth: containerMaxWidth)
-            if let style = style as? EJImageBlockStyle {
-                height += style.captionInsets.top + style.captionInsets.bottom
-            }
-        }
-        
-        return CGSize(width: boundingWidth, height: height)
     }
     
     private static func imageSize(for item: ImageBlockContentItem, containerMaxWidth: CGFloat) -> CGSize? {
@@ -137,5 +90,56 @@ public class ImageNativeView: UIView, EJBlockStyleApplicable {
             }
         }
         return nil
+    }
+    
+    // MARK: - ConfigurableBlockView conformance
+    
+    public func configure(withItem item: ImageBlockContentItem) {
+        if let data = item.file.imageData {
+            setImage(from: data, item: item)
+            label.attributedText = item.attributedString
+            withBackground = item.withBackground
+            label.isHidden = false
+            imageView.isHidden = false
+        }
+        else {
+            label.isHidden = true
+            imageView.isHidden = true
+        }
+    }
+    
+    public static func estimatedSize(for item: ImageBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
+        let style = style ?? EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.image)
+        let containerMaxWidth: CGFloat = boundingWidth - (style?.insets.left ?? 0) - (style?.insets.right ?? 0)
+        var height: CGFloat = 0
+        if let imageSize = self.imageSize(for: item, containerMaxWidth: containerMaxWidth) {
+            height += imageSize.height
+        }
+        if let attributed = item.attributedString {
+            height += attributed.height(withConstrainedWidth: containerMaxWidth)
+            if let style = style as? EJImageBlockStyle {
+                height += style.captionInsets.top + style.captionInsets.bottom
+            }
+        }
+        
+        return CGSize(width: boundingWidth, height: height)
+    }
+    
+    // MARK: - EJBlockStyleApplicable conformance
+    
+    public func apply(style: EJBlockStyle) {
+        layer.cornerRadius = style.cornerRadius
+        imageView.backgroundColor = .clear
+        backgroundColor = .clear
+        
+        guard let style = style as? EJImageBlockStyle else { return }
+        label.textColor = style.captionColor
+        label.textAlignment = style.textAlignment
+        imageView.layer.cornerRadius = style.imageViewCornerRadius
+        
+        if withBackground {
+            imageView.backgroundColor = style.imageViewBackgroundColor
+            backgroundColor = style.backgroundColor
+        }
     }
 }
