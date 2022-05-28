@@ -33,29 +33,55 @@ Converts clean json blocks data like [this](Example/EditorJSKit/EditorJSMock.jso
 * Documentation on how to create custom blocks
 * Documentation on how to create custom renderers
 
-
-## Usage
+## Developers note
 Essentially the Kit is built on multiple levels of abstractions. It is pretty handy since it provides an ability to customize the behavior of rendering clean json data and adding custom blocks.
 
-Note that the framework has a built-in protocol-oriented tools to implement your own renderers and custom blocks. These features are not documented yet, we're working on it. 
+Note that the framework has a built-in protocol-oriented tools to implement your own adapters, renderers and custom blocks. These features are not documented yet, we're working on it. 
 
-For now we only support blocks rendering within a `UICollectionView` out of the box. We called it `EJCollectionRenderer`. That's how you gonna use it:
+## Usage
+For now we only support blocks rendering within a `UICollectionView` out of the box. If your collection view contains only EJ blocks, use `EJCollectionViewAdapter`, it encapsulates collection's dataSource and delegate and is super easy to use. 
+
+Here's the example of `EJCollectionViewAdapter` usage: 
 
 1. Decode your data (array of json blocks) with `EJBLockList` type (which is `Codable`). 
 
-2. Store decoded list somewhere in blockList variable `var blockList: EJBlockList`
+2. Store decoded blocks somewhere like `var blockList: EJBlockList`
 
 3. Inside of your ViewController create a `collectionView`:
 ``` swift
 lazy var collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UICollectionViewFlowLayout())
 ```
 
-4. Create a renderer:
+4. Create an adapter:
 ``` swift
-let renderer = EJCollectionRenderer(collectionView: collectionView)
+lazy var adapter = EJCollectionViewAdapter(collectionView: collectionView)
 ```
 
-5. Implement and assign data source and delegate methods.
+5. Confirm to `EJCollectionDataSource` and return your parsed blocks in the `data` variable.
+``` swift
+extension ViewController: EJCollectionDataSource {
+    var data: EJBlocksList? { blockList }
+}
+```
+
+6. Assign your `ViewController` to `adapter`'s `dataSource`
+``` swift
+override func viewDidLoad() {
+    super.viewDidLoad()
+    adapter.dataSource = self
+}
+```
+
+In case if you'd like to mix EJ blocks with some other cells, use `EJCollectionRenderer`. It provides you with more flexibility, here's how to use it:
+
+1. Repeat steps 1-3 from the guide above.
+
+2. Create a renderer:
+``` swift
+lazy var renderer = EJCollectionRenderer(collectionView: collectionView)
+```
+
+3. Implement and assign collection's data source and delegate methods.
 ``` swift
 ///
 extension ViewController: UICollectionViewDataSource {
@@ -74,7 +100,7 @@ extension ViewController: UICollectionViewDataSource {
             return try renderer.render(block: blockList.blocks[indexPath.section], itemIndexPath: indexPath)
         }
         catch {
-        	// Ensure you won't ever get here
+            // Ensure you won't ever get here
             return UICollectionViewCell()
         }
     }
@@ -90,9 +116,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
         }
     }
 }
-```
-
-
+``` 
 
 
 ## Example
