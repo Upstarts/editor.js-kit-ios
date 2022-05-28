@@ -1,6 +1,7 @@
 
 <p align="center">
-  <img src="https://static.upstarts.work/ejkit/logo-dark.png?" width=400 />
+  <img src="https://static.upstarts.work/ejkit/logo-dark.png?#gh-dark-mode-only" width=400 />
+  <img src="https://static.upstarts.work/ejkit/logo-light.png?#gh-light-mode-only" width=400 />
 </p>
 
 [![Version](https://img.shields.io/cocoapods/v/EditorJSKit.svg?style=flat)](https://cocoapods.org/pods/EditorJSKit)
