@@ -1,15 +1,10 @@
 
 <p align="center">
-<picture>
+<picture width=400>
   <source media="(prefers-color-scheme: dark)" srcset="https://static.upstarts.work/ejkit/logo-dark.png?">
-  <img src="https://static.upstarts.work/ejkit/logo-light.png?">
+  <img src="https://static.upstarts.work/ejkit/logo-light.png?" width=400>
 </picture>
 </p>
-
-<!--<p align="center">-->
-<!--  <img src="https://static.upstarts.work/ejkit/logo-dark.png?#gh-dark-mode-only" width=400 />-->
-<!--  <img src="https://static.upstarts.work/ejkit/logo-light.png?#gh-light-mode-only" width=400 />-->
-<!--</p>-->
 
 [![Version](https://img.shields.io/cocoapods/v/EditorJSKit.svg?style=flat)](https://cocoapods.org/pods/EditorJSKit)
 [![License](https://img.shields.io/cocoapods/l/EditorJSKit.svg?style=flat)](https://cocoapods.org/pods/EditorJSKit)
