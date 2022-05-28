@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img src="https://static.upstarts.work/ejkit/logo-dark.png" width=400 />
+  <img src="https://static.upstarts.work/ejkit/logo-dark.png?" width=400 />
 </p>
 
 [![Version](https://img.shields.io/cocoapods/v/EditorJSKit.svg?style=flat)](https://cocoapods.org/pods/EditorJSKit)
@@ -14,7 +14,7 @@ A non-official iOS Framework for [Editor.js](https://editorjs.io) - block styled
 Converts clean json blocks data like [this](Example/EditorJSKit/EditorJSMock.json) into native views like that 👇
 
 <p align="center">
-  <img src="https://static.upstarts.work/ejkit/editorjs.kit-ios-scr.png" width=420 />
+  <img src="https://static.upstarts.work/ejkit/editorjs.kit-ios-scr.png?" width=420 />
 </p>
 
 #### Supported blocks
