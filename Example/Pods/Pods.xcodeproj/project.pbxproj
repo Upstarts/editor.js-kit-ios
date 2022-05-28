@@ -35,6 +35,8 @@
 		90D57CE14E4CBD679802B0597B7AF6B1 /* ImageBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3468B64236F5AE70F77BC2CF9FE6898 /* ImageBlockView.swift */; };
 		925E66BFD655BA54CBB3DDCF90FDB617 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		9333BE493F07CCF3849C588F876B9293 /* Pods-EditorJSKit_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C0C2BE1FD5E250B89C8D34D8E555F8DC /* Pods-EditorJSKit_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9423A80428424D8500A74558 /* EJCollectionViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9423A80328424D8500A74558 /* EJCollectionViewAdapter.swift */; };
+		9423A8062842513400A74558 /* EJCollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9423A8052842513400A74558 /* EJCollectionDataSource.swift */; };
 		94A74FCA2840B519008B26B9 /* BaseBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A74FC92840B519008B26B9 /* BaseBlockView.swift */; };
 		94A74FCC2840B62F008B26B9 /* ConfigurableBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A74FCB2840B62F008B26B9 /* ConfigurableBlockView.swift */; };
 		94A74FCF2840BC13008B26B9 /* ReusableBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A74FCE2840BC13008B26B9 /* ReusableBlockView.swift */; };
@@ -120,6 +122,8 @@
 		88CCF3D7F2111354A60307DFC6685B8A /* Pods-EditorJSKit_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-EditorJSKit_Example.modulemap"; sourceTree = "<group>"; };
 		8A86D9804BD14503DC9FAB234A1C16D4 /* RawHtmlBlockContent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RawHtmlBlockContent.swift; sourceTree = "<group>"; };
 		90B170A317B8DB5025838F1460C7CB0A /* Pods-EditorJSKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-EditorJSKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		9423A80328424D8500A74558 /* EJCollectionViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EJCollectionViewAdapter.swift; sourceTree = "<group>"; };
+		9423A8052842513400A74558 /* EJCollectionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EJCollectionDataSource.swift; sourceTree = "<group>"; };
 		94A38F7FC0E4EB26F37A6D6C28B9BC95 /* Pods-EditorJSKit_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-EditorJSKit_Example-frameworks.sh"; sourceTree = "<group>"; };
 		94A74FC92840B519008B26B9 /* BaseBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseBlockView.swift; sourceTree = "<group>"; };
 		94A74FCB2840B62F008B26B9 /* ConfigurableBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableBlockView.swift; sourceTree = "<group>"; };
@@ -241,7 +245,6 @@
 				815CF608EA870B252A7F79F28F477005 /* EJAbstractBlock.swift */,
 				4053283F444BE9AE6017007FE408304B /* EJAbstractBlockRenderer.swift */,
 				BACA9C84E880FFB76FC121D8B223ACFE /* EJBlocksList.swift */,
-				9E008ACE5B849F4323696EFAEB6E2B8B /* EJCollectionRenderer.swift */,
 				CC247AA0BEAEC517A64427D89E7F9C49 /* EJConfigurableView.swift */,
 				09D546255DFB6049E8CEC5596A7A12B1 /* EJKit.swift */,
 				08284C2E02A254CF977E5F2F178CAF34 /* EJNativeBlockType.swift */,
@@ -363,6 +366,9 @@
 		94A74FD12840BD03008B26B9 /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				9423A80328424D8500A74558 /* EJCollectionViewAdapter.swift */,
+				9E008ACE5B849F4323696EFAEB6E2B8B /* EJCollectionRenderer.swift */,
+				9423A8052842513400A74558 /* EJCollectionDataSource.swift */,
 				94A74FD22840BD13008B26B9 /* CollectionViewBlockCell.swift */,
 			);
 			path = CollectionView;
@@ -637,6 +643,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				94A74FD32840BD13008B26B9 /* CollectionViewBlockCell.swift in Sources */,
+				9423A8062842513400A74558 /* EJCollectionDataSource.swift in Sources */,
 				C90A6E78AB74ADDCAED9ED2072B9C9B9 /* DataDownloaderService.swift in Sources */,
 				5330E72007CC736DEA2E4EF1302374C4 /* DelimiterBlockContent.swift in Sources */,
 				8065268C89708D70BEDD0EE1EBE5BDE8 /* DelimiterBlockNativeStyle.swift in Sources */,
@@ -648,6 +655,7 @@
 				56AD2C95681F7FC71089CE29FE30F444 /* EJAbstractBlockRenderer.swift in Sources */,
 				D1FF981EEC99642E0A0599AAF7E10A34 /* EJBlocksList.swift in Sources */,
 				F22AA2FF934638E09CA3A8C6DCD2FC89 /* EJCollectionRenderer.swift in Sources */,
+				9423A80428424D8500A74558 /* EJCollectionViewAdapter.swift in Sources */,
 				4C633C64799130CCB70FC01D67B4AE7D /* EJConfigurableView.swift in Sources */,
 				BEC0BBF52FEE197B5467815499B296E0 /* EJKit.swift in Sources */,
 				B620C0B984FD09701FDF4BA29732D872 /* EJNativeBlockType.swift in Sources */,
