@@ -11,16 +11,16 @@
         {
             "type" : "paragraph",
             "data" : {
-                "text" : "Render native UI with formatted JSON data. This screen is rendered with Editor.JS Kit framework."
+                "text" : "Render native UI with formatted JSON data."
             }
         },
         {
             "type": "image",
             "data": {
                 "file": {
-                    "url": "https://static.upstarts.work/img/logo-framed.png"
+                    "url": "https://static.upstarts.work/ejkit/logo-light.png"
                 },
-                "caption": "Upstarts team develops mobile apps",
+                "caption": "Brought to you by Upstarts team",
                 "withBorder": true,
                 "stretched": false,
                 "withBackground": false
