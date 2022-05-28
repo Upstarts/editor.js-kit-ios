@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   
   s.description      = 'SDK for editor.js. Parse and render natively supported blocks. Put blocks into your UICollectionView or implement your own custom renderer. Design and use custom blocks.'
   s.homepage         = 'https://github.com/Upstarts/editor.js-kit-ios'
-  s.screenshots      = 'https://raw.githubusercontent.com/Upstarts/editor.js-kit-ios/master/screenshot.jpg'
+  s.screenshots      = 'https://static.upstarts.work/ejkit/editorjs.kit-ios-scr.png'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Upstarts' => 'dev@upstarts.work' }
   s.source           = { :git => 'https://github.com/Upstarts/editor.js-kit-ios.git', :tag => s.version.to_s }
