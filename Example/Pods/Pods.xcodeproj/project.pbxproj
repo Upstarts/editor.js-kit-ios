@@ -356,7 +356,8 @@
 			children = (
 				94A74FD12840BD03008B26B9 /* CollectionView */,
 			);
-			path = Adapters;
+			name = Adapters;
+			path = EditorJSKit/Classes/EJ/Adapters;
 			sourceTree = "<group>";
 		};
 		94A74FD12840BD03008B26B9 /* CollectionView */ = {
