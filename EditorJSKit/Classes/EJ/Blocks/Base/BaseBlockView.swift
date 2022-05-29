@@ -5,7 +5,7 @@
 //  Created by Vadim Popov on 27.05.2022.
 //
 
-import Foundation
+import UIKit
 
 ///
 public class BaseBlockView<BlockView: UIView>: UIView, EJBlockView where BlockView: EJBlockStyleApplicable & ConfigurableBlockView {
