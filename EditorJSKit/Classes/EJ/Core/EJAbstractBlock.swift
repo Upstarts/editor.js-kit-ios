@@ -32,9 +32,11 @@ open class EJAbstractBlock: EJAbstractBlockProtocol {
     
     required public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+
+        let kit = (decoder.userInfo[EJKit.Keys.kit.codingUserInfo] as? EJKit) ?? .shared
         
         // Loop through custom blocks
-        for customBlock in EJKit.shared.registeredCustomBlocks {
+        for customBlock in kit.registeredCustomBlocks {
             guard let type = try? customBlock.type.decode(container: container) else { continue }
             guard let data = try? customBlock.contentClass.init(from: decoder) else {
                 throw DecodingError.typeMismatch(

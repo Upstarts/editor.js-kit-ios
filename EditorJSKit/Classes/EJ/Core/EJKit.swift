@@ -16,8 +16,17 @@ open class EJKit {
     
     open var registeredCustomBlocks: [EJCustomBlock] = []
     
+    /**
+     */
     public func register(customBlock: EJCustomBlock) {
         registeredCustomBlocks.append(customBlock)
+    }
+    
+    /**
+     */
+    public func decode(data: Data) throws -> EJBlocksList {
+        let decoder = EJBlocksDecoder(kit: self)
+        return try decoder.decode(EJBlocksList.self, from: data)
     }
 }
 
@@ -32,5 +41,15 @@ public struct EJCustomBlock {
     }
 }
 
-
-
+///
+extension EJKit {
+    
+    ///
+    enum Keys: String {
+        case kit
+        
+        var codingUserInfo: CodingUserInfoKey {
+            return CodingUserInfoKey(rawValue: rawValue)!
+        }
+    }
+}

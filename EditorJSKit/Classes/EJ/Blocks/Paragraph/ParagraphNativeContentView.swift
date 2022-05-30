@@ -9,7 +9,7 @@
 import UIKit
 
 ///
-open class ParagraphNativeContentView: UIView, EJBlockStyleApplicable, ConfigurableBlockView {
+open class ParagraphNativeContentView: UIView, ConfigurableBlockView {
     public let textView = UITextViewFixed()
     
     override init(frame: CGRect) {
@@ -41,23 +41,34 @@ open class ParagraphNativeContentView: UIView, EJBlockStyleApplicable, Configura
     
     // MARK: - ConfigurableBlockView conformance
     
-    public func configure(withItem item: ParagraphBlockContentItem) {
-        textView.attributedText = item.attributedString
-    }
-    
-    public static func estimatedSize(for item: ParagraphBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
-        guard let attributed = item.attributedString, let style = style ?? EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.paragraph) else { return .zero }
-        let newBoundingWidth = boundingWidth - (style.insets.left + style.insets.right)
-        let height = attributed.textViewHeight(boundingWidth: newBoundingWidth)
-        return CGSize(width: boundingWidth, height: height)
-    }
-    
-    // MARK: - EJBlockStyleApplicable conformance
-    
-    public func apply(style: EJBlockStyle) {
+    public func configure(withItem item: ParagraphBlockContentItem, style: EJBlockStyle?) {
         guard let style = style as? EJParagraphBlockStyle else { return }
+        
+        // 1. Apply UI
         textView.linkTextAttributes = style.linkTextAttributes
         backgroundColor = style.backgroundColor
         layer.cornerRadius = style.cornerRadius
+        
+        // 2. Apply content
+        let attributedString = item.cachedAttributedString ?? item.htmlReadyText.convertHTML(font: style.font, forceFontFace: true)
+        if item.cachedAttributedString == nil {
+            item.cachedAttributedString = attributedString
+        }
+        textView.attributedText = attributedString
+    }
+    
+    public static func estimatedSize(for item: ParagraphBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
+        guard let style = style as? EJParagraphBlockStyle else { return .zero }
+        
+        guard let attributedString = item.cachedAttributedString ?? item.htmlReadyText.convertHTML(font: style.font, forceFontFace: true) else {
+            return .zero
+        }
+        if item.cachedAttributedString == nil {
+            item.cachedAttributedString = attributedString
+        }
+        
+        let newBoundingWidth = boundingWidth - (style.insets.left + style.insets.right)
+        let height = attributedString.textViewHeight(boundingWidth: newBoundingWidth)
+        return CGSize(width: boundingWidth, height: height)
     }
 }

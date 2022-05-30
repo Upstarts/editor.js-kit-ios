@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class LinkNativeContentView: UIView, EJBlockStyleApplicable, ConfigurableBlockView {
+open class LinkNativeContentView: UIView, ConfigurableBlockView {
     
     private weak var item: LinkBlockContentItem?
     
@@ -23,6 +23,8 @@ open class LinkNativeContentView: UIView, EJBlockStyleApplicable, ConfigurableBl
     public var hasDescription = false
     
     private lazy var tapGR = UITapGestureRecognizer(target: self, action: #selector(tapAction))
+    
+    private var style: EJLinkBlockStyle?
     
     // MARK: Constraints
     
@@ -49,14 +51,14 @@ open class LinkNativeContentView: UIView, EJBlockStyleApplicable, ConfigurableBl
     }
     
     private func layoutForImageView() {
-        guard let style = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.linkTool) as? EJLinkBlockStyle else { return }
+        guard let style = style else { return }
         imageRightConstraint.constant = -style.imageRightInset
         imageWidthConstraint.isActive = false
         imageHeightConstraint.isActive = false
         NSLayoutConstraint.activate([
             imageView.heightAnchor.constraint(equalToConstant: style.imageWidthHeight),
             imageView.widthAnchor.constraint(equalToConstant: style.imageWidthHeight),
-            ])
+        ])
     }
     
     private func setupViews() {
@@ -109,19 +111,28 @@ open class LinkNativeContentView: UIView, EJBlockStyleApplicable, ConfigurableBl
     
     // MARK: - ConfigurableBlockView conformance
     
-    public func configure(withItem item: LinkBlockContentItem) {
+    public func configure(withItem item: LinkBlockContentItem, style: EJBlockStyle?) {
         self.item = item
         
+        // 1. Apply basic style
+        backgroundColor = style?.backgroundColor
+        layer.cornerRadius = style?.cornerRadius ?? .zero
+        
+        guard let style = style as? EJLinkBlockStyle else { return }
+        
+        // 2. Apply content
+        item.prepareCachedStrings(withStyle: style)
+        
         let titleMutable = NSMutableAttributedString()
-        if let titleAtr = item.titleAttributedString {
+        if let titleAtr = item.cachedTitleAttributedString {
             titleMutable.append(titleAtr)
         }
-        if let siteNameAtr = item.siteNameAttributedString {
+        if let siteNameAtr = item.cachedSiteNameAttributedString {
             let divider = NSAttributedString(string: Constants.divider)
             titleMutable.append(divider)
             titleMutable.append(siteNameAtr)
         }
-        if let descriptionAtr = item.descriptionAttributedString {
+        if let descriptionAtr = item.cachedDescriptionAttributedString {
             hasDescription = true
             descriptionLabel.attributedText = descriptionAtr
         }
@@ -130,58 +141,19 @@ open class LinkNativeContentView: UIView, EJBlockStyleApplicable, ConfigurableBl
         
         if let url = item.image?.url {
             hasURL = true
-            DataDownloaderService.downloadFile(at: url) { [weak self] (data) in
-                guard let image = UIImage(data: data) else { return }
+            DataDownloaderService.downloadFile(at: url) { [weak self] (data, downloadedUrl) in
+                guard url == downloadedUrl, let image = UIImage(data: data) else {
+                    self?.imageView.image = nil
+                    return
+                }
                 self?.imageView.image = image
             }
         } else {
             imageView.image = nil
         }
-    }
-    
-    public static func estimatedSize(for item: LinkBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
-        guard let castedStyle = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.linkTool) as? EJLinkBlockStyle else { return .zero }
-        let initialBoundingWidth = boundingWidth
-        var boundingWidth = boundingWidth - (UIConstants.widthInsets + castedStyle.insets.left + castedStyle.insets.right)
-        if item.image?.url != nil {
-            boundingWidth -= (castedStyle.imageWidthHeight + castedStyle.imageRightInset)
-        }
         
-        let titleMutable = NSMutableAttributedString()
-        if let titleAtr = item.titleAttributedString {
-            titleMutable.append(titleAtr)
-        }
-        if let siteNameAtr = item.siteNameAttributedString {
-            let divider = NSAttributedString(string: Constants.divider)
-            titleMutable.append(divider)
-            titleMutable.append(siteNameAtr)
-        }
-        
-        
-        var height = titleMutable.height(withConstrainedWidth: boundingWidth)
-        
-        if let descriptionAtr = item.descriptionAttributedString {
-            height += UIConstants.descriptionTopOffset
-            height += descriptionAtr.height(withConstrainedWidth: boundingWidth)
-        }
-        
-        if let formatttedLink = item.formattedLink {
-            height += formatttedLink.height(using: castedStyle.linkFont)
-        }
-        
-        height += UIConstants.heightInsets
-        height = height > castedStyle.imageWidthHeight ? height : castedStyle.imageWidthHeight + UIConstants.heightInsets
-        
-        return CGSize(width: initialBoundingWidth, height: height )
-    }
-    
-    // MARK: - EJBlockStyleApplicable conformance
-    
-    public func apply(style: EJBlockStyle) {
-        backgroundColor = style.backgroundColor
-        layer.cornerRadius = style.cornerRadius
-        
-        guard let style = style as? EJLinkBlockStyle else { return }
+        // 2. Apply specific style
+        self.style = style
         titleLabel.font = style.titleFont
         titleLabel.textColor = style.titleColor
         titleLabel.textAlignment = style.titleTextAlignment
@@ -191,6 +163,45 @@ open class LinkNativeContentView: UIView, EJBlockStyleApplicable, ConfigurableBl
         linkLabel.textAlignment = style.linkTextAlignment
 
         imageView.layer.cornerRadius = style.imageCornerRadius
+    }
+    
+    /**
+     */
+    public static func estimatedSize(for item: LinkBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
+        guard let style = style as? EJLinkBlockStyle else { return .zero }
+        let initialBoundingWidth = boundingWidth
+        var boundingWidth = boundingWidth - (UIConstants.widthInsets + style.insets.left + style.insets.right)
+        if item.image?.url != nil {
+            boundingWidth -= (style.imageWidthHeight + style.imageRightInset)
+        }
+        
+        item.prepareCachedStrings(withStyle: style)
+        
+        let titleMutable = NSMutableAttributedString()
+        if let titleAtr = item.cachedTitleAttributedString {
+            titleMutable.append(titleAtr)
+        }
+        if let siteNameAtr = item.cachedSiteNameAttributedString {
+            let divider = NSAttributedString(string: Constants.divider)
+            titleMutable.append(divider)
+            titleMutable.append(siteNameAtr)
+        }
+        
+        var height = titleMutable.height(withConstrainedWidth: boundingWidth)
+        
+        if let descriptionAtr = item.cachedDescriptionAttributedString {
+            height += UIConstants.descriptionTopOffset
+            height += descriptionAtr.height(withConstrainedWidth: boundingWidth)
+        }
+        
+        if let formatttedLink = item.formattedLink {
+            height += formatttedLink.height(using: style.linkFont)
+        }
+        
+        height += UIConstants.heightInsets
+        height = height > style.imageWidthHeight ? height : style.imageWidthHeight + UIConstants.heightInsets
+        
+        return CGSize(width: initialBoundingWidth, height: height )
     }
 }
 

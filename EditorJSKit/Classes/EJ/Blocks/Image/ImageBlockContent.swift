@@ -32,7 +32,8 @@ public class ImageBlockContentItem: EJAbstractBlockContentItem {
     public let withBorder: Bool
     public let stretched: Bool
     public let withBackground: Bool
-    public var attributedString: NSAttributedString?
+    
+    var cachedAttributedCaption: NSAttributedString?
     
     public required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -41,13 +42,6 @@ public class ImageBlockContentItem: EJAbstractBlockContentItem {
         withBorder = try container.decode(Bool.self, forKey: .withBorder)
         stretched = try container.decode(Bool.self, forKey: .stretched)
         withBackground = try container.decode(Bool.self, forKey: .withBackground)
-        
-        if !caption.isEmpty, let style = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.image) as? EJImageBlockStyle {
-            attributedString = caption.convertHTML(font: style.font)
-        }
-        else {
-            attributedString = nil
-        }
     }
 }
 
@@ -62,7 +56,7 @@ public class ImageFile: Decodable {
     public required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         url = try container.decode(URL.self, forKey: .url)
-        DataDownloaderService.downloadFile(at: url) { [weak self] data in
+        DataDownloaderService.downloadFile(at: url) { [weak self] (data, downloadedUrl) in
             self?.imageData = data
             self?.callback?()
         }

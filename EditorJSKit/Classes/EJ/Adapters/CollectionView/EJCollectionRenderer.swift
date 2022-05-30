@@ -10,22 +10,26 @@ import UIKit
 
 ///
 open class EJCollectionRenderer: EJCollectionBlockRenderer {
-    public typealias View = UICollectionViewCell & EJBlockStyleApplicable
+    public typealias View = UICollectionViewCell
     
     public var startSectionIndex: Int = .zero
     
     unowned public var collectionView: UICollectionView
+    private let kit: EJKit
     
-    public init(collectionView: UICollectionView) {
+    public init(collectionView: UICollectionView, kit: EJKit = .shared) {
         self.collectionView = collectionView
+        self.kit = kit
     }
     
+    /**
+     */
     public func render(block: EJAbstractBlock, indexPath: IndexPath, style: EJBlockStyle? = nil) throws -> View {
         
-        for customBlock in EJKit.shared.registeredCustomBlocks {
+        for customBlock in kit.registeredCustomBlocks {
             guard customBlock.type.rawValue == block.type.rawValue else { continue }
             guard let content = block.data as? EJCollectionRendererAdaptableContent else { continue }
-            return try! content.render(collectionView: collectionView, block: block, indexPath: indexPath, style: nil)
+            return try content.render(collectionView: collectionView, block: block, indexPath: indexPath, style: style)
         }
         
         switch block.type {
@@ -37,8 +41,8 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
             let content = block.data as! HeaderBlockContent
             let item = content.getItem(atIndex: .zero) as! HeaderBlockContentItem
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as! Cell
-            cell.configure(withItem: item)
-            cell.apply(style: style ?? EJKit.shared.style.getStyle(forBlockType: block.type)!)
+            let style = style ?? kit.style.getStyle(forBlockType: block.type)
+            cell.configure(withItem: item, style: style)
             return cell
             
         case EJNativeBlockType.image:
@@ -53,8 +57,8 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
                 }
             }
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as! Cell
-            cell.configure(withItem: item)
-            cell.apply(style: style ?? EJKit.shared.style.getStyle(forBlockType: block.type)!)
+            let style = style ?? kit.style.getStyle(forBlockType: block.type)
+            cell.configure(withItem: item, style: style)
             return cell
             
         case EJNativeBlockType.list:
@@ -64,8 +68,8 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
             let content = block.data as! ListBlockContent
             let item = content.getItem(atIndex: indexPath.item) as! ListBlockContentItem
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as! Cell
-            cell.configure(withItem: item)
-            cell.apply(style: style ?? EJKit.shared.style.getStyle(forBlockType: block.type)!)
+            let style = style ?? kit.style.getStyle(forBlockType: block.type)
+            cell.configure(withItem: item, style: style)
             return cell
             
         case EJNativeBlockType.linkTool:
@@ -75,8 +79,8 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
             let content = block.data as! LinkBlockContent
             let item = content.getItem(atIndex: .zero) as! LinkBlockContentItem
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as! Cell
-            cell.configure(withItem: item)
-            cell.apply(style: style ?? EJKit.shared.style.getStyle(forBlockType: block.type)!)
+            let style = style ?? kit.style.getStyle(forBlockType: block.type)
+            cell.configure(withItem: item, style: style)
             return cell
             
         case EJNativeBlockType.delimiter:
@@ -86,8 +90,8 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
             let content = block.data as! DelimiterBlockContent
             let item = content.getItem(atIndex: .zero) as! DelimiterBlockContentItem
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as! Cell
-            cell.configure(withItem: item)
-            cell.apply(style: style ?? EJKit.shared.style.getStyle(forBlockType: block.type)!)
+            let style = style ?? kit.style.getStyle(forBlockType: block.type)
+            cell.configure(withItem: item, style: style)
             return cell
             
         case EJNativeBlockType.paragraph:
@@ -97,8 +101,8 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
             let content = block.data as! ParagraphBlockContent
             let item = content.getItem(atIndex: .zero) as! ParagraphBlockContentItem
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as! Cell
-            cell.configure(withItem: item)
-            cell.apply(style: style ?? EJKit.shared.style.getStyle(forBlockType: block.type)!)
+            let style = style ?? kit.style.getStyle(forBlockType: block.type)
+            cell.configure(withItem: item, style: style)
             return cell
             
         case EJNativeBlockType.raw:
@@ -108,8 +112,8 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
             let content = block.data as! RawHtmlBlockContent
             let item = content.getItem(atIndex: .zero) as! RawHtmlBlockContentItem
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as! Cell
-            cell.configure(withItem: item)
-            cell.apply(style: style ?? EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.raw)!)
+            let style = kit.style.getStyle(forBlockType: EJNativeBlockType.raw)
+            cell.configure(withItem: item, style: style)
             return cell
             
         default: throw EJError.missmatch
@@ -119,10 +123,10 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
     
     public func size(forBlock block: EJAbstractBlock, itemIndex: Int, style: EJBlockStyle?, superviewSize: CGSize) throws -> CGSize {
         
-        for customBlock in EJKit.shared.registeredCustomBlocks {
+        for customBlock in kit.registeredCustomBlocks {
             guard customBlock.type.rawValue == block.type.rawValue else { continue }
             guard let content = block.data as? EJCollectionRendererAdaptableContent else { continue }
-            return try content.size(forBlock: block, itemIndex: itemIndex, style: nil, superviewSize: superviewSize)
+            return try content.size(forBlock: block, itemIndex: itemIndex, style: style, superviewSize: superviewSize)
         }
         
         switch block.type {
@@ -147,23 +151,23 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
         case EJNativeBlockType.raw:
             return RawHtmlNativeContentView.estimatedSize(for: block.data.getItem(atIndex: itemIndex) as! RawHtmlBlockContentItem, style: style, boundingWidth: superviewSize.width)
             
-        default: return EJKit.shared.style.defaultItemSize
+        default: return kit.style.defaultItemSize
         }
     }
     
     public func insets(forBlock block: EJAbstractBlock) -> UIEdgeInsets {
-        for customBlock in EJKit.shared.registeredCustomBlocks {
+        for customBlock in kit.registeredCustomBlocks {
             guard customBlock.type.rawValue == block.type.rawValue else { continue }
             guard let content = block.data as? EJCollectionRendererAdaptableContent else { continue }
             return content.insets(forBlock: block)
         }
         
-        var insets = EJKit.shared.style.defaultSectionInsets
+        var insets = kit.style.defaultSectionInsets
         switch block.type {
         case EJNativeBlockType.header:
             guard
                 let headerItem = (block.data as? HeaderBlockContent)?.getItem(atIndex: 0) as? HeaderBlockContentItem,
-                let headerStyle = EJKit.shared.style.getStyle(forBlockType: block.type) as? EJHeaderBlockStyle
+                let headerStyle = kit.style.getStyle(forBlockType: block.type) as? EJHeaderBlockStyle
             else { return insets }
             insets.top += headerStyle.topInset(forHeaderLevel: headerItem.level)
             insets.bottom += headerStyle.bottomInset(forHeaderLevel: headerItem.level)
@@ -175,15 +179,15 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
     }
     
     public func spacing(forBlock block: EJAbstractBlock) -> CGFloat {
-        for customBlock in EJKit.shared.registeredCustomBlocks {
+        for customBlock in kit.registeredCustomBlocks {
             guard customBlock.type.rawValue == block.type.rawValue else { continue }
             guard let content = block.data as? EJCollectionRendererAdaptableContent else { continue }
             return content.spacing(forBlock: block)
         }
         
-        if let style = EJKit.shared.style.getStyle(forBlockType: block.type) {
+        if let style = kit.style.getStyle(forBlockType: block.type) {
             return style.lineSpacing
         }
-        return EJKit.shared.style.defaultItemsLineSpacing
+        return kit.style.defaultItemsLineSpacing
     }
 }

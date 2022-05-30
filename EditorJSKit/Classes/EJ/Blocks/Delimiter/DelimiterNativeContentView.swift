@@ -9,11 +9,12 @@
 import UIKit
 
 ///
-open class DelimiterNativeContentView: UIView, EJBlockStyleApplicable, ConfigurableBlockView {
+open class DelimiterNativeContentView: UIView, ConfigurableBlockView {
     
     // MARK: - UI Properties
     
     public let label = UILabel()
+    private var appliedInsets: UIEdgeInsets?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,46 +27,39 @@ open class DelimiterNativeContentView: UIView, EJBlockStyleApplicable, Configura
     
     
     private func setupViews() {
-        let style = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.delimiter) as? EJDelimiterBlockStyle
-        let insets = style?.labelInsets ?? .zero
-        
         addSubview(label)
-        
         label.numberOfLines = .zero
         label.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            label.leftAnchor.constraint(equalTo: leftAnchor,constant: insets.left),
-            label.rightAnchor.constraint(equalTo: rightAnchor, constant: -insets.right),
-            label.topAnchor.constraint(equalTo: topAnchor, constant: insets.top),
-            label.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -insets.bottom)
-            ])
+            label.leftAnchor.constraint(equalTo: leftAnchor),
+            label.rightAnchor.constraint(equalTo: rightAnchor),
+            label.topAnchor.constraint(equalTo: topAnchor),
+            label.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
     }
     
     // MARK: - ConfigurableBlockView conformance
     
-    public func configure(withItem item: DelimiterBlockContentItem) {
+    public func configure(withItem item: DelimiterBlockContentItem, style: EJBlockStyle?) {
         label.text = item.text
+        
+        guard let style = style as? EJDelimiterBlockStyle else { return }
+        
+        backgroundColor = style.backgroundColor
+        layer.cornerRadius = style.cornerRadius
+        
+        label.textColor = style.color
+        label.font = style.font
+        label.textAlignment = style.textAlignment
     }
     
     // TODO: Why need `style` argument? It's not used at all
     public static func estimatedSize(for item: DelimiterBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
-        guard let castedStyle = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.delimiter) as? EJDelimiterBlockStyle else { return .zero }
-        var newBoundingWidth = boundingWidth - (castedStyle.insets.left + castedStyle.insets.right)
-        newBoundingWidth -= castedStyle.labelInsets.left + castedStyle.labelInsets.right
-        var height = item.text.size(using: castedStyle.font, boundingWidth: newBoundingWidth).height
-        height += castedStyle.labelInsets.bottom + castedStyle.labelInsets.top
+        guard let style = style as? EJDelimiterBlockStyle else { return .zero }
+        var newBoundingWidth = boundingWidth - (style.insets.left + style.insets.right)
+        newBoundingWidth -= style.labelInsets.left + style.labelInsets.right
+        var height = item.text.size(using: style.font, boundingWidth: newBoundingWidth).height
+        height += style.labelInsets.bottom + style.labelInsets.top
         return CGSize(width: boundingWidth, height: height)
-    }
-    
-    // MARK: - EJBlockStyleApplicable conformance
-    
-    public func apply(style: EJBlockStyle) {
-        backgroundColor = style.backgroundColor
-        layer.cornerRadius = style.cornerRadius
-        
-        guard let style = style as? EJDelimiterBlockStyle else { return }
-        label.textColor = style.color
-        label.font = style.font
-        label.textAlignment = style.textAlignment
     }
 }

@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     private lazy var adapter = EJCollectionViewAdapter(collectionView: collectionView)
     
     //
-    private var blockList: EJBlocksList!
+    private var blockList: EJBlocksList?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,16 +37,19 @@ class ViewController: UIViewController {
             collectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
             collectionView.rightAnchor.constraint(equalTo: view.rightAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-            ])
+        ])
     }
     
     private func prepareBlocks() {
         guard let path = Bundle.main.path(forResource: "EditorJSMock", ofType: "json") else { return }
         guard let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe) else { return }
-        blockList = try! JSONDecoder().decode(EJBlocksList.self, from: data)
-        collectionView.reloadData()
+        do {
+            blockList = try EJKit.shared.decode(data: data)
+            collectionView.reloadData()
+        } catch {
+            print("Error occured during blocks decoding ", error)
+        }
     }
-
 }
 
 ///

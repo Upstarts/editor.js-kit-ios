@@ -28,7 +28,7 @@ public class HeaderBlockContentItem: EJAbstractBlockContentItem {
     enum CodingKeys: String, CodingKey { case text, level }
     public let text: String
     public let level: Int
-    public var attributedString: NSAttributedString?
+    public var cachedAttributedString: NSAttributedString?
     
     public init(text: String, level: Int) {
         self.text = text
@@ -39,10 +39,5 @@ public class HeaderBlockContentItem: EJAbstractBlockContentItem {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         text = try container.decode(String.self, forKey: .text)
         level = try container.decode(Int.self, forKey: .level)
-        if let style = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.header) as? EJHeaderBlockStyle {
-            attributedString = text.convertHTML(font: style.font(forHeaderLevel: level), forceFontFace: true)
-        } else {
-            attributedString = nil
-        }
     }
 }

@@ -26,18 +26,12 @@ public class RawHtmlBlockContent: EJAbstractBlockContent {
 ///
 public class RawHtmlBlockContentItem: EJAbstractBlockContentItem {
     public let html: String
-    public let attributedString: NSAttributedString?
+    var cachedAttributedString: NSAttributedString?
     
     enum CodingKeys: String, CodingKey { case html }
     
     public required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         html = try container.decode(String.self, forKey: .html)
-        if let style = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.raw) as? EJRawHtmlBlockStyle {
-            attributedString = html.convertHTML(font: style.font)
-        } else {
-            attributedString = nil
-        }
     }
-    
 }

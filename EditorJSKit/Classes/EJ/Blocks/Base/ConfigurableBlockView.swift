@@ -10,6 +10,6 @@ import CoreGraphics
 ///
 public protocol ConfigurableBlockView {
     associatedtype BlockContentItem
-    func configure(withItem item: BlockContentItem)
+    func configure(withItem item: BlockContentItem, style: EJBlockStyle?)
     static func estimatedSize(for item: BlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize
 }

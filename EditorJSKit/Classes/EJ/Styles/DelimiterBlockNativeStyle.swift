@@ -23,5 +23,5 @@ class DelimiterBlockNativeStyle: EJDelimiterBlockStyle {
     var color: UIColor = .black
     var labelInsets = UIEdgeInsets.zero
     
-    var insets: UIEdgeInsets = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
+    var insets: UIEdgeInsets = .zero
 }

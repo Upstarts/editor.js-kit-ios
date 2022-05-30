@@ -9,7 +9,7 @@
 import UIKit
 
 ///
-open class RawHtmlNativeContentView: UIView, EJBlockStyleApplicable, ConfigurableBlockView {
+open class RawHtmlNativeContentView: UIView, ConfigurableBlockView {
     public let textView = UITextViewFixed()
     
     override init(frame: CGRect) {
@@ -39,23 +39,36 @@ open class RawHtmlNativeContentView: UIView, EJBlockStyleApplicable, Configurabl
     
     // MARK: - ConfigurableBlockView conformance
     
-    public func configure(withItem item: RawHtmlBlockContentItem) {
-        textView.attributedText = item.attributedString
+    public func configure(withItem item: RawHtmlBlockContentItem, style: EJBlockStyle?) {
+        guard let style = style as? EJRawHtmlBlockStyle else { return }
+        
+        let attributedString = item.cachedAttributedString ?? item.html.convertHTML(font: style.font)
+        if item.cachedAttributedString == nil {
+            item.cachedAttributedString = attributedString
+        }
+        textView.attributedText = attributedString
+        
+        textView.linkTextAttributes = style.linkTextAttributes
+        backgroundColor = style.backgroundColor
+        layer.cornerRadius = style.cornerRadius
     }
     
     public static func estimatedSize(for item: RawHtmlBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
-        guard let attributed = item.attributedString, let style = style ?? EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.raw) else { return .zero }
+        guard let style = style as? EJRawHtmlBlockStyle else { return .zero }
+        let attributedString = item.cachedAttributedString ?? item.html.convertHTML(font: style.font)
+        if item.cachedAttributedString == nil {
+            item.cachedAttributedString = attributedString
+        }
+        
+        guard let attributedString = attributedString else { return .zero }
         let newBoundingWidth = boundingWidth - (style.insets.left + style.insets.right)
-        let height = attributed.height(withConstrainedWidth: newBoundingWidth )
+        let height = attributedString.height(withConstrainedWidth: newBoundingWidth )
         return CGSize(width: boundingWidth, height: height)
     }
     
     // MARK: - EJBlockStyleApplicable conformance
     
     public func apply(style: EJBlockStyle) {
-        guard let style = style as? EJRawHtmlBlockStyle else { return }
-        textView.linkTextAttributes = style.linkTextAttributes
-        backgroundColor = style.backgroundColor
-        layer.cornerRadius = style.cornerRadius
+        
     }
 }

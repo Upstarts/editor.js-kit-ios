@@ -12,6 +12,7 @@ public final class EJCollectionViewAdapter: NSObject {
     
     ///
     unowned let collectionView: UICollectionView
+    private let kit: EJKit
     public var dataSource: EJCollectionDataSource?
     
     /// Custom delegate if you witsh to override sizes / insets
@@ -27,8 +28,9 @@ public final class EJCollectionViewAdapter: NSObject {
     
     /**
      */
-    public init(collectionView: UICollectionView) {
+    public init(collectionView: UICollectionView, kit: EJKit = .shared) {
         self.collectionView = collectionView
+        self.kit = kit
         super.init()
         collectionView.dataSource = self
         delegate = self
@@ -58,7 +60,9 @@ extension EJCollectionViewAdapter: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         do {
-            return try renderer.render(block: data.blocks[indexPath.section], indexPath: indexPath)
+            let block = data.blocks[indexPath.section]
+            let style = kit.style.getStyle(forBlockType: block.type)
+            return try renderer.render(block: block, indexPath: indexPath, style: style)
         }
         catch {
             return UICollectionViewCell()
@@ -76,9 +80,11 @@ extension EJCollectionViewAdapter: UICollectionViewDelegateFlowLayout {
               (.zero ..< data.blocks.count).contains(indexPath.section)
         else { return .zero }
         do {
-            return try renderer.size(forBlock: data.blocks[indexPath.section],
+            let block = data.blocks[indexPath.section]
+            let style = kit.style.getStyle(forBlockType: block.type)
+            return try renderer.size(forBlock: block,
                                      itemIndex: indexPath.item,
-                                     style: nil,
+                                     style: style,
                                      superviewSize: collectionView.frame.size)
         } catch {
             return .zero

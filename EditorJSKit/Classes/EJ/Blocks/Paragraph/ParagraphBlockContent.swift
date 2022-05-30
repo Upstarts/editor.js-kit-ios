@@ -25,19 +25,14 @@ public class ParagraphBlockContent: EJAbstractBlockContent {
 ///
 public class ParagraphBlockContentItem: EJAbstractBlockContentItem {
     public let text: String
-    public let attributedString: NSAttributedString?
+    let htmlReadyText: String
+    public var cachedAttributedString: NSAttributedString?
     
     enum CodingKeys: String, CodingKey { case text }
     
     required public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         text = try container.decode(String.self, forKey: .text)
-        if let style = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.paragraph) as? EJParagraphBlockStyle {
-            let htmlText = text.replacingOccurrences(of: "\n", with: "<br>")
-            attributedString = htmlText.convertHTML(font: style.font)
-        } else {
-            attributedString = nil
-        }
+        htmlReadyText = text.replacingOccurrences(of: "\n", with: "<br>")
     }
-    
 }

@@ -8,11 +8,13 @@
 import UIKit
 
 ///
-public class BaseBlockView<BlockView: UIView>: UIView, EJBlockView where BlockView: EJBlockStyleApplicable & ConfigurableBlockView {
+public class BaseBlockView<BlockView: UIView>: UIView, EJBlockView where BlockView: ConfigurableBlockView {
     
     let baseView = UIView()
     let blockView = BlockView()
     var blockType: EJAbstractBlockType { EJNativeBlockType.raw }
+    
+    var blockInsets: UIEdgeInsets?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,20 +43,11 @@ public class BaseBlockView<BlockView: UIView>: UIView, EJBlockView where BlockVi
     }
     
     /**
-     This is default impleentation. If you wish to apply any custom setup (e.g. insets), override this function.
-     If you're overriding constraints, be careful calling super.setupBlockView. It may break your constraints or crash.
+     This is default impleentation. If you wish to apply any custom setup, override this function.
      */
     func setupBlockView() {
-        let insets = EJKit.shared.style.getStyle(forBlockType: blockType)?.insets ?? .zero
-        
         baseView.addSubview(blockView)
         blockView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            blockView.leftAnchor.constraint(equalTo: baseView.leftAnchor, constant: insets.left),
-            blockView.rightAnchor.constraint(equalTo: baseView.rightAnchor, constant: -insets.right),
-            blockView.topAnchor.constraint(equalTo: baseView.topAnchor, constant: insets.top),
-            blockView.bottomAnchor.constraint(equalTo: baseView.bottomAnchor, constant: -insets.bottom)
-            ])
     }
     
     // MARK: - ReusableBlockView conformance
@@ -65,17 +58,28 @@ public class BaseBlockView<BlockView: UIView>: UIView, EJBlockView where BlockVi
     
     // MARK: - ConfigurableBlockView conformance
     
-    public func configure(withItem item: BlockView.BlockContentItem) {
-        blockView.configure(withItem: item)
+    public func configure(withItem item: BlockView.BlockContentItem, style: EJBlockStyle?) {
+        defer {
+            blockView.configure(withItem: item, style: style)
+        }
+        
+        let insets = style?.insets ?? .zero
+        if blockInsets != insets {
+            let constraints = [
+                blockView.leftAnchor.constraint(equalTo: baseView.leftAnchor, constant: insets.left),
+                blockView.rightAnchor.constraint(equalTo: baseView.rightAnchor, constant: -insets.right),
+                blockView.topAnchor.constraint(equalTo: baseView.topAnchor, constant: insets.top),
+                blockView.bottomAnchor.constraint(equalTo: baseView.bottomAnchor, constant: -insets.bottom)
+            ]
+            if blockInsets != nil {
+                NSLayoutConstraint.deactivate(constraints)
+            }
+            NSLayoutConstraint.activate(constraints)
+            blockInsets = insets
+        }
     }
     
     public static func estimatedSize(for item: BlockView.BlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
         BlockView.estimatedSize(for: item, style: style, boundingWidth: boundingWidth)
-    }
-    
-    // MARK: - EJBlockStyleApplicable conformance
-    
-    public func apply(style: EJBlockStyle) {
-        blockView.apply(style: style)
     }
 }

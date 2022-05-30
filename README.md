@@ -46,28 +46,29 @@ For now we only support blocks rendering within a `UICollectionView` out of the 
 
 Here's the example of `EJCollectionViewAdapter` usage: 
 
-1. Decode your data (array of json blocks) with `EJBLockList` type (which is `Codable`). 
+1. Decode your data to `EJBLockList` (array of json blocks): 
+``` swift
+let blockList = try EJKit.shared.decode(data: data)
+```
 
-2. Store decoded blocks somewhere like `var blockList: EJBlockList`
-
-3. Inside of your ViewController create a `collectionView`:
+2. Inside of your ViewController create a `collectionView`:
 ``` swift
 lazy var collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UICollectionViewFlowLayout())
 ```
 
-4. Create an adapter:
+3. Create an adapter:
 ``` swift
 lazy var adapter = EJCollectionViewAdapter(collectionView: collectionView)
 ```
 
-5. Confirm to `EJCollectionDataSource` and return your parsed blocks in the `data` variable.
+4. Confirm to `EJCollectionDataSource` and return your parsed blocks in the `data` variable.
 ``` swift
 extension ViewController: EJCollectionDataSource {
     var data: EJBlocksList? { blockList }
 }
 ```
 
-6. Assign your `ViewController` to `adapter`'s `dataSource`
+5. Assign your `ViewController` to `adapter`'s `dataSource`
 ``` swift
 override func viewDidLoad() {
     super.viewDidLoad()
@@ -89,18 +90,25 @@ lazy var renderer = EJCollectionRenderer(collectionView: collectionView)
 ///
 extension ViewController: UICollectionViewDataSource {
     
+    /**
+     */
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return blockList.blocks.count
     }
     
+    /**
+     */
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return blockList.blocks[section].data.numberOfItems
     }
     
-    
+    /**
+     */    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         do {
-            return try renderer.render(block: blockList.blocks[indexPath.section], itemIndexPath: indexPath)
+            let block = blockList.blocks[indexPath.section]
+            let style = kit.style.getStyle(forBlockType: block.type)
+            return try renderer.render(block: block, indexPath: indexPath, style: style)
         }
         catch {
             // Ensure you won't ever get here
@@ -111,12 +119,32 @@ extension ViewController: UICollectionViewDataSource {
 
 ///
 extension ViewController: UICollectionViewDelegateFlowLayout {
+
+    /**
+     */
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         do {
-            return try renderer.size(forBlock: blockList.blocks[indexPath.section], itemIndexPath: indexPath, style: nil, superviewSize: collectionView.frame.size)
+            let block = blockList.blocks[indexPath.section]
+            let style = kit.style.getStyle(forBlockType: block.type)
+            return try renderer.size(forBlock: block,
+                                     itemIndex: indexPath.item,
+                                     style: style,
+                                     superviewSize: collectionView.frame.size)
         } catch {
             return .zero
         }
+    }
+    
+    /**
+     */
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return renderer.spacing(forBlock: blockList.blocks[section])
+    }
+    
+    /**
+     */
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return renderer.insets(forBlock: blockList.blocks[section])
     }
 }
 ``` 

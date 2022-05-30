@@ -9,7 +9,7 @@
 import UIKit
 
 ///
-public class ImageNativeContentView: UIView, EJBlockStyleApplicable, ConfigurableBlockView {
+public class ImageNativeContentView: UIView, ConfigurableBlockView {
     
     // MARK: - UI Properties
     public let imageView = UIImageView()
@@ -18,8 +18,11 @@ public class ImageNativeContentView: UIView, EJBlockStyleApplicable, Configurabl
     private var imageWidth: NSLayoutConstraint?
     private var imageHeight: NSLayoutConstraint?
     
-    //
+    ///
     private var withBackground: Bool = false
+    
+    ///
+    private var appliedCaptionInsets: UIEdgeInsets?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,30 +34,25 @@ public class ImageNativeContentView: UIView, EJBlockStyleApplicable, Configurabl
     }
     
     private func setupViews() {
-        let style = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.image) as? EJImageBlockStyle
         addSubview(imageView)
         addSubview(label)
         
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageWidth = imageView.widthAnchor.constraint(equalToConstant: 0)
-        imageHeight = imageView.heightAnchor.constraint(equalToConstant: 0)
+        let imageWidth = imageView.widthAnchor.constraint(equalToConstant: 0)
+        let imageHeight = imageView.heightAnchor.constraint(equalToConstant: 0)
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: topAnchor),
             imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            imageWidth!,
-            imageHeight!
-            ])
+            imageWidth,
+            imageHeight
+        ])
+        self.imageWidth = imageWidth
+        self.imageHeight = imageHeight
         
-        label.numberOfLines = 0
+        label.numberOfLines = .zero
         label.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            label.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -(style?.captionInsets.bottom ?? 0)),
-            label.leftAnchor.constraint(equalTo: leftAnchor, constant: style?.captionInsets.left ?? 0),
-            label.rightAnchor.constraint(equalTo: rightAnchor, constant: -(style?.captionInsets.right ?? 0))
-            ])
-        
     }
     
     private func setImage(from data: Data, item: ImageBlockContentItem) {
@@ -94,10 +92,23 @@ public class ImageNativeContentView: UIView, EJBlockStyleApplicable, Configurabl
     
     // MARK: - ConfigurableBlockView conformance
     
-    public func configure(withItem item: ImageBlockContentItem) {
+    public func configure(withItem item: ImageBlockContentItem, style: EJBlockStyle?) {
+        
+        // 1. Apply basic style
+        layer.cornerRadius = style?.cornerRadius ?? .zero
+        imageView.backgroundColor = .clear
+        backgroundColor = .clear
+        
+        guard let style = style as? EJImageBlockStyle else { return }
+        
+        // 2. Apply content
         if let data = item.file.imageData {
             setImage(from: data, item: item)
-            label.attributedText = item.attributedString
+            let attributedCaption = item.cachedAttributedCaption ?? item.caption.convertHTML(font: style.font)
+            if item.cachedAttributedCaption == nil {
+                item.cachedAttributedCaption = attributedCaption
+            }
+            label.attributedText = attributedCaption
             withBackground = item.withBackground
             label.isHidden = false
             imageView.isHidden = false
@@ -106,33 +117,22 @@ public class ImageNativeContentView: UIView, EJBlockStyleApplicable, Configurabl
             label.isHidden = true
             imageView.isHidden = true
         }
-    }
-    
-    public static func estimatedSize(for item: ImageBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
-        let style = style ?? EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.image)
-        let containerMaxWidth: CGFloat = boundingWidth - (style?.insets.left ?? 0) - (style?.insets.right ?? 0)
-        var height: CGFloat = .zero
-        if let imageSize = self.imageSize(for: item, containerMaxWidth: containerMaxWidth) {
-            height += imageSize.height
-        }
-        if let attributed = item.attributedString {
-            height += attributed.height(withConstrainedWidth: containerMaxWidth)
-            if let style = style as? EJImageBlockStyle {
-                height += style.captionInsets.top + style.captionInsets.bottom
+        
+        // 3. Apply specific style
+        let captionInsets = style.captionInsets
+        if appliedCaptionInsets != captionInsets {
+            let constraints = [
+                label.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -(captionInsets.bottom)),
+                label.leftAnchor.constraint(equalTo: leftAnchor, constant: captionInsets.left),
+                label.rightAnchor.constraint(equalTo: rightAnchor, constant: -(captionInsets.right))
+            ]
+            if appliedCaptionInsets != nil {
+                NSLayoutConstraint.deactivate(constraints)
             }
+            NSLayoutConstraint.activate(constraints)
+            appliedCaptionInsets = captionInsets
         }
         
-        return CGSize(width: boundingWidth, height: height)
-    }
-    
-    // MARK: - EJBlockStyleApplicable conformance
-    
-    public func apply(style: EJBlockStyle) {
-        layer.cornerRadius = style.cornerRadius
-        imageView.backgroundColor = .clear
-        backgroundColor = .clear
-        
-        guard let style = style as? EJImageBlockStyle else { return }
         label.textColor = style.captionColor
         label.textAlignment = style.textAlignment
         imageView.layer.cornerRadius = style.imageViewCornerRadius
@@ -141,5 +141,27 @@ public class ImageNativeContentView: UIView, EJBlockStyleApplicable, Configurabl
             imageView.backgroundColor = style.imageViewBackgroundColor
             backgroundColor = style.backgroundColor
         }
+    }
+    
+    public static func estimatedSize(for item: ImageBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
+        let containerMaxWidth: CGFloat = boundingWidth - (style?.insets.left ?? .zero) - (style?.insets.right ?? .zero)
+        var height: CGFloat = .zero
+        if let imageSize = self.imageSize(for: item, containerMaxWidth: containerMaxWidth) {
+            height += imageSize.height
+        }
+        
+        guard let style = style as? EJImageBlockStyle else { return .zero }
+        
+        let attributedCaption = item.cachedAttributedCaption ?? item.caption.convertHTML(font: style.font)
+        if item.cachedAttributedCaption == nil {
+            item.cachedAttributedCaption = attributedCaption
+        }
+        
+        if let attributedCaption = attributedCaption {
+            height += attributedCaption.height(withConstrainedWidth: containerMaxWidth)
+            height += style.captionInsets.top + style.captionInsets.bottom
+        }
+        
+        return CGSize(width: boundingWidth, height: height)
     }
 }

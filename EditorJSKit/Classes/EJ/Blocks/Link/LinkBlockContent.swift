@@ -43,9 +43,10 @@ public class LinkBlockContentItem: EJAbstractBlockContentItem {
     
     public let image: ImageFile?
     public var formattedLink: String?
-    public var titleAttributedString: NSAttributedString?
-    public var siteNameAttributedString: NSAttributedString?
-    public var descriptionAttributedString: NSAttributedString?
+    
+    var cachedTitleAttributedString: NSAttributedString?
+    var cachedSiteNameAttributedString: NSAttributedString?
+    var cachedDescriptionAttributedString: NSAttributedString?
     
     enum CodingKeys: String, CodingKey {
         case title, site_name, description, image
@@ -57,14 +58,19 @@ public class LinkBlockContentItem: EJAbstractBlockContentItem {
         siteName = try container.decodeIfPresent(String.self, forKey: .site_name)
         description = try container.decodeIfPresent(String.self, forKey: .description)
         image = try container.decodeIfPresent(ImageFile.self, forKey: .image)
-        if let style = EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.linkTool) as? EJLinkBlockStyle {
-            titleAttributedString = title.convertHTML(font: style.titleFont)
-            siteNameAttributedString = siteName?.convertHTML(font: style.titleFont)
-            descriptionAttributedString = description?.convertHTML(font: style.descriptionFont)
-        } else {
-            titleAttributedString = nil
-            siteNameAttributedString = nil
-            descriptionAttributedString = nil
+    }
+    
+    func prepareCachedStrings(withStyle style: EJLinkBlockStyle) {
+        if cachedTitleAttributedString == nil {
+            cachedTitleAttributedString = title.convertHTML(font: style.titleFont)
+        }
+        
+        if cachedSiteNameAttributedString == nil {
+            cachedSiteNameAttributedString = siteName?.convertHTML(font: style.titleFont)
+        }
+        
+        if cachedDescriptionAttributedString == nil {
+            cachedDescriptionAttributedString = description?.convertHTML(font: style.descriptionFont)
         }
     }
 }

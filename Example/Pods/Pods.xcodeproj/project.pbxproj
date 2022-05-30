@@ -15,7 +15,6 @@
 		30DD78667B75CEA0497D433A1BB40DCB /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA8DA4B5BD41583B9C084ED2192A85 /* String+Ext.swift */; };
 		33E876F5FA4CDDD8333737C579C8FE24 /* NativeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30138C2CAB67401F2A4C3CC731414C4 /* NativeStyle.swift */; };
 		350FEC290285B8FACAAE443C841689CC /* LinkFormatterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF295A12A18C431BE64CD0E0AAB1B1C2 /* LinkFormatterService.swift */; };
-		4C633C64799130CCB70FC01D67B4AE7D /* EJConfigurableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC247AA0BEAEC517A64427D89E7F9C49 /* EJConfigurableView.swift */; };
 		5167E0D9090CFB9CFF3746F84C96B644 /* Pods-EditorJSKit_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7C2D1D7CB61463C77BEA0404F4D481 /* Pods-EditorJSKit_Example-dummy.m */; };
 		52C5D029E61A7A858BDA5458CCE5ABD2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		530BB4B0F51714B63C5DCAF3D5DF9824 /* ImageBlockContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4399ECDCF27E85BCE80103F19D36CB3D /* ImageBlockContent.swift */; };
@@ -146,7 +145,6 @@
 		C0C2BE1FD5E250B89C8D34D8E555F8DC /* Pods-EditorJSKit_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-EditorJSKit_Example-umbrella.h"; sourceTree = "<group>"; };
 		C14072AEA4C6904BBB92407CC6FC7BFB /* DelimiterNativeContentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DelimiterNativeContentView.swift; sourceTree = "<group>"; };
 		CAFB0DDE87C81432C95F0D98E944FF28 /* HeaderBlockNativeStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HeaderBlockNativeStyle.swift; sourceTree = "<group>"; };
-		CC247AA0BEAEC517A64427D89E7F9C49 /* EJConfigurableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EJConfigurableView.swift; sourceTree = "<group>"; };
 		CC48AED8359C2151DD00C6E1881C2F69 /* EditorJSKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = EditorJSKit.xcconfig; sourceTree = "<group>"; };
 		CDCA27FEB37629FD29AE0F83954EA199 /* NSAttributedString+Ext.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Ext.swift"; sourceTree = "<group>"; };
 		CDF70C176AA65D2809C1A2131868BC40 /* ListItemBlockView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ListItemBlockView.swift; sourceTree = "<group>"; };
@@ -245,7 +243,6 @@
 				815CF608EA870B252A7F79F28F477005 /* EJAbstractBlock.swift */,
 				4053283F444BE9AE6017007FE408304B /* EJAbstractBlockRenderer.swift */,
 				BACA9C84E880FFB76FC121D8B223ACFE /* EJBlocksList.swift */,
-				CC247AA0BEAEC517A64427D89E7F9C49 /* EJConfigurableView.swift */,
 				09D546255DFB6049E8CEC5596A7A12B1 /* EJKit.swift */,
 				08284C2E02A254CF977E5F2F178CAF34 /* EJNativeBlockType.swift */,
 				6C4D63E9ED194B83A8FF0A989EA71B5D /* EJStyle.swift */,
@@ -656,7 +653,6 @@
 				D1FF981EEC99642E0A0599AAF7E10A34 /* EJBlocksList.swift in Sources */,
 				F22AA2FF934638E09CA3A8C6DCD2FC89 /* EJCollectionRenderer.swift in Sources */,
 				9423A80428424D8500A74558 /* EJCollectionViewAdapter.swift in Sources */,
-				4C633C64799130CCB70FC01D67B4AE7D /* EJConfigurableView.swift in Sources */,
 				BEC0BBF52FEE197B5467815499B296E0 /* EJKit.swift in Sources */,
 				B620C0B984FD09701FDF4BA29732D872 /* EJNativeBlockType.swift in Sources */,
 				DB33FA81F7217F9E8D38A368825AB0C9 /* EJStyle.swift in Sources */,

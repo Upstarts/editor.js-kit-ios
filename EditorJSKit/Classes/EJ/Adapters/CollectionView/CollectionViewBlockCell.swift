@@ -8,7 +8,7 @@
 import UIKit
 
 ///
-public class CollectionViewBlockCell<EmbeddedView: UIView>: UICollectionViewCell, ConfigurableBlockView, EJBlockStyleApplicable where EmbeddedView: EJBlockView {
+public class CollectionViewBlockCell<EmbeddedView: UIView>: UICollectionViewCell, ConfigurableBlockView where EmbeddedView: EJBlockView {
     
     public typealias BlockContentItem = EmbeddedView.BlockContentItem
     
@@ -38,19 +38,13 @@ public class CollectionViewBlockCell<EmbeddedView: UIView>: UICollectionViewCell
         ])
     }
     
-    public func configure(withItem item: BlockContentItem) {
-        embeddedView.configure(withItem: item)
+    public func configure(withItem item: BlockContentItem, style: EJBlockStyle?) {
+        embeddedView.configure(withItem: item, style: style)
     }
 
     /**
      */
     public static func estimatedSize(for item: BlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
         EmbeddedView.estimatedSize(for: item, style: style, boundingWidth: boundingWidth)
-    }
-    
-    /**
-     */
-    public func apply(style: EJBlockStyle) {
-        embeddedView.apply(style: style)
     }
 }

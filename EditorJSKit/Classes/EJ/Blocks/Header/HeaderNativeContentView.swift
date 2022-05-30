@@ -9,7 +9,7 @@
 import UIKit
 
 ///
-public class HeaderNativeContentView: UIView, EJBlockStyleApplicable, ConfigurableBlockView {
+public class HeaderNativeContentView: UIView, ConfigurableBlockView {
     
     public let label = UILabel()
     
@@ -31,30 +31,36 @@ public class HeaderNativeContentView: UIView, EJBlockStyleApplicable, Configurab
             label.rightAnchor.constraint(equalTo: rightAnchor),
             label.topAnchor.constraint(equalTo: topAnchor),
             label.bottomAnchor.constraint(equalTo: bottomAnchor)
-            ])
+        ])
     }
     
     // MARK: - ConfigurableBlockView conformance
     
-    public func configure(withItem item: HeaderBlockContentItem) {
-        label.attributedText = item.attributedString
+    public func configure(withItem item: HeaderBlockContentItem, style: EJBlockStyle?) {
+        guard let style = style as? EJHeaderBlockStyle else {
+            label.text = item.text
+            return
+        }
+        let attributedString = item.text.convertHTML(font: style.font(forHeaderLevel: item.level), forceFontFace: true)
+        if item.cachedAttributedString == nil {
+            item.cachedAttributedString = attributedString
+        }
+        label.attributedText = attributedString
+        
+        backgroundColor = style.backgroundColor
+        layer.cornerRadius = style.cornerRadius
+        label.textAlignment = style.alignment
     }
     
     public static func estimatedSize(for item: HeaderBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
-        guard let attributed = item.attributedString, let style = style ?? EJKit.shared.style.getStyle(forBlockType: EJNativeBlockType.header)  else { return .zero }
+        guard let style = style as? EJHeaderBlockStyle else { return .zero }
+        let attributedString = item.cachedAttributedString ?? item.text.convertHTML(font: style.font(forHeaderLevel: item.level), forceFontFace: true)
+        if item.cachedAttributedString == nil {
+            item.cachedAttributedString = attributedString
+        }
         let newBoundingWidth = boundingWidth - (style.insets.left + style.insets.right)
-        let height = attributed.height(withConstrainedWidth: newBoundingWidth)
+        let height = attributedString?.height(withConstrainedWidth: newBoundingWidth) ?? .zero
         return CGSize(width: boundingWidth, height: height)
-    }
-    
-    // MARK: - EJBlockStyleApplicable conformance
-    
-    public func apply(style: EJBlockStyle) {
-        backgroundColor = style.backgroundColor
-        layer.cornerRadius = style.cornerRadius
-        
-        guard let style = style as? EJHeaderBlockStyle else { return }
-        label.textAlignment = style.alignment
     }
 }
 
