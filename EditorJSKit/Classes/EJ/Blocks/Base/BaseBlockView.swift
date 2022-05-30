@@ -41,8 +41,8 @@ public class BaseBlockView<BlockView: UIView>: UIView, EJBlockView where BlockVi
     }
     
     /**
-     This is default impleentation. If you wish to apply any custom setup (e.g. insets), override this functions.
-     If overriding constraints, do not call super.
+     This is default impleentation. If you wish to apply any custom setup (e.g. insets), override this function.
+     If you're overriding constraints, be careful calling super.setupBlockView. It may break your constraints or crash.
      */
     func setupBlockView() {
         let insets = EJKit.shared.style.getStyle(forBlockType: blockType)?.insets ?? .zero

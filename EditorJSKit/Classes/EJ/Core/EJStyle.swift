@@ -29,7 +29,7 @@ public extension EJBlockStyle {
 ///
 public protocol EJStyleProtocol {
     var blockStyles: [BlockStyle] { get }
-    func setStyle(style: EJBlockStyle, for blockType: EJAbstractBlockType)
+    func set(style: EJBlockStyle, for blockType: EJAbstractBlockType)
     func getStyle(forBlockType: EJAbstractBlockType) -> EJBlockStyle?
     
     var defaultItemsLineSpacing: CGFloat { get set }
@@ -45,7 +45,7 @@ open class EJStyle: EJStyleProtocol {
     open var defaultSectionInsets = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
     open var defaultItemSize: CGSize = .zero
     
-    public func setStyle(style: EJBlockStyle, for blockType: EJAbstractBlockType) {
+    public func set(style: EJBlockStyle, for blockType: EJAbstractBlockType) {
         blockStyles.enumerated().forEach { (index, blockStyle) in
             guard blockStyle.type.rawValue == blockType.rawValue else { return }
             blockStyles.remove(at: index)
