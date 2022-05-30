@@ -8,6 +8,5 @@
 
 import UIKit
 
-public class ParagraphBlockView: BaseBlockView<ParagraphNativeContentView> {
-    override var blockType: EJAbstractBlockType { EJNativeBlockType.paragraph }
-}
+///
+public class ParagraphBlockView: BaseBlockView<ParagraphNativeContentView> {}

@@ -73,6 +73,9 @@ open class ListItemNativeContentView: UIView, ConfigurableBlockView {
         let itemStyle = item.style
         let prefix = itemStyle == .unordered ? "" : "\(item.index).\t"
         let attributedString = NSMutableAttributedString(string: prefix)
+        if let style = style {
+            attributedString.addAttributes([.font: style.font], range: .init(location: .zero, length: attributedString.string.count)) 
+        }
         
         if let cachedString = item.cachedAttributedString {
             attributedString.append(cachedString)

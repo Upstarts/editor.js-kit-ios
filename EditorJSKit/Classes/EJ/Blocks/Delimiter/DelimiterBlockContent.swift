@@ -9,15 +9,8 @@
 import Foundation
 
 ///
-public class DelimiterBlockContent: EJAbstractBlockContent {
-    public var items = [DelimiterBlockContentItem()]
-    public var numberOfItems: Int { return items.count }
-    
-    public func getItem(atIndex index: Int) -> EJAbstractBlockContentItem? {
-        guard index == 0 else { return nil }
-        return items.first
-    }
-    
+public class DelimiterBlockContent: EJAbstractBlockContentSingleItem {
+    public let item: EJAbstractBlockContentItem = DelimiterBlockContentItem()
     enum CodingKeys: CodingKey {}
 }
 

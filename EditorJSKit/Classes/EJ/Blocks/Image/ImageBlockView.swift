@@ -8,6 +8,5 @@
 
 import UIKit
 
-public class ImageBlockView: BaseBlockView<ImageNativeContentView> {
-    override var blockType: EJAbstractBlockType { EJNativeBlockType.image }
-}
+///
+public class ImageBlockView: BaseBlockView<ImageNativeContentView> {}

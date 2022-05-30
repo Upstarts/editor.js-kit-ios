@@ -9,17 +9,10 @@
 import Foundation
 
 ///
-public class HeaderBlockContent: EJAbstractBlockContent {
-    public var items: [HeaderBlockContentItem] = []
-    public var numberOfItems: Int { return items.count }
-    
+public class HeaderBlockContent: EJAbstractBlockContentSingleItem {
+    public let item: EJAbstractBlockContentItem
     required public init(from decoder: Decoder) throws {
-        items = [try HeaderBlockContentItem(from: decoder) ]
-    }
-    
-    public func getItem(atIndex index: Int) -> EJAbstractBlockContentItem? {
-        guard index == 0 else { return nil }
-        return items.first
+        item = try HeaderBlockContentItem(from: decoder)
     }
 }
 

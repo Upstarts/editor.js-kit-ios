@@ -8,6 +8,5 @@
 
 import UIKit
 
-public class RawHtmlBlockView: BaseBlockView<RawHtmlNativeContentView> {
-    override var blockType: EJAbstractBlockType { EJNativeBlockType.raw }
-}
+///
+public class RawHtmlBlockView: BaseBlockView<RawHtmlNativeContentView> {}

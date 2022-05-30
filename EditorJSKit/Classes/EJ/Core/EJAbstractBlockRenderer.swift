@@ -17,28 +17,6 @@ public protocol EJAbstractBlockRenderer {
 }
 
 ///
-public protocol EJCollectionRendererAdaptable {
-    func render(collectionView: UICollectionView, block: EJAbstractBlock, indexPath: IndexPath, style: EJBlockStyle?) throws -> UICollectionViewCell
-    func size(forBlock: EJAbstractBlock, itemIndex: Int, style: EJBlockStyle?, superviewSize: CGSize) throws -> CGSize
-    func insets(forBlock block: EJAbstractBlock) -> UIEdgeInsets
-    func spacing(forBlock block: EJAbstractBlock) -> CGFloat
-}
-
-///
-extension EJCollectionRendererAdaptable {
-    func insets(forBlock block: EJAbstractBlock) -> UIEdgeInsets { return .zero }
-    func spacing(forBlock block: EJAbstractBlock) -> CGFloat { return 0 }
-}
-
-///
-public protocol EJCollectionRendererAdaptableContent: EJCollectionRendererAdaptable {
-    // When conform make sure to use explicit type
-    // cellClass: AnyClass = MyCollectionViewCell.self
-    var cellClass: AnyClass { get set }
-    var collectionView: UICollectionView? { get set }
-}
-
-///
 public protocol EJCollectionBlockRenderer: EJAbstractBlockRenderer {
     var collectionView: UICollectionView { get }
     var startSectionIndex: Int { get }

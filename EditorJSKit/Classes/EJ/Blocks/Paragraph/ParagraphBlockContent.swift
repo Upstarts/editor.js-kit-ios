@@ -8,17 +8,11 @@
 import Foundation
 
 ///
-public class ParagraphBlockContent: EJAbstractBlockContent {
-    public var items: [ParagraphBlockContentItem] = []
-    public var numberOfItems: Int { return items.count }
+public class ParagraphBlockContent: EJAbstractBlockContentSingleItem {
+    public let item: EJAbstractBlockContentItem
     
     required public init(from decoder: Decoder) throws {
-        items = [try ParagraphBlockContentItem(from: decoder)]
-    }
-    
-    public func getItem(atIndex index: Int) -> EJAbstractBlockContentItem? {
-        guard index == 0 else { return nil }
-        return items.first
+        item = try ParagraphBlockContentItem(from: decoder)
     }
 }
 

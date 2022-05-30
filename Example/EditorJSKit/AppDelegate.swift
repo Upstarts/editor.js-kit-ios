@@ -29,5 +29,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ejKit.style.set(style: HeaderStyle(), for: EJNativeBlockType.header)
         ejKit.style.set(style: ImageBlockStyle(), for: EJNativeBlockType.image)
         ejKit.style.set(style: LinkBlockStyle(), for: EJNativeBlockType.linkTool)
+        
+        // custom blocks
+        let calloutBlock = EJCustomBlock(type: CustomBlockType.callout,
+                                         contentClass: BlockContent.Single<CalloutBlockContentItem>.self,
+                                         viewClass: CalloutBlockView.self)
+        ejKit.register(customBlock: calloutBlock)
+        ejKit.style.set(style: CalloutBlockStyleImpl(), for: CustomBlockType.callout)
     }
 }

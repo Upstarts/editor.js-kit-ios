@@ -24,7 +24,7 @@ public final class EJCollectionViewAdapter: NSObject {
     
     // MARK: Inner tools
     
-    private lazy var renderer = EJCollectionRenderer(collectionView: collectionView)
+    private lazy var renderer = EJCollectionRenderer(collectionView: collectionView, kit: kit)
     
     /**
      */

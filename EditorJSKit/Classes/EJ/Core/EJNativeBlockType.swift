@@ -16,6 +16,14 @@ public protocol EJAbstractBlockType: Decodable {
 }
 
 ///
+public extension EJAbstractBlockType {
+    
+    func decode(container: KeyedDecodingContainer<EJAbstractBlock.CodingKeys>) throws -> EJAbstractBlockType {
+        return try container.decode(Self.self, forKey: .type)
+    }
+}
+
+///
 public enum EJNativeBlockType: String, EJAbstractBlockType {
     case header
     case image
@@ -24,8 +32,4 @@ public enum EJNativeBlockType: String, EJAbstractBlockType {
     case delimiter
     case paragraph
     case raw
-    
-    public func decode(container: KeyedDecodingContainer<EJAbstractBlock.CodingKeys>) throws -> EJAbstractBlockType {
-        return try container.decode(EJNativeBlockType.self, forKey: .type)
-    }
 }

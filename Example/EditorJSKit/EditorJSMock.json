@@ -62,6 +62,13 @@
             }
         },
         {
+            "type" : "callout",
+            "data" : {
+                "emoji": "🙀",
+                "text" : "This is a custom block which was easily integrated with a few lines of code."
+            }
+        },
+        {
             "type" : "paragraph",
             "data" : {
                 "text" : "There <b>are</b> dozens of <a href=\"https://github.com/editor-js\">ready-to-use Blocks</a> and the <a href=\"https://editorjs.io/creating-a-block-tool\">simple API</a> for creation any Block you need. For example, you can implement Blocks for Tweets, Instagram posts, surveys and polls, CTA-buttons and even games."

@@ -9,19 +9,12 @@
 import Foundation
 
 ///
-open class ImageBlockContent: EJAbstractBlockContent {
-    open var items: [ImageBlockContentItem]
-    open var numberOfItems: Int { return items.count }
+open class ImageBlockContent: EJAbstractBlockContentSingleItem {
+    public let item: EJAbstractBlockContentItem
     
     required public init(from decoder: Decoder) throws {
-        items = [ try ImageBlockContentItem(from: decoder)]
+        item = try ImageBlockContentItem(from: decoder)
     }
-    
-    open func getItem(atIndex index: Int) -> EJAbstractBlockContentItem? {
-        guard index == 0 else { return nil }
-        return items.first
-    }
-    
 }
 
 ///

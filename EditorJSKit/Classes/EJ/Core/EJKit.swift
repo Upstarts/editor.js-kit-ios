@@ -14,12 +14,18 @@ open class EJKit {
     
     init() {}
     
-    open var registeredCustomBlocks: [EJCustomBlock] = []
+    open var registeredCustomBlocks: [EJAbstractCustomBlock] = []
     
     /**
      */
-    public func register(customBlock: EJCustomBlock) {
+    public func register<View: ConfigurableBlockView, Content: EJAbstractBlockContent>(customBlock: EJCustomBlock<View, Content>) {
         registeredCustomBlocks.append(customBlock)
+    }
+    
+    /**
+     */
+    func retrieveCustomBlock(ofType type: EJAbstractBlockType) -> EJAbstractCustomBlock? {
+        return registeredCustomBlocks.first(where: { $0.type.rawValue == type.rawValue })
     }
     
     /**
@@ -27,17 +33,6 @@ open class EJKit {
     public func decode(data: Data) throws -> EJBlocksList {
         let decoder = EJBlocksDecoder(kit: self)
         return try decoder.decode(EJBlocksList.self, from: data)
-    }
-}
-
-///
-public struct EJCustomBlock {
-    public var type: EJAbstractBlockType
-    public var contentClass: EJAbstractBlockContent.Type
-    
-    public init(type: EJAbstractBlockType, contentClass: EJAbstractBlockContent.Type) {
-        self.type = type
-        self.contentClass = contentClass
     }
 }
 

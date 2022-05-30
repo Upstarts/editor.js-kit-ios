@@ -6,17 +6,6 @@
 //  Copyright © 2019 CocoaPods. All rights reserved.
 //
 
-import Foundation
-
-///
-public protocol EJAbstractBlockContentItem: Decodable {}
-
-///
-public protocol EJAbstractBlockContent: Decodable {
-    var numberOfItems: Int { get }
-    func getItem(atIndex index: Int) -> EJAbstractBlockContentItem?
-}
-
 ///
 public protocol EJAbstractBlockProtocol: Decodable {
     var type: EJAbstractBlockType { get }
@@ -38,7 +27,7 @@ open class EJAbstractBlock: EJAbstractBlockProtocol {
         // Loop through custom blocks
         for customBlock in kit.registeredCustomBlocks {
             guard let type = try? customBlock.type.decode(container: container) else { continue }
-            guard let data = try? customBlock.contentClass.init(from: decoder) else {
+            guard let data = try? customBlock.abstractContentClass.init(from: decoder) else {
                 throw DecodingError.typeMismatch(
                     EJAbstractBlockContent.self,
                     DecodingError.Context(

@@ -9,17 +9,11 @@
 import Foundation
 
 ///
-public class RawHtmlBlockContent: EJAbstractBlockContent {
-    public var items: [RawHtmlBlockContentItem] = []
-    public var numberOfItems: Int { return items.count }
+public class RawHtmlBlockContent: EJAbstractBlockContentSingleItem {
+    public let item: EJAbstractBlockContentItem
     
     public required init(from decoder: Decoder) throws {
-        items = [try RawHtmlBlockContentItem(from: decoder)]
-    }
-    
-    public func getItem(atIndex index: Int) -> EJAbstractBlockContentItem? {
-        guard index == 0 else { return nil }
-        return items.first
+        item = try RawHtmlBlockContentItem(from: decoder)
     }
 }
 

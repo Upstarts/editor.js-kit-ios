@@ -9,6 +9,4 @@
 import UIKit
 
 ///
-public class ListItemBlockView: BaseBlockView<ListItemNativeContentView> {
-    override var blockType: EJAbstractBlockType { EJNativeBlockType.list }
-}
+public class ListItemBlockView: BaseBlockView<ListItemNativeContentView> {}

@@ -9,28 +9,20 @@
 import Foundation
 
 ///
-public class LinkBlockContent: EJAbstractBlockContent {
+public class LinkBlockContent: EJAbstractBlockContentSingleItem {
+    public private(set) var item: EJAbstractBlockContentItem
     public let link: URL
-    public var items: [LinkBlockContentItem]
-    public var numberOfItems: Int { return items.count }
-    
-    public func getItem(atIndex index: Int) -> EJAbstractBlockContentItem? {
-        guard index == 0 else { return nil }
-        return items.first
-    }
     
     enum CodingKeys: String, CodingKey { case link, meta }
     
     required public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         link = try container.decode(URL.self, forKey: .link)
-        items = [ try container.decode(LinkBlockContentItem.self, forKey: .meta) ]
-        items.forEach {
-            $0.link = link
-            $0.formattedLink = LinkFormatterService.format(link: link)
-        }
+        let item = try container.decode(LinkBlockContentItem.self, forKey: .meta)
+        item.link = link
+        item.formattedLink = LinkFormatterService.format(link: link)
+        self.item = item
     }
-    
 }
 
 ///

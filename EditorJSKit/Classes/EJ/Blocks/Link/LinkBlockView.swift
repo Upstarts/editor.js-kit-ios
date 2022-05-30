@@ -9,6 +9,4 @@
 import UIKit
 
 ///
-public class LinkBlockView: BaseBlockView<LinkNativeContentView> {
-    override var blockType: EJAbstractBlockType { EJNativeBlockType.linkTool }
-}
+public class LinkBlockView: BaseBlockView<LinkNativeContentView> {}

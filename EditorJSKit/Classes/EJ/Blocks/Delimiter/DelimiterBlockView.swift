@@ -9,6 +9,4 @@
 import UIKit
 
 ///
-public class DelimiterBlockView: BaseBlockView<DelimiterNativeContentView> {
-    override var blockType: EJAbstractBlockType { EJNativeBlockType.delimiter }
-}
+public class DelimiterBlockView: BaseBlockView<DelimiterNativeContentView> {}

@@ -12,8 +12,6 @@ public class BaseBlockView<BlockView: UIView>: UIView, EJBlockView where BlockVi
     
     let baseView = UIView()
     let blockView = BlockView()
-    var blockType: EJAbstractBlockType { EJNativeBlockType.raw }
-    
     var blockInsets: UIEdgeInsets?
     
     override init(frame: CGRect) {

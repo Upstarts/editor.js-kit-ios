@@ -9,6 +9,4 @@ import UIKit
 
 
 ///
-public class HeaderBlockView: BaseBlockView<HeaderNativeContentView> {
-    override var blockType: EJAbstractBlockType { EJNativeBlockType.header }
-}
+public class HeaderBlockView: BaseBlockView<HeaderNativeContentView> {}

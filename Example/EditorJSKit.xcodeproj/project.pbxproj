@@ -17,6 +17,10 @@
 		941C74AB24923062004FC8A0 /* HeaderStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941C74AA24923062004FC8A0 /* HeaderStyle.swift */; };
 		946D89052840FD3F0034063D /* ImageStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946D89042840FD3F0034063D /* ImageStyle.swift */; };
 		946D8907284102CB0034063D /* LinkStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946D8906284102CB0034063D /* LinkStyle.swift */; };
+		946D8C242844D1FA0074935C /* CalloutBlockContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946D8C232844D1FA0074935C /* CalloutBlockContent.swift */; };
+		946D8C2A2844D6290074935C /* CalloutBlockStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946D8C292844D6290074935C /* CalloutBlockStyle.swift */; };
+		946D8C2D2844D6E30074935C /* CustomBlockType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946D8C2C2844D6E30074935C /* CustomBlockType.swift */; };
+		946D8C2F2844D7C90074935C /* CalloutBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946D8C2E2844D7C90074935C /* CalloutBlockView.swift */; };
 		A1AAAF35C898DF82F3488ADC /* Pods_EditorJSKit_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A78DB84A780C399AB031D141 /* Pods_EditorJSKit_Tests.framework */; };
 		AFAA9AAEEE25B57B96623EE6 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 /* End PBXBuildFile section */
@@ -52,6 +56,10 @@
 		941C74AA24923062004FC8A0 /* HeaderStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderStyle.swift; sourceTree = "<group>"; };
 		946D89042840FD3F0034063D /* ImageStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStyle.swift; sourceTree = "<group>"; };
 		946D8906284102CB0034063D /* LinkStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkStyle.swift; sourceTree = "<group>"; };
+		946D8C232844D1FA0074935C /* CalloutBlockContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalloutBlockContent.swift; sourceTree = "<group>"; };
+		946D8C292844D6290074935C /* CalloutBlockStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalloutBlockStyle.swift; sourceTree = "<group>"; };
+		946D8C2C2844D6E30074935C /* CustomBlockType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBlockType.swift; sourceTree = "<group>"; };
+		946D8C2E2844D7C90074935C /* CalloutBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalloutBlockView.swift; sourceTree = "<group>"; };
 		A359055EB3460A42F8A62D90 /* Pods-EditorJSKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EditorJSKit_Example.debug.xcconfig"; path = "Target Support Files/Pods-EditorJSKit_Example/Pods-EditorJSKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		A78DB84A780C399AB031D141 /* Pods_EditorJSKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EditorJSKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3CE106F12E810F78098A50E /* Pods_EditorJSKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EditorJSKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,6 +106,7 @@
 		04AF4AD522B132E100BBBD3D /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				946D8C2B2844D6D50074935C /* CustomBlocks */,
 				941C74A924923054004FC8A0 /* Styles */,
 				04AF4AD322B132C100BBBD3D /* AppDelegate */,
 				04AF4AD422B132D200BBBD3D /* Controllers */,
@@ -220,6 +229,25 @@
 				946D8906284102CB0034063D /* LinkStyle.swift */,
 			);
 			name = Styles;
+			sourceTree = "<group>";
+		};
+		946D8C222844D1EE0074935C /* CalloutBlock */ = {
+			isa = PBXGroup;
+			children = (
+				946D8C232844D1FA0074935C /* CalloutBlockContent.swift */,
+				946D8C292844D6290074935C /* CalloutBlockStyle.swift */,
+				946D8C2E2844D7C90074935C /* CalloutBlockView.swift */,
+			);
+			name = CalloutBlock;
+			sourceTree = "<group>";
+		};
+		946D8C2B2844D6D50074935C /* CustomBlocks */ = {
+			isa = PBXGroup;
+			children = (
+				946D8C222844D1EE0074935C /* CalloutBlock */,
+				946D8C2C2844D6E30074935C /* CustomBlockType.swift */,
+			);
+			name = CustomBlocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -396,9 +424,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				946D8C2F2844D7C90074935C /* CalloutBlockView.swift in Sources */,
+				946D8C2D2844D6E30074935C /* CustomBlockType.swift in Sources */,
+				946D8C242844D1FA0074935C /* CalloutBlockContent.swift in Sources */,
 				04EA855022B79132006315D8 /* AppDelegate.swift in Sources */,
 				046C3C5522B2645800B194D2 /* ViewController.swift in Sources */,
 				941C74AB24923062004FC8A0 /* HeaderStyle.swift in Sources */,
+				946D8C2A2844D6290074935C /* CalloutBlockStyle.swift in Sources */,
 				946D8907284102CB0034063D /* LinkStyle.swift in Sources */,
 				946D89052840FD3F0034063D /* ImageStyle.swift in Sources */,
 			);
