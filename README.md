@@ -46,29 +46,34 @@ For now we only support blocks rendering within a `UICollectionView` out of the 
 
 Here's the example of `EJCollectionViewAdapter` usage: 
 
-1. Decode your data to `EJBLockList` (array of json blocks): 
+1. Create an instance of kit:
 ``` swift
-let blockList = try EJKit.shared.decode(data: data)
+let kit = EJKit.shared
 ```
 
-2. Inside of your ViewController create a `collectionView`:
+2. Decode your data to `EJBLockList` (array of json blocks): 
+``` swift
+let blockList = try kit.decode(data: data)
+```
+
+3. Inside of your ViewController create a `collectionView`:
 ``` swift
 lazy var collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UICollectionViewFlowLayout())
 ```
 
-3. Create an adapter:
+4. Create an adapter:
 ``` swift
 lazy var adapter = EJCollectionViewAdapter(collectionView: collectionView)
 ```
 
-4. Confirm to `EJCollectionDataSource` and return your parsed blocks in the `data` variable.
+5. Confirm to `EJCollectionDataSource` and return your parsed blocks in the `data` variable.
 ``` swift
 extension ViewController: EJCollectionDataSource {
     var data: EJBlocksList? { blockList }
 }
 ```
 
-5. Assign your `ViewController` to `adapter`'s `dataSource`
+6. Assign your `ViewController` to `adapter`'s `dataSource`
 ``` swift
 override func viewDidLoad() {
     super.viewDidLoad()
@@ -76,16 +81,16 @@ override func viewDidLoad() {
 }
 ```
 
-In case if you'd like to mix EJ blocks with some other cells, use `EJCollectionRenderer`. It provides you with more flexibility, here's how to use it:
+In case you'd like to mix EJ blocks with some other cells, use `EJCollectionRenderer`. It provides you with more flexibility, here's how to use it:
 
 1. Repeat steps 1-3 from the guide above.
 
-2. Create a renderer:
+4. Create a renderer:
 ``` swift
 lazy var renderer = EJCollectionRenderer(collectionView: collectionView)
 ```
 
-3. Implement and assign collection's data source and delegate methods.
+5. Implement and assign collection's data source and delegate methods.
 ``` swift
 ///
 extension ViewController: UICollectionViewDataSource {
