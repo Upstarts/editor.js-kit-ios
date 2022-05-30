@@ -85,12 +85,12 @@ In case you'd like to mix EJ blocks with some other cells, use `EJCollectionRend
 
 1. Repeat steps 1-3 from the guide above.
 
-4. Create a renderer:
+2. Create a renderer:
 ``` swift
 lazy var renderer = EJCollectionRenderer(collectionView: collectionView)
 ```
 
-5. Implement and assign collection's data source and delegate methods.
+3. Implement and assign collection's data source and delegate methods.
 ``` swift
 ///
 extension ViewController: UICollectionViewDataSource {
