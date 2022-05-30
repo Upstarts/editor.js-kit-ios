@@ -345,7 +345,8 @@
 			children = (
 				94C88CB42844E27400D8216E /* EJCustomBlock.swift */,
 			);
-			path = CustomBlocks;
+			name = CustomBlocks;
+			path = EditorJSKit/Classes/EJ/CustomBlocks;
 			sourceTree = "<group>";
 		};
 		94A74FC82840B4F6008B26B9 /* Base */ = {
