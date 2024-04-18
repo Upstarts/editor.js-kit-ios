@@ -172,7 +172,7 @@ pod 'EditorJSKit'
 
 [Upstarts team](https://upstarts.work)
 
-[Vadim Popov](https://t.me/popovvadim) - Architecture, implementation, code review
+[Vadim Popov](https://github.com/PopovVadim) - Architecture, implementation, code review
 
 [Ivan Glushko](https://github.com/ivanglushko) - Implementation
 
