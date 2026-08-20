@@ -51,7 +51,7 @@ public struct EJCustomBlock<V: EJBlockView, C: EJAbstractBlockContent>: EJCustom
                             style: EJBlockStyle?) -> UICollectionViewCell? {
         guard let item = contentItem as? V.BlockContentItem else { return nil }
         typealias Cell = CollectionViewBlockCell<BaseBlockView<View>>
-        let reuseId = HeaderBlockView.reuseId
+        let reuseId = BaseBlockView<View>.reuseId
         collectionView.register(Cell.self, forCellWithReuseIdentifier: reuseId)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as! Cell
         cell.configure(withItem: item, style: style)

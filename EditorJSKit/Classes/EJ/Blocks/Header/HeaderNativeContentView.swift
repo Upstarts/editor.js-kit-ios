@@ -41,7 +41,9 @@ public class HeaderNativeContentView: UIView, ConfigurableBlockView {
             label.text = item.text
             return
         }
-        let attributedString = item.text.convertHTML(font: style.font(forHeaderLevel: item.level), forceFontFace: true)
+        // Must reuse the cache: converting HTML spins a nested run loop, and doing that while the
+        // collection view is waiting for a dequeued cell crashes UIKit. See issue #31.
+        let attributedString = item.cachedAttributedString ?? item.text.convertHTML(font: style.font(forHeaderLevel: item.level), forceFontFace: true)
         if item.cachedAttributedString == nil {
             item.cachedAttributedString = attributedString
         }

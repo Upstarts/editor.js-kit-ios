@@ -83,7 +83,7 @@
         {
             "type" : "raw",
             "data" : {
-                "html": "<div style=\"background: #000; color: #fff; font-size: 30px; padding: 50px;\">Any raw HTML code</div>",
+                "html": "<div style=\"background: #000; color: #fff; font-size: 30px; padding: 50px;\">Any raw HTML code</div>"
             }
         }
     ],
