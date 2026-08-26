@@ -51,32 +51,66 @@ private final class FixedSizeDelegate: NSObject, UICollectionViewDelegateFlowLay
     }
 }
 
+private enum Fixture {}
+
+extension Fixture {
+    /// Deliberately shares its bare type name with the library's own `HeaderNativeContentView`.
+    /// That is what a same-named type in a consumer's module looks like to a reuse identifier built
+    /// from `String(describing:)`, which is the collision issue #35 is about.
+    final class HeaderNativeContentView: UIView, EJBlockView {
+        typealias BlockContentItem = TestCalloutContentItem
+
+        let label = UILabel()
+
+        override init(frame: CGRect) {
+            super.init(frame: frame)
+            addSubview(label)
+            label.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                label.leftAnchor.constraint(equalTo: leftAnchor),
+                label.rightAnchor.constraint(equalTo: rightAnchor),
+                label.topAnchor.constraint(equalTo: topAnchor),
+                label.bottomAnchor.constraint(equalTo: bottomAnchor)
+            ])
+        }
+
+        required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+
+        func configure(withItem item: TestCalloutContentItem, style: EJBlockStyle?) {
+            label.text = "custom:" + item.text
+        }
+
+        static func estimatedSize(for item: TestCalloutContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
+            CGSize(width: boundingWidth, height: 44)
+        }
+    }
+}
+
 ///
-private final class TestCalloutContentView: UIView, EJBlockView {
-    typealias BlockContentItem = TestCalloutContentItem
+private struct TestLinkStyle: EJLinkBlockStyle {
+    var cornerRadius: CGFloat { 0 }
+    var titleFont: UIFont { .systemFont(ofSize: 20) }
+    var titleColor: UIColor { .black }
+    var titleTextAlignment: NSTextAlignment { .left }
+    var linkFont: UIFont { .systemFont(ofSize: 15) }
+    var linkColor: UIColor { .black }
+    var linkTextAlignment: NSTextAlignment { .left }
+    var descriptionFont: UIFont { .systemFont(ofSize: 18) }
+    var descriptionColor: UIColor { .black }
+    var descriptionTextAlignment: NSTextAlignment { .left }
+    var backgroundColor: UIColor { .clear }
+    var imageCornerRadius: CGFloat { 0 }
+    var imageWidthHeight: CGFloat { 70 }
+    var imageRightInset: CGFloat { 5 }
+}
 
-    let label = UILabel()
+/// Records what had already happened by the time a cell was dequeued.
+private final class DequeueSpyCollectionView: UICollectionView {
+    var onDequeue: (() -> Void)?
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        addSubview(label)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            label.leftAnchor.constraint(equalTo: leftAnchor),
-            label.rightAnchor.constraint(equalTo: rightAnchor),
-            label.topAnchor.constraint(equalTo: topAnchor),
-            label.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
-    }
-
-    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-
-    func configure(withItem item: TestCalloutContentItem, style: EJBlockStyle?) {
-        label.text = "custom:" + item.text
-    }
-
-    static func estimatedSize(for item: TestCalloutContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
-        CGSize(width: boundingWidth, height: 44)
+    override func dequeueReusableCell(withReuseIdentifier identifier: String, for indexPath: IndexPath) -> UICollectionViewCell {
+        onDequeue?()
+        return super.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
     }
 }
 
@@ -194,7 +228,7 @@ class Tests: XCTestCase, EJCollectionDataSource {
     func testCustomBlockAndNativeBlockRenderSideBySide() throws {
         EJKit.shared.register(customBlock: EJCustomBlock(type: TestBlockType.testCallout,
                                                          contentClass: BlockContent.Single<TestCalloutContentItem>.self,
-                                                         viewClass: TestCalloutContentView.self))
+                                                         viewClass: Fixture.HeaderNativeContentView.self))
         let json = #"""
         {"time":1,"version":"2.13.2","blocks":[
           {"type":"header","data":{"text":"Hello","level":1}},
@@ -206,6 +240,11 @@ class Tests: XCTestCase, EJCollectionDataSource {
         // Would trap here on a shared reuse pool, before any assertion runs.
         let (collectionView, adapter) = makeRenderedCollectionView()
         _ = adapter
+
+        // Reload so both cells go back to the pool and are dequeued again: with one shared
+        // identifier the second pass hands a cell of the wrong class to a force-cast.
+        collectionView.reloadData()
+        collectionView.layoutIfNeeded()
 
         XCTAssertEqual(collectionView.visibleCells.count, 2)
         let texts = collectionView.visibleCells
@@ -221,15 +260,17 @@ class Tests: XCTestCase, EJCollectionDataSource {
     func testCustomBlockItemIsPreparedBeforeDequeueEvenWithoutSizing() throws {
         EJKit.shared.register(customBlock: EJCustomBlock(type: TestBlockType.testCallout,
                                                          contentClass: BlockContent.Single<TestCalloutContentItem>.self,
-                                                         viewClass: TestCalloutContentView.self))
+                                                         viewClass: Fixture.HeaderNativeContentView.self))
         let json = #"""
         {"time":1,"version":"2.13.2","blocks":[{"type":"testCallout","data":{"text":"hi"}}]}
         """#
         data = try EJKit.shared.decode(data: Data(json.utf8))
         let item = try XCTUnwrap(data?.blocks.first?.data.getItem(atIndex: 0) as? TestCalloutContentItem)
 
-        let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 320, height: 480),
-                                              collectionViewLayout: UICollectionViewFlowLayout())
+        let collectionView = DequeueSpyCollectionView(frame: CGRect(x: 0, y: 0, width: 320, height: 480),
+                                                      collectionViewLayout: UICollectionViewFlowLayout())
+        var prepareCountAtDequeue: Int?
+        collectionView.onDequeue = { prepareCountAtDequeue = item.prepareCount }
         let adapter = EJCollectionViewAdapter(collectionView: collectionView)
         adapter.dataSource = self
         let sizingDelegate = FixedSizeDelegate()
@@ -239,14 +280,52 @@ class Tests: XCTestCase, EJCollectionDataSource {
         _ = adapter
 
         XCTAssertEqual(collectionView.visibleCells.count, 1)
-        XCTAssertGreaterThan(item.prepareCount, 0,
-                             "The renderer never prepared the custom block's item, so its configure would parse inside cellForItemAt (issue #33)")
+        // Preparing eventually is not enough: it has to have happened by the time a cell is
+        // checked out, or configure parses HTML with a dequeued cell outstanding.
+        XCTAssertEqual(prepareCountAtDequeue, 1,
+                       "The custom block's item was not prepared before its cell was dequeued (issue #33)")
+    }
+
+    /// Assigning nil is the documented way to invalidate: it must drop the parsed string too,
+    /// otherwise the getter keeps handing back the previous result and nothing re-parses.
+    func testAssigningNilInvalidatesTheCache() throws {
+        EJKit.shared.style.set(style: TestHeaderStyle(headerFont: .systemFont(ofSize: 20)),
+                               for: EJNativeBlockType.header)
+        data = try EJKit.shared.decode(data: Data(headerJSON.utf8))
+        let item = try XCTUnwrap(data?.blocks.first?.data.getItem(atIndex: 0) as? HeaderBlockContentItem)
+
+        let (collectionView, adapter) = makeRenderedCollectionView()
+        _ = (collectionView, adapter)
+        XCTAssertNotNil(item.cachedAttributedString, "Rendering should have populated the cache")
+
+        item.cachedAttributedString = nil
+        XCTAssertNil(item.cachedAttributedString, "Assigning nil must invalidate the cache, not fall back to the parsed string")
+    }
+
+    /// A reused link cell must not keep the previous item's description or image size — both
+    /// would otherwise stay on screen and keep reserving layout space. See issue #36.
+    func testReusedLinkViewDropsPreviousItemState() throws {
+        let withDescription = try JSONDecoder().decode(
+            LinkBlockContentItem.self, from: Data(#"{"title":"T","description":"D"}"#.utf8))
+        let withoutDescription = try JSONDecoder().decode(
+            LinkBlockContentItem.self, from: Data(#"{"title":"T"}"#.utf8))
+
+        let view = LinkNativeContentView()
+        view.frame = CGRect(x: 0, y: 0, width: 320, height: 100)
+        view.configure(withItem: withDescription, style: TestLinkStyle())
+        XCTAssertNotNil(view.descriptionLabel.attributedText)
+
+        view.configure(withItem: withoutDescription, style: TestLinkStyle())
+        XCTAssertNil(view.descriptionLabel.attributedText,
+                     "The reused cell kept the previous item's description")
+        XCTAssertFalse(view.hasURL)
+        XCTAssertFalse(view.hasDescription)
     }
 
     /// The reuse identifier must distinguish the custom-block cell from the native one even when
     /// both wrap the same content view type. See issue #35.
     func testCustomBlockReuseIdDoesNotCollideWithNativeCells() {
-        XCTAssertNotEqual(BaseBlockView<HeaderNativeContentView>.reuseId, HeaderBlockView.reuseId,
+        XCTAssertNotEqual(BaseBlockView<Fixture.HeaderNativeContentView>.reuseId, HeaderBlockView.reuseId,
                           "Custom-block cells and the native header cell would collide in one reuse pool (issue #35)")
     }
 

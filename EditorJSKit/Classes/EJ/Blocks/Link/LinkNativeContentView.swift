@@ -70,6 +70,16 @@ open class LinkNativeContentView: UIView, ConfigurableBlockView {
         appliedImageSize = style.imageWidthHeight
     }
     
+    /// A reused cell must not keep the previous item's image size: the zero-size constraints are
+    /// restored so the image view stops reserving width the text needs.
+    private func resetImageSizing() {
+        NSLayoutConstraint.deactivate(imageSizeConstraints)
+        imageSizeConstraints = []
+        appliedImageSize = nil
+        imageWidthConstraint.isActive = true
+        imageHeightConstraint.isActive = true
+    }
+
     private func setupViews() {
         addSubview(titleLabel)
         addSubview(descriptionLabel)
@@ -146,6 +156,10 @@ open class LinkNativeContentView: UIView, ConfigurableBlockView {
         if let descriptionAtr = item.cachedDescriptionAttributedString {
             hasDescription = true
             descriptionLabel.attributedText = descriptionAtr
+        } else {
+            // A reused cell keeps the previous item's description otherwise.
+            descriptionLabel.attributedText = nil
+            descriptionTopConstraint.constant = .zero
         }
         titleLabel.attributedText = titleMutable
         linkLabel.text = item.formattedLink
@@ -161,6 +175,7 @@ open class LinkNativeContentView: UIView, ConfigurableBlockView {
             }
         } else {
             imageView.image = nil
+            resetImageSizing()
         }
         
         // 2. Apply specific style
