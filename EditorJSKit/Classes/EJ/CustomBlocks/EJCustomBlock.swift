@@ -26,7 +26,9 @@ public struct EJCustomBlock<V: EJBlockView, C: EJAbstractBlockContent>: EJCustom
     public typealias View = V
     public typealias Content = C
     
-    static public var reuseId: String { V.reuseId }
+    // Must match the identifier `prepareCell` registers under — the cell embeds BaseBlockView<View>,
+    // not View itself, and View may override its own reuseId (issue #35).
+    static public var reuseId: String { BaseBlockView<View>.reuseId }
     
     public var type: EJAbstractBlockType
     public var contentClass: Content.Type

@@ -20,12 +20,21 @@ public class RawHtmlBlockContent: EJAbstractBlockContentSingleItem {
 ///
 public class RawHtmlBlockContentItem: EJAbstractBlockContentItem {
     public let html: String
-    var cachedAttributedString: NSAttributedString?
-    
+
+    let textCache = EJAttributedTextCache()
+    var cachedAttributedString: NSAttributedString? {
+        get { textCache.attributedString }
+        set { textCache.store(newValue) }
+    }
+
     enum CodingKeys: String, CodingKey { case html }
-    
+
     public required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         html = try container.decode(String.self, forKey: .html)
+    }
+
+    func prepareCachedAttributedString(withStyle style: EJRawHtmlBlockStyle) {
+        textCache.prepare(html: html, font: style.font)
     }
 }

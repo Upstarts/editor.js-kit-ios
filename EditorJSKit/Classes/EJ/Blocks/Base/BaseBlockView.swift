@@ -13,6 +13,7 @@ public class BaseBlockView<BlockView: UIView>: UIView, EJBlockView where BlockVi
     let baseView = UIView()
     let blockView = BlockView()
     var blockInsets: UIEdgeInsets?
+    private var blockConstraints: [NSLayoutConstraint] = []
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -51,7 +52,9 @@ public class BaseBlockView<BlockView: UIView>: UIView, EJBlockView where BlockVi
     // MARK: - ReusableBlockView conformance
     
     public static var reuseId: String {
-        String(describing: BlockView.self)
+        // Module-qualified: a bare type name can collide across modules — and with the cells the
+        // native blocks register — handing a wrong cell class back from the reuse pool (issue #35).
+        String(reflecting: Self.self)
     }
     
     // MARK: - ConfigurableBlockView conformance
@@ -69,10 +72,9 @@ public class BaseBlockView<BlockView: UIView>: UIView, EJBlockView where BlockVi
                 blockView.topAnchor.constraint(equalTo: baseView.topAnchor, constant: insets.top),
                 blockView.bottomAnchor.constraint(equalTo: baseView.bottomAnchor, constant: -insets.bottom)
             ]
-            if blockInsets != nil {
-                NSLayoutConstraint.deactivate(constraints)
-            }
+            NSLayoutConstraint.deactivate(blockConstraints)
             NSLayoutConstraint.activate(constraints)
+            blockConstraints = constraints
             blockInsets = insets
         }
     }

@@ -41,14 +41,12 @@ public class HeaderNativeContentView: UIView, ConfigurableBlockView {
             label.text = item.text
             return
         }
-        // Must reuse the cache: converting HTML spins a nested run loop, and doing that while the
-        // collection view is waiting for a dequeued cell crashes UIKit. See issue #31.
-        let attributedString = item.cachedAttributedString ?? item.text.convertHTML(font: style.font(forHeaderLevel: item.level), forceFontFace: true)
-        if item.cachedAttributedString == nil {
-            item.cachedAttributedString = attributedString
-        }
-        label.attributedText = attributedString
-        
+        // Normally a no-op: the renderer prepares the cache before the cell is dequeued, because
+        // converting HTML here spins a nested run loop that crashes UIKit while the collection
+        // view is waiting for a dequeued cell. See issues #31 and #33.
+        item.prepareCachedAttributedString(withStyle: style)
+        label.attributedText = item.cachedAttributedString
+
         backgroundColor = style.backgroundColor
         layer.cornerRadius = style.cornerRadius
         label.textAlignment = style.alignment
@@ -56,12 +54,9 @@ public class HeaderNativeContentView: UIView, ConfigurableBlockView {
     
     public static func estimatedSize(for item: HeaderBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
         guard let style = style as? EJHeaderBlockStyle else { return .zero }
-        let attributedString = item.cachedAttributedString ?? item.text.convertHTML(font: style.font(forHeaderLevel: item.level), forceFontFace: true)
-        if item.cachedAttributedString == nil {
-            item.cachedAttributedString = attributedString
-        }
+        item.prepareCachedAttributedString(withStyle: style)
         let newBoundingWidth = boundingWidth - (style.insets.left + style.insets.right)
-        let height = attributedString?.height(withConstrainedWidth: newBoundingWidth) ?? .zero
+        let height = item.cachedAttributedString?.height(withConstrainedWidth: newBoundingWidth) ?? .zero
         return CGSize(width: boundingWidth, height: height)
     }
 }

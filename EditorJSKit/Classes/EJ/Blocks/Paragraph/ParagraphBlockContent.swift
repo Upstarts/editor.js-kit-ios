@@ -20,13 +20,22 @@ public class ParagraphBlockContent: EJAbstractBlockContentSingleItem {
 public class ParagraphBlockContentItem: EJAbstractBlockContentItem {
     public let text: String
     let htmlReadyText: String
-    public var cachedAttributedString: NSAttributedString?
-    
+
+    let textCache = EJAttributedTextCache()
+    public var cachedAttributedString: NSAttributedString? {
+        get { textCache.attributedString }
+        set { textCache.store(newValue) }
+    }
+
     enum CodingKeys: String, CodingKey { case text }
-    
+
     required public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         text = try container.decode(String.self, forKey: .text)
         htmlReadyText = text.replacingOccurrences(of: "\n", with: "<br>")
+    }
+
+    func prepareCachedAttributedString(withStyle style: EJParagraphBlockStyle) {
+        textCache.prepare(html: htmlReadyText, font: style.font, forceFontFace: true)
     }
 }
