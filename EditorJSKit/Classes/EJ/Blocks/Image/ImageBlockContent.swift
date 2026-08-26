@@ -36,6 +36,11 @@ public class ImageBlockContentItem: EJAbstractBlockContentItem {
         captionCache.prepare(html: caption, font: style.font)
     }
 
+    public func prepareCaches(withStyle style: EJBlockStyle?) {
+        guard let style = style as? EJImageBlockStyle else { return }
+        prepareCachedAttributedCaption(withStyle: style)
+    }
+
     public required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         file = try container.decode(ImageFile.self, forKey: .file)

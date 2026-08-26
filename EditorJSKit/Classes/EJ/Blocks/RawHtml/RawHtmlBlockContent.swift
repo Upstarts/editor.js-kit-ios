@@ -37,4 +37,9 @@ public class RawHtmlBlockContentItem: EJAbstractBlockContentItem {
     func prepareCachedAttributedString(withStyle style: EJRawHtmlBlockStyle) {
         textCache.prepare(html: html, font: style.font)
     }
+
+    public func prepareCaches(withStyle style: EJBlockStyle?) {
+        guard let style = style as? EJRawHtmlBlockStyle else { return }
+        prepareCachedAttributedString(withStyle: style)
+    }
 }

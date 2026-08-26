@@ -42,4 +42,9 @@ public class HeaderBlockContentItem: EJAbstractBlockContentItem {
     func prepareCachedAttributedString(withStyle style: EJHeaderBlockStyle) {
         textCache.prepare(html: text, font: style.font(forHeaderLevel: level), forceFontFace: true)
     }
+
+    public func prepareCaches(withStyle style: EJBlockStyle?) {
+        guard let style = style as? EJHeaderBlockStyle else { return }
+        prepareCachedAttributedString(withStyle: style)
+    }
 }

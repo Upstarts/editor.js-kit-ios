@@ -32,6 +32,8 @@ open class LinkNativeContentView: UIView, ConfigurableBlockView {
     private lazy var imageHeightConstraint = imageView.heightAnchor.constraint(equalToConstant: 0)
     private lazy var imageWidthConstraint = imageView.widthAnchor.constraint(equalToConstant: 0)
     private lazy var descriptionTopConstraint = descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor)
+    private var imageSizeConstraints: [NSLayoutConstraint] = []
+    private var appliedImageSize: CGFloat?
     
     /**
      */
@@ -53,12 +55,19 @@ open class LinkNativeContentView: UIView, ConfigurableBlockView {
     private func layoutForImageView() {
         guard let style = style else { return }
         imageRightConstraint.constant = -style.imageRightInset
+        // Runs on every layout pass, so replace the previously activated pair instead of stacking
+        // a new one on top of it — otherwise constraints grow without bound (issue #36).
+        guard appliedImageSize != style.imageWidthHeight else { return }
         imageWidthConstraint.isActive = false
         imageHeightConstraint.isActive = false
-        NSLayoutConstraint.activate([
+        NSLayoutConstraint.deactivate(imageSizeConstraints)
+        let constraints = [
             imageView.heightAnchor.constraint(equalToConstant: style.imageWidthHeight),
             imageView.widthAnchor.constraint(equalToConstant: style.imageWidthHeight),
-        ])
+        ]
+        NSLayoutConstraint.activate(constraints)
+        imageSizeConstraints = constraints
+        appliedImageSize = style.imageWidthHeight
     }
     
     private func setupViews() {
@@ -113,6 +122,8 @@ open class LinkNativeContentView: UIView, ConfigurableBlockView {
     
     public func configure(withItem item: LinkBlockContentItem, style: EJBlockStyle?) {
         self.item = item
+        hasURL = false
+        hasDescription = false
         
         // 1. Apply basic style
         backgroundColor = style?.backgroundColor

@@ -73,4 +73,9 @@ public class LinkBlockContentItem: EJAbstractBlockContentItem {
             descriptionCache.prepare(html: description, font: style.descriptionFont)
         }
     }
+
+    public func prepareCaches(withStyle style: EJBlockStyle?) {
+        guard let style = style as? EJLinkBlockStyle else { return }
+        prepareCachedStrings(withStyle: style)
+    }
 }

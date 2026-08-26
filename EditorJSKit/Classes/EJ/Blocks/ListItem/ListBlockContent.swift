@@ -71,4 +71,9 @@ public class ListBlockContentItem: EJAbstractBlockContentItem {
     func prepareCachedAttributedString(withStyle style: EJListBlockStyle) {
         textCache.prepare(html: text, font: style.font)
     }
+
+    public func prepareCaches(withStyle style: EJBlockStyle?) {
+        guard let style = style as? EJListBlockStyle else { return }
+        prepareCachedAttributedString(withStyle: style)
+    }
 }

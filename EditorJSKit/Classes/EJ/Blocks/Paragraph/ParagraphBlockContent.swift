@@ -38,4 +38,9 @@ public class ParagraphBlockContentItem: EJAbstractBlockContentItem {
     func prepareCachedAttributedString(withStyle style: EJParagraphBlockStyle) {
         textCache.prepare(html: htmlReadyText, font: style.font, forceFontFace: true)
     }
+
+    public func prepareCaches(withStyle style: EJBlockStyle?) {
+        guard let style = style as? EJParagraphBlockStyle else { return }
+        prepareCachedAttributedString(withStyle: style)
+    }
 }

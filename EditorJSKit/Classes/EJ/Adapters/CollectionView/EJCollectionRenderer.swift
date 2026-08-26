@@ -23,14 +23,15 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
     }
         
     /**
-     Note: each native case prepares the item's attributed-string cache BEFORE dequeuing the cell.
-     Parsing HTML spins a nested run loop, and doing that while a dequeued cell is outstanding
-     crashes UIKit with "Expected dequeued view to be returned to the collection view" — see
-     issues #31 and #33. Sizing usually warms the cache first, but not when a client overrides
-     sizing via `EJCollectionViewAdapter.delegate`.
+     Note: the item's caches are prepared BEFORE any cell is dequeued, for custom and native blocks
+     alike. Parsing HTML spins a nested run loop, and doing that while a dequeued cell is
+     outstanding crashes UIKit with "Expected dequeued view to be returned to the collection
+     view" — see issues #31 and #33. Sizing usually warms the caches first, but not when a client
+     overrides sizing via `EJCollectionViewAdapter.delegate`.
      */
     public func render(block: EJAbstractBlock, indexPath: IndexPath, style: EJBlockStyle? = nil) throws -> View {
         let style = style ?? kit.style.getStyle(forBlockType: block.type)
+        block.data.getItem(atIndex: indexPath.item)?.prepareCaches(withStyle: style)
         
         if let customBlock = kit.retrieveCustomBlock(ofType: block.type) as? EJCustomBlockCollectionAdaptable,
            let contentItem = block.data.getItem(atIndex: indexPath.item),
@@ -49,9 +50,6 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
             collectionView.register(Cell.self, forCellWithReuseIdentifier: reuseId)
             let content = block.data as! HeaderBlockContent
             let item = content.getItem(atIndex: .zero) as! HeaderBlockContentItem
-            if let style = style as? EJHeaderBlockStyle {
-                item.prepareCachedAttributedString(withStyle: style)
-            }
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as! Cell
             cell.configure(withItem: item, style: style)
             return cell
@@ -67,9 +65,6 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
                     self?.collectionView.reloadItems(at: [indexPath])
                 }
             }
-            if let style = style as? EJImageBlockStyle {
-                item.prepareCachedAttributedCaption(withStyle: style)
-            }
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as! Cell
             cell.configure(withItem: item, style: style)
             return cell
@@ -80,9 +75,6 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
             collectionView.register(Cell.self, forCellWithReuseIdentifier: reuseId)
             let content = block.data as! ListBlockContent
             let item = content.getItem(atIndex: indexPath.item) as! ListBlockContentItem
-            if let style = style as? EJListBlockStyle {
-                item.prepareCachedAttributedString(withStyle: style)
-            }
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as! Cell
             cell.configure(withItem: item, style: style)
             return cell
@@ -93,9 +85,6 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
             collectionView.register(Cell.self, forCellWithReuseIdentifier: reuseId)
             let content = block.data as! LinkBlockContent
             let item = content.getItem(atIndex: .zero) as! LinkBlockContentItem
-            if let style = style as? EJLinkBlockStyle {
-                item.prepareCachedStrings(withStyle: style)
-            }
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as! Cell
             cell.configure(withItem: item, style: style)
             return cell
@@ -116,9 +105,6 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
             collectionView.register(Cell.self, forCellWithReuseIdentifier: reuseId)
             let content = block.data as! ParagraphBlockContent
             let item = content.getItem(atIndex: .zero) as! ParagraphBlockContentItem
-            if let style = style as? EJParagraphBlockStyle {
-                item.prepareCachedAttributedString(withStyle: style)
-            }
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as! Cell
             cell.configure(withItem: item, style: style)
             return cell
@@ -129,9 +115,6 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
             collectionView.register(Cell.self, forCellWithReuseIdentifier: reuseId)
             let content = block.data as! RawHtmlBlockContent
             let item = content.getItem(atIndex: .zero) as! RawHtmlBlockContentItem
-            if let style = style as? EJRawHtmlBlockStyle {
-                item.prepareCachedAttributedString(withStyle: style)
-            }
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as! Cell
             cell.configure(withItem: item, style: style)
             return cell

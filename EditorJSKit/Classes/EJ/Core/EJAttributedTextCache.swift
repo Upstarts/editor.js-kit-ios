@@ -15,23 +15,44 @@ import UIKit
 /// collection view has a dequeued cell outstanding crashes UIKit, so the renderer prepares these
 /// caches before dequeuing a cell — see issues #31 and #33. A failed parse is recorded as well,
 /// so it is not retried on every dequeue.
+///
+/// A string assigned from outside takes precedence over the parsed one, but only for the style in
+/// effect when it is first used: once the style changes, the assignment expires and the text is
+/// parsed again. Otherwise a single assignment would silently freeze the item's appearance for
+/// good — see issue #34.
 final class EJAttributedTextCache {
-    private(set) var attributedString: NSAttributedString?
+    private var parsedString: NSAttributedString?
     private var parsedFontKey: String?
 
-    /// Stores an externally provided value. It carries no font key, so `prepare` trusts it as-is.
+    private var assignedString: NSAttributedString?
+    /// The font the assignment was first used with; nil while it has not been used yet.
+    private var assignedFontKey: String?
+
+    var attributedString: NSAttributedString? { assignedString ?? parsedString }
+
+    /// Stores an externally provided string, which wins over parsing until the style changes.
     func store(_ attributedString: NSAttributedString?) {
-        self.attributedString = attributedString
-        parsedFontKey = nil
+        assignedString = attributedString
+        assignedFontKey = nil
     }
 
     /// Parses `html` with `font` unless the cache is already up to date for that font.
     func prepare(html: String, font: UIFont, forceFontFace: Bool = false) {
-        let fontKey = "\(font.fontName)/\(font.pointSize)"
+        let fontKey = "\(font.fontName)/\(font.pointSize)/\(forceFontFace)"
+
+        if assignedString != nil {
+            if assignedFontKey == nil {
+                // First use: the assignment describes how things look right now.
+                assignedFontKey = fontKey
+            } else if assignedFontKey != fontKey {
+                // The style moved on; correctness wins over the stale assignment.
+                assignedString = nil
+                assignedFontKey = nil
+            }
+        }
+
         guard parsedFontKey != fontKey else { return }
-        // A value without a font key was stored externally — keep it.
-        guard parsedFontKey != nil || attributedString == nil else { return }
-        attributedString = html.convertHTML(font: font, forceFontFace: forceFontFace)
+        parsedString = html.convertHTML(font: font, forceFontFace: forceFontFace)
         parsedFontKey = fontKey
     }
 }
