@@ -25,9 +25,22 @@ public class ImageBlockContentItem: EJAbstractBlockContentItem {
     public let withBorder: Bool
     public let stretched: Bool
     public let withBackground: Bool
-    
-    var cachedAttributedCaption: NSAttributedString?
-    
+
+    let captionCache = EJAttributedTextCache()
+    var cachedAttributedCaption: NSAttributedString? {
+        get { captionCache.attributedString }
+        set { captionCache.store(newValue) }
+    }
+
+    func prepareCachedAttributedCaption(withStyle style: EJImageBlockStyle) {
+        captionCache.prepare(html: caption, font: style.font)
+    }
+
+    public func prepareCaches(withStyle style: EJBlockStyle?) {
+        guard let style = style as? EJImageBlockStyle else { return }
+        prepareCachedAttributedCaption(withStyle: style)
+    }
+
     public required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         file = try container.decode(ImageFile.self, forKey: .file)

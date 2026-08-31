@@ -23,6 +23,7 @@ public class ImageNativeContentView: UIView, ConfigurableBlockView {
     
     ///
     private var appliedCaptionInsets: UIEdgeInsets?
+    private var captionConstraints: [NSLayoutConstraint] = []
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -104,11 +105,9 @@ public class ImageNativeContentView: UIView, ConfigurableBlockView {
         // 2. Apply content
         if let data = item.file.imageData {
             setImage(from: data, item: item)
-            let attributedCaption = item.cachedAttributedCaption ?? item.caption.convertHTML(font: style.font)
-            if item.cachedAttributedCaption == nil {
-                item.cachedAttributedCaption = attributedCaption
-            }
-            label.attributedText = attributedCaption
+            // Normally a no-op: the renderer prepares the cache before the cell is dequeued (issues #31, #33).
+            item.prepareCachedAttributedCaption(withStyle: style)
+            label.attributedText = item.cachedAttributedCaption
             withBackground = item.withBackground
             label.isHidden = false
             imageView.isHidden = false
@@ -126,10 +125,9 @@ public class ImageNativeContentView: UIView, ConfigurableBlockView {
                 label.leftAnchor.constraint(equalTo: leftAnchor, constant: captionInsets.left),
                 label.rightAnchor.constraint(equalTo: rightAnchor, constant: -(captionInsets.right))
             ]
-            if appliedCaptionInsets != nil {
-                NSLayoutConstraint.deactivate(constraints)
-            }
+            NSLayoutConstraint.deactivate(captionConstraints)
             NSLayoutConstraint.activate(constraints)
+            captionConstraints = constraints
             appliedCaptionInsets = captionInsets
         }
         
@@ -152,12 +150,9 @@ public class ImageNativeContentView: UIView, ConfigurableBlockView {
         
         guard let style = style as? EJImageBlockStyle else { return .zero }
         
-        let attributedCaption = item.cachedAttributedCaption ?? item.caption.convertHTML(font: style.font)
-        if item.cachedAttributedCaption == nil {
-            item.cachedAttributedCaption = attributedCaption
-        }
-        
-        if let attributedCaption = attributedCaption {
+        item.prepareCachedAttributedCaption(withStyle: style)
+
+        if let attributedCaption = item.cachedAttributedCaption {
             height += attributedCaption.height(withConstrainedWidth: containerMaxWidth)
             height += style.captionInsets.top + style.captionInsets.bottom
         }

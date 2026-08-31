@@ -50,23 +50,17 @@ open class ParagraphNativeContentView: UIView, ConfigurableBlockView {
         layer.cornerRadius = style.cornerRadius
         
         // 2. Apply content
-        let attributedString = item.cachedAttributedString ?? item.htmlReadyText.convertHTML(font: style.font, forceFontFace: true)
-        if item.cachedAttributedString == nil {
-            item.cachedAttributedString = attributedString
-        }
-        textView.attributedText = attributedString
+        // Normally a no-op: the renderer prepares the cache before the cell is dequeued (issues #31, #33).
+        item.prepareCachedAttributedString(withStyle: style)
+        textView.attributedText = item.cachedAttributedString
     }
     
     public static func estimatedSize(for item: ParagraphBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
         guard let style = style as? EJParagraphBlockStyle else { return .zero }
-        
-        guard let attributedString = item.cachedAttributedString ?? item.htmlReadyText.convertHTML(font: style.font, forceFontFace: true) else {
-            return .zero
-        }
-        if item.cachedAttributedString == nil {
-            item.cachedAttributedString = attributedString
-        }
-        
+
+        item.prepareCachedAttributedString(withStyle: style)
+        guard let attributedString = item.cachedAttributedString else { return .zero }
+
         let newBoundingWidth = boundingWidth - (style.insets.left + style.insets.right)
         let height = attributedString.textViewHeight(boundingWidth: newBoundingWidth)
         return CGSize(width: boundingWidth, height: height)

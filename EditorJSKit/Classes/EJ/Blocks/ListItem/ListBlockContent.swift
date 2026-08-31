@@ -49,24 +49,31 @@ public class ListBlockContentItem: EJAbstractBlockContentItem {
     public let text: String
     public let index: Int
     
-    var cachedAttributedString: NSAttributedString?
-    
+    let textCache = EJAttributedTextCache()
+    var cachedAttributedString: NSAttributedString? {
+        get { textCache.attributedString }
+        set { textCache.store(newValue) }
+    }
+
     public init(text: String, index: Int, style: ListBlockStyle) {
         self.text = text
         self.index = index
         self.style = style
     }
-    
+
     public required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         text = try container.decode(String.self, forKey: .text)
         index = .zero
         style = .unordered
     }
-    
+
     func prepareCachedAttributedString(withStyle style: EJListBlockStyle) {
-        if cachedAttributedString == nil {
-            cachedAttributedString = text.convertHTML(font: style.font)
-        }
+        textCache.prepare(html: text, font: style.font)
+    }
+
+    public func prepareCaches(withStyle style: EJBlockStyle?) {
+        guard let style = style as? EJListBlockStyle else { return }
+        prepareCachedAttributedString(withStyle: style)
     }
 }

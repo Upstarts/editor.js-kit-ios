@@ -36,14 +36,26 @@ public class LinkBlockContentItem: EJAbstractBlockContentItem {
     public let image: ImageFile?
     public var formattedLink: String?
     
-    var cachedTitleAttributedString: NSAttributedString?
-    var cachedSiteNameAttributedString: NSAttributedString?
-    var cachedDescriptionAttributedString: NSAttributedString?
-    
+    let titleCache = EJAttributedTextCache()
+    let siteNameCache = EJAttributedTextCache()
+    let descriptionCache = EJAttributedTextCache()
+    var cachedTitleAttributedString: NSAttributedString? {
+        get { titleCache.attributedString }
+        set { titleCache.store(newValue) }
+    }
+    var cachedSiteNameAttributedString: NSAttributedString? {
+        get { siteNameCache.attributedString }
+        set { siteNameCache.store(newValue) }
+    }
+    var cachedDescriptionAttributedString: NSAttributedString? {
+        get { descriptionCache.attributedString }
+        set { descriptionCache.store(newValue) }
+    }
+
     enum CodingKeys: String, CodingKey {
         case title, site_name, description, image
     }
-    
+
     public required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         title = try container.decode(String.self, forKey: .title)
@@ -51,18 +63,19 @@ public class LinkBlockContentItem: EJAbstractBlockContentItem {
         description = try container.decodeIfPresent(String.self, forKey: .description)
         image = try container.decodeIfPresent(ImageFile.self, forKey: .image)
     }
-    
+
     func prepareCachedStrings(withStyle style: EJLinkBlockStyle) {
-        if cachedTitleAttributedString == nil {
-            cachedTitleAttributedString = title.convertHTML(font: style.titleFont)
+        titleCache.prepare(html: title, font: style.titleFont)
+        if let siteName = siteName {
+            siteNameCache.prepare(html: siteName, font: style.titleFont)
         }
-        
-        if cachedSiteNameAttributedString == nil {
-            cachedSiteNameAttributedString = siteName?.convertHTML(font: style.titleFont)
+        if let description = description {
+            descriptionCache.prepare(html: description, font: style.descriptionFont)
         }
-        
-        if cachedDescriptionAttributedString == nil {
-            cachedDescriptionAttributedString = description?.convertHTML(font: style.descriptionFont)
-        }
+    }
+
+    public func prepareCaches(withStyle style: EJBlockStyle?) {
+        guard let style = style as? EJLinkBlockStyle else { return }
+        prepareCachedStrings(withStyle: style)
     }
 }

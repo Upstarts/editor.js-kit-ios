@@ -42,12 +42,10 @@ open class RawHtmlNativeContentView: UIView, ConfigurableBlockView {
     public func configure(withItem item: RawHtmlBlockContentItem, style: EJBlockStyle?) {
         guard let style = style as? EJRawHtmlBlockStyle else { return }
         
-        let attributedString = item.cachedAttributedString ?? item.html.convertHTML(font: style.font)
-        if item.cachedAttributedString == nil {
-            item.cachedAttributedString = attributedString
-        }
-        textView.attributedText = attributedString
-        
+        // Normally a no-op: the renderer prepares the cache before the cell is dequeued (issues #31, #33).
+        item.prepareCachedAttributedString(withStyle: style)
+        textView.attributedText = item.cachedAttributedString
+
         textView.linkTextAttributes = style.linkTextAttributes
         backgroundColor = style.backgroundColor
         layer.cornerRadius = style.cornerRadius
@@ -55,12 +53,9 @@ open class RawHtmlNativeContentView: UIView, ConfigurableBlockView {
     
     public static func estimatedSize(for item: RawHtmlBlockContentItem, style: EJBlockStyle?, boundingWidth: CGFloat) -> CGSize {
         guard let style = style as? EJRawHtmlBlockStyle else { return .zero }
-        let attributedString = item.cachedAttributedString ?? item.html.convertHTML(font: style.font)
-        if item.cachedAttributedString == nil {
-            item.cachedAttributedString = attributedString
-        }
-        
-        guard let attributedString = attributedString else { return .zero }
+        item.prepareCachedAttributedString(withStyle: style)
+
+        guard let attributedString = item.cachedAttributedString else { return .zero }
         let newBoundingWidth = boundingWidth - (style.insets.left + style.insets.right)
         let height = attributedString.height(withConstrainedWidth: newBoundingWidth )
         return CGSize(width: boundingWidth, height: height)

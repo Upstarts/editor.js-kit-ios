@@ -1,10 +1,10 @@
 {
   "name": "EditorJSKit",
-  "version": "0.1.1",
+  "version": "0.3.0",
   "summary": "iOS Framework for generated clean data from Editor.js.",
-  "description": "SDK for editor.js. Parse and render natively supported blocks. Put blocks into your UICollectionView or implement your own custom renderer. Design and use custom blocks.",
+  "description": "SDK for editor.js. Parse and render natively supported blocks. Put blocks into your UICollectionView or implement your own custom adapter. Design and use custom blocks.",
   "homepage": "https://github.com/Upstarts/editor.js-kit-ios",
-  "screenshots": "https://raw.githubusercontent.com/Upstarts/editor.js-kit-ios/master/screenshot.jpg",
+  "screenshots": "https://static.upstarts.work/ejkit/editorjs.kit-ios-scr.png",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -14,11 +14,11 @@
   },
   "source": {
     "git": "https://github.com/Upstarts/editor.js-kit-ios.git",
-    "tag": "0.1.1"
+    "tag": "0.3.0"
   },
   "swift_versions": "5.1",
   "platforms": {
-    "ios": "9.0"
+    "ios": "10.0"
   },
   "source_files": "EditorJSKit/Classes/**/*",
   "swift_version": "5.1"

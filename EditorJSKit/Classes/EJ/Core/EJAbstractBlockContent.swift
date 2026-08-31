@@ -6,7 +6,21 @@
 //
 
 ///
-public protocol EJAbstractBlockContentItem: Decodable {}
+public protocol EJAbstractBlockContentItem: Decodable {
+    /**
+     Parses and caches whatever attributed strings the item needs to be rendered with `style`.
+
+     The renderer calls this before dequeuing a cell, because parsing HTML spins a nested run loop
+     and doing that with a dequeued cell outstanding crashes UIKit — see issues #31 and #33.
+     Implementations must be idempotent and cheap when the cache is already up to date.
+     */
+    func prepareCaches(withStyle style: EJBlockStyle?)
+}
+
+///
+public extension EJAbstractBlockContentItem {
+    func prepareCaches(withStyle style: EJBlockStyle?) {}
+}
 
 ///
 public protocol EJAbstractBlockContent: Decodable {

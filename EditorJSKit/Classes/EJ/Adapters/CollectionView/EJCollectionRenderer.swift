@@ -23,9 +23,15 @@ open class EJCollectionRenderer: EJCollectionBlockRenderer {
     }
         
     /**
+     Note: the item's caches are prepared BEFORE any cell is dequeued, for custom and native blocks
+     alike. Parsing HTML spins a nested run loop, and doing that while a dequeued cell is
+     outstanding crashes UIKit with "Expected dequeued view to be returned to the collection
+     view" — see issues #31 and #33. Sizing usually warms the caches first, but not when a client
+     overrides sizing via `EJCollectionViewAdapter.delegate`.
      */
     public func render(block: EJAbstractBlock, indexPath: IndexPath, style: EJBlockStyle? = nil) throws -> View {
         let style = style ?? kit.style.getStyle(forBlockType: block.type)
+        block.data.getItem(atIndex: indexPath.item)?.prepareCaches(withStyle: style)
         
         if let customBlock = kit.retrieveCustomBlock(ofType: block.type) as? EJCustomBlockCollectionAdaptable,
            let contentItem = block.data.getItem(atIndex: indexPath.item),

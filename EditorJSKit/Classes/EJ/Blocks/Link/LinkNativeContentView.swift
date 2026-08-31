@@ -32,6 +32,8 @@ open class LinkNativeContentView: UIView, ConfigurableBlockView {
     private lazy var imageHeightConstraint = imageView.heightAnchor.constraint(equalToConstant: 0)
     private lazy var imageWidthConstraint = imageView.widthAnchor.constraint(equalToConstant: 0)
     private lazy var descriptionTopConstraint = descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor)
+    private var imageSizeConstraints: [NSLayoutConstraint] = []
+    private var appliedImageSize: CGFloat?
     
     /**
      */
@@ -53,14 +55,31 @@ open class LinkNativeContentView: UIView, ConfigurableBlockView {
     private func layoutForImageView() {
         guard let style = style else { return }
         imageRightConstraint.constant = -style.imageRightInset
+        // Runs on every layout pass, so replace the previously activated pair instead of stacking
+        // a new one on top of it — otherwise constraints grow without bound (issue #36).
+        guard appliedImageSize != style.imageWidthHeight else { return }
         imageWidthConstraint.isActive = false
         imageHeightConstraint.isActive = false
-        NSLayoutConstraint.activate([
+        NSLayoutConstraint.deactivate(imageSizeConstraints)
+        let constraints = [
             imageView.heightAnchor.constraint(equalToConstant: style.imageWidthHeight),
             imageView.widthAnchor.constraint(equalToConstant: style.imageWidthHeight),
-        ])
+        ]
+        NSLayoutConstraint.activate(constraints)
+        imageSizeConstraints = constraints
+        appliedImageSize = style.imageWidthHeight
     }
     
+    /// A reused cell must not keep the previous item's image size: the zero-size constraints are
+    /// restored so the image view stops reserving width the text needs.
+    private func resetImageSizing() {
+        NSLayoutConstraint.deactivate(imageSizeConstraints)
+        imageSizeConstraints = []
+        appliedImageSize = nil
+        imageWidthConstraint.isActive = true
+        imageHeightConstraint.isActive = true
+    }
+
     private func setupViews() {
         addSubview(titleLabel)
         addSubview(descriptionLabel)
@@ -113,6 +132,8 @@ open class LinkNativeContentView: UIView, ConfigurableBlockView {
     
     public func configure(withItem item: LinkBlockContentItem, style: EJBlockStyle?) {
         self.item = item
+        hasURL = false
+        hasDescription = false
         
         // 1. Apply basic style
         backgroundColor = style?.backgroundColor
@@ -135,6 +156,10 @@ open class LinkNativeContentView: UIView, ConfigurableBlockView {
         if let descriptionAtr = item.cachedDescriptionAttributedString {
             hasDescription = true
             descriptionLabel.attributedText = descriptionAtr
+        } else {
+            // A reused cell keeps the previous item's description otherwise.
+            descriptionLabel.attributedText = nil
+            descriptionTopConstraint.constant = .zero
         }
         titleLabel.attributedText = titleMutable
         linkLabel.text = item.formattedLink
@@ -150,6 +175,7 @@ open class LinkNativeContentView: UIView, ConfigurableBlockView {
             }
         } else {
             imageView.image = nil
+            resetImageSizing()
         }
         
         // 2. Apply specific style

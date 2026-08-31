@@ -14,5 +14,7 @@ public protocol ReusableBlockView {
 
 ///
 public extension ReusableBlockView {
-    static var reuseId: String { String(describing: Self.self) }
+    // Module-qualified, like `BaseBlockView.reuseId`: a bare type name can collide with a
+    // same-named type from another module and hand back the wrong cell class (issue #35).
+    static var reuseId: String { String(reflecting: Self.self) }
 }

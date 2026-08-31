@@ -7,78 +7,79 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		063A31B6C7718057CD5F898FCF6F04DC /* RawHtmlBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27072265CBFED06F75A40FDF6EFC5B25 /* RawHtmlBlockView.swift */; };
-		07F709B17C4C444DA01C51EBAC2BADDD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		091090C1A22809B7A009E8F3CF963189 /* LinkNativeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61364C7893E95F5F9C0FCAFE3EC4B9FC /* LinkNativeContentView.swift */; };
-		2E8FF825F210EDD3CFF2B932F3B5006D /* ImageNativeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DF1B65F42C7EE6202006B0F84FF8D6 /* ImageNativeContentView.swift */; };
-		2F95EAA836CE3127D860E3FC5C7127F9 /* HeaderBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46427DE060DA5C2B4C457260967C09C /* HeaderBlockView.swift */; };
-		30DD78667B75CEA0497D433A1BB40DCB /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA8DA4B5BD41583B9C084ED2192A85 /* String+Ext.swift */; };
-		33E876F5FA4CDDD8333737C579C8FE24 /* NativeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30138C2CAB67401F2A4C3CC731414C4 /* NativeStyle.swift */; };
-		350FEC290285B8FACAAE443C841689CC /* LinkFormatterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF295A12A18C431BE64CD0E0AAB1B1C2 /* LinkFormatterService.swift */; };
-		5167E0D9090CFB9CFF3746F84C96B644 /* Pods-EditorJSKit_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7C2D1D7CB61463C77BEA0404F4D481 /* Pods-EditorJSKit_Example-dummy.m */; };
-		52C5D029E61A7A858BDA5458CCE5ABD2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		530BB4B0F51714B63C5DCAF3D5DF9824 /* ImageBlockContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4399ECDCF27E85BCE80103F19D36CB3D /* ImageBlockContent.swift */; };
-		5330E72007CC736DEA2E4EF1302374C4 /* DelimiterBlockContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4293ED091FC85B3045E1CA3C3138479 /* DelimiterBlockContent.swift */; };
-		56AD2C95681F7FC71089CE29FE30F444 /* EJAbstractBlockRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4053283F444BE9AE6017007FE408304B /* EJAbstractBlockRenderer.swift */; };
-		56BA7423B06FB5DF9FFE5056F488687D /* RawHtmlBlockNativeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59EFC7F801437ADD5604E9D56F010FE /* RawHtmlBlockNativeStyle.swift */; };
-		58A242765C50D582051834045E65CFF5 /* ListBlockNativeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB62F45FE65EB9F8A514C4E156C09709 /* ListBlockNativeStyle.swift */; };
-		65F026CC147B6EA5878E19D8CA50DAFC /* ParagraphBlockContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137DFAD1611DBCA2D2D135B7DDF5EA70 /* ParagraphBlockContent.swift */; };
-		6DA0A592E49632B0F3E6E02423B4A147 /* HeaderBlockContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB129205FFD56C4512DECE5BBE3DBF44 /* HeaderBlockContent.swift */; };
-		7151C8044BED7E963C0ADB5AC0A14510 /* ParagraphBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D147DD8B6957BC3139F446798684167 /* ParagraphBlockView.swift */; };
-		733E1C4BEF3E0D76CC6034F9D2589FD1 /* EJAbstractBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815CF608EA870B252A7F79F28F477005 /* EJAbstractBlock.swift */; };
-		746F9F7141DD960CAAB728579A30E53B /* ParagraphNativeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF01FC950158AAB4E825AB08FF810C9 /* ParagraphNativeContentView.swift */; };
-		7B597EB556588CBA1C737B4326DC612A /* Pods-EditorJSKit_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7067BC923453D0F47CA9200DE8251081 /* Pods-EditorJSKit_Tests-dummy.m */; };
-		8065268C89708D70BEDD0EE1EBE5BDE8 /* DelimiterBlockNativeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182C7A9EB06C6F32559F98E9ACEEF96D /* DelimiterBlockNativeStyle.swift */; };
-		81F295C7E828D2FDAA4188E12180EB5B /* DelimiterBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3B1B70112D9E7B8A26F8FCE810818 /* DelimiterBlockView.swift */; };
-		8F12269FC4B33B7CFB514DD6DF3032D8 /* ImageBlockNativeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B2DD4C5A918BB0F327717EF10782AB /* ImageBlockNativeStyle.swift */; };
-		90D57CE14E4CBD679802B0597B7AF6B1 /* ImageBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3468B64236F5AE70F77BC2CF9FE6898 /* ImageBlockView.swift */; };
-		925E66BFD655BA54CBB3DDCF90FDB617 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		9333BE493F07CCF3849C588F876B9293 /* Pods-EditorJSKit_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C0C2BE1FD5E250B89C8D34D8E555F8DC /* Pods-EditorJSKit_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9423A80428424D8500A74558 /* EJCollectionViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9423A80328424D8500A74558 /* EJCollectionViewAdapter.swift */; };
-		9423A8062842513400A74558 /* EJCollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9423A8052842513400A74558 /* EJCollectionDataSource.swift */; };
-		946D8C262844D4ED0074935C /* EJAbstractBlockContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946D8C252844D4ED0074935C /* EJAbstractBlockContent.swift */; };
-		946D8C282844D54F0074935C /* BaseBlockContentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946D8C272844D54F0074935C /* BaseBlockContentItem.swift */; };
-		94A74FCA2840B519008B26B9 /* BaseBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A74FC92840B519008B26B9 /* BaseBlockView.swift */; };
-		94A74FCC2840B62F008B26B9 /* ConfigurableBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A74FCB2840B62F008B26B9 /* ConfigurableBlockView.swift */; };
-		94A74FCF2840BC13008B26B9 /* ReusableBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A74FCE2840BC13008B26B9 /* ReusableBlockView.swift */; };
-		94A74FD32840BD13008B26B9 /* CollectionViewBlockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A74FD22840BD13008B26B9 /* CollectionViewBlockCell.swift */; };
-		94A74FD52840BE66008B26B9 /* EJBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A74FD42840BE66008B26B9 /* EJBlockView.swift */; };
-		94B12175234DFBC400163577 /* UITextView+Fixed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B12174234DFBC400163577 /* UITextView+Fixed.swift */; };
-		94C88CB52844E27400D8216E /* EJCustomBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C88CB42844E27400D8216E /* EJCustomBlock.swift */; };
-		94C88CB72844EED300D8216E /* EJCustomBlockCollectionAdaptable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C88CB62844EED300D8216E /* EJCustomBlockCollectionAdaptable.swift */; };
-		A49BEE96A6C64F17473BC1104068378E /* LinkBlockContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140024D450908E0F5BB7438FFB40B105 /* LinkBlockContent.swift */; };
-		A4DA4C6A974818525E7C9A094E89F1EC /* LinkBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B6612DDC15997A19BAE5A61400DAA1 /* LinkBlockView.swift */; };
-		A4EAF10078E88CE4EF68D2CEE8AB650F /* EditorJSKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CB33BE52314A08DC134A894AA0DBC3E /* EditorJSKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AE7A86AEF85C8B1FAA0190D7BCC0E0AC /* RawHtmlNativeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635DA7FDB1A06BF1B9AC93B70A6DFBDF /* RawHtmlNativeContentView.swift */; };
-		AEA549E2C752DE19B46CFC7DF0ECFAB4 /* Pods-EditorJSKit_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D98EF17C650638D516E18C1BF861A4C5 /* Pods-EditorJSKit_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B3ADFED4792861F05D512433102DC96B /* EditorJSKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BDB8D301E166D3F026B8EECDD86162 /* EditorJSKit-dummy.m */; };
-		B620C0B984FD09701FDF4BA29732D872 /* EJNativeBlockType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08284C2E02A254CF977E5F2F178CAF34 /* EJNativeBlockType.swift */; };
-		BEC0BBF52FEE197B5467815499B296E0 /* EJKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D546255DFB6049E8CEC5596A7A12B1 /* EJKit.swift */; };
-		BFE7C3EC0B0CC294042FACEEAFBA934D /* HeaderBlockNativeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFB0DDE87C81432C95F0D98E944FF28 /* HeaderBlockNativeStyle.swift */; };
-		C15E33A1EC27B971A0A1BD71F7B1EE43 /* RawHtmlBlockContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A86D9804BD14503DC9FAB234A1C16D4 /* RawHtmlBlockContent.swift */; };
-		C90A6E78AB74ADDCAED9ED2072B9C9B9 /* DataDownloaderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2AF12D709280E9456E5395D71F16B9 /* DataDownloaderService.swift */; };
-		D1FF981EEC99642E0A0599AAF7E10A34 /* EJBlocksList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACA9C84E880FFB76FC121D8B223ACFE /* EJBlocksList.swift */; };
-		D3BE0F7AF52F8D7E804C7CD0D6192DFB /* ListItemBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF70C176AA65D2809C1A2131868BC40 /* ListItemBlockView.swift */; };
-		D8F74B6E7C6739FB55F8CB1A63136536 /* DelimiterNativeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14072AEA4C6904BBB92407CC6FC7BFB /* DelimiterNativeContentView.swift */; };
-		DB33FA81F7217F9E8D38A368825AB0C9 /* EJStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4D63E9ED194B83A8FF0A989EA71B5D /* EJStyle.swift */; };
-		DE082EF1679F6C821B4DBE738457A14A /* ListBlockContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0D0085386B818F4D6089B27FBDA661 /* ListBlockContent.swift */; };
-		DF4CBF55F63D7B7096127D5D4F2DBFEC /* HeaderNativeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E814E062D9533C27CE5E96D139918066 /* HeaderNativeContentView.swift */; };
-		E25A3DD6FBD71876F3D5D1321D336936 /* NSAttributedString+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCA27FEB37629FD29AE0F83954EA199 /* NSAttributedString+Ext.swift */; };
-		EB90484F262D4AE4C5D2D40CC8C23B75 /* ListItemNativeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1B3897D60D7E24179D4AF53E123E83 /* ListItemNativeContentView.swift */; };
-		F22AA2FF934638E09CA3A8C6DCD2FC89 /* EJCollectionRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E008ACE5B849F4323696EFAEB6E2B8B /* EJCollectionRenderer.swift */; };
-		FA936015FF3F4831260BFAB1C6388A43 /* LinkBlockNativeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA5569880FAFC8B73A21EDBA2FF9248 /* LinkBlockNativeStyle.swift */; };
-		FE8BC11B90563E05E7A95204483FFE9A /* ParagraphBlockNativeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C9F617020CECC2D4B43A24A0A758EE /* ParagraphBlockNativeStyle.swift */; };
+		000FFDFB5BDCDAA3A313042E0F3A0091 /* EJBlocksList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486285F40AAED11DA58A782DAD6EA368 /* EJBlocksList.swift */; };
+		01E23C5B1CF74F9423EB0F406A248DC6 /* EJBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D64B51774544928D942EF925E49BA93 /* EJBlockView.swift */; };
+		093B8236813D446560332C8C29AB46AF /* LinkNativeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE184BDF09722248A321F86BD8F2493 /* LinkNativeContentView.swift */; };
+		0C7FA84ADA4CA7B012DF8585598F9BFE /* RawHtmlBlockContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E58B832A97C39452E0E413606EE1E4E /* RawHtmlBlockContent.swift */; };
+		0D68C98119488BDB350D48EDFFF90A3B /* ListBlockContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D25E785D5FE6A1610C73433716AA51 /* ListBlockContent.swift */; };
+		112C2D7E92A73F0EF132ACC7C1C9788E /* EJCollectionViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465FB7465BE01C724B028F7DA044AB73 /* EJCollectionViewAdapter.swift */; };
+		117845C1E4F66DD45154CFAA6505F11D /* RawHtmlNativeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30EEB49896AE8B58DB412E97396E8C4 /* RawHtmlNativeContentView.swift */; };
+		12995807907F31A83200C4DB33CFBAFE /* HeaderBlockContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE29C8D95EDDB8552386E059F83483E /* HeaderBlockContent.swift */; };
+		129BCA523E434C2C69880DDB7DB63155 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */; };
+		15E8635E371F8A75A8B7ED4814D3780F /* DelimiterBlockContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289C477E8A37052E7DCB877276A6ABAB /* DelimiterBlockContent.swift */; };
+		15FE823554F1852B86CCA4F7D4C0B883 /* BaseBlockContentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AE6E5A2095E5E444DA47CB0B5E011C /* BaseBlockContentItem.swift */; };
+		20635156DFFFC92596CB5B0BA87195E2 /* LinkBlockContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A07D98EC331E9E48FB280020B2B5F /* LinkBlockContent.swift */; };
+		2A0E8ACA6B36335F72D66158A0D1A38A /* ParagraphBlockNativeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA628A98D8B8D01ADEF31BDB2E722044 /* ParagraphBlockNativeStyle.swift */; };
+		2D994DA7049A43FEDD88E40448A2EFB9 /* EJKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429C84AAE4F7DD3B5C53EDBC392C327C /* EJKit.swift */; };
+		2E7F42CCFF65125AA77279274A4191CA /* EJNativeBlockType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B63258072FD1296ABFE0CE7351C9FA /* EJNativeBlockType.swift */; };
+		33B5497F4B21C6D9597B1A1738725D49 /* EJAbstractBlockContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33A3B7666CF415382B642CDF015CCD0 /* EJAbstractBlockContent.swift */; };
+		3F7E8A705E15C3FBAF318F0E4CBA4D93 /* Pods-EditorJSKit_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7067BC923453D0F47CA9200DE8251081 /* Pods-EditorJSKit_Tests-dummy.m */; };
+		43E7F51B4AA9148C31CB6691B0D65785 /* ImageBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6288DFEC6EBAEB8E5C1AB5F8C63179 /* ImageBlockView.swift */; };
+		50CDB193B6B2C2A48A1A5B3144123A39 /* ImageBlockContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90452EE31B967F2CE247289BCD0CF9C /* ImageBlockContent.swift */; };
+		5EF98965BEA4789DFC82C32B170C82AC /* HeaderBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AB6F2EB0AD1BF638E86D0DC74D6E47 /* HeaderBlockView.swift */; };
+		6C46D1B2CD5574BA55CCB3AC4BCC7DC9 /* HeaderNativeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF92C06C25F8F3C6CBA7B31D36135C47 /* HeaderNativeContentView.swift */; };
+		6F7BE791F5FA69EB775A360F50C4FE07 /* Pods-EditorJSKit_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C0C2BE1FD5E250B89C8D34D8E555F8DC /* Pods-EditorJSKit_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		721FDC2609EE1C4444CDC552160C635B /* Pods-EditorJSKit_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7C2D1D7CB61463C77BEA0404F4D481 /* Pods-EditorJSKit_Example-dummy.m */; };
+		77D970436803163506EAE44909A5C753 /* DelimiterNativeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68937A0DE6C291C349916F91673F7B /* DelimiterNativeContentView.swift */; };
+		7FB357787A2CA238257C5EC64B0C97F8 /* LinkBlockNativeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C262A597BF1D457C30F70E57114A5897 /* LinkBlockNativeStyle.swift */; };
+		8A39E74C12ACA9B74D3E7B80CD18C0F4 /* LinkBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C59CD55A7B3D76F12CB5BE56637D2F6 /* LinkBlockView.swift */; };
+		8CB528B57B090C098DC20A203BB298B7 /* ParagraphBlockContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AE65027C6CED501920D10EDC441716 /* ParagraphBlockContent.swift */; };
+		936F0E61C9945CE79E54669204489821 /* ReusableBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F4D9BEC7FC03E56A7E6858740B2EF2 /* ReusableBlockView.swift */; };
+		A0D2D88B599B989CF5BBDE368AEB74E3 /* EJCustomBlockCollectionAdaptable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F712654160F816FDB3AE6F975934BF /* EJCustomBlockCollectionAdaptable.swift */; };
+		A3A12C4958E3E7B39DF3EDBC6E5717FD /* ListItemBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC007025C19838EC150C4E2169600E2 /* ListItemBlockView.swift */; };
+		A4C9622F63F801EC170FB97EFE60D341 /* BaseBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF811A63F8A70C215F6E721204C1C08E /* BaseBlockView.swift */; };
+		A5FB5EA87AA1EF765E536B47EB5BA22E /* DelimiterBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC505007931FABAF11526DF6C79A8E18 /* DelimiterBlockView.swift */; };
+		A659CC353084BD534C37536E98653BAC /* EJCollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C9CBE5B3ED78D7D10C17CFA06D46E5 /* EJCollectionDataSource.swift */; };
+		A8E95E36C22629DAB460588872A09ED3 /* DataDownloaderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2718A4CFBFD2AFA48709C712E9EEB814 /* DataDownloaderService.swift */; };
+		AA53F1844CF38161A75D361130A1D46E /* EJAbstractBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0339262CA3F4A122EFED9250365E49C8 /* EJAbstractBlock.swift */; };
+		AF38E003101C4597A5E3B6BAEDB96172 /* ConfigurableBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63B779720B44E636F64AC4166053896 /* ConfigurableBlockView.swift */; };
+		B1F316DA3BA3C28D71581B58EFEA83F3 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC035E720BA4363D50894F42358E2DE /* String+Ext.swift */; };
+		B6156139DA24F07CA98D8334148816A7 /* UITextView+Fixed.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA648933170CCF7EA7FA68BD5879E8E9 /* UITextView+Fixed.swift */; };
+		B7F2A2007982B97A6F1BF619EC87E64C /* ImageBlockNativeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35C000129B62B3E764E318A0213BE6C /* ImageBlockNativeStyle.swift */; };
+		B9B85FAC524A4381841550C226ED2A5F /* RawHtmlBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFB0680262E2990D4C2B09806FCD2DD /* RawHtmlBlockView.swift */; };
+		C0C72192E97ECA7B0EE267C918983034 /* EditorJSKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CE300CDF346FEAF54AD01000B3947E /* EditorJSKit-dummy.m */; };
+		C0F9EED01ED43981B7034522D5F6707D /* ParagraphBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97430C846746CDD6CEDD1D1E453BB88 /* ParagraphBlockView.swift */; };
+		C761634A69399261BAAF229399431EE0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */; };
+		C8B455466F83A4150783016DBFEFF3AC /* ParagraphNativeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684D3531F7ADA24C44734AF9BD3BCDF1 /* ParagraphNativeContentView.swift */; };
+		D25DF8B96D3E7C8EB049CF6C3796794B /* ListItemNativeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A985A9E98617BDFF3843E2CB82C8205 /* ListItemNativeContentView.swift */; };
+		D5D2E731D5E856B374B1BE0897F90C4C /* LinkFormatterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B037F398607ED9606E8DD2A8838FDC /* LinkFormatterService.swift */; };
+		D7A99C1308C74A365A9CABD1EF7ECC2B /* EditorJSKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F6DD701E5AF6CF2CF9CBCFD1D24D1C3 /* EditorJSKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DA6A8CB8E2FF0C32A6220AF2BF2C58D3 /* RawHtmlBlockNativeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F912CDCD8C00CEE8CBAB6C0CFFAC765A /* RawHtmlBlockNativeStyle.swift */; };
+		DBF0333EBC4EB07C5AA9278E1C6BF18C /* EJCollectionRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3D106BFDB7934B0131661B5BE5BE8A /* EJCollectionRenderer.swift */; };
+		DD015D1274B1EB19046D97AA25840352 /* DelimiterBlockNativeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89843288074EB3A3B15CED462DDBB7E /* DelimiterBlockNativeStyle.swift */; };
+		DF159CDD0E40787DEF8DD4E9CBD1A6BA /* CollectionViewBlockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4464449116C4B7AC8EBF58EB219CDA5E /* CollectionViewBlockCell.swift */; };
+		E225B37D28CC809BCDE61CC28E6E413B /* NativeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C99745FF96DBAB96275CE3F3A1FCF44 /* NativeStyle.swift */; };
+		E23E73D11A24019D835F86660A50DB10 /* Pods-EditorJSKit_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D98EF17C650638D516E18C1BF861A4C5 /* Pods-EditorJSKit_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E75796120C3372215B6CE8DEA69ED83F /* NSAttributedString+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A5744FB75F73AA7F1B5CB5FD27AB5D /* NSAttributedString+Ext.swift */; };
+		EAF7527E1D3C34740EDCB5DC454B2FEF /* EJStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA1CD9C8502EC659F54ACC65186431E /* EJStyle.swift */; };
+		EB1BD19E1DA00C43D506162883EFAA6D /* EJAttributedTextCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D883D0D8C2634DF34AEBB3338261367 /* EJAttributedTextCache.swift */; };
+		EDCC68351B6D9548BC9902326F7D7DB6 /* HeaderBlockNativeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C3A53F055F3F3B6CB257677904C076 /* HeaderBlockNativeStyle.swift */; };
+		F01E3EF20EAC3A4CA0C49772D79E680A /* ListBlockNativeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128B3161723FEEA4B8FD59000C7E1946 /* ListBlockNativeStyle.swift */; };
+		F248C4991E148B6A4E17A3630AF57F8C /* EJAbstractBlockRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCFEC91971956EA1B2CAF1E1BD23F4C /* EJAbstractBlockRenderer.swift */; };
+		F27053AFB00529F3FF2FF013EEE1FDB8 /* EJCustomBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9311D09C98B47206458DF4BBF466C7 /* EJCustomBlock.swift */; };
+		F8676B45952EEAD6CF694DD6CA02EFD3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */; };
+		F909324402E73FBBF2A69D31114E2A5A /* ImageNativeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE4F1AEA49C92A966CD7D59E7908CCB /* ImageNativeContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2DD04CBA857E1252679C85671DC06690 /* PBXContainerItemProxy */ = {
+		13511D94F7813558237D8992C536431D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = A7323CF1FC9DDF5376AB916367BE0CE1;
 			remoteInfo = "Pods-EditorJSKit_Example";
 		};
-		55A2747A8D3153F43070C1E5009B1B70 /* PBXContainerItemProxy */ = {
+		FB9016B05154576546A545457514DA5A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -88,135 +89,163 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0339262CA3F4A122EFED9250365E49C8 /* EJAbstractBlock.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EJAbstractBlock.swift; sourceTree = "<group>"; };
 		05D1DA877D8B1FC16D85E8B6DD1F78B9 /* Pods-EditorJSKit_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EditorJSKit_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		06C44ED2860258734F344E1E99D3839B /* Pods-EditorJSKit_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-EditorJSKit_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		08284C2E02A254CF977E5F2F178CAF34 /* EJNativeBlockType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EJNativeBlockType.swift; sourceTree = "<group>"; };
-		09D546255DFB6049E8CEC5596A7A12B1 /* EJKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EJKit.swift; sourceTree = "<group>"; };
-		0A0D0085386B818F4D6089B27FBDA661 /* ListBlockContent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ListBlockContent.swift; sourceTree = "<group>"; };
-		0CF01FC950158AAB4E825AB08FF810C9 /* ParagraphNativeContentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ParagraphNativeContentView.swift; sourceTree = "<group>"; };
-		0D147DD8B6957BC3139F446798684167 /* ParagraphBlockView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ParagraphBlockView.swift; sourceTree = "<group>"; };
-		0D1B3897D60D7E24179D4AF53E123E83 /* ListItemNativeContentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ListItemNativeContentView.swift; sourceTree = "<group>"; };
-		137DFAD1611DBCA2D2D135B7DDF5EA70 /* ParagraphBlockContent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ParagraphBlockContent.swift; sourceTree = "<group>"; };
-		140024D450908E0F5BB7438FFB40B105 /* LinkBlockContent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LinkBlockContent.swift; sourceTree = "<group>"; };
-		182C7A9EB06C6F32559F98E9ACEEF96D /* DelimiterBlockNativeStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DelimiterBlockNativeStyle.swift; sourceTree = "<group>"; };
+		0C9311D09C98B47206458DF4BBF466C7 /* EJCustomBlock.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EJCustomBlock.swift; sourceTree = "<group>"; };
+		128B3161723FEEA4B8FD59000C7E1946 /* ListBlockNativeStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ListBlockNativeStyle.swift; sourceTree = "<group>"; };
+		1D64B51774544928D942EF925E49BA93 /* EJBlockView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EJBlockView.swift; sourceTree = "<group>"; };
 		1F62E667F438B4347EAEB1FFFFF7FF7D /* Pods-EditorJSKit_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EditorJSKit_Example-Info.plist"; sourceTree = "<group>"; };
-		27072265CBFED06F75A40FDF6EFC5B25 /* RawHtmlBlockView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RawHtmlBlockView.swift; sourceTree = "<group>"; };
-		2DBA8DA4B5BD41583B9C084ED2192A85 /* String+Ext.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
-		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		38DF1B65F42C7EE6202006B0F84FF8D6 /* ImageNativeContentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ImageNativeContentView.swift; sourceTree = "<group>"; };
-		3DF43D8327EF72D6B5EC3B5F78B1F80A /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		4053283F444BE9AE6017007FE408304B /* EJAbstractBlockRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EJAbstractBlockRenderer.swift; sourceTree = "<group>"; };
-		4399ECDCF27E85BCE80103F19D36CB3D /* ImageBlockContent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ImageBlockContent.swift; sourceTree = "<group>"; };
+		2718A4CFBFD2AFA48709C712E9EEB814 /* DataDownloaderService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DataDownloaderService.swift; sourceTree = "<group>"; };
+		289C477E8A37052E7DCB877276A6ABAB /* DelimiterBlockContent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DelimiterBlockContent.swift; sourceTree = "<group>"; };
+		29A5744FB75F73AA7F1B5CB5FD27AB5D /* NSAttributedString+Ext.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Ext.swift"; sourceTree = "<group>"; };
+		2E3D106BFDB7934B0131661B5BE5BE8A /* EJCollectionRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EJCollectionRenderer.swift; sourceTree = "<group>"; };
+		31B008EF4DFBED7CC08608810667355D /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		31B63258072FD1296ABFE0CE7351C9FA /* EJNativeBlockType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EJNativeBlockType.swift; sourceTree = "<group>"; };
+		32C3A53F055F3F3B6CB257677904C076 /* HeaderBlockNativeStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HeaderBlockNativeStyle.swift; sourceTree = "<group>"; };
+		384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		3E58B832A97C39452E0E413606EE1E4E /* RawHtmlBlockContent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RawHtmlBlockContent.swift; sourceTree = "<group>"; };
+		429C84AAE4F7DD3B5C53EDBC392C327C /* EJKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EJKit.swift; sourceTree = "<group>"; };
+		42DA249AE0A8E78076C7B60DF8F2CDEC /* EditorJSKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "EditorJSKit-prefix.pch"; sourceTree = "<group>"; };
+		4464449116C4B7AC8EBF58EB219CDA5E /* CollectionViewBlockCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CollectionViewBlockCell.swift; sourceTree = "<group>"; };
+		44F4D9BEC7FC03E56A7E6858740B2EF2 /* ReusableBlockView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ReusableBlockView.swift; sourceTree = "<group>"; };
+		465FB7465BE01C724B028F7DA044AB73 /* EJCollectionViewAdapter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EJCollectionViewAdapter.swift; sourceTree = "<group>"; };
+		46C9CBE5B3ED78D7D10C17CFA06D46E5 /* EJCollectionDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EJCollectionDataSource.swift; sourceTree = "<group>"; };
+		47AE65027C6CED501920D10EDC441716 /* ParagraphBlockContent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ParagraphBlockContent.swift; sourceTree = "<group>"; };
+		47D25E785D5FE6A1610C73433716AA51 /* ListBlockContent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ListBlockContent.swift; sourceTree = "<group>"; };
+		486285F40AAED11DA58A782DAD6EA368 /* EJBlocksList.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EJBlocksList.swift; sourceTree = "<group>"; };
 		4ACBECC0BDFE04A7435DE7BB576CE088 /* Pods-EditorJSKit_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-EditorJSKit_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		4BC007025C19838EC150C4E2169600E2 /* ListItemBlockView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ListItemBlockView.swift; sourceTree = "<group>"; };
 		506B070D93027C1DA9213B44003D93ED /* Pods-EditorJSKit_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EditorJSKit_Tests-Info.plist"; sourceTree = "<group>"; };
-		54BDB8D301E166D3F026B8EECDD86162 /* EditorJSKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "EditorJSKit-dummy.m"; sourceTree = "<group>"; };
-		598DF965F65E6CBAC62347C6E95F332A /* EditorJSKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = EditorJSKit.modulemap; sourceTree = "<group>"; };
-		5D2AF12D709280E9456E5395D71F16B9 /* DataDownloaderService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DataDownloaderService.swift; sourceTree = "<group>"; };
-		61364C7893E95F5F9C0FCAFE3EC4B9FC /* LinkNativeContentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LinkNativeContentView.swift; sourceTree = "<group>"; };
+		53185128F48610C3C9C35C4D83DE03B4 /* EditorJSKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = EditorJSKit.modulemap; sourceTree = "<group>"; };
+		533E7602A46D9444306E5EAB49A85763 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		54AB6F2EB0AD1BF638E86D0DC74D6E47 /* HeaderBlockView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HeaderBlockView.swift; sourceTree = "<group>"; };
+		5A68937A0DE6C291C349916F91673F7B /* DelimiterNativeContentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DelimiterNativeContentView.swift; sourceTree = "<group>"; };
+		5FCBD31C616AF23523021534BB7631D6 /* EditorJSKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = EditorJSKit.debug.xcconfig; sourceTree = "<group>"; };
 		6299222B6954921D3E2D3F1E9293FB8D /* Pods-EditorJSKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-EditorJSKit_Example.release.xcconfig"; sourceTree = "<group>"; };
-		635DA7FDB1A06BF1B9AC93B70A6DFBDF /* RawHtmlNativeContentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RawHtmlNativeContentView.swift; sourceTree = "<group>"; };
-		6C4D63E9ED194B83A8FF0A989EA71B5D /* EJStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EJStyle.swift; sourceTree = "<group>"; };
-		6CB33BE52314A08DC134A894AA0DBC3E /* EditorJSKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "EditorJSKit-umbrella.h"; sourceTree = "<group>"; };
+		67F712654160F816FDB3AE6F975934BF /* EJCustomBlockCollectionAdaptable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EJCustomBlockCollectionAdaptable.swift; sourceTree = "<group>"; };
+		684D3531F7ADA24C44734AF9BD3BCDF1 /* ParagraphNativeContentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ParagraphNativeContentView.swift; sourceTree = "<group>"; };
+		6C59CD55A7B3D76F12CB5BE56637D2F6 /* LinkBlockView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LinkBlockView.swift; sourceTree = "<group>"; };
+		6DCFEC91971956EA1B2CAF1E1BD23F4C /* EJAbstractBlockRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EJAbstractBlockRenderer.swift; sourceTree = "<group>"; };
+		6EE4F1AEA49C92A966CD7D59E7908CCB /* ImageNativeContentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ImageNativeContentView.swift; sourceTree = "<group>"; };
+		6FFB0680262E2990D4C2B09806FCD2DD /* RawHtmlBlockView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RawHtmlBlockView.swift; sourceTree = "<group>"; };
 		7067BC923453D0F47CA9200DE8251081 /* Pods-EditorJSKit_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-EditorJSKit_Tests-dummy.m"; sourceTree = "<group>"; };
-		719129BE054485E44026D83F88B34D3F /* EditorJSKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EditorJSKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		80F3EF85DAE36E0FD4D1C0822A72A149 /* EditorJSKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = EditorJSKit.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		815CF608EA870B252A7F79F28F477005 /* EJAbstractBlock.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EJAbstractBlock.swift; sourceTree = "<group>"; };
+		719129BE054485E44026D83F88B34D3F /* EditorJSKit */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = EditorJSKit; path = EditorJSKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A985A9E98617BDFF3843E2CB82C8205 /* ListItemNativeContentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ListItemNativeContentView.swift; sourceTree = "<group>"; };
+		7E3BC59F1388B0DACF92222A6858217B /* EditorJSKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "EditorJSKit-Info.plist"; sourceTree = "<group>"; };
 		8740E436F016E512C919E8DEA92D3ECD /* Pods-EditorJSKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-EditorJSKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		88CCF3D7F2111354A60307DFC6685B8A /* Pods-EditorJSKit_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-EditorJSKit_Example.modulemap"; sourceTree = "<group>"; };
-		8A86D9804BD14503DC9FAB234A1C16D4 /* RawHtmlBlockContent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RawHtmlBlockContent.swift; sourceTree = "<group>"; };
+		8C6288DFEC6EBAEB8E5C1AB5F8C63179 /* ImageBlockView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ImageBlockView.swift; sourceTree = "<group>"; };
+		8C99745FF96DBAB96275CE3F3A1FCF44 /* NativeStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NativeStyle.swift; sourceTree = "<group>"; };
+		8F6DD701E5AF6CF2CF9CBCFD1D24D1C3 /* EditorJSKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "EditorJSKit-umbrella.h"; sourceTree = "<group>"; };
 		90B170A317B8DB5025838F1460C7CB0A /* Pods-EditorJSKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-EditorJSKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		9423A80328424D8500A74558 /* EJCollectionViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EJCollectionViewAdapter.swift; sourceTree = "<group>"; };
-		9423A8052842513400A74558 /* EJCollectionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EJCollectionDataSource.swift; sourceTree = "<group>"; };
-		946D8C252844D4ED0074935C /* EJAbstractBlockContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EJAbstractBlockContent.swift; sourceTree = "<group>"; };
-		946D8C272844D54F0074935C /* BaseBlockContentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseBlockContentItem.swift; sourceTree = "<group>"; };
 		94A38F7FC0E4EB26F37A6D6C28B9BC95 /* Pods-EditorJSKit_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-EditorJSKit_Example-frameworks.sh"; sourceTree = "<group>"; };
-		94A74FC92840B519008B26B9 /* BaseBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseBlockView.swift; sourceTree = "<group>"; };
-		94A74FCB2840B62F008B26B9 /* ConfigurableBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableBlockView.swift; sourceTree = "<group>"; };
-		94A74FCE2840BC13008B26B9 /* ReusableBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableBlockView.swift; sourceTree = "<group>"; };
-		94A74FD22840BD13008B26B9 /* CollectionViewBlockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewBlockCell.swift; sourceTree = "<group>"; };
-		94A74FD42840BE66008B26B9 /* EJBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EJBlockView.swift; sourceTree = "<group>"; };
-		94B12174234DFBC400163577 /* UITextView+Fixed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Fixed.swift"; sourceTree = "<group>"; };
-		94C88CB42844E27400D8216E /* EJCustomBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EJCustomBlock.swift; sourceTree = "<group>"; };
-		94C88CB62844EED300D8216E /* EJCustomBlockCollectionAdaptable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EJCustomBlockCollectionAdaptable.swift; sourceTree = "<group>"; };
-		96B2DD4C5A918BB0F327717EF10782AB /* ImageBlockNativeStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ImageBlockNativeStyle.swift; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9E008ACE5B849F4323696EFAEB6E2B8B /* EJCollectionRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EJCollectionRenderer.swift; sourceTree = "<group>"; };
+		95CE300CDF346FEAF54AD01000B3947E /* EditorJSKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "EditorJSKit-dummy.m"; sourceTree = "<group>"; };
+		9CAF7E8740AE1275554FA0C620A55362 /* EditorJSKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = EditorJSKit.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D883D0D8C2634DF34AEBB3338261367 /* EJAttributedTextCache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EJAttributedTextCache.swift; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9DC035E720BA4363D50894F42358E2DE /* String+Ext.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		9FFC6223C3EE95AEA7A985C6C37538E0 /* Pods-EditorJSKit_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EditorJSKit_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		A3468B64236F5AE70F77BC2CF9FE6898 /* ImageBlockView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ImageBlockView.swift; sourceTree = "<group>"; };
-		AB129205FFD56C4512DECE5BBE3DBF44 /* HeaderBlockContent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HeaderBlockContent.swift; sourceTree = "<group>"; };
+		A33A3B7666CF415382B642CDF015CCD0 /* EJAbstractBlockContent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EJAbstractBlockContent.swift; sourceTree = "<group>"; };
+		A88B3DFCBB0BC2C8407C7644B4525BF1 /* EditorJSKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = EditorJSKit.release.xcconfig; sourceTree = "<group>"; };
+		A89843288074EB3A3B15CED462DDBB7E /* DelimiterBlockNativeStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DelimiterBlockNativeStyle.swift; sourceTree = "<group>"; };
+		A90452EE31B967F2CE247289BCD0CF9C /* ImageBlockContent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ImageBlockContent.swift; sourceTree = "<group>"; };
+		A97430C846746CDD6CEDD1D1E453BB88 /* ParagraphBlockView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ParagraphBlockView.swift; sourceTree = "<group>"; };
 		AC7C2D1D7CB61463C77BEA0404F4D481 /* Pods-EditorJSKit_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-EditorJSKit_Example-dummy.m"; sourceTree = "<group>"; };
-		B4293ED091FC85B3045E1CA3C3138479 /* DelimiterBlockContent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DelimiterBlockContent.swift; sourceTree = "<group>"; };
-		B46427DE060DA5C2B4C457260967C09C /* HeaderBlockView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HeaderBlockView.swift; sourceTree = "<group>"; };
-		B659A75F3BBC58828CFFC339468C71DD /* Pods_EditorJSKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EditorJSKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BACA9C84E880FFB76FC121D8B223ACFE /* EJBlocksList.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EJBlocksList.swift; sourceTree = "<group>"; };
-		BFA5569880FAFC8B73A21EDBA2FF9248 /* LinkBlockNativeStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LinkBlockNativeStyle.swift; sourceTree = "<group>"; };
+		B659A75F3BBC58828CFFC339468C71DD /* Pods-EditorJSKit_Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-EditorJSKit_Tests"; path = Pods_EditorJSKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA628A98D8B8D01ADEF31BDB2E722044 /* ParagraphBlockNativeStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ParagraphBlockNativeStyle.swift; sourceTree = "<group>"; };
 		C0C2BE1FD5E250B89C8D34D8E555F8DC /* Pods-EditorJSKit_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-EditorJSKit_Example-umbrella.h"; sourceTree = "<group>"; };
-		C14072AEA4C6904BBB92407CC6FC7BFB /* DelimiterNativeContentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DelimiterNativeContentView.swift; sourceTree = "<group>"; };
-		CAFB0DDE87C81432C95F0D98E944FF28 /* HeaderBlockNativeStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HeaderBlockNativeStyle.swift; sourceTree = "<group>"; };
-		CC48AED8359C2151DD00C6E1881C2F69 /* EditorJSKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = EditorJSKit.xcconfig; sourceTree = "<group>"; };
-		CDCA27FEB37629FD29AE0F83954EA199 /* NSAttributedString+Ext.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Ext.swift"; sourceTree = "<group>"; };
-		CDF70C176AA65D2809C1A2131868BC40 /* ListItemBlockView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ListItemBlockView.swift; sourceTree = "<group>"; };
-		CFD3B1B70112D9E7B8A26F8FCE810818 /* DelimiterBlockView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DelimiterBlockView.swift; sourceTree = "<group>"; };
-		D12E22E28A83D1DD7EAD3A8C95F32D44 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		D2FA938E3D8BE92212F57506D75F78B5 /* EditorJSKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "EditorJSKit-Info.plist"; sourceTree = "<group>"; };
-		D5B6612DDC15997A19BAE5A61400DAA1 /* LinkBlockView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LinkBlockView.swift; sourceTree = "<group>"; };
+		C262A597BF1D457C30F70E57114A5897 /* LinkBlockNativeStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LinkBlockNativeStyle.swift; sourceTree = "<group>"; };
+		C30EEB49896AE8B58DB412E97396E8C4 /* RawHtmlNativeContentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RawHtmlNativeContentView.swift; sourceTree = "<group>"; };
+		CDE184BDF09722248A321F86BD8F2493 /* LinkNativeContentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LinkNativeContentView.swift; sourceTree = "<group>"; };
+		D35C000129B62B3E764E318A0213BE6C /* ImageBlockNativeStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ImageBlockNativeStyle.swift; sourceTree = "<group>"; };
 		D98EF17C650638D516E18C1BF861A4C5 /* Pods-EditorJSKit_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-EditorJSKit_Tests-umbrella.h"; sourceTree = "<group>"; };
+		DBE29C8D95EDDB8552386E059F83483E /* HeaderBlockContent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HeaderBlockContent.swift; sourceTree = "<group>"; };
+		DC505007931FABAF11526DF6C79A8E18 /* DelimiterBlockView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DelimiterBlockView.swift; sourceTree = "<group>"; };
 		DEDF007B95305711B74A4E7513675830 /* Pods-EditorJSKit_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-EditorJSKit_Tests.modulemap"; sourceTree = "<group>"; };
-		DF295A12A18C431BE64CD0E0AAB1B1C2 /* LinkFormatterService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LinkFormatterService.swift; sourceTree = "<group>"; };
-		E218A7580706E73D3519DA5D1AF0AD85 /* EditorJSKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "EditorJSKit-prefix.pch"; sourceTree = "<group>"; };
-		E30138C2CAB67401F2A4C3CC731414C4 /* NativeStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NativeStyle.swift; sourceTree = "<group>"; };
-		E7C9F617020CECC2D4B43A24A0A758EE /* ParagraphBlockNativeStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ParagraphBlockNativeStyle.swift; sourceTree = "<group>"; };
-		E814E062D9533C27CE5E96D139918066 /* HeaderNativeContentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HeaderNativeContentView.swift; sourceTree = "<group>"; };
-		ED9C935E12DB3CAC4FE7022588A844BB /* Pods_EditorJSKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EditorJSKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E63B779720B44E636F64AC4166053896 /* ConfigurableBlockView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConfigurableBlockView.swift; sourceTree = "<group>"; };
+		EA4A07D98EC331E9E48FB280020B2B5F /* LinkBlockContent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LinkBlockContent.swift; sourceTree = "<group>"; };
+		ED9C935E12DB3CAC4FE7022588A844BB /* Pods-EditorJSKit_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-EditorJSKit_Example"; path = Pods_EditorJSKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EEA1CD9C8502EC659F54ACC65186431E /* EJStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EJStyle.swift; sourceTree = "<group>"; };
+		EF811A63F8A70C215F6E721204C1C08E /* BaseBlockView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BaseBlockView.swift; sourceTree = "<group>"; };
 		F0DAEF86C45329AD6C32C79800B200AA /* Pods-EditorJSKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-EditorJSKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		F59EFC7F801437ADD5604E9D56F010FE /* RawHtmlBlockNativeStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RawHtmlBlockNativeStyle.swift; sourceTree = "<group>"; };
-		FB62F45FE65EB9F8A514C4E156C09709 /* ListBlockNativeStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ListBlockNativeStyle.swift; sourceTree = "<group>"; };
+		F1B037F398607ED9606E8DD2A8838FDC /* LinkFormatterService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LinkFormatterService.swift; sourceTree = "<group>"; };
+		F7AE6E5A2095E5E444DA47CB0B5E011C /* BaseBlockContentItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BaseBlockContentItem.swift; sourceTree = "<group>"; };
+		F912CDCD8C00CEE8CBAB6C0CFFAC765A /* RawHtmlBlockNativeStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RawHtmlBlockNativeStyle.swift; sourceTree = "<group>"; };
+		FA648933170CCF7EA7FA68BD5879E8E9 /* UITextView+Fixed.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UITextView+Fixed.swift"; sourceTree = "<group>"; };
+		FF92C06C25F8F3C6CBA7B31D36135C47 /* HeaderNativeContentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HeaderNativeContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		0BEAEB9E3DD1E06968B86760DA25E668 /* Frameworks */ = {
+		38AE332289B587BE84D24341554572F3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07F709B17C4C444DA01C51EBAC2BADDD /* Foundation.framework in Frameworks */,
+				C761634A69399261BAAF229399431EE0 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2F684A85E1EC83C935827937E8E78E44 /* Frameworks */ = {
+		39BB63BFEE51FA26AB0FCCE61A4E8CD1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				925E66BFD655BA54CBB3DDCF90FDB617 /* Foundation.framework in Frameworks */,
+				129BCA523E434C2C69880DDB7DB63155 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		90A7971D59E3519EF28624B9F10ECF42 /* Frameworks */ = {
+		58742A07FF5FC085A14488F9F1C37C53 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52C5D029E61A7A858BDA5458CCE5ABD2 /* Foundation.framework in Frameworks */,
+				F8676B45952EEAD6CF694DD6CA02EFD3 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		03351E61104728FD69612A508BDD6EE1 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				719129BE054485E44026D83F88B34D3F /* EditorJSKit.framework */,
-				ED9C935E12DB3CAC4FE7022588A844BB /* Pods_EditorJSKit_Example.framework */,
-				B659A75F3BBC58828CFFC339468C71DD /* Pods_EditorJSKit_Tests.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		0D9353149A9DD9D7912CA08B972B8AED /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				9023AC9F3EC3508E26EBF707C47213C7 /* EditorJSKit */,
+				1ACFCBD85BC3F6D02868940272A5672E /* EditorJSKit */,
 			);
 			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		15901AFC09BA1C26D3BEA91A602C31AD /* Adapters */ = {
+			isa = PBXGroup;
+			children = (
+				3C279091D5F90E94A8745A574927BE5E /* CollectionView */,
+			);
+			name = Adapters;
+			path = EditorJSKit/Classes/EJ/Adapters;
+			sourceTree = "<group>";
+		};
+		1ACFCBD85BC3F6D02868940272A5672E /* EditorJSKit */ = {
+			isa = PBXGroup;
+			children = (
+				15901AFC09BA1C26D3BEA91A602C31AD /* Adapters */,
+				8B19EF9304A7961A7551D7CD4D95FD68 /* Blocks */,
+				527A606450BDC3314FDE681C9392EA75 /* Core */,
+				B0EB0C70C4861CBE76FD881846540E4D /* CustomBlocks */,
+				9021CCD121DACB576B8B24F90CB44B1E /* Extensions */,
+				DE5D2378B5317BD728D46C536F31F534 /* Pod */,
+				F4785AA68D2D0397BFE2FB4ABD19FAE0 /* Services */,
+				427CB62A990A5638848AAEFE59F53CBA /* Styles */,
+				9B4CEB75FCB1914A6456F3D66D971E4C /* Support Files */,
+			);
+			name = EditorJSKit;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		1E757460A84E465B07781784E05D5825 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				719129BE054485E44026D83F88B34D3F /* EditorJSKit */,
+				ED9C935E12DB3CAC4FE7022588A844BB /* Pods-EditorJSKit_Example */,
+				B659A75F3BBC58828CFFC339468C71DD /* Pods-EditorJSKit_Tests */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		258EE6D8F0779E4566E08AFD90A5E1BD /* Targets Support Files */ = {
@@ -226,6 +255,63 @@
 				F1EC8B491AF9C5FC914CEB2C82F8C82D /* Pods-EditorJSKit_Tests */,
 			);
 			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		27D4B37EE181B1A4077213C8D078980F /* RawHtml */ = {
+			isa = PBXGroup;
+			children = (
+				3E58B832A97C39452E0E413606EE1E4E /* RawHtmlBlockContent.swift */,
+				6FFB0680262E2990D4C2B09806FCD2DD /* RawHtmlBlockView.swift */,
+				C30EEB49896AE8B58DB412E97396E8C4 /* RawHtmlNativeContentView.swift */,
+			);
+			name = RawHtml;
+			path = RawHtml;
+			sourceTree = "<group>";
+		};
+		35DF1564549F2A52A56FC00BCF8357A7 /* Paragraph */ = {
+			isa = PBXGroup;
+			children = (
+				47AE65027C6CED501920D10EDC441716 /* ParagraphBlockContent.swift */,
+				A97430C846746CDD6CEDD1D1E453BB88 /* ParagraphBlockView.swift */,
+				684D3531F7ADA24C44734AF9BD3BCDF1 /* ParagraphNativeContentView.swift */,
+			);
+			name = Paragraph;
+			path = Paragraph;
+			sourceTree = "<group>";
+		};
+		3C0974166C504D7DCE21AA6ED7FCDE68 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				DBE29C8D95EDDB8552386E059F83483E /* HeaderBlockContent.swift */,
+				54AB6F2EB0AD1BF638E86D0DC74D6E47 /* HeaderBlockView.swift */,
+				FF92C06C25F8F3C6CBA7B31D36135C47 /* HeaderNativeContentView.swift */,
+			);
+			name = Header;
+			path = Header;
+			sourceTree = "<group>";
+		};
+		3C279091D5F90E94A8745A574927BE5E /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				4464449116C4B7AC8EBF58EB219CDA5E /* CollectionViewBlockCell.swift */,
+				46C9CBE5B3ED78D7D10C17CFA06D46E5 /* EJCollectionDataSource.swift */,
+				2E3D106BFDB7934B0131661B5BE5BE8A /* EJCollectionRenderer.swift */,
+				465FB7465BE01C724B028F7DA044AB73 /* EJCollectionViewAdapter.swift */,
+				67F712654160F816FDB3AE6F975934BF /* EJCustomBlockCollectionAdaptable.swift */,
+			);
+			name = CollectionView;
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		3D025269D0414EFFB63B47BF157881E6 /* ListItem */ = {
+			isa = PBXGroup;
+			children = (
+				47D25E785D5FE6A1610C73433716AA51 /* ListBlockContent.swift */,
+				4BC007025C19838EC150C4E2169600E2 /* ListItemBlockView.swift */,
+				7A985A9E98617BDFF3843E2CB82C8205 /* ListItemNativeContentView.swift */,
+			);
+			name = ListItem;
+			path = ListItem;
 			sourceTree = "<group>";
 		};
 		425D9DA428DEE45359108ADCE84C2B40 /* Pods-EditorJSKit_Example */ = {
@@ -245,233 +331,133 @@
 			path = "Target Support Files/Pods-EditorJSKit_Example";
 			sourceTree = "<group>";
 		};
-		5F775B5AD31FF815E44E653AAADAE887 /* Core */ = {
+		427CB62A990A5638848AAEFE59F53CBA /* Styles */ = {
 			isa = PBXGroup;
 			children = (
-				BACA9C84E880FFB76FC121D8B223ACFE /* EJBlocksList.swift */,
-				815CF608EA870B252A7F79F28F477005 /* EJAbstractBlock.swift */,
-				946D8C252844D4ED0074935C /* EJAbstractBlockContent.swift */,
-				4053283F444BE9AE6017007FE408304B /* EJAbstractBlockRenderer.swift */,
-				09D546255DFB6049E8CEC5596A7A12B1 /* EJKit.swift */,
-				08284C2E02A254CF977E5F2F178CAF34 /* EJNativeBlockType.swift */,
-				6C4D63E9ED194B83A8FF0A989EA71B5D /* EJStyle.swift */,
-			);
-			name = Core;
-			path = EditorJSKit/Classes/EJ/Core;
-			sourceTree = "<group>";
-		};
-		683C0C2B70F2798923E68E6C01371FE8 /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				80F3EF85DAE36E0FD4D1C0822A72A149 /* EditorJSKit.podspec */,
-				D12E22E28A83D1DD7EAD3A8C95F32D44 /* LICENSE */,
-				3DF43D8327EF72D6B5EC3B5F78B1F80A /* README.md */,
-			);
-			name = Pod;
-			sourceTree = "<group>";
-		};
-		68C2BCA8ECCDEDA05B66269638C6E760 /* Blocks */ = {
-			isa = PBXGroup;
-			children = (
-				94A74FC82840B4F6008B26B9 /* Base */,
-				94A74FCD2840B80B008B26B9 /* Delimiter */,
-				94A74FD62840E66B008B26B9 /* Header */,
-				94A74FD72840E8C9008B26B9 /* Image */,
-				94A74FD82840EB85008B26B9 /* Link */,
-				94A74FD92840EEB0008B26B9 /* ListItem */,
-				94A74FDA2840F4A6008B26B9 /* Paragraph */,
-				94A74FDB2840F8AB008B26B9 /* RawHtml */,
-			);
-			name = Blocks;
-			path = EditorJSKit/Classes/EJ/Blocks;
-			sourceTree = "<group>";
-		};
-		7D1D95572548B061E0794A3DA2B1F174 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				5D2AF12D709280E9456E5395D71F16B9 /* DataDownloaderService.swift */,
-				DF295A12A18C431BE64CD0E0AAB1B1C2 /* LinkFormatterService.swift */,
-			);
-			name = Services;
-			path = EditorJSKit/Classes/EJ/Services;
-			sourceTree = "<group>";
-		};
-		7D85E9CE27BD6E36AC38E79F662FC469 /* Styles */ = {
-			isa = PBXGroup;
-			children = (
-				182C7A9EB06C6F32559F98E9ACEEF96D /* DelimiterBlockNativeStyle.swift */,
-				CAFB0DDE87C81432C95F0D98E944FF28 /* HeaderBlockNativeStyle.swift */,
-				96B2DD4C5A918BB0F327717EF10782AB /* ImageBlockNativeStyle.swift */,
-				BFA5569880FAFC8B73A21EDBA2FF9248 /* LinkBlockNativeStyle.swift */,
-				FB62F45FE65EB9F8A514C4E156C09709 /* ListBlockNativeStyle.swift */,
-				E30138C2CAB67401F2A4C3CC731414C4 /* NativeStyle.swift */,
-				E7C9F617020CECC2D4B43A24A0A758EE /* ParagraphBlockNativeStyle.swift */,
-				F59EFC7F801437ADD5604E9D56F010FE /* RawHtmlBlockNativeStyle.swift */,
+				A89843288074EB3A3B15CED462DDBB7E /* DelimiterBlockNativeStyle.swift */,
+				32C3A53F055F3F3B6CB257677904C076 /* HeaderBlockNativeStyle.swift */,
+				D35C000129B62B3E764E318A0213BE6C /* ImageBlockNativeStyle.swift */,
+				C262A597BF1D457C30F70E57114A5897 /* LinkBlockNativeStyle.swift */,
+				128B3161723FEEA4B8FD59000C7E1946 /* ListBlockNativeStyle.swift */,
+				8C99745FF96DBAB96275CE3F3A1FCF44 /* NativeStyle.swift */,
+				BA628A98D8B8D01ADEF31BDB2E722044 /* ParagraphBlockNativeStyle.swift */,
+				F912CDCD8C00CEE8CBAB6C0CFFAC765A /* RawHtmlBlockNativeStyle.swift */,
 			);
 			name = Styles;
 			path = EditorJSKit/Classes/EJ/Styles;
 			sourceTree = "<group>";
 		};
-		83F712D45C571F1EE4DEA0779A830EC4 /* Extensions */ = {
+		47B6AB24EBA2E0DB21E1610DA492B26E /* Image */ = {
 			isa = PBXGroup;
 			children = (
-				CDCA27FEB37629FD29AE0F83954EA199 /* NSAttributedString+Ext.swift */,
-				2DBA8DA4B5BD41583B9C084ED2192A85 /* String+Ext.swift */,
-				94B12174234DFBC400163577 /* UITextView+Fixed.swift */,
+				A90452EE31B967F2CE247289BCD0CF9C /* ImageBlockContent.swift */,
+				8C6288DFEC6EBAEB8E5C1AB5F8C63179 /* ImageBlockView.swift */,
+				6EE4F1AEA49C92A966CD7D59E7908CCB /* ImageNativeContentView.swift */,
+			);
+			name = Image;
+			path = Image;
+			sourceTree = "<group>";
+		};
+		527A606450BDC3314FDE681C9392EA75 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				0339262CA3F4A122EFED9250365E49C8 /* EJAbstractBlock.swift */,
+				A33A3B7666CF415382B642CDF015CCD0 /* EJAbstractBlockContent.swift */,
+				6DCFEC91971956EA1B2CAF1E1BD23F4C /* EJAbstractBlockRenderer.swift */,
+				9D883D0D8C2634DF34AEBB3338261367 /* EJAttributedTextCache.swift */,
+				486285F40AAED11DA58A782DAD6EA368 /* EJBlocksList.swift */,
+				429C84AAE4F7DD3B5C53EDBC392C327C /* EJKit.swift */,
+				31B63258072FD1296ABFE0CE7351C9FA /* EJNativeBlockType.swift */,
+				EEA1CD9C8502EC659F54ACC65186431E /* EJStyle.swift */,
+			);
+			name = Core;
+			path = EditorJSKit/Classes/EJ/Core;
+			sourceTree = "<group>";
+		};
+		7D6FD14A4611B77B07034DE20221D555 /* Link */ = {
+			isa = PBXGroup;
+			children = (
+				EA4A07D98EC331E9E48FB280020B2B5F /* LinkBlockContent.swift */,
+				6C59CD55A7B3D76F12CB5BE56637D2F6 /* LinkBlockView.swift */,
+				CDE184BDF09722248A321F86BD8F2493 /* LinkNativeContentView.swift */,
+			);
+			name = Link;
+			path = Link;
+			sourceTree = "<group>";
+		};
+		860BD93629553315A6A7BB5BA233399F /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				F7AE6E5A2095E5E444DA47CB0B5E011C /* BaseBlockContentItem.swift */,
+				EF811A63F8A70C215F6E721204C1C08E /* BaseBlockView.swift */,
+				E63B779720B44E636F64AC4166053896 /* ConfigurableBlockView.swift */,
+				1D64B51774544928D942EF925E49BA93 /* EJBlockView.swift */,
+				44F4D9BEC7FC03E56A7E6858740B2EF2 /* ReusableBlockView.swift */,
+			);
+			name = Base;
+			path = Base;
+			sourceTree = "<group>";
+		};
+		8B19EF9304A7961A7551D7CD4D95FD68 /* Blocks */ = {
+			isa = PBXGroup;
+			children = (
+				860BD93629553315A6A7BB5BA233399F /* Base */,
+				9754E6130CA315F6747ED55357F5BF68 /* Delimiter */,
+				3C0974166C504D7DCE21AA6ED7FCDE68 /* Header */,
+				47B6AB24EBA2E0DB21E1610DA492B26E /* Image */,
+				7D6FD14A4611B77B07034DE20221D555 /* Link */,
+				3D025269D0414EFFB63B47BF157881E6 /* ListItem */,
+				35DF1564549F2A52A56FC00BCF8357A7 /* Paragraph */,
+				27D4B37EE181B1A4077213C8D078980F /* RawHtml */,
+			);
+			name = Blocks;
+			path = EditorJSKit/Classes/EJ/Blocks;
+			sourceTree = "<group>";
+		};
+		9021CCD121DACB576B8B24F90CB44B1E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				29A5744FB75F73AA7F1B5CB5FD27AB5D /* NSAttributedString+Ext.swift */,
+				9DC035E720BA4363D50894F42358E2DE /* String+Ext.swift */,
+				FA648933170CCF7EA7FA68BD5879E8E9 /* UITextView+Fixed.swift */,
 			);
 			name = Extensions;
 			path = EditorJSKit/Classes/EJ/Extensions;
 			sourceTree = "<group>";
 		};
-		9023AC9F3EC3508E26EBF707C47213C7 /* EditorJSKit */ = {
+		9754E6130CA315F6747ED55357F5BF68 /* Delimiter */ = {
 			isa = PBXGroup;
 			children = (
-				94A74FD02840BCFC008B26B9 /* Adapters */,
-				68C2BCA8ECCDEDA05B66269638C6E760 /* Blocks */,
-				946D8C302844E2010074935C /* CustomBlocks */,
-				5F775B5AD31FF815E44E653AAADAE887 /* Core */,
-				83F712D45C571F1EE4DEA0779A830EC4 /* Extensions */,
-				683C0C2B70F2798923E68E6C01371FE8 /* Pod */,
-				7D1D95572548B061E0794A3DA2B1F174 /* Services */,
-				7D85E9CE27BD6E36AC38E79F662FC469 /* Styles */,
-				BC9251EC587F7A15A764992457C444C1 /* Support Files */,
+				289C477E8A37052E7DCB877276A6ABAB /* DelimiterBlockContent.swift */,
+				DC505007931FABAF11526DF6C79A8E18 /* DelimiterBlockView.swift */,
+				5A68937A0DE6C291C349916F91673F7B /* DelimiterNativeContentView.swift */,
 			);
-			name = EditorJSKit;
-			path = ../..;
-			sourceTree = "<group>";
-		};
-		946D8C302844E2010074935C /* CustomBlocks */ = {
-			isa = PBXGroup;
-			children = (
-				94C88CB42844E27400D8216E /* EJCustomBlock.swift */,
-			);
-			name = CustomBlocks;
-			path = EditorJSKit/Classes/EJ/CustomBlocks;
-			sourceTree = "<group>";
-		};
-		94A74FC82840B4F6008B26B9 /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				94A74FCB2840B62F008B26B9 /* ConfigurableBlockView.swift */,
-				94A74FCE2840BC13008B26B9 /* ReusableBlockView.swift */,
-				94A74FC92840B519008B26B9 /* BaseBlockView.swift */,
-				94A74FD42840BE66008B26B9 /* EJBlockView.swift */,
-				946D8C272844D54F0074935C /* BaseBlockContentItem.swift */,
-			);
-			path = Base;
-			sourceTree = "<group>";
-		};
-		94A74FCD2840B80B008B26B9 /* Delimiter */ = {
-			isa = PBXGroup;
-			children = (
-				B4293ED091FC85B3045E1CA3C3138479 /* DelimiterBlockContent.swift */,
-				CFD3B1B70112D9E7B8A26F8FCE810818 /* DelimiterBlockView.swift */,
-				C14072AEA4C6904BBB92407CC6FC7BFB /* DelimiterNativeContentView.swift */,
-			);
+			name = Delimiter;
 			path = Delimiter;
 			sourceTree = "<group>";
 		};
-		94A74FD02840BCFC008B26B9 /* Adapters */ = {
+		9B4CEB75FCB1914A6456F3D66D971E4C /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				94A74FD12840BD03008B26B9 /* CollectionView */,
-			);
-			name = Adapters;
-			path = EditorJSKit/Classes/EJ/Adapters;
-			sourceTree = "<group>";
-		};
-		94A74FD12840BD03008B26B9 /* CollectionView */ = {
-			isa = PBXGroup;
-			children = (
-				9423A80328424D8500A74558 /* EJCollectionViewAdapter.swift */,
-				9E008ACE5B849F4323696EFAEB6E2B8B /* EJCollectionRenderer.swift */,
-				9423A8052842513400A74558 /* EJCollectionDataSource.swift */,
-				94A74FD22840BD13008B26B9 /* CollectionViewBlockCell.swift */,
-				94C88CB62844EED300D8216E /* EJCustomBlockCollectionAdaptable.swift */,
-			);
-			path = CollectionView;
-			sourceTree = "<group>";
-		};
-		94A74FD62840E66B008B26B9 /* Header */ = {
-			isa = PBXGroup;
-			children = (
-				AB129205FFD56C4512DECE5BBE3DBF44 /* HeaderBlockContent.swift */,
-				B46427DE060DA5C2B4C457260967C09C /* HeaderBlockView.swift */,
-				E814E062D9533C27CE5E96D139918066 /* HeaderNativeContentView.swift */,
-			);
-			path = Header;
-			sourceTree = "<group>";
-		};
-		94A74FD72840E8C9008B26B9 /* Image */ = {
-			isa = PBXGroup;
-			children = (
-				4399ECDCF27E85BCE80103F19D36CB3D /* ImageBlockContent.swift */,
-				A3468B64236F5AE70F77BC2CF9FE6898 /* ImageBlockView.swift */,
-				38DF1B65F42C7EE6202006B0F84FF8D6 /* ImageNativeContentView.swift */,
-			);
-			path = Image;
-			sourceTree = "<group>";
-		};
-		94A74FD82840EB85008B26B9 /* Link */ = {
-			isa = PBXGroup;
-			children = (
-				140024D450908E0F5BB7438FFB40B105 /* LinkBlockContent.swift */,
-				D5B6612DDC15997A19BAE5A61400DAA1 /* LinkBlockView.swift */,
-				61364C7893E95F5F9C0FCAFE3EC4B9FC /* LinkNativeContentView.swift */,
-			);
-			path = Link;
-			sourceTree = "<group>";
-		};
-		94A74FD92840EEB0008B26B9 /* ListItem */ = {
-			isa = PBXGroup;
-			children = (
-				0A0D0085386B818F4D6089B27FBDA661 /* ListBlockContent.swift */,
-				CDF70C176AA65D2809C1A2131868BC40 /* ListItemBlockView.swift */,
-				0D1B3897D60D7E24179D4AF53E123E83 /* ListItemNativeContentView.swift */,
-			);
-			path = ListItem;
-			sourceTree = "<group>";
-		};
-		94A74FDA2840F4A6008B26B9 /* Paragraph */ = {
-			isa = PBXGroup;
-			children = (
-				137DFAD1611DBCA2D2D135B7DDF5EA70 /* ParagraphBlockContent.swift */,
-				0D147DD8B6957BC3139F446798684167 /* ParagraphBlockView.swift */,
-				0CF01FC950158AAB4E825AB08FF810C9 /* ParagraphNativeContentView.swift */,
-			);
-			path = Paragraph;
-			sourceTree = "<group>";
-		};
-		94A74FDB2840F8AB008B26B9 /* RawHtml */ = {
-			isa = PBXGroup;
-			children = (
-				8A86D9804BD14503DC9FAB234A1C16D4 /* RawHtmlBlockContent.swift */,
-				27072265CBFED06F75A40FDF6EFC5B25 /* RawHtmlBlockView.swift */,
-				635DA7FDB1A06BF1B9AC93B70A6DFBDF /* RawHtmlNativeContentView.swift */,
-			);
-			path = RawHtml;
-			sourceTree = "<group>";
-		};
-		BC9251EC587F7A15A764992457C444C1 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				598DF965F65E6CBAC62347C6E95F332A /* EditorJSKit.modulemap */,
-				CC48AED8359C2151DD00C6E1881C2F69 /* EditorJSKit.xcconfig */,
-				54BDB8D301E166D3F026B8EECDD86162 /* EditorJSKit-dummy.m */,
-				D2FA938E3D8BE92212F57506D75F78B5 /* EditorJSKit-Info.plist */,
-				E218A7580706E73D3519DA5D1AF0AD85 /* EditorJSKit-prefix.pch */,
-				6CB33BE52314A08DC134A894AA0DBC3E /* EditorJSKit-umbrella.h */,
+				53185128F48610C3C9C35C4D83DE03B4 /* EditorJSKit.modulemap */,
+				95CE300CDF346FEAF54AD01000B3947E /* EditorJSKit-dummy.m */,
+				7E3BC59F1388B0DACF92222A6858217B /* EditorJSKit-Info.plist */,
+				42DA249AE0A8E78076C7B60DF8F2CDEC /* EditorJSKit-prefix.pch */,
+				8F6DD701E5AF6CF2CF9CBCFD1D24D1C3 /* EditorJSKit-umbrella.h */,
+				5FCBD31C616AF23523021534BB7631D6 /* EditorJSKit.debug.xcconfig */,
+				A88B3DFCBB0BC2C8407C7644B4525BF1 /* EditorJSKit.release.xcconfig */,
 			);
 			name = "Support Files";
 			path = "Example/Pods/Target Support Files/EditorJSKit";
 			sourceTree = "<group>";
 		};
-		C0834CEBB1379A84116EF29F93051C60 /* iOS */ = {
+		B0EB0C70C4861CBE76FD881846540E4D /* CustomBlocks */ = {
 			isa = PBXGroup;
 			children = (
-				3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */,
+				0C9311D09C98B47206458DF4BBF466C7 /* EJCustomBlock.swift */,
 			);
-			name = iOS;
+			name = CustomBlocks;
+			path = EditorJSKit/Classes/EJ/CustomBlocks;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -480,7 +466,7 @@
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				0D9353149A9DD9D7912CA08B972B8AED /* Development Pods */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
-				03351E61104728FD69612A508BDD6EE1 /* Products */,
+				1E757460A84E465B07781784E05D5825 /* Products */,
 				258EE6D8F0779E4566E08AFD90A5E1BD /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
@@ -488,9 +474,27 @@
 		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C0834CEBB1379A84116EF29F93051C60 /* iOS */,
+				E4801F62A6B08CD9B5410329F1A18FDE /* iOS */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DE5D2378B5317BD728D46C536F31F534 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				9CAF7E8740AE1275554FA0C620A55362 /* EditorJSKit.podspec */,
+				533E7602A46D9444306E5EAB49A85763 /* LICENSE */,
+				31B008EF4DFBED7CC08608810667355D /* README.md */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		E4801F62A6B08CD9B5410329F1A18FDE /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */,
+			);
+			name = iOS;
 			sourceTree = "<group>";
 		};
 		F1EC8B491AF9C5FC914CEB2C82F8C82D /* Pods-EditorJSKit_Tests */ = {
@@ -509,30 +513,40 @@
 			path = "Target Support Files/Pods-EditorJSKit_Tests";
 			sourceTree = "<group>";
 		};
+		F4785AA68D2D0397BFE2FB4ABD19FAE0 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				2718A4CFBFD2AFA48709C712E9EEB814 /* DataDownloaderService.swift */,
+				F1B037F398607ED9606E8DD2A8838FDC /* LinkFormatterService.swift */,
+			);
+			name = Services;
+			path = EditorJSKit/Classes/EJ/Services;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		18FC9D85CAB2B157C1702FD2F760AC93 /* Headers */ = {
+		49081B7E2B9C21A61FB4700D9E8A32B3 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9333BE493F07CCF3849C588F876B9293 /* Pods-EditorJSKit_Example-umbrella.h in Headers */,
+				6F7BE791F5FA69EB775A360F50C4FE07 /* Pods-EditorJSKit_Example-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		59B450440FEAE2C0D430FF5F7078AA81 /* Headers */ = {
+		594C9EC511C8B8E7ABB03B05F32C8197 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEA549E2C752DE19B46CFC7DF0ECFAB4 /* Pods-EditorJSKit_Tests-umbrella.h in Headers */,
+				D7A99C1308C74A365A9CABD1EF7ECC2B /* EditorJSKit-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F85625FC9C9B28AC98CE62DE9CE23BAC /* Headers */ = {
+		DA9C43DF1E74A629A27C84AC7F242920 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4EAF10078E88CE4EF68D2CEE8AB650F /* EditorJSKit-umbrella.h in Headers */,
+				E23E73D11A24019D835F86660A50DB10 /* Pods-EditorJSKit_Tests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,12 +555,12 @@
 /* Begin PBXNativeTarget section */
 		146374D58BCAF2E771D9BB6C1CAFB217 /* EditorJSKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3631EABDD48C723E6E94BF131327E2F2 /* Build configuration list for PBXNativeTarget "EditorJSKit" */;
+			buildConfigurationList = CA00421DFDED8A1917CC8FC8B97237C4 /* Build configuration list for PBXNativeTarget "EditorJSKit" */;
 			buildPhases = (
-				F85625FC9C9B28AC98CE62DE9CE23BAC /* Headers */,
-				A0E06B531DFFF87797F75368CFFD7193 /* Sources */,
-				0BEAEB9E3DD1E06968B86760DA25E668 /* Frameworks */,
-				44886CD9C43016D23CE87FF03E44E739 /* Resources */,
+				594C9EC511C8B8E7ABB03B05F32C8197 /* Headers */,
+				F5706843E7058BA34C99F6AC4A02CE68 /* Sources */,
+				58742A07FF5FC085A14488F9F1C37C53 /* Frameworks */,
+				B4E06D8A35FB471AFADB2B31D3EC5272 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -554,45 +568,45 @@
 			);
 			name = EditorJSKit;
 			productName = EditorJSKit;
-			productReference = 719129BE054485E44026D83F88B34D3F /* EditorJSKit.framework */;
+			productReference = 719129BE054485E44026D83F88B34D3F /* EditorJSKit */;
 			productType = "com.apple.product-type.framework";
 		};
 		6D1ADA0FE5BDB2F2F2C7956EC50758A0 /* Pods-EditorJSKit_Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B420AD4AFB413293F1F8C18053596C29 /* Build configuration list for PBXNativeTarget "Pods-EditorJSKit_Tests" */;
+			buildConfigurationList = 3211C77E2FBEA5BA33BC2DDCB44E8A8E /* Build configuration list for PBXNativeTarget "Pods-EditorJSKit_Tests" */;
 			buildPhases = (
-				59B450440FEAE2C0D430FF5F7078AA81 /* Headers */,
-				7053BF74D4F10DDEA22A5A393F24D5BA /* Sources */,
-				2F684A85E1EC83C935827937E8E78E44 /* Frameworks */,
-				AD617E3A75C416C9BB4FBCA59F37D486 /* Resources */,
+				DA9C43DF1E74A629A27C84AC7F242920 /* Headers */,
+				28CDC84A4DD64064EC6510CF37E69A02 /* Sources */,
+				39BB63BFEE51FA26AB0FCCE61A4E8CD1 /* Frameworks */,
+				A8AC8F1ADF482CCFB12821AEA5041190 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				366D8A80FFB16EDF9859A1E016CE1058 /* PBXTargetDependency */,
+				68A563538EE8374D60185C2B6B40D1BD /* PBXTargetDependency */,
 			);
 			name = "Pods-EditorJSKit_Tests";
-			productName = "Pods-EditorJSKit_Tests";
-			productReference = B659A75F3BBC58828CFFC339468C71DD /* Pods_EditorJSKit_Tests.framework */;
+			productName = Pods_EditorJSKit_Tests;
+			productReference = B659A75F3BBC58828CFFC339468C71DD /* Pods-EditorJSKit_Tests */;
 			productType = "com.apple.product-type.framework";
 		};
 		A7323CF1FC9DDF5376AB916367BE0CE1 /* Pods-EditorJSKit_Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 47D766A865D90A268E3F8B6F461EE58E /* Build configuration list for PBXNativeTarget "Pods-EditorJSKit_Example" */;
+			buildConfigurationList = EF80BC944593CC36DC8E9FBA8C458160 /* Build configuration list for PBXNativeTarget "Pods-EditorJSKit_Example" */;
 			buildPhases = (
-				18FC9D85CAB2B157C1702FD2F760AC93 /* Headers */,
-				C86BD9A550C492A4602E0F6F33F9F10F /* Sources */,
-				90A7971D59E3519EF28624B9F10ECF42 /* Frameworks */,
-				07AA64B16A7E855F5D31EB1AE17DE43B /* Resources */,
+				49081B7E2B9C21A61FB4700D9E8A32B3 /* Headers */,
+				5C6A70667D64A0913978333A88C94D4C /* Sources */,
+				38AE332289B587BE84D24341554572F3 /* Frameworks */,
+				6C655599284EC1B384E0FA3B43182752 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				F2C857A13BB4FC0F78290887288E1761 /* PBXTargetDependency */,
+				C89B862A7D6B6F9EFE5216E127A0E00C /* PBXTargetDependency */,
 			);
 			name = "Pods-EditorJSKit_Example";
-			productName = "Pods-EditorJSKit_Example";
-			productReference = ED9C935E12DB3CAC4FE7022588A844BB /* Pods_EditorJSKit_Example.framework */;
+			productName = Pods_EditorJSKit_Example;
+			productReference = ED9C935E12DB3CAC4FE7022588A844BB /* Pods-EditorJSKit_Example */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -601,18 +615,21 @@
 		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1100;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				Base,
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 03351E61104728FD69612A508BDD6EE1 /* Products */;
+			minimizedProjectReferenceProxies = 0;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 1E757460A84E465B07781784E05D5825 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -624,21 +641,21 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		07AA64B16A7E855F5D31EB1AE17DE43B /* Resources */ = {
+		6C655599284EC1B384E0FA3B43182752 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		44886CD9C43016D23CE87FF03E44E739 /* Resources */ = {
+		A8AC8F1ADF482CCFB12821AEA5041190 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AD617E3A75C416C9BB4FBCA59F37D486 /* Resources */ = {
+		B4E06D8A35FB471AFADB2B31D3EC5272 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -648,106 +665,107 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		7053BF74D4F10DDEA22A5A393F24D5BA /* Sources */ = {
+		28CDC84A4DD64064EC6510CF37E69A02 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B597EB556588CBA1C737B4326DC612A /* Pods-EditorJSKit_Tests-dummy.m in Sources */,
+				3F7E8A705E15C3FBAF318F0E4CBA4D93 /* Pods-EditorJSKit_Tests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A0E06B531DFFF87797F75368CFFD7193 /* Sources */ = {
+		5C6A70667D64A0913978333A88C94D4C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94A74FD32840BD13008B26B9 /* CollectionViewBlockCell.swift in Sources */,
-				9423A8062842513400A74558 /* EJCollectionDataSource.swift in Sources */,
-				C90A6E78AB74ADDCAED9ED2072B9C9B9 /* DataDownloaderService.swift in Sources */,
-				5330E72007CC736DEA2E4EF1302374C4 /* DelimiterBlockContent.swift in Sources */,
-				8065268C89708D70BEDD0EE1EBE5BDE8 /* DelimiterBlockNativeStyle.swift in Sources */,
-				81F295C7E828D2FDAA4188E12180EB5B /* DelimiterBlockView.swift in Sources */,
-				D8F74B6E7C6739FB55F8CB1A63136536 /* DelimiterNativeContentView.swift in Sources */,
-				B3ADFED4792861F05D512433102DC96B /* EditorJSKit-dummy.m in Sources */,
-				733E1C4BEF3E0D76CC6034F9D2589FD1 /* EJAbstractBlock.swift in Sources */,
-				94A74FCF2840BC13008B26B9 /* ReusableBlockView.swift in Sources */,
-				56AD2C95681F7FC71089CE29FE30F444 /* EJAbstractBlockRenderer.swift in Sources */,
-				D1FF981EEC99642E0A0599AAF7E10A34 /* EJBlocksList.swift in Sources */,
-				F22AA2FF934638E09CA3A8C6DCD2FC89 /* EJCollectionRenderer.swift in Sources */,
-				9423A80428424D8500A74558 /* EJCollectionViewAdapter.swift in Sources */,
-				BEC0BBF52FEE197B5467815499B296E0 /* EJKit.swift in Sources */,
-				B620C0B984FD09701FDF4BA29732D872 /* EJNativeBlockType.swift in Sources */,
-				DB33FA81F7217F9E8D38A368825AB0C9 /* EJStyle.swift in Sources */,
-				94B12175234DFBC400163577 /* UITextView+Fixed.swift in Sources */,
-				94A74FCA2840B519008B26B9 /* BaseBlockView.swift in Sources */,
-				94C88CB72844EED300D8216E /* EJCustomBlockCollectionAdaptable.swift in Sources */,
-				6DA0A592E49632B0F3E6E02423B4A147 /* HeaderBlockContent.swift in Sources */,
-				BFE7C3EC0B0CC294042FACEEAFBA934D /* HeaderBlockNativeStyle.swift in Sources */,
-				2F95EAA836CE3127D860E3FC5C7127F9 /* HeaderBlockView.swift in Sources */,
-				DF4CBF55F63D7B7096127D5D4F2DBFEC /* HeaderNativeContentView.swift in Sources */,
-				530BB4B0F51714B63C5DCAF3D5DF9824 /* ImageBlockContent.swift in Sources */,
-				8F12269FC4B33B7CFB514DD6DF3032D8 /* ImageBlockNativeStyle.swift in Sources */,
-				90D57CE14E4CBD679802B0597B7AF6B1 /* ImageBlockView.swift in Sources */,
-				2E8FF825F210EDD3CFF2B932F3B5006D /* ImageNativeContentView.swift in Sources */,
-				946D8C282844D54F0074935C /* BaseBlockContentItem.swift in Sources */,
-				A49BEE96A6C64F17473BC1104068378E /* LinkBlockContent.swift in Sources */,
-				FA936015FF3F4831260BFAB1C6388A43 /* LinkBlockNativeStyle.swift in Sources */,
-				A4DA4C6A974818525E7C9A094E89F1EC /* LinkBlockView.swift in Sources */,
-				350FEC290285B8FACAAE443C841689CC /* LinkFormatterService.swift in Sources */,
-				091090C1A22809B7A009E8F3CF963189 /* LinkNativeContentView.swift in Sources */,
-				DE082EF1679F6C821B4DBE738457A14A /* ListBlockContent.swift in Sources */,
-				58A242765C50D582051834045E65CFF5 /* ListBlockNativeStyle.swift in Sources */,
-				94A74FD52840BE66008B26B9 /* EJBlockView.swift in Sources */,
-				D3BE0F7AF52F8D7E804C7CD0D6192DFB /* ListItemBlockView.swift in Sources */,
-				EB90484F262D4AE4C5D2D40CC8C23B75 /* ListItemNativeContentView.swift in Sources */,
-				33E876F5FA4CDDD8333737C579C8FE24 /* NativeStyle.swift in Sources */,
-				946D8C262844D4ED0074935C /* EJAbstractBlockContent.swift in Sources */,
-				E25A3DD6FBD71876F3D5D1321D336936 /* NSAttributedString+Ext.swift in Sources */,
-				65F026CC147B6EA5878E19D8CA50DAFC /* ParagraphBlockContent.swift in Sources */,
-				FE8BC11B90563E05E7A95204483FFE9A /* ParagraphBlockNativeStyle.swift in Sources */,
-				7151C8044BED7E963C0ADB5AC0A14510 /* ParagraphBlockView.swift in Sources */,
-				746F9F7141DD960CAAB728579A30E53B /* ParagraphNativeContentView.swift in Sources */,
-				C15E33A1EC27B971A0A1BD71F7B1EE43 /* RawHtmlBlockContent.swift in Sources */,
-				56BA7423B06FB5DF9FFE5056F488687D /* RawHtmlBlockNativeStyle.swift in Sources */,
-				94A74FCC2840B62F008B26B9 /* ConfigurableBlockView.swift in Sources */,
-				063A31B6C7718057CD5F898FCF6F04DC /* RawHtmlBlockView.swift in Sources */,
-				AE7A86AEF85C8B1FAA0190D7BCC0E0AC /* RawHtmlNativeContentView.swift in Sources */,
-				30DD78667B75CEA0497D433A1BB40DCB /* String+Ext.swift in Sources */,
-				94C88CB52844E27400D8216E /* EJCustomBlock.swift in Sources */,
+				721FDC2609EE1C4444CDC552160C635B /* Pods-EditorJSKit_Example-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C86BD9A550C492A4602E0F6F33F9F10F /* Sources */ = {
+		F5706843E7058BA34C99F6AC4A02CE68 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5167E0D9090CFB9CFF3746F84C96B644 /* Pods-EditorJSKit_Example-dummy.m in Sources */,
+				15FE823554F1852B86CCA4F7D4C0B883 /* BaseBlockContentItem.swift in Sources */,
+				A4C9622F63F801EC170FB97EFE60D341 /* BaseBlockView.swift in Sources */,
+				DF159CDD0E40787DEF8DD4E9CBD1A6BA /* CollectionViewBlockCell.swift in Sources */,
+				AF38E003101C4597A5E3B6BAEDB96172 /* ConfigurableBlockView.swift in Sources */,
+				A8E95E36C22629DAB460588872A09ED3 /* DataDownloaderService.swift in Sources */,
+				15E8635E371F8A75A8B7ED4814D3780F /* DelimiterBlockContent.swift in Sources */,
+				DD015D1274B1EB19046D97AA25840352 /* DelimiterBlockNativeStyle.swift in Sources */,
+				A5FB5EA87AA1EF765E536B47EB5BA22E /* DelimiterBlockView.swift in Sources */,
+				77D970436803163506EAE44909A5C753 /* DelimiterNativeContentView.swift in Sources */,
+				C0C72192E97ECA7B0EE267C918983034 /* EditorJSKit-dummy.m in Sources */,
+				AA53F1844CF38161A75D361130A1D46E /* EJAbstractBlock.swift in Sources */,
+				33B5497F4B21C6D9597B1A1738725D49 /* EJAbstractBlockContent.swift in Sources */,
+				F248C4991E148B6A4E17A3630AF57F8C /* EJAbstractBlockRenderer.swift in Sources */,
+				EB1BD19E1DA00C43D506162883EFAA6D /* EJAttributedTextCache.swift in Sources */,
+				000FFDFB5BDCDAA3A313042E0F3A0091 /* EJBlocksList.swift in Sources */,
+				01E23C5B1CF74F9423EB0F406A248DC6 /* EJBlockView.swift in Sources */,
+				A659CC353084BD534C37536E98653BAC /* EJCollectionDataSource.swift in Sources */,
+				DBF0333EBC4EB07C5AA9278E1C6BF18C /* EJCollectionRenderer.swift in Sources */,
+				112C2D7E92A73F0EF132ACC7C1C9788E /* EJCollectionViewAdapter.swift in Sources */,
+				F27053AFB00529F3FF2FF013EEE1FDB8 /* EJCustomBlock.swift in Sources */,
+				A0D2D88B599B989CF5BBDE368AEB74E3 /* EJCustomBlockCollectionAdaptable.swift in Sources */,
+				2D994DA7049A43FEDD88E40448A2EFB9 /* EJKit.swift in Sources */,
+				2E7F42CCFF65125AA77279274A4191CA /* EJNativeBlockType.swift in Sources */,
+				EAF7527E1D3C34740EDCB5DC454B2FEF /* EJStyle.swift in Sources */,
+				12995807907F31A83200C4DB33CFBAFE /* HeaderBlockContent.swift in Sources */,
+				EDCC68351B6D9548BC9902326F7D7DB6 /* HeaderBlockNativeStyle.swift in Sources */,
+				5EF98965BEA4789DFC82C32B170C82AC /* HeaderBlockView.swift in Sources */,
+				6C46D1B2CD5574BA55CCB3AC4BCC7DC9 /* HeaderNativeContentView.swift in Sources */,
+				50CDB193B6B2C2A48A1A5B3144123A39 /* ImageBlockContent.swift in Sources */,
+				B7F2A2007982B97A6F1BF619EC87E64C /* ImageBlockNativeStyle.swift in Sources */,
+				43E7F51B4AA9148C31CB6691B0D65785 /* ImageBlockView.swift in Sources */,
+				F909324402E73FBBF2A69D31114E2A5A /* ImageNativeContentView.swift in Sources */,
+				20635156DFFFC92596CB5B0BA87195E2 /* LinkBlockContent.swift in Sources */,
+				7FB357787A2CA238257C5EC64B0C97F8 /* LinkBlockNativeStyle.swift in Sources */,
+				8A39E74C12ACA9B74D3E7B80CD18C0F4 /* LinkBlockView.swift in Sources */,
+				D5D2E731D5E856B374B1BE0897F90C4C /* LinkFormatterService.swift in Sources */,
+				093B8236813D446560332C8C29AB46AF /* LinkNativeContentView.swift in Sources */,
+				0D68C98119488BDB350D48EDFFF90A3B /* ListBlockContent.swift in Sources */,
+				F01E3EF20EAC3A4CA0C49772D79E680A /* ListBlockNativeStyle.swift in Sources */,
+				A3A12C4958E3E7B39DF3EDBC6E5717FD /* ListItemBlockView.swift in Sources */,
+				D25DF8B96D3E7C8EB049CF6C3796794B /* ListItemNativeContentView.swift in Sources */,
+				E225B37D28CC809BCDE61CC28E6E413B /* NativeStyle.swift in Sources */,
+				E75796120C3372215B6CE8DEA69ED83F /* NSAttributedString+Ext.swift in Sources */,
+				8CB528B57B090C098DC20A203BB298B7 /* ParagraphBlockContent.swift in Sources */,
+				2A0E8ACA6B36335F72D66158A0D1A38A /* ParagraphBlockNativeStyle.swift in Sources */,
+				C0F9EED01ED43981B7034522D5F6707D /* ParagraphBlockView.swift in Sources */,
+				C8B455466F83A4150783016DBFEFF3AC /* ParagraphNativeContentView.swift in Sources */,
+				0C7FA84ADA4CA7B012DF8585598F9BFE /* RawHtmlBlockContent.swift in Sources */,
+				DA6A8CB8E2FF0C32A6220AF2BF2C58D3 /* RawHtmlBlockNativeStyle.swift in Sources */,
+				B9B85FAC524A4381841550C226ED2A5F /* RawHtmlBlockView.swift in Sources */,
+				117845C1E4F66DD45154CFAA6505F11D /* RawHtmlNativeContentView.swift in Sources */,
+				936F0E61C9945CE79E54669204489821 /* ReusableBlockView.swift in Sources */,
+				B1F316DA3BA3C28D71581B58EFEA83F3 /* String+Ext.swift in Sources */,
+				B6156139DA24F07CA98D8334148816A7 /* UITextView+Fixed.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		366D8A80FFB16EDF9859A1E016CE1058 /* PBXTargetDependency */ = {
+		68A563538EE8374D60185C2B6B40D1BD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-EditorJSKit_Example";
 			target = A7323CF1FC9DDF5376AB916367BE0CE1 /* Pods-EditorJSKit_Example */;
-			targetProxy = 2DD04CBA857E1252679C85671DC06690 /* PBXContainerItemProxy */;
+			targetProxy = 13511D94F7813558237D8992C536431D /* PBXContainerItemProxy */;
 		};
-		F2C857A13BB4FC0F78290887288E1761 /* PBXTargetDependency */ = {
+		C89B862A7D6B6F9EFE5216E127A0E00C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = EditorJSKit;
 			target = 146374D58BCAF2E771D9BB6C1CAFB217 /* EditorJSKit */;
-			targetProxy = 55A2747A8D3153F43070C1E5009B1B70 /* PBXContainerItemProxy */;
+			targetProxy = FB9016B05154576546A545457514DA5A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		1355858F5EAA0ACBCE2DD59D8086D7BF /* Release */ = {
+		2E2E958A2EF52EBA612AEC53A23265C9 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6299222B6954921D3E2D3F1E9293FB8D /* Pods-EditorJSKit_Example.release.xcconfig */;
+			baseConfigurationReference = F0DAEF86C45329AD6C32C79800B200AA /* Pods-EditorJSKit_Example.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
+				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -756,9 +774,11 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = "Target Support Files/Pods-EditorJSKit_Example/Pods-EditorJSKit_Example-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-EditorJSKit_Example/Pods-EditorJSKit_Example.modulemap";
@@ -770,48 +790,16 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
-		6B89F53412826744B5A6CA676E9B4187 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = CC48AED8359C2151DD00C6E1881C2F69 /* EditorJSKit.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/EditorJSKit/EditorJSKit-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/EditorJSKit/EditorJSKit-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/EditorJSKit/EditorJSKit.modulemap";
-				PRODUCT_MODULE_NAME = EditorJSKit;
-				PRODUCT_NAME = EditorJSKit;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.1;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		8F17DC3A99F99FBAD606CE6963886315 /* Release */ = {
+		7EE7A78859F657F6BEFC651185B43192 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -834,6 +822,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -861,16 +850,89 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
 		};
-		916E0404255105F480DC4950B7625F7A /* Debug */ = {
+		9C16C94EA225C85D9598101526663713 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5FCBD31C616AF23523021534BB7631D6 /* EditorJSKit.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_PREFIX_HEADER = "Target Support Files/EditorJSKit/EditorJSKit-prefix.pch";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Target Support Files/EditorJSKit/EditorJSKit-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/EditorJSKit/EditorJSKit.modulemap";
+				PRODUCT_MODULE_NAME = EditorJSKit;
+				PRODUCT_NAME = EditorJSKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		CE187CD06F54390CB148AB4FA8E7DEE7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6299222B6954921D3E2D3F1E9293FB8D /* Pods-EditorJSKit_Example.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				INFOPLIST_FILE = "Target Support Files/Pods-EditorJSKit_Example/Pods-EditorJSKit_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-EditorJSKit_Example/Pods-EditorJSKit_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D299434AB35E7FD6F7921C8EF24742FF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -893,6 +955,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -931,11 +994,11 @@
 			};
 			name = Debug;
 		};
-		BC70B2F6C020D82E5686D28ED1726ED4 /* Debug */ = {
+		D51BC0F3D68A1C2FE76913BA35B298E5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CC48AED8359C2151DD00C6E1881C2F69 /* EditorJSKit.xcconfig */;
+			baseConfigurationReference = A88B3DFCBB0BC2C8407C7644B4525BF1 /* EditorJSKit.release.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
+				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -944,7 +1007,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_PREFIX_HEADER = "Target Support Files/EditorJSKit/EditorJSKit-prefix.pch";
+				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "Target Support Files/EditorJSKit/EditorJSKit-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -955,85 +1021,21 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_VERSION = 5.1;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
-		C2A2215CF60DB12981B486D8D357425F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F0DAEF86C45329AD6C32C79800B200AA /* Pods-EditorJSKit_Example.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-EditorJSKit_Example/Pods-EditorJSKit_Example-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-EditorJSKit_Example/Pods-EditorJSKit_Example.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		DCF28A09A70B2978933FA036DF841D95 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8740E436F016E512C919E8DEA92D3ECD /* Pods-EditorJSKit_Tests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-EditorJSKit_Tests/Pods-EditorJSKit_Tests-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-EditorJSKit_Tests/Pods-EditorJSKit_Tests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		EF3CF24DCB87424456A399E430603C7A /* Release */ = {
+		DF414801B2E9BC194D02B4242599949F /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 90B170A317B8DB5025838F1460C7CB0A /* Pods-EditorJSKit_Tests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
+				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -1042,9 +1044,11 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = "Target Support Files/Pods-EditorJSKit_Tests/Pods-EditorJSKit_Tests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-EditorJSKit_Tests/Pods-EditorJSKit_Tests.modulemap";
@@ -1062,23 +1066,49 @@
 			};
 			name = Release;
 		};
+		EB6DB869C747E002365AD7D1026C958D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8740E436F016E512C919E8DEA92D3ECD /* Pods-EditorJSKit_Tests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				INFOPLIST_FILE = "Target Support Files/Pods-EditorJSKit_Tests/Pods-EditorJSKit_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-EditorJSKit_Tests/Pods-EditorJSKit_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3631EABDD48C723E6E94BF131327E2F2 /* Build configuration list for PBXNativeTarget "EditorJSKit" */ = {
+		3211C77E2FBEA5BA33BC2DDCB44E8A8E /* Build configuration list for PBXNativeTarget "Pods-EditorJSKit_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BC70B2F6C020D82E5686D28ED1726ED4 /* Debug */,
-				6B89F53412826744B5A6CA676E9B4187 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		47D766A865D90A268E3F8B6F461EE58E /* Build configuration list for PBXNativeTarget "Pods-EditorJSKit_Example" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C2A2215CF60DB12981B486D8D357425F /* Debug */,
-				1355858F5EAA0ACBCE2DD59D8086D7BF /* Release */,
+				EB6DB869C747E002365AD7D1026C958D /* Debug */,
+				DF414801B2E9BC194D02B4242599949F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1086,17 +1116,26 @@
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				916E0404255105F480DC4950B7625F7A /* Debug */,
-				8F17DC3A99F99FBAD606CE6963886315 /* Release */,
+				D299434AB35E7FD6F7921C8EF24742FF /* Debug */,
+				7EE7A78859F657F6BEFC651185B43192 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B420AD4AFB413293F1F8C18053596C29 /* Build configuration list for PBXNativeTarget "Pods-EditorJSKit_Tests" */ = {
+		CA00421DFDED8A1917CC8FC8B97237C4 /* Build configuration list for PBXNativeTarget "EditorJSKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				DCF28A09A70B2978933FA036DF841D95 /* Debug */,
-				EF3CF24DCB87424456A399E430603C7A /* Release */,
+				9C16C94EA225C85D9598101526663713 /* Debug */,
+				D51BC0F3D68A1C2FE76913BA35B298E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EF80BC944593CC36DC8E9FBA8C458160 /* Build configuration list for PBXNativeTarget "Pods-EditorJSKit_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2E2E958A2EF52EBA612AEC53A23265C9 /* Debug */,
+				CE187CD06F54390CB148AB4FA8E7DEE7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
